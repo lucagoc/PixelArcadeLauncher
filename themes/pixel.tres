@@ -1,0 +1,28 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://5im7y78yca4y"]
+
+[ext_resource type="FontFile" uid="uid://ixbfi1tltcyx" path="res://themes/Pixel Digivolve.otf" id="1_sp317"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lo24w"]
+bg_color = Color(0, 0, 0, 0.188235)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bum83"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_027m2"]
+bg_color = Color(1, 1, 1, 1)
+
+[resource]
+ItemList/colors/font_color = Color(1, 1, 1, 1)
+ItemList/font_sizes/font_size = 32
+ItemList/fonts/font = ExtResource("1_sp317")
+ItemList/styles/panel = SubResource("StyleBoxFlat_lo24w")
+ProgressBar/colors/font_color = Color(1, 1, 1, 1)
+ProgressBar/font_sizes/font_size = 32
+ProgressBar/fonts/font = ExtResource("1_sp317")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_bum83")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_027m2")
