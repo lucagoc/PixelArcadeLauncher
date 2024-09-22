@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bemlflx640ecp"]
+[gd_scene load_steps=14 format=3 uid="uid://bemlflx640ecp"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1x3i4"]
 [ext_resource type="Texture2D" uid="uid://cee2yg1wx6fnq" path="res://assets/img/pixel_logo.png" id="1_srmwf"]
 [ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="2_o8yq3"]
 [ext_resource type="PackedScene" uid="uid://ds2js8kmbdnu5" path="res://scenes/background.tscn" id="2_x0mw4"]
 [ext_resource type="SpriteFrames" uid="uid://54wr72e4qehg" path="res://assets/img/mouse/mouseSpriteFrames.tres" id="3_rf8am"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="6_eo0ua"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_byrr5"]
 orbit_velocity_min = -1.089
@@ -314,6 +315,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("6_eo0ua")
 
 [node name="ItemList" type="ItemList" parent="mainMenu"]
 layout_mode = 1
@@ -341,6 +343,13 @@ tab_0/title = "Arcade"
 tab_1/title = "PC"
 tab_2/title = "Spécial"
 
+[node name="OptionButton" type="Button" parent="mainMenu"]
+layout_mode = 0
+offset_left = 1688.0
+offset_right = 1920.0
+offset_bottom = 151.0
+text = "-- Options --"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_2h2xi")
@@ -351,4 +360,5 @@ speed_scale = 2.0
 one_shot = true
 autostart = true
 
+[connection signal="pressed" from="mainMenu/OptionButton" to="mainMenu" method="_on_option_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

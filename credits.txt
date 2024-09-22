@@ -1,0 +1,5 @@
+Extensions : 
+- Onscreen keyboard - mrtnfchs - MIT
+
+Engine :
+- Godot Engine - MIT
