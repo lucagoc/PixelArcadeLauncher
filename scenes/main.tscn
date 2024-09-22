@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ds2js8kmbdnu5" path="res://scenes/background.tscn" id="2_x0mw4"]
 [ext_resource type="SpriteFrames" uid="uid://54wr72e4qehg" path="res://assets/img/mouse/mouseSpriteFrames.tres" id="3_rf8am"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="6_eo0ua"]
+[ext_resource type="Texture2D" uid="uid://c4r37wr3878vj" path="res://icon.png" id="7_mrrwn"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_byrr5"]
 orbit_velocity_min = -1.089
@@ -17,8 +18,6 @@ damping_min = 44.503
 damping_max = 44.503
 scale_max = 21.94
 turbulence_enabled = true
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_a1jb8"]
 
 [sub_resource type="Animation" id="Animation_t2tse"]
 length = 0.001
@@ -326,12 +325,11 @@ offset_top = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_o8yq3")
-item_count = 2
+item_count = 1
 max_columns = 3
 same_column_width = true
-item_0/text = "TEST"
-item_0/icon = SubResource("CanvasTexture_a1jb8")
-item_1/text = "TEST 2"
+item_0/text = "Super Game !"
+item_0/icon = ExtResource("7_mrrwn")
 
 [node name="TabBar" type="TabBar" parent="mainMenu"]
 layout_mode = 1

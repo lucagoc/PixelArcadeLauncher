@@ -13,4 +13,4 @@ func _process(delta: float) -> void:
 
 func _on_option_button_pressed() -> void:
 	# Open debug_menu
-	get_tree().change_scene("res://scenes/debug_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/debug_menu.tscn")
