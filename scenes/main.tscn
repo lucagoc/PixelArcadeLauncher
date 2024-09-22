@@ -321,7 +321,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 32.0
+offset_top = 84.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_neighbor_top = NodePath("../TabBar")
@@ -329,6 +329,8 @@ theme = ExtResource("2_o8yq3")
 item_count = 1
 max_columns = 3
 same_column_width = true
+icon_mode = 0
+icon_scale = 1.5
 item_0/text = "Super Game !"
 item_0/icon = ExtResource("7_mrrwn")
 
@@ -336,7 +338,9 @@ item_0/icon = ExtResource("7_mrrwn")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
+offset_bottom = 83.0
 grow_horizontal = 2
+focus_neighbor_right = NodePath("../OptionButton")
 focus_neighbor_bottom = NodePath("../ItemList")
 tab_count = 3
 tab_0/title = "Arcade"
@@ -344,10 +348,15 @@ tab_1/title = "PC"
 tab_2/title = "Spécial"
 
 [node name="OptionButton" type="Button" parent="mainMenu"]
-layout_mode = 0
-offset_left = 1688.0
-offset_right = 1920.0
-offset_bottom = 151.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -232.0
+offset_bottom = 84.0
+grow_horizontal = 0
+focus_neighbor_left = NodePath("../TabBar")
+focus_neighbor_bottom = NodePath("../ItemList")
 text = "-- Options --"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -356,9 +365,5 @@ libraries = {
 }
 speed_scale = 2.0
 
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
-autostart = true
-
+[connection signal="item_clicked" from="mainMenu/ItemList" to="mainMenu" method="_on_item_list_item_clicked"]
 [connection signal="pressed" from="mainMenu/OptionButton" to="mainMenu" method="_on_option_button_pressed"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
