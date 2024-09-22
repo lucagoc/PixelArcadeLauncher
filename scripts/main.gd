@@ -14,6 +14,8 @@ class Game:
 
 var game_list: Array = []
 
+signal game_list_loaded
+
 var games_folder_path = "C:/PixelArcadeLauncher/games/"
 
 # Create a game and read game.conf file
@@ -24,6 +26,7 @@ var games_folder_path = "C:/PixelArcadeLauncher/games/"
 # 	exec = Command to execute the game
 # 	description = Description of the game
 # 	genre = Genre of the game
+
 func load_game(id: String) -> Game:
 	var game = Game.new()
 	game.id = id
@@ -85,8 +88,8 @@ func load_game(id: String) -> Game:
 	
 	return game
 
+# Load all the games folders by ID from the folder C:/PixelArcadeLauncher/games
 func load_games_list():
-	# Load all the games folders by ID from the folder C:/PixelArcadeLauncher/games
 	var dir = DirAccess.open(games_folder_path)
 	if dir == null:
 		print("[ERROR] Cannot open the directory " + games_folder_path)
@@ -104,7 +107,9 @@ func load_games_list():
 		dir_name = dir.get_next()
 	dir.list_dir_end()
 
-	print("[INFO] Detected games : " + str(game_list))
+	# Signal the game list is loaded
+	emit_signal("game_list_loaded")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -117,11 +122,6 @@ func _ready():
 
 	# Load the games
 	load_games_list()
-
-	# Add the games to the list
-	$mainMenu/ItemList.clear()
-	for game in game_list:
-		$mainMenu/ItemList.add_item(game.name, game.icon)
 
 	$AnimationPlayer.play("loading_end")
 	$mainMenu/ItemList.grab_focus()

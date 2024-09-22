@@ -19,5 +19,10 @@ func _on_option_button_pressed() -> void:
 func _on_item_list_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
 	# Open the game
 	# var game = game_list[index]
-	#launch_game(game)
+	# launch_game(game)
 	return
+
+func _on_main_game_list_loaded() -> void:
+	$ItemList.clear()
+	for game in $"../".game_list:
+		$ItemList.add_item(game.name, game.icon)

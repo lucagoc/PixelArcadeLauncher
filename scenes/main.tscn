@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bemlflx640ecp"]
+[gd_scene load_steps=15 format=3 uid="uid://bemlflx640ecp"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1x3i4"]
 [ext_resource type="Texture2D" uid="uid://cee2yg1wx6fnq" path="res://assets/img/pixel_logo.png" id="1_srmwf"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ds2js8kmbdnu5" path="res://scenes/background.tscn" id="2_x0mw4"]
 [ext_resource type="SpriteFrames" uid="uid://54wr72e4qehg" path="res://assets/img/mouse/mouseSpriteFrames.tres" id="3_rf8am"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="6_eo0ua"]
+[ext_resource type="Script" path="res://scripts/classic_menu.gd" id="6_wb0df"]
 [ext_resource type="Texture2D" uid="uid://c4r37wr3878vj" path="res://icon.png" id="7_mrrwn"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_byrr5"]
@@ -307,6 +308,86 @@ trail_lifetime = 1.73
 scale = Vector2(2, 2)
 texture = ExtResource("1_srmwf")
 
+[node name="classicMenu" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_wb0df")
+
+[node name="selectedItem" type="PanelContainer" parent="classicMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="classicMenu/selectedItem"]
+layout_mode = 2
+texture = ExtResource("7_mrrwn")
+
+[node name="Label" type="Label" parent="classicMenu/selectedItem"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("2_o8yq3")
+text = "TOUHOU 77"
+horizontal_alignment = 1
+
+[node name="selectedItem2" type="PanelContainer" parent="classicMenu"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -64.0
+offset_right = 128.0
+offset_bottom = 64.0
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="classicMenu/selectedItem2"]
+layout_mode = 2
+texture = ExtResource("7_mrrwn")
+
+[node name="Label" type="Label" parent="classicMenu/selectedItem2"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("2_o8yq3")
+text = "TOUHOU 77"
+horizontal_alignment = 1
+
+[node name="selectedItem3" type="PanelContainer" parent="classicMenu"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="classicMenu/selectedItem3"]
+layout_mode = 2
+texture = ExtResource("7_mrrwn")
+
+[node name="Label" type="Label" parent="classicMenu/selectedItem3"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("2_o8yq3")
+text = "TOUHOU 77"
+horizontal_alignment = 1
+
 [node name="mainMenu" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -365,5 +446,7 @@ libraries = {
 }
 speed_scale = 2.0
 
+[connection signal="game_list_loaded" from="." to="classicMenu" method="_on_main_game_list_loaded"]
+[connection signal="game_list_loaded" from="." to="mainMenu" method="_on_main_game_list_loaded"]
 [connection signal="item_clicked" from="mainMenu/ItemList" to="mainMenu" method="_on_item_list_item_clicked"]
 [connection signal="pressed" from="mainMenu/OptionButton" to="mainMenu" method="_on_option_button_pressed"]
