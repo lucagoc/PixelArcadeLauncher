@@ -1,12 +1,10 @@
 extends Control
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
@@ -22,7 +20,9 @@ func _on_item_list_item_clicked(index: int, at_position: Vector2, mouse_button_i
 	# launch_game(game)
 	return
 
+
 func _on_main_game_list_loaded() -> void:
 	$ItemList.clear()
 	for game in $"../".game_list:
 		$ItemList.add_item(game.name, game.icon)
+	$ItemList.grab_focus()

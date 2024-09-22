@@ -1,7 +1,7 @@
 extends Control
 
 class Game:
-	var id: String 				# Unique ID (folder name)
+	var id: String
 	var name: String
 	var platform: String
 	var exec: String
@@ -13,10 +13,10 @@ class Game:
 	var hero: ImageTexture
 
 var game_list: Array = []
+var games_folder_path = "C:/PixelArcadeLauncher/games/"
 
 signal game_list_loaded
 
-var games_folder_path = "C:/PixelArcadeLauncher/games/"
 
 # Create a game and read game.conf file
 # First line must contain [PixelArcadePackage]
@@ -26,7 +26,6 @@ var games_folder_path = "C:/PixelArcadeLauncher/games/"
 # 	exec = Command to execute the game
 # 	description = Description of the game
 # 	genre = Genre of the game
-
 func load_game(id: String) -> Game:
 	var game = Game.new()
 	game.id = id
@@ -88,6 +87,7 @@ func load_game(id: String) -> Game:
 	
 	return game
 
+
 # Load all the games folders by ID from the folder C:/PixelArcadeLauncher/games
 func load_games_list():
 	var dir = DirAccess.open(games_folder_path)
@@ -111,23 +111,25 @@ func load_games_list():
 	emit_signal("game_list_loaded")
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	
-	# Loading screen
+func start_loading():
+	print("PixelArcadeLauncher is starting...")
 	$loadingScreen.show()
 	$loadingScreen/Mouse/AnimatedSprite2D.play("mouseRun")
 	$mainMenu.hide()
 	$AnimationPlayer.play("loading_start")
 
-	# Load the games
-	load_games_list()
 
+func end_loading():
 	$AnimationPlayer.play("loading_end")
-	$mainMenu/ItemList.grab_focus()
+	print("[INFO] PixelArcadeLauncher has been loaded successfully !")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
+func _ready():
+	start_loading()
+	load_games_list()
+	end_loading()
+
+
 func _process(delta):
-	# Quit with escape key
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
