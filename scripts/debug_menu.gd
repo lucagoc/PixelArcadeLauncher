@@ -34,6 +34,7 @@ func _thread_func():
 func _on_line_edit_text_submitted(new_text: String) -> void:
 	# send command to stdin.
 	var cmd = new_text + "\n"
+	$Terminal/VBoxContainer/TextEdit.text += "$ " + cmd
 	var buffer = cmd.to_utf8_buffer()
 	pipe.store_buffer(buffer)
 	$Terminal/VBoxContainer/HBoxContainer/LineEdit.text = ""
@@ -65,3 +66,11 @@ func _on_volume_down_pressed() -> void:
 
 func _on_button_pressed() -> void:
 	_on_line_edit_text_submitted($Terminal/VBoxContainer/HBoxContainer/LineEdit.text)
+
+
+func _on_quit_button_pressed() -> void:
+	$Terminal.hide()
+
+
+func _on_open_terminal_pressed() -> void:
+	$Terminal.show()
