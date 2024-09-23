@@ -13,10 +13,26 @@ class Game:
 	var hero: ImageTexture
 
 var game_list: Array = []
-var games_folder_path = "C:/PixelArcadeLauncher/games/"
+var launcher_path = "C:/PixelArcadeLauncher/"
+var games_folder_path = launcher_path + "games/"
 
 signal game_list_loaded
 
+
+func save_settings():
+	var setting_file = FileAccess.open(launcher_path + "settings.conf", FileAccess.WRITE)
+	if setting_file != null:
+		setting_file.store_line("[PixelArcadeLauncher]")
+		setting_file.store_line("fullscreen = false")
+		setting_file.store_line("animation = true")
+		setting_file.store_line("sound = true")
+		setting_file.store_line("debug = false")
+		setting_file.close()
+	else:
+		printerr("[ERROR] Cannot open the file " + launcher_path + "settings.conf")
+
+func load_settings():
+	pass
 
 # Create a game and read game.conf file
 # First line must contain [PixelArcadePackage]
