@@ -56,7 +56,7 @@ func load_game(id: String) -> Game:
 			var icon_img = Image.new()
 			icon_img.load(games_folder_path + id + "/icon.png")
 			if icon_img == null:
-				print("[ERROR] Cannot open the file " + games_folder_path + id + "/icon.png")
+				printerr("[ERROR] Cannot open the file " + games_folder_path + id + "/icon.png")
 				icon_img.load("res://icon.png")
 			icon_img.resize(64, 64)
 			game.icon = ImageTexture.create_from_image(icon_img)
@@ -79,9 +79,9 @@ func load_game(id: String) -> Game:
 			hero_img.resize(397, 128)
 			game.hero = ImageTexture.create_from_image(hero_img)
 		else:
-			print("[ERROR] " + id + "/game.conf isn't in the proper format")
+			printerr("[ERROR] " + id + "/game.conf isn't in the proper format")
 	else:
-		print("[ERROR] Cannot open the file " + games_folder_path + id + "/game.conf")
+		printerr("[ERROR] Cannot open the file " + games_folder_path + id + "/game.conf")
 	if file != null:
 		file.close()
 	
@@ -92,7 +92,7 @@ func load_game(id: String) -> Game:
 func load_games_list():
 	var dir = DirAccess.open(games_folder_path)
 	if dir == null:
-		print("[ERROR] Cannot open the directory " + games_folder_path)
+		printerr("[ERROR] Cannot open the directory " + games_folder_path)
 		return
 	dir.list_dir_begin()
 	var dir_name = dir.get_next()
@@ -103,7 +103,7 @@ func load_games_list():
 			game_list.append(game)
 			print("[INFO] Loaded game " + game.name)
 		else:
-			print("[ERROR] " + dir_name + " is not a directory")
+			printerr("[ERROR] " + dir_name + " is not a directory")
 		dir_name = dir.get_next()
 	dir.list_dir_end()
 
