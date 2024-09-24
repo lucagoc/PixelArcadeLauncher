@@ -13,7 +13,7 @@ class Game:
 	var hero: ImageTexture
 
 var game_list: Array = []
-var launcher_path = "C:/PixelArcadeLauncher/"
+var launcher_path = ""
 var games_folder_path = launcher_path + "games/"
 
 signal game_list_loaded
@@ -27,12 +27,33 @@ func save_settings():
 		setting_file.store_line("animation = true")
 		setting_file.store_line("sound = true")
 		setting_file.store_line("debug = false")
+		setting_file.store_line("scaling = 1")
 		setting_file.close()
 	else:
 		printerr("[ERROR] Cannot open the file " + launcher_path + "settings.conf")
 
 func load_settings():
-	pass
+	var setting_file = FileAccess.open(launcher_path + "settings.conf", FileAccess.READ)
+	if setting_file != null:
+		var line = setting_file.get_line()
+		while line != "":
+			var parts = line.split("=")
+			if parts.size() == 2:
+				var key = parts[0].strip_edges()
+				var value = parts[1].strip_edges()
+				match key:
+					"fullscreen":
+						if value == "true":
+							DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+						else:
+							DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+					"scaling":
+						var scale = int(value)
+						ProjectSettings.set_setting("display/window/stretch/scale", scale)
+			line = setting_file.get_line()
+		setting_file.close()
+	else:
+		printerr("[ERROR] Cannot open the file " + launcher_path + "settings.conf")
 
 # Create a game and read game.conf file
 # First line must contain [PixelArcadePackage]
@@ -127,6 +148,30 @@ func load_games_list():
 	emit_signal("game_list_loaded")
 
 
+func load_config():
+	# Check if the launcher folder exists
+	var home_path := OS.get_environment("USERPROFILE") if OS.has_feature("windows") else OS.get_environment("HOME")
+	launcher_path = home_path + "/PixelArcadeLauncher/"
+	var dir = DirAccess.open(launcher_path)
+	if dir == null:
+		print("[INFO] Folder " + launcher_path + " not found, creating a new one...")
+		DirAccess.make_dir_absolute(launcher_path)
+		DirAccess.make_dir_absolute(games_folder_path)
+		save_settings()		
+	else:
+		print("[INFO] Folder " + launcher_path + " found")
+
+	var setting_file = FileAccess.open(launcher_path + "settings.conf", FileAccess.READ)
+	if setting_file == null:
+		print("[INFO] settings.conf not found, creating a new one...")
+		save_settings()
+	else:
+		print("[INFO] settings.conf found, loading...")
+		load_settings()
+	if setting_file != null:
+		setting_file.close()
+
+
 func start_loading():
 	print("PixelArcadeLauncher is starting...")
 	$loadingScreen.show()
@@ -142,6 +187,7 @@ func end_loading():
 
 func _ready():
 	start_loading()
+	load_config()
 	load_games_list()
 	end_loading()
 
