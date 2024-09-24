@@ -14,10 +14,13 @@ class Game:
 
 var game_list: Array = []
 var launcher_path = ""
-var games_folder_path = launcher_path + "games/"
+var games_folder_path = ""
 
 signal game_list_loaded
 
+func posix_to_win_path(path: String) -> String:
+	var new_path = path.replace("/", "\\")
+	return new_path
 
 func save_settings():
 	var setting_file = FileAccess.open(launcher_path + "settings.conf", FileAccess.WRITE)
@@ -125,7 +128,7 @@ func load_game(id: String) -> Game:
 	return game
 
 
-# Load all the games folders by ID from the folder C:/PixelArcadeLauncher/games
+# Load all the games folders by ID from the game folder
 func load_games_list():
 	var dir = DirAccess.open(games_folder_path)
 	if dir == null:
@@ -152,6 +155,10 @@ func load_config():
 	# Check if the launcher folder exists
 	var home_path := OS.get_environment("USERPROFILE") if OS.has_feature("windows") else OS.get_environment("HOME")
 	launcher_path = home_path + "/PixelArcadeLauncher/"
+	games_folder_path = launcher_path + "games/"
+	if OS.has_feature("windows"):
+		launcher_path = posix_to_win_path(launcher_path)
+		games_folder_path = posix_to_win_path(games_folder_path)
 	var dir = DirAccess.open(launcher_path)
 	if dir == null:
 		print("[INFO] Folder " + launcher_path + " not found, creating a new one...")
