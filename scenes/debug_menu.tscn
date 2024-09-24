@@ -1,6 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyog4pqy5jrf1"]
+[gd_scene load_steps=7 format=3 uid="uid://cyog4pqy5jrf1"]
 
 [ext_resource type="Script" path="res://scripts/debug_menu.gd" id="1_6k2b7"]
+[ext_resource type="FontFile" uid="uid://bqa4snm32c6r5" path="res://assets/ttf/JetBrainsMono-Regular.ttf" id="2_xiltp"]
+[ext_resource type="FontFile" uid="uid://b7fww0104k4qg" path="res://assets/ttf/JetBrainsMono-Italic.ttf" id="3_bxfhg"]
+[ext_resource type="FontFile" uid="uid://0u2153h7pf42" path="res://assets/ttf/JetBrainsMono-BoldItalic.ttf" id="4_oje0h"]
+[ext_resource type="FontFile" uid="uid://bbaf88ef3i3q6" path="res://assets/ttf/JetBrainsMono-Bold.ttf" id="5_rji6y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4eo0q"]
 bg_color = Color(0.837415, 0.51625, 3.85046e-07, 1)
@@ -84,6 +88,11 @@ text = "WARNING : Experimental feature, do not use for critical operations !"
 [node name="RichTextLabel" type="RichTextLabel" parent="Terminal/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("2_xiltp")
+theme_override_fonts/mono_font = ExtResource("2_xiltp")
+theme_override_fonts/italics_font = ExtResource("3_bxfhg")
+theme_override_fonts/bold_italics_font = ExtResource("4_oje0h")
+theme_override_fonts/bold_font = ExtResource("5_rji6y")
 bbcode_enabled = true
 scroll_following = true
 
