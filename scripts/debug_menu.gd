@@ -85,3 +85,7 @@ func _on_timer_timeout() -> void:
 	$Terminal/VBoxContainer/RichTextLabel.text += ANSIRichTextLabel.bbcode_text
 	stdout = ""
 	ANSIRichTextLabel.bbcode_text = ""
+
+
+func _on_clear_button_pressed() -> void:
+	$Terminal/VBoxContainer/RichTextLabel.text = ""
