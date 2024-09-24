@@ -1,11 +1,15 @@
 extends Control
 
+var ANSIRichTextLabel = preload("res://scripts/ANSIRichTextLabel.gd").new()
+
 var pipe
 var thread
+var stdout = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Show all the system information
+	@warning_ignore("integer_division")
 	$SystemInfo.text = "OS: " + OS.get_name() + " " + OS.get_distribution_name() + " \nKernel: " + OS.get_version() + "\n" + "Processeur: " + str(OS.get_processor_count()) + " cores\n" + "RAM usage: " + str((OS.get_static_memory_usage()/1024)/1024) + " MB\n" + "Langue: " + OS.get_locale() 
 
 	# Start the shell
@@ -21,12 +25,10 @@ func _ready() -> void:
 
 
 func _add_char(c):
-	$Terminal/VBoxContainer/TextEdit.text += c
-	$Terminal/VBoxContainer/TextEdit.scroll_vertical = $Terminal/VBoxContainer/TextEdit.get_v_scroll_bar().max_value
-
+	stdout += c
 
 func _thread_func():
-	# read stdin and add to TextEdit.
+	# read stdin and add to RichTextLabel.
 	while pipe.is_open() and pipe.get_error() == OK:
 		_add_char.call_deferred(char(pipe.get_8()))
 
@@ -34,7 +36,7 @@ func _thread_func():
 func _on_line_edit_text_submitted(new_text: String) -> void:
 	# send command to stdin.
 	var cmd = new_text + "\n"
-	$Terminal/VBoxContainer/TextEdit.text += "$ " + cmd
+	$Terminal/VBoxContainer/RichTextLabel.text += "$ " + cmd
 	var buffer = cmd.to_utf8_buffer()
 	pipe.store_buffer(buffer)
 	$Terminal/VBoxContainer/HBoxContainer/LineEdit.text = ""
@@ -46,7 +48,7 @@ func clean_func():
 	thread.wait_to_finish()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+@warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
 	# Quit with menu with escape key
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -74,3 +76,12 @@ func _on_quit_button_pressed() -> void:
 
 func _on_open_terminal_pressed() -> void:
 	$Terminal.show()
+
+
+
+func _on_timer_timeout() -> void:
+	# Update the RichTextLabel with the stdout
+	ANSIRichTextLabel.add_data(stdout)
+	$Terminal/VBoxContainer/RichTextLabel.text += ANSIRichTextLabel.bbcode_text
+	stdout = ""
+	ANSIRichTextLabel.bbcode_text = ""
