@@ -60,7 +60,7 @@ offset_bottom = -119.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_1s7mh")
-text = "Je suis trop fatigué pour jouer maintenant malheureseument :,(
+text = "Je suis trop fatiguée pour jouer maintenant malheureusement :,(
 Je reviens bientôt quand je serais complètement reposée...
 #fixtheborne"
 horizontal_alignment = 1
