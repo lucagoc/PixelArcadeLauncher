@@ -34,7 +34,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("loadingScreen:modulate")
+tracks/0/path = NodePath("LoadingScreen:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -46,7 +46,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("loadingScreen:visible")
+tracks/1/path = NodePath("LoadingScreen:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -58,7 +58,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("mainMenu:visible")
+tracks/2/path = NodePath("MainMenu:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -70,7 +70,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("mainMenu:modulate")
+tracks/3/path = NodePath("MainMenu:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -82,7 +82,7 @@ tracks/3/keys = {
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("mainMenu:position:x")
+tracks/4/path = NodePath("MainMenu:position:x")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -93,7 +93,7 @@ tracks/4/keys = {
 tracks/5/type = "bezier"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("mainMenu:position:y")
+tracks/5/path = NodePath("MainMenu:position:y")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -108,7 +108,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("loadingScreen:modulate")
+tracks/0/path = NodePath("LoadingScreen:modulate")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -120,7 +120,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("loadingScreen:visible")
+tracks/1/path = NodePath("LoadingScreen:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -132,7 +132,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("mainMenu:modulate")
+tracks/2/path = NodePath("MainMenu:modulate")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -144,7 +144,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("mainMenu:visible")
+tracks/3/path = NodePath("MainMenu:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -160,7 +160,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("loadingScreen:modulate")
+tracks/0/path = NodePath("LoadingScreen:modulate")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -172,7 +172,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("loadingScreen:visible")
+tracks/1/path = NodePath("LoadingScreen:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -184,7 +184,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("mainMenu:visible")
+tracks/2/path = NodePath("MainMenu:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -196,7 +196,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("mainMenu:modulate")
+tracks/3/path = NodePath("MainMenu:modulate")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -212,7 +212,7 @@ length = 0.5
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("mainMenu:position:x")
+tracks/0/path = NodePath("MainMenu:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -223,7 +223,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = false
-tracks/1/path = NodePath("mainMenu:position:y")
+tracks/1/path = NodePath("MainMenu:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -249,10 +249,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1x3i4")
 
-[node name="background" parent="." instance=ExtResource("2_x0mw4")]
-layout_mode = 1
-
-[node name="loadingScreen" type="Control" parent="."]
+[node name="LoadingScreen" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -260,7 +257,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Mouse" type="Control" parent="loadingScreen"]
+[node name="Mouse" type="Control" parent="LoadingScreen"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -273,14 +270,14 @@ offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="loadingScreen/Mouse"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LoadingScreen/Mouse"]
 position = Vector2(0, -25)
 scale = Vector2(5, 5)
 sprite_frames = ExtResource("3_rf8am")
 animation = &"mouseRun"
 frame_progress = 0.253033
 
-[node name="ProgressBar" type="ProgressBar" parent="loadingScreen"]
+[node name="ProgressBar" type="ProgressBar" parent="LoadingScreen"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -293,7 +290,7 @@ theme = ExtResource("2_o8yq3")
 value = 50.0
 show_percentage = false
 
-[node name="Center" type="Control" parent="loadingScreen"]
+[node name="Center" type="Control" parent="LoadingScreen"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -307,13 +304,13 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="loadingScreen/Center"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="LoadingScreen/Center"]
 amount = 30
 process_material = SubResource("ParticleProcessMaterial_byrr5")
 fixed_fps = 60
 trail_lifetime = 1.73
 
-[node name="Sprite2D" type="Sprite2D" parent="loadingScreen/Center"]
+[node name="Sprite2D" type="Sprite2D" parent="LoadingScreen/Center"]
 scale = Vector2(2, 2)
 texture = ExtResource("1_srmwf")
 
@@ -414,16 +411,21 @@ libraries = {
 "": SubResource("AnimationLibrary_fdtbw")
 }
 
-[node name="mainMenu" type="Control" parent="."]
+[node name="MainMenu" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_o8yq3")
 script = ExtResource("6_eo0ua")
 
-[node name="ItemList" type="ItemList" parent="mainMenu"]
+[node name="Background" parent="MainMenu" instance=ExtResource("2_x0mw4")]
+layout_mode = 1
+color = Color(0.964706, 0.741176, 0.12549, 1)
+
+[node name="ItemList" type="ItemList" parent="MainMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -446,10 +448,10 @@ item_2/text = "Super Jeu 3"
 item_2/icon = ExtResource("9_bi3up")
 item_3/text = "Super Jeu 4"
 item_3/icon = ExtResource("9_bi3up")
-item_4/text = "Super Jeu 4"
+item_4/text = "Super Jeu 5"
 item_4/icon = ExtResource("9_bi3up")
 
-[node name="TabBar" type="TabBar" parent="mainMenu"]
+[node name="TabBar" type="TabBar" parent="MainMenu"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -457,6 +459,7 @@ offset_bottom = 83.0
 grow_horizontal = 2
 focus_neighbor_right = NodePath("../OptionButton")
 focus_neighbor_bottom = NodePath("../ItemList")
+theme = ExtResource("2_o8yq3")
 current_tab = 0
 tab_count = 4
 tab_0/title = "Tout"
@@ -464,7 +467,7 @@ tab_1/title = "Arcade"
 tab_2/title = "PC"
 tab_3/title = "ISIMA"
 
-[node name="OptionButton" type="Button" parent="mainMenu"]
+[node name="OptionButton" type="Button" parent="MainMenu"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -474,7 +477,8 @@ offset_bottom = 84.0
 grow_horizontal = 0
 focus_neighbor_left = NodePath("../TabBar")
 focus_neighbor_bottom = NodePath("../ItemList")
-text = "-- Options --"
+theme = ExtResource("2_o8yq3")
+text = "Options"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -483,6 +487,6 @@ libraries = {
 speed_scale = 2.0
 
 [connection signal="game_list_loaded" from="." to="classicMenu" method="_on_main_game_list_loaded"]
-[connection signal="game_list_loaded" from="." to="mainMenu" method="_on_main_game_list_loaded"]
-[connection signal="item_clicked" from="mainMenu/ItemList" to="mainMenu" method="_on_item_list_item_clicked"]
-[connection signal="pressed" from="mainMenu/OptionButton" to="mainMenu" method="_on_option_button_pressed"]
+[connection signal="game_list_loaded" from="." to="MainMenu" method="_on_main_game_list_loaded"]
+[connection signal="item_clicked" from="MainMenu/ItemList" to="MainMenu" method="_on_item_list_item_clicked"]
+[connection signal="pressed" from="MainMenu/OptionButton" to="MainMenu" method="_on_option_button_pressed"]

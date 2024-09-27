@@ -33,4 +33,6 @@ ProgressBar/styles/background = SubResource("StyleBoxFlat_bum83")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_027m2")
 RichTextLabel/font_sizes/normal_font_size = 20
 RichTextLabel/fonts/normal_font = ExtResource("1_sp317")
+TabBar/font_sizes/font_size = 25
+TabBar/fonts/font = ExtResource("1_sp317")
 VBoxContainer/constants/separation = 20

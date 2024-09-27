@@ -192,9 +192,9 @@ func load_config():
 
 func start_loading():
 	print("PixelArcadeLauncher is starting...")
-	$loadingScreen.show()
-	$loadingScreen/Mouse/AnimatedSprite2D.play("mouseRun")
-	$mainMenu.hide()
+	$LoadingScreen.show()
+	$LoadingScreen/Mouse/AnimatedSprite2D.play("mouseRun")
+	$MainMenu.hide()
 	$AnimationPlayer.play("loading_start")
 
 
