@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://0u2153h7pf42"
-path="res://.godot/imported/JetBrainsMono-BoldItalic.ttf-8c96141825fee961c5e54184eec17075.fontdata"
+uid="uid://bbaf88ef3i3q6"
+path="res://.godot/imported/JetBrainsMono-Bold.ttf-d5e3d66ec53f81968b47548a5a0ca986.fontdata"
 
 [deps]
 
-source_file="res://assets/ttf/JetBrainsMono-BoldItalic.ttf"
-dest_files=["res://.godot/imported/JetBrainsMono-BoldItalic.ttf-8c96141825fee961c5e54184eec17075.fontdata"]
+source_file="res://assets/ttf/JetBrainsMono/JetBrainsMono-Bold.ttf"
+dest_files=["res://.godot/imported/JetBrainsMono-Bold.ttf-d5e3d66ec53f81968b47548a5a0ca986.fontdata"]
 
 [params]
 

@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bqa4snm32c6r5"
-path="res://.godot/imported/JetBrainsMono-Regular.ttf-e3cc0cb010508d1ca46773628b0510e9.fontdata"
+uid="uid://ds3to5v6rktdr"
+path="res://.godot/imported/Pixel Digivolve Italic.otf-8577a7e82bd78ecc470d75b3b8b9931f.fontdata"
 
 [deps]
 
-source_file="res://assets/ttf/JetBrainsMono-Regular.ttf"
-dest_files=["res://.godot/imported/JetBrainsMono-Regular.ttf-e3cc0cb010508d1ca46773628b0510e9.fontdata"]
+source_file="res://assets/ttf/Pixel_Digivolve/Pixel Digivolve Italic.otf"
+dest_files=["res://.godot/imported/Pixel Digivolve Italic.otf-8577a7e82bd78ecc470d75b3b8b9931f.fontdata"]
 
 [params]
 
