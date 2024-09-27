@@ -458,14 +458,25 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="TabBar" type="HBoxContainer" parent="MainMenu/MainVbox"]
+[node name="TopBar" type="ColorRect" parent="MainMenu/MainVbox"]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
+color = Color(0, 0, 0, 1)
 
-[node name="TabBar" type="TabBar" parent="MainMenu/MainVbox/TabBar"]
+[node name="TobHbox" type="HBoxContainer" parent="MainMenu/MainVbox/TopBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TabBar" type="TabBar" parent="MainMenu/MainVbox/TopBar/TobHbox"]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_right = NodePath("../OptionButton")
-focus_neighbor_bottom = NodePath("../../ItemList")
+focus_neighbor_bottom = NodePath("../../../ItemList")
 theme = ExtResource("2_o8yq3")
 current_tab = 0
 tab_count = 4
@@ -475,24 +486,24 @@ tab_2/title = "PC"
 tab_3/title = "ZZ"
 tab_3/icon = ExtResource("9_djdqi")
 
-[node name="Logo" type="TextureRect" parent="MainMenu/MainVbox/TabBar"]
+[node name="Logo" type="TextureRect" parent="MainMenu/MainVbox/TopBar/TobHbox"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_horizontal = 6
 texture = ExtResource("9_4eti7")
+expand_mode = 3
 
-[node name="OptionButton" type="Button" parent="MainMenu/MainVbox/TabBar"]
+[node name="OptionButton" type="Button" parent="MainMenu/MainVbox/TopBar/TobHbox"]
 layout_mode = 2
 size_flags_horizontal = 10
 focus_neighbor_left = NodePath("../TabBar")
-focus_neighbor_bottom = NodePath("../../ItemList")
+focus_neighbor_bottom = NodePath("../../../ItemList")
 theme = ExtResource("2_o8yq3")
 text = "Options"
 
 [node name="ItemList" type="ItemList" parent="MainMenu/MainVbox"]
 layout_mode = 2
 size_flags_vertical = 3
-focus_neighbor_top = NodePath("../TabBar/TabBar")
+focus_neighbor_top = NodePath("../TopBar/TobHbox/TabBar")
 theme = ExtResource("2_o8yq3")
 item_count = 5
 max_columns = 0
@@ -515,25 +526,38 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 
-[node name="TimeLabel" type="Label" parent="MainMenu/MainVbox/BottomBar"]
+[node name="BottomHbox" type="HBoxContainer" parent="MainMenu/MainVbox/BottomBar"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -19.5
-offset_right = 50.0
-offset_bottom = 19.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
+
+[node name="LeftPadding" type="Container" parent="MainMenu/MainVbox/BottomBar/BottomHbox"]
+layout_mode = 2
+
+[node name="RamLabel" type="Label" parent="MainMenu/MainVbox/BottomBar/BottomHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "..."
+
+[node name="TimeLabel" type="Label" parent="MainMenu/MainVbox/BottomBar/BottomHbox"]
+layout_mode = 2
+size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("2_o8yq3")
-text = "X"
+text = "........"
 
-[node name="Timer" type="Timer" parent="MainMenu"]
+[node name="VersionLabel" type="Label" parent="MainMenu/MainVbox/BottomBar/BottomHbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "..."
+
+[node name="RightPadding" type="Container" parent="MainMenu/MainVbox/BottomBar/BottomHbox"]
+layout_mode = 2
+
+[node name="RefreshTimer" type="Timer" parent="MainMenu"]
 autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -544,7 +568,7 @@ speed_scale = 2.0
 
 [connection signal="game_list_loaded" from="." to="classicMenu" method="_on_main_game_list_loaded"]
 [connection signal="game_list_loaded" from="." to="MainMenu" method="_on_main_game_list_loaded"]
-[connection signal="pressed" from="MainMenu/MainVbox/TabBar/OptionButton" to="MainMenu" method="_on_option_button_pressed"]
+[connection signal="pressed" from="MainMenu/MainVbox/TopBar/TobHbox/OptionButton" to="MainMenu" method="_on_option_button_pressed"]
 [connection signal="item_clicked" from="MainMenu/MainVbox/ItemList" to="MainMenu" method="_on_item_list_item_clicked"]
 [connection signal="item_selected" from="MainMenu/MainVbox/ItemList" to="MainMenu" method="_on_item_list_item_selected"]
-[connection signal="timeout" from="MainMenu/Timer" to="MainMenu" method="_on_timer_timeout"]
+[connection signal="timeout" from="MainMenu/RefreshTimer" to="MainMenu" method="_on_timer_timeout"]

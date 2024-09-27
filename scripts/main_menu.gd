@@ -37,5 +37,7 @@ func _on_item_list_item_selected(index: int) -> void:
 
 
 func _on_timer_timeout() -> void:
-	# Refresh time every second
-	$MainVbox/BottomBar/TimeLabel.text = Time.get_time_string_from_system()
+	# Refresh bottom bar
+	$MainVbox/BottomBar/BottomHbox/RamLabel.text = "RAM: " + str(OS.get_static_memory_usage() / 1024 / 1024) + " MB"
+	$MainVbox/BottomBar/BottomHbox/TimeLabel.text = Time.get_time_string_from_system()
+	$MainVbox/BottomBar/BottomHbox/VersionLabel.text = "Version: 0.1 TESTING"
