@@ -34,6 +34,7 @@ func save_settings():
 		setting_file.store_line("sound = true")
 		setting_file.store_line("debug = false")
 		setting_file.store_line("scaling = 1")
+		setting_file.store_line("vsync = true")
 		setting_file.close()
 	else:
 		printerr("[ERROR] Cannot open the file " + launcher_path + "settings.conf")
@@ -58,6 +59,11 @@ func load_settings():
 						print("[INFO] Scaling: " + value)
 						key = int(value)
 						get_tree().root.content_scale_factor = key
+					"vsync":
+						if value == "true":
+							DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+						else:
+							DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 			line = setting_file.get_line()
 		setting_file.close()
 	else:

@@ -45,11 +45,13 @@ grow_vertical = 2
 text = "Volume -"
 
 [node name="MenuButton" type="MenuButton" parent="."]
-layout_mode = 0
-offset_left = 923.0
-offset_top = 4.0
-offset_right = 1146.0
-offset_bottom = 139.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -223.0
+offset_bottom = 135.0
+grow_horizontal = 0
 text = "TEST"
 flat = false
 item_count = 2

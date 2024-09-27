@@ -17,7 +17,12 @@ border_color = Color(1, 1, 1, 1)
 bg_color = Color(1, 1, 1, 1)
 
 [resource]
+Button/font_sizes/font_size = 25
+Button/fonts/font = ExtResource("1_sp317")
+HBoxContainer/constants/separation = 20
 ItemList/colors/font_color = Color(1, 1, 1, 1)
+ItemList/constants/h_separation = 20
+ItemList/constants/v_separation = 20
 ItemList/font_sizes/font_size = 32
 ItemList/fonts/font = ExtResource("1_sp317")
 ItemList/styles/panel = SubResource("StyleBoxFlat_lo24w")
@@ -26,3 +31,6 @@ ProgressBar/font_sizes/font_size = 32
 ProgressBar/fonts/font = ExtResource("1_sp317")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_bum83")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_027m2")
+RichTextLabel/font_sizes/normal_font_size = 20
+RichTextLabel/fonts/normal_font = ExtResource("1_sp317")
+VBoxContainer/constants/separation = 20

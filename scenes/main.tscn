@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bemlflx640ecp"]
+[gd_scene load_steps=18 format=3 uid="uid://bemlflx640ecp"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1x3i4"]
 [ext_resource type="Texture2D" uid="uid://cee2yg1wx6fnq" path="res://assets/img/pixel_logo.png" id="1_srmwf"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="6_eo0ua"]
 [ext_resource type="Script" path="res://scripts/classic_menu.gd" id="6_wb0df"]
 [ext_resource type="Texture2D" uid="uid://c4r37wr3878vj" path="res://icon.png" id="7_mrrwn"]
+[ext_resource type="Texture2D" uid="uid://cgc7asuvr1um5" path="res://assets/placeholder.svg" id="9_bi3up"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_byrr5"]
 orbit_velocity_min = -1.089
@@ -432,13 +433,21 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_neighbor_top = NodePath("../TabBar")
 theme = ExtResource("2_o8yq3")
-item_count = 1
+item_count = 5
 max_columns = 0
 same_column_width = true
 icon_mode = 0
-icon_scale = 1.5
-item_0/text = "Super Game !"
-item_0/icon = ExtResource("7_mrrwn")
+fixed_icon_size = Vector2i(128, 128)
+item_0/text = "Super Jeu 1"
+item_0/icon = ExtResource("9_bi3up")
+item_1/text = "Super Jeu 2"
+item_1/icon = ExtResource("9_bi3up")
+item_2/text = "Super Jeu 3"
+item_2/icon = ExtResource("9_bi3up")
+item_3/text = "Super Jeu 4"
+item_3/icon = ExtResource("9_bi3up")
+item_4/text = "Super Jeu 4"
+item_4/icon = ExtResource("9_bi3up")
 
 [node name="TabBar" type="TabBar" parent="mainMenu"]
 layout_mode = 1
@@ -448,10 +457,12 @@ offset_bottom = 83.0
 grow_horizontal = 2
 focus_neighbor_right = NodePath("../OptionButton")
 focus_neighbor_bottom = NodePath("../ItemList")
-tab_count = 3
-tab_0/title = "Arcade"
-tab_1/title = "PC"
-tab_2/title = "Spécial"
+current_tab = 0
+tab_count = 4
+tab_0/title = "Tout"
+tab_1/title = "Arcade"
+tab_2/title = "PC"
+tab_3/title = "ISIMA"
 
 [node name="OptionButton" type="Button" parent="mainMenu"]
 layout_mode = 1
