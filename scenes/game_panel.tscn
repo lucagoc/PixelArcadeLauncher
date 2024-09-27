@@ -1,0 +1,83 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt6jjaqk2xyx4"]
+
+[ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="1_vgatf"]
+[ext_resource type="Texture2D" uid="uid://cgc7asuvr1um5" path="res://assets/placeholder.svg" id="2_jjjdd"]
+[ext_resource type="Texture2D" uid="uid://c4r37wr3878vj" path="res://icon.png" id="3_fyguo"]
+
+[node name="game_panel" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vgatf")
+
+[node name="banner" type="TextureRect" parent="."]
+layout_mode = 2
+theme = ExtResource("1_vgatf")
+texture = ExtResource("2_jjjdd")
+stretch_mode = 6
+
+[node name="main_hbox" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="left padding" type="Container" parent="main_hbox"]
+layout_mode = 2
+
+[node name="main_vbox" type="VBoxContainer" parent="main_hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_vgatf")
+
+[node name="bottom padding2" type="Container" parent="main_hbox/main_vbox"]
+layout_mode = 2
+
+[node name="logo_container" type="CenterContainer" parent="main_hbox/main_vbox"]
+layout_mode = 2
+theme = ExtResource("1_vgatf")
+
+[node name="logo" type="TextureRect" parent="main_hbox/main_vbox/logo_container"]
+layout_mode = 2
+theme = ExtResource("1_vgatf")
+texture = ExtResource("3_fyguo")
+
+[node name="desc_hbox" type="HBoxContainer" parent="main_hbox/main_vbox"]
+layout_mode = 2
+theme = ExtResource("1_vgatf")
+
+[node name="icon" type="TextureRect" parent="main_hbox/main_vbox/desc_hbox"]
+layout_mode = 2
+theme = ExtResource("1_vgatf")
+texture = ExtResource("3_fyguo")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="main_hbox/main_vbox/desc_hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_vgatf")
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+[node name="buttons_hbox" type="HBoxContainer" parent="main_hbox/main_vbox"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_vertical = 10
+theme = ExtResource("1_vgatf")
+
+[node name="back_button" type="Button" parent="main_hbox/main_vbox/buttons_hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_right = NodePath("../play_button")
+theme = ExtResource("1_vgatf")
+text = "Retour"
+
+[node name="play_button" type="Button" parent="main_hbox/main_vbox/buttons_hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../back_button")
+theme = ExtResource("1_vgatf")
+text = "Jouer !"
+
+[node name="bottom padding" type="Container" parent="main_hbox/main_vbox"]
+layout_mode = 2
+
+[node name="right padding" type="Container" parent="main_hbox"]
+layout_mode = 2
