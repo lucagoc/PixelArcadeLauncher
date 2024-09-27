@@ -432,6 +432,7 @@ theme_override_constants/separation = 0
 [node name="CategoryList" type="ItemList" parent="MainMenu/MainVbox/ListHbox"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
+theme = ExtResource("2_o8yq3")
 item_count = 5
 same_column_width = true
 item_0/text = "Tout"

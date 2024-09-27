@@ -31,7 +31,6 @@ func _on_main_game_list_loaded() -> void:
 func _on_item_list_item_selected(index: int) -> void:
 	# Load hero on background
 	var game = $"../".game_list[index]
-	print("[INFO] Loading banner for " + game.name)
 	if game.hero != null:
 		$Background/BackgroundHero.texture = game.hero
 
