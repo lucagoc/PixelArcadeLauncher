@@ -27,6 +27,7 @@ func _on_main_game_list_loaded() -> void:
 		$MainVbox/ListHbox/ItemList.add_item(game.name, game.icon)
 	$MainVbox/ListHbox/ItemList.grab_focus()
 	$MainVbox/ListHbox/ItemList.select(0)
+	$MainVbox/ListHbox/CategoryBar/CategoryList.select(0)
 
 func _on_item_list_item_selected(index: int) -> void:
 	# Load hero on background
@@ -40,3 +41,11 @@ func _on_timer_timeout() -> void:
 	$MainVbox/BottomBar/BottomHbox/RamLabel.text = "RAM: " + str(OS.get_static_memory_usage() / 1024 / 1024) + " MB"
 	$MainVbox/BottomBar/BottomHbox/TimeLabel.text = Time.get_time_string_from_system()
 	$MainVbox/BottomBar/BottomHbox/VersionLabel.text = "Version: 0.1 TESTING"
+
+
+func _on_category_list_focus_entered() -> void:
+	$MainVbox/ListHbox/AnimationPlayer.play("open_category")
+
+
+func _on_category_list_focus_exited() -> void:
+	$MainVbox/ListHbox/AnimationPlayer.play("close_category")

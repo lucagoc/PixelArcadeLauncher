@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bemlflx640ecp"]
+[gd_scene load_steps=21 format=3 uid="uid://bemlflx640ecp"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1x3i4"]
 [ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="2_o8yq3"]
@@ -16,6 +16,57 @@ resource_name = "select_game_left"
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fdtbw"]
 _data = {
 "select_game_left": SubResource("Animation_nlnb6")
+}
+
+[sub_resource type="Animation" id="Animation_4m38c"]
+resource_name = "open_category"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ListHbox/CategoryBar:custom_minimum_size:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(100, -0.25, 0, 0, 82.5, 250, -0.233333, -2.5, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="Animation" id="Animation_m3we3"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ListHbox/CategoryBar:custom_minimum_size:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(100, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_66ngf"]
+resource_name = "close_category"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ListHbox/CategoryBar:custom_minimum_size:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(250, -0.25, 0, 0.25, 0, 100, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qcudj"]
+_data = {
+"RESET": SubResource("Animation_m3we3"),
+"close_category": SubResource("Animation_66ngf"),
+"open_category": SubResource("Animation_4m38c")
 }
 
 [sub_resource type="Animation" id="Animation_t2tse"]
@@ -402,7 +453,7 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_right = NodePath("../OptionButton")
-focus_neighbor_bottom = NodePath("../../../ListHbox/ItemList")
+focus_neighbor_bottom = NodePath("../../../ListHbox/CategoryBar/CategoryList")
 theme = ExtResource("2_o8yq3")
 current_tab = 0
 tab_count = 3
@@ -427,11 +478,24 @@ text = "Options"
 [node name="ListHbox" type="HBoxContainer" parent="MainMenu/MainVbox"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("2_o8yq3")
 theme_override_constants/separation = 0
 
-[node name="CategoryList" type="ItemList" parent="MainMenu/MainVbox/ListHbox"]
-custom_minimum_size = Vector2(250, 0)
+[node name="CategoryBar" type="ColorRect" parent="MainMenu/MainVbox/ListHbox"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+theme = ExtResource("2_o8yq3")
+color = Color(0, 0, 0, 1)
+
+[node name="CategoryList" type="ItemList" parent="MainMenu/MainVbox/ListHbox/CategoryBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../../../TopBar/TobHbox/TabBar")
+focus_neighbor_right = NodePath("../../ItemList")
 theme = ExtResource("2_o8yq3")
 item_count = 5
 same_column_width = true
@@ -446,6 +510,7 @@ item_4/icon = ExtResource("9_djdqi")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+focus_neighbor_left = NodePath("../CategoryBar/CategoryList")
 focus_neighbor_top = NodePath("../../TopBar/TobHbox/TabBar")
 theme = ExtResource("2_o8yq3")
 item_count = 5
@@ -463,6 +528,12 @@ item_3/text = "Super Jeu 4"
 item_3/icon = ExtResource("9_bi3up")
 item_4/text = "Super Jeu 5"
 item_4/icon = ExtResource("9_bi3up")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainMenu/MainVbox/ListHbox"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_qcudj")
+}
 
 [node name="BottomBar" type="ColorRect" parent="MainMenu/MainVbox"]
 custom_minimum_size = Vector2(0, 50)
@@ -512,6 +583,8 @@ speed_scale = 2.0
 [connection signal="game_list_loaded" from="." to="classicMenu" method="_on_main_game_list_loaded"]
 [connection signal="game_list_loaded" from="." to="MainMenu" method="_on_main_game_list_loaded"]
 [connection signal="pressed" from="MainMenu/MainVbox/TopBar/TobHbox/OptionButton" to="MainMenu" method="_on_option_button_pressed"]
+[connection signal="focus_entered" from="MainMenu/MainVbox/ListHbox/CategoryBar/CategoryList" to="MainMenu" method="_on_category_list_focus_entered"]
+[connection signal="focus_exited" from="MainMenu/MainVbox/ListHbox/CategoryBar/CategoryList" to="MainMenu" method="_on_category_list_focus_exited"]
 [connection signal="item_clicked" from="MainMenu/MainVbox/ListHbox/ItemList" to="MainMenu" method="_on_item_list_item_clicked"]
 [connection signal="item_selected" from="MainMenu/MainVbox/ListHbox/ItemList" to="MainMenu" method="_on_item_list_item_selected"]
 [connection signal="timeout" from="MainMenu/RefreshTimer" to="MainMenu" method="_on_timer_timeout"]
