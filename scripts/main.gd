@@ -18,10 +18,13 @@ var games_folder_path = ""
 
 signal game_list_loaded
 
+
+# Convert a posix path to a windows path
 func posix_to_win_path(path: String) -> String:
 	var new_path = path.replace("/", "\\")
 	return new_path
 
+# Save the settings in the settings.conf file
 func save_settings():
 	var setting_file = FileAccess.open(launcher_path + "settings.conf", FileAccess.WRITE)
 	if setting_file != null:
@@ -35,6 +38,7 @@ func save_settings():
 	else:
 		printerr("[ERROR] Cannot open the file " + launcher_path + "settings.conf")
 
+# Load the settings from the settings.conf file
 func load_settings():
 	var setting_file = FileAccess.open(launcher_path + "settings.conf", FileAccess.READ)
 	if setting_file != null:
@@ -51,8 +55,9 @@ func load_settings():
 						else:
 							DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 					"scaling":
-						var scale = int(value)
-						ProjectSettings.set_setting("display/window/stretch/scale", scale)
+						print("[INFO] Scaling: " + value)
+						key = int(value)
+						get_tree().root.content_scale_factor = key
 			line = setting_file.get_line()
 		setting_file.close()
 	else:
