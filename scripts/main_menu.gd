@@ -22,11 +22,11 @@ func _on_item_list_item_clicked(index: int, at_position: Vector2, mouse_button_i
 
 
 func _on_main_game_list_loaded() -> void:
-	$MainVbox/ItemList.clear()
+	$MainVbox/ListHbox/ItemList.clear()
 	for game in $"../".game_list:
-		$MainVbox/ItemList.add_item(game.name, game.icon)
-	$MainVbox/ItemList.grab_focus()
-	$MainVbox/ItemList.select(0)
+		$MainVbox/ListHbox/ItemList.add_item(game.name, game.icon)
+	$MainVbox/ListHbox/ItemList.grab_focus()
+	$MainVbox/ListHbox/ItemList.select(0)
 
 func _on_item_list_item_selected(index: int) -> void:
 	# Load hero on background

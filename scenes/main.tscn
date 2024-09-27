@@ -1,26 +1,14 @@
-[gd_scene load_steps=19 format=3 uid="uid://bemlflx640ecp"]
+[gd_scene load_steps=17 format=3 uid="uid://bemlflx640ecp"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1x3i4"]
-[ext_resource type="Texture2D" uid="uid://cee2yg1wx6fnq" path="res://assets/img/pixel_logo.png" id="1_srmwf"]
 [ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="2_o8yq3"]
-[ext_resource type="SpriteFrames" uid="uid://54wr72e4qehg" path="res://assets/img/mouse/mouseSpriteFrames.tres" id="3_rf8am"]
+[ext_resource type="PackedScene" uid="uid://c4frsd4if6b7x" path="res://scenes/loading_screen.tscn" id="2_skuo7"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="6_eo0ua"]
 [ext_resource type="Script" path="res://scripts/classic_menu.gd" id="6_wb0df"]
 [ext_resource type="Texture2D" uid="uid://c4r37wr3878vj" path="res://icon.png" id="7_mrrwn"]
 [ext_resource type="Texture2D" uid="uid://c88fnr814igpc" path="res://assets/img/pixel_logo_long.png" id="9_4eti7"]
 [ext_resource type="Texture2D" uid="uid://cgc7asuvr1um5" path="res://assets/placeholder.svg" id="9_bi3up"]
 [ext_resource type="Texture2D" uid="uid://c43xlomsm26k2" path="res://assets/img/zz_mouse_64.png" id="9_djdqi"]
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_byrr5"]
-orbit_velocity_min = -1.089
-orbit_velocity_max = 0.67
-radial_velocity_min = 240.83
-radial_velocity_max = 659.69
-gravity = Vector3(0, 0, 0)
-damping_min = 44.503
-damping_max = 44.503
-scale_max = 21.94
-turbulence_enabled = true
 
 [sub_resource type="Animation" id="Animation_nlnb6"]
 resource_name = "select_game_left"
@@ -250,70 +238,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1x3i4")
 
-[node name="LoadingScreen" type="Control" parent="."]
+[node name="LoadingScreen" parent="." instance=ExtResource("2_skuo7")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Mouse" type="Control" parent="LoadingScreen"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 20.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LoadingScreen/Mouse"]
-position = Vector2(0, -25)
-scale = Vector2(5, 5)
-sprite_frames = ExtResource("3_rf8am")
-animation = &"mouseRun"
-frame_progress = 0.253033
-
-[node name="ProgressBar" type="ProgressBar" parent="LoadingScreen"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -50.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("2_o8yq3")
-value = 50.0
-show_percentage = false
-
-[node name="Center" type="Control" parent="LoadingScreen"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="LoadingScreen/Center"]
-amount = 30
-process_material = SubResource("ParticleProcessMaterial_byrr5")
-fixed_fps = 60
-trail_lifetime = 1.73
-
-[node name="Sprite2D" type="Sprite2D" parent="LoadingScreen/Center"]
-scale = Vector2(2, 2)
-texture = ExtResource("1_srmwf")
 
 [node name="classicMenu" type="Control" parent="."]
 visible = false
@@ -476,15 +402,13 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_right = NodePath("../OptionButton")
-focus_neighbor_bottom = NodePath("../../../ItemList")
+focus_neighbor_bottom = NodePath("../../../ListHbox/ItemList")
 theme = ExtResource("2_o8yq3")
 current_tab = 0
-tab_count = 4
-tab_0/title = "Tout"
-tab_1/title = "Arcade"
-tab_2/title = "PC"
-tab_3/title = "ZZ"
-tab_3/icon = ExtResource("9_djdqi")
+tab_count = 3
+tab_0/title = "Grille"
+tab_1/title = "Banniere"
+tab_2/title = "Classique"
 
 [node name="Logo" type="TextureRect" parent="MainMenu/MainVbox/TopBar/TobHbox"]
 layout_mode = 2
@@ -496,14 +420,32 @@ expand_mode = 3
 layout_mode = 2
 size_flags_horizontal = 10
 focus_neighbor_left = NodePath("../TabBar")
-focus_neighbor_bottom = NodePath("../../../ItemList")
+focus_neighbor_bottom = NodePath("../../../ListHbox/ItemList")
 theme = ExtResource("2_o8yq3")
 text = "Options"
 
-[node name="ItemList" type="ItemList" parent="MainMenu/MainVbox"]
+[node name="ListHbox" type="HBoxContainer" parent="MainMenu/MainVbox"]
 layout_mode = 2
 size_flags_vertical = 3
-focus_neighbor_top = NodePath("../TopBar/TobHbox/TabBar")
+theme_override_constants/separation = 0
+
+[node name="CategoryList" type="ItemList" parent="MainMenu/MainVbox/ListHbox"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+item_count = 5
+same_column_width = true
+item_0/text = "Tout"
+item_1/text = "Populaire"
+item_2/text = "Arcade"
+item_3/text = "PC"
+item_4/text = "ZZ"
+item_4/icon = ExtResource("9_djdqi")
+
+[node name="ItemList" type="ItemList" parent="MainMenu/MainVbox/ListHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../../TopBar/TobHbox/TabBar")
 theme = ExtResource("2_o8yq3")
 item_count = 5
 max_columns = 0
@@ -569,6 +511,6 @@ speed_scale = 2.0
 [connection signal="game_list_loaded" from="." to="classicMenu" method="_on_main_game_list_loaded"]
 [connection signal="game_list_loaded" from="." to="MainMenu" method="_on_main_game_list_loaded"]
 [connection signal="pressed" from="MainMenu/MainVbox/TopBar/TobHbox/OptionButton" to="MainMenu" method="_on_option_button_pressed"]
-[connection signal="item_clicked" from="MainMenu/MainVbox/ItemList" to="MainMenu" method="_on_item_list_item_clicked"]
-[connection signal="item_selected" from="MainMenu/MainVbox/ItemList" to="MainMenu" method="_on_item_list_item_selected"]
+[connection signal="item_clicked" from="MainMenu/MainVbox/ListHbox/ItemList" to="MainMenu" method="_on_item_list_item_clicked"]
+[connection signal="item_selected" from="MainMenu/MainVbox/ListHbox/ItemList" to="MainMenu" method="_on_item_list_item_selected"]
 [connection signal="timeout" from="MainMenu/RefreshTimer" to="MainMenu" method="_on_timer_timeout"]
