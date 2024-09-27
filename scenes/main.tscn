@@ -1,14 +1,15 @@
-[gd_scene load_steps=18 format=3 uid="uid://bemlflx640ecp"]
+[gd_scene load_steps=19 format=3 uid="uid://bemlflx640ecp"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1x3i4"]
 [ext_resource type="Texture2D" uid="uid://cee2yg1wx6fnq" path="res://assets/img/pixel_logo.png" id="1_srmwf"]
 [ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="2_o8yq3"]
-[ext_resource type="PackedScene" uid="uid://ds2js8kmbdnu5" path="res://scenes/background.tscn" id="2_x0mw4"]
 [ext_resource type="SpriteFrames" uid="uid://54wr72e4qehg" path="res://assets/img/mouse/mouseSpriteFrames.tres" id="3_rf8am"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="6_eo0ua"]
 [ext_resource type="Script" path="res://scripts/classic_menu.gd" id="6_wb0df"]
 [ext_resource type="Texture2D" uid="uid://c4r37wr3878vj" path="res://icon.png" id="7_mrrwn"]
+[ext_resource type="Texture2D" uid="uid://c88fnr814igpc" path="res://assets/img/pixel_logo_long.png" id="9_4eti7"]
 [ext_resource type="Texture2D" uid="uid://cgc7asuvr1um5" path="res://assets/placeholder.svg" id="9_bi3up"]
+[ext_resource type="Texture2D" uid="uid://c43xlomsm26k2" path="res://assets/img/zz_mouse_64.png" id="9_djdqi"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_byrr5"]
 orbit_velocity_min = -1.089
@@ -421,19 +422,77 @@ grow_vertical = 2
 theme = ExtResource("2_o8yq3")
 script = ExtResource("6_eo0ua")
 
-[node name="Background" parent="MainMenu" instance=ExtResource("2_x0mw4")]
-layout_mode = 1
-color = Color(0.964706, 0.741176, 0.12549, 1)
-
-[node name="ItemList" type="ItemList" parent="MainMenu"]
+[node name="Background" type="Control" parent="MainMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 84.0
 grow_horizontal = 2
 grow_vertical = 2
-focus_neighbor_top = NodePath("../TabBar")
+
+[node name="BackgroundHero" type="TextureRect" parent="MainMenu/Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_bi3up")
+stretch_mode = 6
+
+[node name="BackgroundColorPanel" type="ColorRect" parent="MainMenu/Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.27451)
+
+[node name="MainVbox" type="VBoxContainer" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="TabBar" type="HBoxContainer" parent="MainMenu/MainVbox"]
+layout_mode = 2
+
+[node name="TabBar" type="TabBar" parent="MainMenu/MainVbox/TabBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_right = NodePath("../OptionButton")
+focus_neighbor_bottom = NodePath("../../ItemList")
+theme = ExtResource("2_o8yq3")
+current_tab = 0
+tab_count = 4
+tab_0/title = "Tout"
+tab_1/title = "Arcade"
+tab_2/title = "PC"
+tab_3/title = "ZZ"
+tab_3/icon = ExtResource("9_djdqi")
+
+[node name="Logo" type="TextureRect" parent="MainMenu/MainVbox/TabBar"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("9_4eti7")
+
+[node name="OptionButton" type="Button" parent="MainMenu/MainVbox/TabBar"]
+layout_mode = 2
+size_flags_horizontal = 10
+focus_neighbor_left = NodePath("../TabBar")
+focus_neighbor_bottom = NodePath("../../ItemList")
+theme = ExtResource("2_o8yq3")
+text = "Options"
+
+[node name="ItemList" type="ItemList" parent="MainMenu/MainVbox"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../TabBar/TabBar")
 theme = ExtResource("2_o8yq3")
 item_count = 5
 max_columns = 0
@@ -451,34 +510,31 @@ item_3/icon = ExtResource("9_bi3up")
 item_4/text = "Super Jeu 5"
 item_4/icon = ExtResource("9_bi3up")
 
-[node name="TabBar" type="TabBar" parent="MainMenu"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 83.0
-grow_horizontal = 2
-focus_neighbor_right = NodePath("../OptionButton")
-focus_neighbor_bottom = NodePath("../ItemList")
-theme = ExtResource("2_o8yq3")
-current_tab = 0
-tab_count = 4
-tab_0/title = "Tout"
-tab_1/title = "Arcade"
-tab_2/title = "PC"
-tab_3/title = "ISIMA"
+[node name="BottomBar" type="ColorRect" parent="MainMenu/MainVbox"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
 
-[node name="OptionButton" type="Button" parent="MainMenu"]
+[node name="TimeLabel" type="Label" parent="MainMenu/MainVbox/BottomBar"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -232.0
-offset_bottom = 84.0
-grow_horizontal = 0
-focus_neighbor_left = NodePath("../TabBar")
-focus_neighbor_bottom = NodePath("../ItemList")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -19.5
+offset_right = 50.0
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
 theme = ExtResource("2_o8yq3")
-text = "Options"
+text = "X"
+
+[node name="Timer" type="Timer" parent="MainMenu"]
+autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -488,5 +544,7 @@ speed_scale = 2.0
 
 [connection signal="game_list_loaded" from="." to="classicMenu" method="_on_main_game_list_loaded"]
 [connection signal="game_list_loaded" from="." to="MainMenu" method="_on_main_game_list_loaded"]
-[connection signal="item_clicked" from="MainMenu/ItemList" to="MainMenu" method="_on_item_list_item_clicked"]
-[connection signal="pressed" from="MainMenu/OptionButton" to="MainMenu" method="_on_option_button_pressed"]
+[connection signal="pressed" from="MainMenu/MainVbox/TabBar/OptionButton" to="MainMenu" method="_on_option_button_pressed"]
+[connection signal="item_clicked" from="MainMenu/MainVbox/ItemList" to="MainMenu" method="_on_item_list_item_clicked"]
+[connection signal="item_selected" from="MainMenu/MainVbox/ItemList" to="MainMenu" method="_on_item_list_item_selected"]
+[connection signal="timeout" from="MainMenu/Timer" to="MainMenu" method="_on_timer_timeout"]

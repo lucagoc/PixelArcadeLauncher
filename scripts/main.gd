@@ -127,7 +127,6 @@ func load_game(id: String) -> Game:
 			# Hero
 			var hero_img = Image.new()
 			hero_img.load(games_folder_path + id + "/hero.png")
-			hero_img.resize(397, 128)
 			game.hero = ImageTexture.create_from_image(hero_img)
 		else:
 			printerr("[ERROR] " + id + "/game.conf isn't in the proper format")
