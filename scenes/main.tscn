@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bemlflx640ecp"]
+[gd_scene load_steps=29 format=3 uid="uid://bemlflx640ecp"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1x3i4"]
 [ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="2_o8yq3"]
@@ -6,9 +6,14 @@
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="6_eo0ua"]
 [ext_resource type="Script" path="res://scripts/classic_menu.gd" id="6_wb0df"]
 [ext_resource type="Texture2D" uid="uid://c4r37wr3878vj" path="res://icon.png" id="7_mrrwn"]
+[ext_resource type="Texture2D" uid="uid://dkcn3fu8n33sy" path="res://assets/img/buttons/Menu.png" id="8_7n6bf"]
 [ext_resource type="Texture2D" uid="uid://c88fnr814igpc" path="res://assets/img/pixel_logo_long.png" id="9_4eti7"]
 [ext_resource type="Texture2D" uid="uid://cgc7asuvr1um5" path="res://assets/placeholder.svg" id="9_bi3up"]
 [ext_resource type="Texture2D" uid="uid://c43xlomsm26k2" path="res://assets/img/zz_mouse_64.png" id="9_djdqi"]
+[ext_resource type="Texture2D" uid="uid://ccxqk685vpfmr" path="res://assets/img/buttons/Yellow.png" id="9_o2r0a"]
+[ext_resource type="Texture2D" uid="uid://baldfvib8npgc" path="res://assets/img/buttons/Red.png" id="10_fkcj7"]
+[ext_resource type="Texture2D" uid="uid://dp6au1s2cm1v0" path="res://assets/img/buttons/Green.png" id="11_5jn04"]
+[ext_resource type="Texture2D" uid="uid://dttgk3eadjifd" path="res://assets/img/buttons/Blue.png" id="12_vf2ow"]
 
 [sub_resource type="Animation" id="Animation_nlnb6"]
 resource_name = "select_game_left"
@@ -18,19 +23,39 @@ _data = {
 "select_game_left": SubResource("Animation_nlnb6")
 }
 
-[sub_resource type="Animation" id="Animation_4m38c"]
-resource_name = "open_category"
-length = 0.3
+[sub_resource type="Animation" id="Animation_cbcuj"]
+length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ListHbox/CategoryBar:custom_minimum_size:x")
+tracks/0/path = NodePath("BackgroundHero:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_hkg4h"]
+resource_name = "change_background"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundHero:modulate:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(100, -0.25, 0, 0, 82.5, 250, -0.233333, -2.5, 0.25, 0),
-"times": PackedFloat32Array(0, 0.3)
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h2la0"]
+_data = {
+"RESET": SubResource("Animation_cbcuj"),
+"fade_out": SubResource("Animation_hkg4h")
 }
 
 [sub_resource type="Animation" id="Animation_m3we3"]
@@ -43,7 +68,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(100, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(85, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 
@@ -58,7 +83,22 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(250, -0.25, 0, 0.25, 0, 100, -0.15, 0, 0.15, 0),
+"points": PackedFloat32Array(300, -0.25, 0, 0.25, 0, 85, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="Animation" id="Animation_4m38c"]
+resource_name = "open_category"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ListHbox/CategoryBar:custom_minimum_size:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(85, -0.25, 0, 0, 82.5, 300, -0.233333, -2.5, 0.25, 0),
 "times": PackedFloat32Array(0, 0.3)
 }
 
@@ -407,6 +447,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="BackgroundHero2" type="TextureRect" parent="MainMenu/Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_bi3up")
+stretch_mode = 6
+
 [node name="BackgroundHero" type="TextureRect" parent="MainMenu/Background"]
 layout_mode = 1
 anchors_preset = 15
@@ -424,7 +474,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.27451)
+color = Color(0, 0, 0, 0.156863)
+
+[node name="BackgroundAnimation" type="AnimationPlayer" parent="MainMenu/Background"]
+libraries = {
+"": SubResource("AnimationLibrary_h2la0")
+}
 
 [node name="MainVbox" type="VBoxContainer" parent="MainMenu"]
 layout_mode = 1
@@ -447,13 +502,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 0
 alignment = 1
+
+[node name="Padding Left" type="Container" parent="MainMenu/MainVbox/TopBar/TobHbox"]
+custom_minimum_size = Vector2(7, 0)
+layout_mode = 2
+
+[node name="OptionButton" type="Button" parent="MainMenu/MainVbox/TopBar/TobHbox"]
+layout_mode = 2
+size_flags_horizontal = 0
+focus_neighbor_right = NodePath("../TabBar")
+focus_neighbor_bottom = NodePath("../../../ListHbox/CategoryBar/CategoryList")
+theme = ExtResource("2_o8yq3")
+icon = ExtResource("8_7n6bf")
+
+[node name="Padding Left2" type="Container" parent="MainMenu/MainVbox/TopBar/TobHbox"]
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
 
 [node name="TabBar" type="TabBar" parent="MainMenu/MainVbox/TopBar/TobHbox"]
 layout_mode = 2
 size_flags_horizontal = 3
-focus_neighbor_right = NodePath("../OptionButton")
-focus_neighbor_bottom = NodePath("../../../ListHbox/CategoryBar/CategoryList")
+focus_neighbor_left = NodePath("../OptionButton")
+focus_neighbor_bottom = NodePath("../../../ListHbox/ItemList")
 theme = ExtResource("2_o8yq3")
 current_tab = 0
 tab_count = 3
@@ -463,17 +535,9 @@ tab_2/title = "Classique"
 
 [node name="Logo" type="TextureRect" parent="MainMenu/MainVbox/TopBar/TobHbox"]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 10
 texture = ExtResource("9_4eti7")
 expand_mode = 3
-
-[node name="OptionButton" type="Button" parent="MainMenu/MainVbox/TopBar/TobHbox"]
-layout_mode = 2
-size_flags_horizontal = 10
-focus_neighbor_left = NodePath("../TabBar")
-focus_neighbor_bottom = NodePath("../../../ListHbox/ItemList")
-theme = ExtResource("2_o8yq3")
-text = "Options"
 
 [node name="ListHbox" type="HBoxContainer" parent="MainMenu/MainVbox"]
 layout_mode = 2
@@ -482,7 +546,7 @@ theme = ExtResource("2_o8yq3")
 theme_override_constants/separation = 0
 
 [node name="CategoryBar" type="ColorRect" parent="MainMenu/MainVbox/ListHbox"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(85, 0)
 layout_mode = 2
 theme = ExtResource("2_o8yq3")
 color = Color(0, 0, 0, 1)
@@ -499,11 +563,15 @@ focus_neighbor_right = NodePath("../../ItemList")
 theme = ExtResource("2_o8yq3")
 item_count = 5
 same_column_width = true
-item_0/text = "Tout"
-item_1/text = "Populaire"
-item_2/text = "Arcade"
-item_3/text = "PC"
-item_4/text = "ZZ"
+item_0/text = " Tout"
+item_0/icon = ExtResource("9_o2r0a")
+item_1/text = " Populaire"
+item_1/icon = ExtResource("10_fkcj7")
+item_2/text = " Arcade"
+item_2/icon = ExtResource("11_5jn04")
+item_3/text = " PC"
+item_3/icon = ExtResource("12_vf2ow")
+item_4/text = " ZZ"
 item_4/icon = ExtResource("9_djdqi")
 
 [node name="ItemList" type="ItemList" parent="MainMenu/MainVbox/ListHbox"]
@@ -582,6 +650,7 @@ speed_scale = 2.0
 
 [connection signal="game_list_loaded" from="." to="classicMenu" method="_on_main_game_list_loaded"]
 [connection signal="game_list_loaded" from="." to="MainMenu" method="_on_main_game_list_loaded"]
+[connection signal="animation_finished" from="MainMenu/Background/BackgroundAnimation" to="MainMenu" method="_on_background_animation_animation_finished"]
 [connection signal="pressed" from="MainMenu/MainVbox/TopBar/TobHbox/OptionButton" to="MainMenu" method="_on_option_button_pressed"]
 [connection signal="focus_entered" from="MainMenu/MainVbox/ListHbox/CategoryBar/CategoryList" to="MainMenu" method="_on_category_list_focus_entered"]
 [connection signal="focus_exited" from="MainMenu/MainVbox/ListHbox/CategoryBar/CategoryList" to="MainMenu" method="_on_category_list_focus_exited"]

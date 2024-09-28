@@ -32,8 +32,9 @@ func _on_main_game_list_loaded() -> void:
 func _on_item_list_item_selected(index: int) -> void:
 	# Load hero on background
 	var game = $"../".game_list[index]
-	if game.hero != null:
-		$Background/BackgroundHero.texture = game.hero
+	$Background/BackgroundHero2.texture = game.hero
+	$Background/BackgroundAnimation.play("fade_out")
+
 
 
 func _on_timer_timeout() -> void:
@@ -49,3 +50,9 @@ func _on_category_list_focus_entered() -> void:
 
 func _on_category_list_focus_exited() -> void:
 	$MainVbox/ListHbox/AnimationPlayer.play("close_category")
+
+
+func _on_background_animation_animation_finished(anim_name: StringName) -> void:
+	$Background/BackgroundHero.texture = $Background/BackgroundHero2.texture
+	$Background/BackgroundHero.modulate = Color(1, 1, 1, 1)
+

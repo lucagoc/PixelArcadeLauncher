@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://5im7y78yca4y"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://5im7y78yca4y"]
 
 [ext_resource type="FontFile" uid="uid://ixbfi1tltcyx" path="res://assets/ttf/Pixel_Digivolve/Pixel Digivolve.otf" id="1_10e3l"]
 
@@ -30,6 +30,18 @@ border_color = Color(1, 1, 1, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_027m2"]
 bg_color = Color(1, 1, 1, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xu77"]
+bg_color = Color(0.96, 0.77312, 0.2592, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8o4tx"]
+bg_color = Color(1, 1, 1, 0.705882)
+
 [resource]
 Button/font_sizes/font_size = 25
 Button/fonts/font = ExtResource("1_10e3l")
@@ -55,4 +67,6 @@ RichTextLabel/font_sizes/normal_font_size = 20
 RichTextLabel/fonts/normal_font = ExtResource("1_10e3l")
 TabBar/font_sizes/font_size = 25
 TabBar/fonts/font = ExtResource("1_10e3l")
+TabBar/styles/tab_focus = SubResource("StyleBoxFlat_8xu77")
+TabBar/styles/tab_selected = SubResource("StyleBoxFlat_8o4tx")
 VBoxContainer/constants/separation = 20

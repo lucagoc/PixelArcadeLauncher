@@ -126,8 +126,12 @@ func load_game(id: String) -> Game:
 
 			# Hero
 			var hero_img = Image.new()
-			hero_img.load(games_folder_path + id + "/hero.png")
-			game.hero = ImageTexture.create_from_image(hero_img)
+			if FileAccess.file_exists(games_folder_path + id + "/hero.png"):
+				hero_img.load(games_folder_path + id + "/hero.png")
+				game.hero = ImageTexture.create_from_image(hero_img)
+			else:
+				hero_img.load("res://assets/img/unknown.png")
+				game.hero = ImageTexture.create_from_image(hero_img)
 		else:
 			printerr("[ERROR] " + id + "/game.conf isn't in the proper format")
 	else:
