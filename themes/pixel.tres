@@ -45,6 +45,7 @@ bg_color = Color(1, 1, 1, 0.705882)
 [resource]
 Button/font_sizes/font_size = 25
 Button/fonts/font = ExtResource("1_10e3l")
+CheckButton/font_sizes/font_size = 35
 HBoxContainer/constants/separation = 20
 ItemList/colors/font_color = Color(1, 1, 1, 1)
 ItemList/colors/font_selected_color = Color(0, 0, 0, 1)

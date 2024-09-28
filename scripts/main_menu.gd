@@ -55,4 +55,3 @@ func _on_category_list_focus_exited() -> void:
 func _on_background_animation_animation_finished(anim_name: StringName) -> void:
 	$Background/BackgroundHero.texture = $Background/BackgroundHero2.texture
 	$Background/BackgroundHero.modulate = Color(1, 1, 1, 1)
-

@@ -1,0 +1,274 @@
+[gd_scene load_steps=6 format=3 uid="uid://r7uast7vl6td"]
+
+[ext_resource type="Script" path="res://scripts/settings_menu.gd" id="1_hje5c"]
+[ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="2_hsiy5"]
+
+[sub_resource type="Animation" id="Animation_mtma3"]
+resource_name = "select"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainVbox/MainHbox/MainSettings/System:custom_minimum_size:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0, 114.5, 200, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainVbox/MainHbox/MainSettings/System:theme_override_font_sizes/font_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(25, -0.25, 0, 0.0666667, 29.5, 50, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="Animation" id="Animation_qfq80"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainVbox/MainHbox/MainSettings/System:custom_minimum_size:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainVbox/MainHbox/MainSettings/System:theme_override_font_sizes/font_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ong1"]
+_data = {
+"RESET": SubResource("Animation_qfq80"),
+"select": SubResource("Animation_mtma3")
+}
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hje5c")
+
+[node name="BackgroundColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.259294, 0.259294, 0.259294, 1)
+
+[node name="MainVbox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainHbox" type="HBoxContainer" parent="MainVbox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_hsiy5")
+
+[node name="PaddingLeft" type="Container" parent="MainVbox/MainHbox"]
+layout_mode = 2
+
+[node name="MainSettings" type="VBoxContainer" parent="MainVbox/MainHbox"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="System" type="Button" parent="MainVbox/MainHbox/MainSettings"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "Système"
+
+[node name="Maintenance" type="Button" parent="MainVbox/MainHbox/MainSettings"]
+layout_mode = 2
+text = "Maintenance"
+
+[node name="Display" type="Button" parent="MainVbox/MainHbox/MainSettings"]
+layout_mode = 2
+text = "Écran"
+
+[node name="Sound" type="Button" parent="MainVbox/MainHbox/MainSettings"]
+layout_mode = 2
+text = "Son"
+
+[node name="Update" type="Button" parent="MainVbox/MainHbox/MainSettings"]
+layout_mode = 2
+text = "Mise à jour"
+
+[node name="About" type="Button" parent="MainVbox/MainHbox/MainSettings"]
+layout_mode = 2
+text = "À propos"
+
+[node name="ColorRect" type="ColorRect" parent="MainVbox/MainHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 0.235294)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainVbox/MainHbox/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainVbox/MainHbox/ColorRect/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Sound" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_hsiy5")
+text = "Son"
+
+[node name="Vsync" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_hsiy5")
+text = "Vsync
+"
+
+[node name="Fastboot" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_hsiy5")
+text = "Démarrage Rapide"
+
+[node name="DebugMode" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_hsiy5")
+text = "Mode débug"
+
+[node name="DebugMode2" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_hsiy5")
+text = "Mode débug"
+
+[node name="DebugMode3" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_hsiy5")
+text = "Mode débug"
+
+[node name="DebugMode4" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_hsiy5")
+text = "Mode débug"
+
+[node name="DebugMode5" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_hsiy5")
+text = "Mode débug"
+
+[node name="DebugMode6" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_hsiy5")
+text = "Mode débug"
+
+[node name="DebugMode7" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_hsiy5")
+text = "Mode débug"
+
+[node name="DebugMode8" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_hsiy5")
+text = "Mode débug"
+
+[node name="DebugMode9" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_hsiy5")
+text = "Mode débug"
+
+[node name="DebugMode10" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_hsiy5")
+text = "Mode débug"
+
+[node name="DebugMode11" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_hsiy5")
+text = "Mode débug"
+
+[node name="BottomBar" type="ColorRect" parent="MainVbox"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 8
+color = Color(0, 0, 0, 1)
+
+[node name="BottomHbox" type="HBoxContainer" parent="MainVbox/BottomBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftPadding" type="Container" parent="MainVbox/BottomBar/BottomHbox"]
+layout_mode = 2
+
+[node name="RamLabel" type="Label" parent="MainVbox/BottomBar/BottomHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "..."
+
+[node name="TimeLabel" type="Label" parent="MainVbox/BottomBar/BottomHbox"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("2_hsiy5")
+text = "........"
+
+[node name="VersionLabel" type="Label" parent="MainVbox/BottomBar/BottomHbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "..."
+
+[node name="RightPadding" type="Container" parent="MainVbox/BottomBar/BottomHbox"]
+layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6ong1")
+}
