@@ -22,18 +22,19 @@ func _on_item_list_item_clicked(index: int, at_position: Vector2, mouse_button_i
 
 
 func _on_main_game_list_loaded() -> void:
-	$MainVbox/ItemList.clear()
+	$MainVbox/ListHbox/ItemList.clear()
 	for game in $"../".game_list:
-		$MainVbox/ItemList.add_item(game.name, game.icon)
-	$MainVbox/ItemList.grab_focus()
-	$MainVbox/ItemList.select(0)
+		$MainVbox/ListHbox/ItemList.add_item(game.name, game.icon)
+	$MainVbox/ListHbox/ItemList.grab_focus()
+	$MainVbox/ListHbox/ItemList.select(0)
+	$MainVbox/ListHbox/CategoryBar/CategoryList.select(0)
 
 func _on_item_list_item_selected(index: int) -> void:
 	# Load hero on background
 	var game = $"../".game_list[index]
-	print("[INFO] Loading banner for " + game.name)
-	if game.hero != null:
-		$Background/BackgroundHero.texture = game.hero
+	$Background/BackgroundHero2.texture = game.hero
+	$Background/BackgroundAnimation.play("fade_out")
+
 
 
 func _on_timer_timeout() -> void:
@@ -41,3 +42,17 @@ func _on_timer_timeout() -> void:
 	$MainVbox/BottomBar/BottomHbox/RamLabel.text = "RAM: " + str(OS.get_static_memory_usage() / 1024 / 1024) + " MB"
 	$MainVbox/BottomBar/BottomHbox/TimeLabel.text = Time.get_time_string_from_system()
 	$MainVbox/BottomBar/BottomHbox/VersionLabel.text = "Version: 0.1 TESTING"
+
+
+func _on_category_list_focus_entered() -> void:
+	$MainVbox/ListHbox/AnimationPlayer.play("open_category")
+
+
+func _on_category_list_focus_exited() -> void:
+	$MainVbox/ListHbox/AnimationPlayer.play("close_category")
+
+
+func _on_background_animation_animation_finished(anim_name: StringName) -> void:
+	$Background/BackgroundHero.texture = $Background/BackgroundHero2.texture
+	$Background/BackgroundHero.modulate = Color(1, 1, 1, 1)
+
