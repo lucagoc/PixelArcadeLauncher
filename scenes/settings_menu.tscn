@@ -1,40 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://r7uast7vl6td"]
+[gd_scene load_steps=8 format=3 uid="uid://r7uast7vl6td"]
 
 [ext_resource type="Script" path="res://scripts/settings_menu.gd" id="1_hje5c"]
 [ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="2_hsiy5"]
+[ext_resource type="Script" path="res://scripts/settings_main_button.gd" id="3_gtspp"]
 
-[sub_resource type="Animation" id="Animation_mtma3"]
-resource_name = "select"
-length = 0.3
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MainVbox/MainHbox/MainSettings/System:custom_minimum_size:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0, 114.5, 200, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.3)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MainVbox/MainHbox/MainSettings/System:theme_override_font_sizes/font_size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(25, -0.25, 0, 0.0666667, 29.5, 50, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.3)
-}
-
-[sub_resource type="Animation" id="Animation_qfq80"]
+[sub_resource type="Animation" id="Animation_mhsjo"]
 length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MainVbox/MainHbox/MainSettings/System:custom_minimum_size:y")
+tracks/0/path = NodePath(".:theme_override_font_sizes/font_size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -42,22 +17,42 @@ tracks/0/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MainVbox/MainHbox/MainSettings/System:theme_override_font_sizes/font_size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+
+[sub_resource type="Animation" id="Animation_3ceip"]
+resource_name = "focus_entered"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_font_sizes/font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(25, -0.25, 0, 0, 26.5, 55, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ong1"]
+[sub_resource type="Animation" id="Animation_w38ov"]
+resource_name = "focus_exit"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_font_sizes/font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(55, -0.15, 0, 0.15, 0, 25, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x8eo4"]
 _data = {
-"RESET": SubResource("Animation_qfq80"),
-"select": SubResource("Animation_mtma3")
+"RESET": SubResource("Animation_mhsjo"),
+"focus_entered": SubResource("Animation_3ceip"),
+"focus_exit": SubResource("Animation_w38ov")
 }
 
 [node name="SettingsMenu" type="Control"]
@@ -67,6 +62,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_hsiy5")
 script = ExtResource("1_hje5c")
 
 [node name="BackgroundColor" type="ColorRect" parent="."]
@@ -103,28 +99,79 @@ size_flags_vertical = 4
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 0
 text = "Système"
+script = ExtResource("3_gtspp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainVbox/MainHbox/MainSettings/System"]
+libraries = {
+"": SubResource("AnimationLibrary_x8eo4")
+}
 
 [node name="Maintenance" type="Button" parent="MainVbox/MainHbox/MainSettings"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 0
 text = "Maintenance"
+script = ExtResource("3_gtspp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainVbox/MainHbox/MainSettings/Maintenance"]
+libraries = {
+"": SubResource("AnimationLibrary_x8eo4")
+}
 
 [node name="Display" type="Button" parent="MainVbox/MainHbox/MainSettings"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 0
 text = "Écran"
+script = ExtResource("3_gtspp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainVbox/MainHbox/MainSettings/Display"]
+libraries = {
+"": SubResource("AnimationLibrary_x8eo4")
+}
 
 [node name="Sound" type="Button" parent="MainVbox/MainHbox/MainSettings"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 0
 text = "Son"
+script = ExtResource("3_gtspp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainVbox/MainHbox/MainSettings/Sound"]
+libraries = {
+"": SubResource("AnimationLibrary_x8eo4")
+}
 
 [node name="Update" type="Button" parent="MainVbox/MainHbox/MainSettings"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 0
 text = "Mise à jour"
+script = ExtResource("3_gtspp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainVbox/MainHbox/MainSettings/Update"]
+libraries = {
+"": SubResource("AnimationLibrary_x8eo4")
+}
 
 [node name="About" type="Button" parent="MainVbox/MainHbox/MainSettings"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 0
 text = "À propos"
+script = ExtResource("3_gtspp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainVbox/MainHbox/MainSettings/About"]
+libraries = {
+"": SubResource("AnimationLibrary_x8eo4")
+}
 
 [node name="ColorRect" type="ColorRect" parent="MainVbox/MainHbox"]
 layout_mode = 2
@@ -132,7 +179,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0, 0, 0, 0.235294)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MainVbox/MainHbox/ColorRect"]
+[node name="SystemSettings" type="ScrollContainer" parent="MainVbox/MainHbox/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -141,95 +188,48 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainVbox/MainHbox/ColorRect/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainVbox/MainHbox/ColorRect/SystemSettings"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Sound" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
+[node name="Vsync" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/SystemSettings/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_hsiy5")
-text = "Son"
-
-[node name="Vsync" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_hsiy5")
+button_pressed = true
 text = "Vsync
 "
 
-[node name="Fastboot" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
+[node name="Fastboot" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/SystemSettings/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_hsiy5")
+button_pressed = true
 text = "Démarrage Rapide"
 
-[node name="DebugMode" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
+[node name="DebugMode" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/SystemSettings/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("2_hsiy5")
 text = "Mode débug"
 
-[node name="DebugMode2" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainVbox/MainHbox/ColorRect/SystemSettings/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_hsiy5")
-text = "Mode débug"
 
-[node name="DebugMode3" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MainVbox/MainHbox/ColorRect/SystemSettings/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_hsiy5")
-text = "Mode débug"
+text = "Thème de la bar d'état"
 
-[node name="DebugMode4" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
+[node name="OptionButton" type="OptionButton" parent="MainVbox/MainHbox/ColorRect/SystemSettings/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_hsiy5")
-text = "Mode débug"
-
-[node name="DebugMode5" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_hsiy5")
-text = "Mode débug"
-
-[node name="DebugMode6" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_hsiy5")
-text = "Mode débug"
-
-[node name="DebugMode7" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_hsiy5")
-text = "Mode débug"
-
-[node name="DebugMode8" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_hsiy5")
-text = "Mode débug"
-
-[node name="DebugMode9" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_hsiy5")
-text = "Mode débug"
-
-[node name="DebugMode10" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_hsiy5")
-text = "Mode débug"
-
-[node name="DebugMode11" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_hsiy5")
-text = "Mode débug"
+size_flags_horizontal = 10
+item_count = 3
+popup/item_0/text = "Pixel"
+popup/item_1/text = "Xmas"
+popup/item_1/id = 1
+popup/item_2/text = "Happy birthday !"
+popup/item_2/id = 2
 
 [node name="BottomBar" type="ColorRect" parent="MainVbox"]
 custom_minimum_size = Vector2(0, 50)
@@ -268,7 +268,15 @@ text = "..."
 [node name="RightPadding" type="Container" parent="MainVbox/BottomBar/BottomHbox"]
 layout_mode = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_6ong1")
-}
+[connection signal="focus_entered" from="MainVbox/MainHbox/MainSettings/System" to="MainVbox/MainHbox/MainSettings/System" method="_on_focus_entered"]
+[connection signal="focus_exited" from="MainVbox/MainHbox/MainSettings/System" to="MainVbox/MainHbox/MainSettings/System" method="_on_focus_exited"]
+[connection signal="focus_entered" from="MainVbox/MainHbox/MainSettings/Maintenance" to="MainVbox/MainHbox/MainSettings/Maintenance" method="_on_focus_entered"]
+[connection signal="focus_exited" from="MainVbox/MainHbox/MainSettings/Maintenance" to="MainVbox/MainHbox/MainSettings/Maintenance" method="_on_focus_exited"]
+[connection signal="focus_entered" from="MainVbox/MainHbox/MainSettings/Display" to="MainVbox/MainHbox/MainSettings/Display" method="_on_focus_entered"]
+[connection signal="focus_exited" from="MainVbox/MainHbox/MainSettings/Display" to="MainVbox/MainHbox/MainSettings/Display" method="_on_focus_exited"]
+[connection signal="focus_entered" from="MainVbox/MainHbox/MainSettings/Sound" to="MainVbox/MainHbox/MainSettings/Sound" method="_on_focus_entered"]
+[connection signal="focus_exited" from="MainVbox/MainHbox/MainSettings/Sound" to="MainVbox/MainHbox/MainSettings/Sound" method="_on_focus_exited"]
+[connection signal="focus_entered" from="MainVbox/MainHbox/MainSettings/Update" to="MainVbox/MainHbox/MainSettings/Update" method="_on_focus_entered"]
+[connection signal="focus_exited" from="MainVbox/MainHbox/MainSettings/Update" to="MainVbox/MainHbox/MainSettings/Update" method="_on_focus_exited"]
+[connection signal="focus_entered" from="MainVbox/MainHbox/MainSettings/About" to="MainVbox/MainHbox/MainSettings/About" method="_on_focus_entered"]
+[connection signal="focus_exited" from="MainVbox/MainHbox/MainSettings/About" to="MainVbox/MainHbox/MainSettings/About" method="_on_focus_exited"]
