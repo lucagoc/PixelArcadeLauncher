@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://bveavdlpsb5lv"]
+
+[ext_resource type="Script" path="res://scripts/bottom_bar.gd" id="1_u5ya3"]
+[ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="2_w4b71"]
+
+[node name="BottomBar" type="ColorRect"]
+custom_minimum_size = Vector2(0, 50)
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_u5ya3")
+
+[node name="BottomHbox" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftPadding" type="Container" parent="BottomHbox"]
+layout_mode = 2
+
+[node name="RamLabel" type="Label" parent="BottomHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "..."
+
+[node name="TimeLabel" type="Label" parent="BottomHbox"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("2_w4b71")
+text = "........"
+
+[node name="VersionLabel" type="Label" parent="BottomHbox"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "..."
+
+[node name="RightPadding" type="Container" parent="BottomHbox"]
+layout_mode = 2
+
+[node name="RefreshTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="RefreshTimer" to="." method="_on_refresh_timer_timeout"]

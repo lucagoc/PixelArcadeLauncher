@@ -36,14 +36,6 @@ func _on_item_list_item_selected(index: int) -> void:
 	$Background/BackgroundAnimation.play("fade_out")
 
 
-
-func _on_timer_timeout() -> void:
-	# Refresh bottom bar
-	$MainVbox/BottomBar/BottomHbox/RamLabel.text = "RAM: " + str(OS.get_static_memory_usage() / 1024 / 1024) + " MB"
-	$MainVbox/BottomBar/BottomHbox/TimeLabel.text = Time.get_time_string_from_system()
-	$MainVbox/BottomBar/BottomHbox/VersionLabel.text = "Version: 0.1 TESTING"
-
-
 func _on_category_list_focus_entered() -> void:
 	$MainVbox/ListHbox/AnimationPlayer.play("open_category")
 
