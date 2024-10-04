@@ -22,6 +22,7 @@ config/icon="res://icon.png"
 [autoload]
 
 path="*res://scripts/sys/path.gd"
+GameList="*res://scripts/sys/game_list.gd"
 
 [display]
 

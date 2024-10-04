@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bemlflx640ecp"]
+[gd_scene load_steps=29 format=3 uid="uid://bemlflx640ecp"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1x3i4"]
 [ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="2_o8yq3"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cgc7asuvr1um5" path="res://assets/img/default/placeholder.svg" id="9_bi3up"]
 [ext_resource type="Texture2D" uid="uid://c43xlomsm26k2" path="res://assets/img/zz_mouse_64.png" id="9_djdqi"]
 [ext_resource type="Texture2D" uid="uid://ccxqk685vpfmr" path="res://assets/img/buttons/Yellow.png" id="9_o2r0a"]
+[ext_resource type="Script" path="res://scripts/drawer_menu.gd" id="10_2bhfd"]
 [ext_resource type="Texture2D" uid="uid://baldfvib8npgc" path="res://assets/img/buttons/Red.png" id="10_fkcj7"]
 [ext_resource type="Texture2D" uid="uid://dp6au1s2cm1v0" path="res://assets/img/buttons/Green.png" id="11_5jn04"]
 [ext_resource type="Texture2D" uid="uid://dttgk3eadjifd" path="res://assets/img/buttons/Blue.png" id="12_vf2ow"]
@@ -476,6 +477,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_o8yq3")
 theme_override_constants/separation = 0
+script = ExtResource("10_2bhfd")
 
 [node name="CategoryBar" type="ColorRect" parent="MainMenu/MainVbox/DrawerMenu"]
 custom_minimum_size = Vector2(85, 0)
@@ -546,8 +548,6 @@ libraries = {
 }
 speed_scale = 2.0
 
-[connection signal="game_list_loaded" from="." to="MainMenu" method="_on_main_game_list_loaded"]
-[connection signal="game_list_loaded" from="." to="MainMenu/MainVbox/BannerMenu" method="_on_main_game_list_loaded"]
 [connection signal="animation_finished" from="MainMenu/Background/BackgroundAnimation" to="MainMenu" method="_on_background_animation_animation_finished"]
 [connection signal="pressed" from="MainMenu/MainVbox/TopBar/TobHbox/OptionButton" to="MainMenu" method="_on_option_button_pressed"]
 [connection signal="focus_entered" from="MainMenu/MainVbox/DrawerMenu/CategoryBar/CategoryList" to="MainMenu" method="_on_category_list_focus_entered"]

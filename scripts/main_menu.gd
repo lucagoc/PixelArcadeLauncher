@@ -13,17 +13,9 @@ func _on_option_button_pressed() -> void:
 # 	return
 
 
-func _on_main_game_list_loaded() -> void:
-	$MainVbox/DrawerMenu/ItemList.clear()
-	for game in $"../".game_list:
-		$MainVbox/DrawerMenu/ItemList.add_item(game.name, game.icon)
-	$MainVbox/DrawerMenu/ItemList.grab_focus()
-	$MainVbox/DrawerMenu/ItemList.select(0)
-	$MainVbox/DrawerMenu/CategoryBar/CategoryList.select(0)
-
 func _on_item_list_item_selected(index: int) -> void:
 	# Load hero on background
-	var game = $"../".game_list[index]
+	var game = GameList.game_list[index]
 	$Background/BackgroundHero2.texture = game.hero
 	$Background/BackgroundAnimation.play("fade_out")
 
