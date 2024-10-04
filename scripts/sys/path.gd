@@ -9,11 +9,18 @@ var games_folder  = "games/"               # Path to the games folder
 var themes_folder = "themes/"              # Path to the themes folder
 
 # Game properties path structure
-var game_conf   = "game.conf"               # Path to the game.conf file
-var game_banner = "banner.png"              # Path to the game banner
-var game_hero   = "hero.png"                # Path to the game hero
-var game_icon   = "icon.png"                # Path to the game icon
-var game_logo   = "logo.png"                # Path to the game logo
+var game_conf   = "game.conf"              # Path to the game.conf file
+var game_banner = "banner.png"             # Path to the game banner
+var game_hero   = "hero.png"               # Path to the game hero
+var game_icon   = "icon.png"               # Path to the game icon
+var game_logo   = "logo.png"               # Path to the game logo
+
+
+# Default images
+var default_icon   = "res://assets/img/default/placeholder.svg"
+var default_logo   = "res://assets/img/unknown.png"
+var default_banner = "res://assets/img/default/placeholder.svg"
+var default_hero   = "res://assets/img/default/placeholder.svg"
 
 
 # Convert a posix path to a windows path

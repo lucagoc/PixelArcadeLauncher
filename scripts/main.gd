@@ -58,36 +58,36 @@ func load_game(id: String) -> Game:
 			
 			# Icon
 			var icon_img = Image.new()
-			icon_img.load(game_path + path.game_icon)
-			if icon_img == null:
-				printerr("[ERROR] Cannot open the file " + game_path + path.game_icon)
-				icon_img.load("res://icon.png")
-			#icon_img.resize(64, 64)
+			if FileAccess.file_exists(game_path + path.game_icon):
+				icon_img.load(game_path + path.game_icon)
+			else:
+				icon_img.load(path.unknown_icon)
 			game.icon = ImageTexture.create_from_image(icon_img)
 
 			# Logo
 			var logo_img = Image.new()
-			logo_img.load(game_path + path.game_logo)
-			#img.resize(128, 128)
+			if FileAccess.file_exists(game_path + path.game_logo):
+				logo_img.load(game_path + path.game_logo)
+			else:
+				logo_img.load(path.default_logo)
 			game.logo = ImageTexture.create_from_image(logo_img)
 			
 			# Banner
 			var banner_img = Image.new()
-			banner_img.load(game_path + path.game_banner)
-			if banner_img == null:
-				printerr("[ERROR] Cannot open the file " + game_path + path.game_banner)
-				game.banner = placeholder_banner
+			if FileAccess.file_exists(game_path + path.game_banner):
+				banner_img.load(game_path + path.game_banner)
 			else:
-				game.banner = ImageTexture.create_from_image(banner_img)
+				banner_img.load(path.default_banner)
+			game.banner = ImageTexture.create_from_image(banner_img)
 
 			# Hero
 			var hero_img = Image.new()
 			if FileAccess.file_exists(game_path + path.game_hero):
 				hero_img.load(game_path + path.game_hero)
-				game.hero = ImageTexture.create_from_image(hero_img)
 			else:
-				hero_img.load("res://assets/img/unknown.png")
-				game.hero = ImageTexture.create_from_image(hero_img)
+				hero_img.load(path.default_hero)
+			game.hero = ImageTexture.create_from_image(hero_img)
+
 		else:
 			printerr("[ERROR] " + id + "/game.conf isn't in the proper format")
 	else:

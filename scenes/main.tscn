@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://scripts/banner_menu.gd" id="8_lrgq2"]
 [ext_resource type="PackedScene" uid="uid://cwq5lpo80io0d" path="res://scenes/game_banner.tscn" id="8_ttsp2"]
 [ext_resource type="Texture2D" uid="uid://c88fnr814igpc" path="res://assets/img/pixel_logo_long.png" id="9_4eti7"]
-[ext_resource type="Texture2D" uid="uid://cgc7asuvr1um5" path="res://assets/placeholder.svg" id="9_bi3up"]
+[ext_resource type="Texture2D" uid="uid://cgc7asuvr1um5" path="res://assets/img/default/placeholder.svg" id="9_bi3up"]
 [ext_resource type="Texture2D" uid="uid://c43xlomsm26k2" path="res://assets/img/zz_mouse_64.png" id="9_djdqi"]
 [ext_resource type="Texture2D" uid="uid://ccxqk685vpfmr" path="res://assets/img/buttons/Yellow.png" id="9_o2r0a"]
 [ext_resource type="Texture2D" uid="uid://baldfvib8npgc" path="res://assets/img/buttons/Red.png" id="10_fkcj7"]
@@ -438,7 +438,6 @@ texture = ExtResource("9_4eti7")
 expand_mode = 3
 
 [node name="BannerMenu" type="HBoxContainer" parent="MainMenu/MainVbox"]
-visible = false
 layout_mode = 2
 size_flags_vertical = 6
 script = ExtResource("8_lrgq2")
@@ -472,6 +471,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="DrawerMenu" type="HBoxContainer" parent="MainMenu/MainVbox"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_o8yq3")
