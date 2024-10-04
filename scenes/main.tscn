@@ -1,12 +1,12 @@
-[gd_scene load_steps=30 format=3 uid="uid://bemlflx640ecp"]
+[gd_scene load_steps=28 format=3 uid="uid://bemlflx640ecp"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1x3i4"]
 [ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="2_o8yq3"]
 [ext_resource type="PackedScene" uid="uid://c4frsd4if6b7x" path="res://scenes/loading_screen.tscn" id="2_skuo7"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="6_eo0ua"]
-[ext_resource type="Script" path="res://scripts/classic_menu.gd" id="6_wb0df"]
-[ext_resource type="Texture2D" uid="uid://c4r37wr3878vj" path="res://icon.png" id="7_mrrwn"]
 [ext_resource type="Texture2D" uid="uid://dkcn3fu8n33sy" path="res://assets/img/buttons/Menu.png" id="8_7n6bf"]
+[ext_resource type="Script" path="res://scripts/banner_menu.gd" id="8_lrgq2"]
+[ext_resource type="PackedScene" uid="uid://cwq5lpo80io0d" path="res://scenes/game_banner.tscn" id="8_ttsp2"]
 [ext_resource type="Texture2D" uid="uid://c88fnr814igpc" path="res://assets/img/pixel_logo_long.png" id="9_4eti7"]
 [ext_resource type="Texture2D" uid="uid://cgc7asuvr1um5" path="res://assets/placeholder.svg" id="9_bi3up"]
 [ext_resource type="Texture2D" uid="uid://c43xlomsm26k2" path="res://assets/img/zz_mouse_64.png" id="9_djdqi"]
@@ -15,14 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://dp6au1s2cm1v0" path="res://assets/img/buttons/Green.png" id="11_5jn04"]
 [ext_resource type="Texture2D" uid="uid://dttgk3eadjifd" path="res://assets/img/buttons/Blue.png" id="12_vf2ow"]
 [ext_resource type="PackedScene" uid="uid://bveavdlpsb5lv" path="res://scenes/bottom_bar.tscn" id="15_vw4ht"]
-
-[sub_resource type="Animation" id="Animation_nlnb6"]
-resource_name = "select_game_left"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fdtbw"]
-_data = {
-"select_game_left": SubResource("Animation_nlnb6")
-}
 
 [sub_resource type="Animation" id="Animation_cbcuj"]
 length = 0.001
@@ -64,7 +56,7 @@ length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ListHbox/CategoryBar:custom_minimum_size:x")
+tracks/0/path = NodePath("DrawerMenu/CategoryBar:custom_minimum_size:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -79,7 +71,7 @@ length = 0.3
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ListHbox/CategoryBar:custom_minimum_size:x")
+tracks/0/path = NodePath("DrawerMenu/CategoryBar:custom_minimum_size:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -94,7 +86,7 @@ length = 0.3
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ListHbox/CategoryBar:custom_minimum_size:x")
+tracks/0/path = NodePath("DrawerMenu/CategoryBar:custom_minimum_size:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -335,103 +327,6 @@ script = ExtResource("1_1x3i4")
 [node name="LoadingScreen" parent="." instance=ExtResource("2_skuo7")]
 layout_mode = 1
 
-[node name="classicMenu" type="Control" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("6_wb0df")
-
-[node name="selected_game" type="PanelContainer" parent="classicMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -112.5
-offset_right = 75.0
-offset_bottom = 112.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Vbox" type="VBoxContainer" parent="classicMenu/selected_game"]
-layout_mode = 2
-size_flags_vertical = 8
-theme = ExtResource("2_o8yq3")
-
-[node name="TextureRect" type="TextureRect" parent="classicMenu/selected_game/Vbox"]
-layout_mode = 2
-texture = ExtResource("7_mrrwn")
-stretch_mode = 6
-
-[node name="Label" type="Label" parent="classicMenu/selected_game/Vbox"]
-layout_mode = 2
-size_flags_vertical = 8
-theme = ExtResource("2_o8yq3")
-text = "TOUHOU 77"
-horizontal_alignment = 1
-
-[node name="left_game" type="PanelContainer" parent="classicMenu"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -64.0
-offset_right = 128.0
-offset_bottom = 64.0
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="classicMenu/left_game"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="classicMenu/left_game/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("7_mrrwn")
-
-[node name="Label" type="Label" parent="classicMenu/left_game/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 8
-theme = ExtResource("2_o8yq3")
-text = "TOUHOU 77"
-horizontal_alignment = 1
-
-[node name="right_game" type="PanelContainer" parent="classicMenu"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -64.0
-offset_bottom = 64.0
-grow_horizontal = 0
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="classicMenu/right_game"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="classicMenu/right_game/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("7_mrrwn")
-
-[node name="Label" type="Label" parent="classicMenu/right_game/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 8
-theme = ExtResource("2_o8yq3")
-text = "TOUHOU 77"
-horizontal_alignment = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="classicMenu"]
-libraries = {
-"": SubResource("AnimationLibrary_fdtbw")
-}
-
 [node name="MainMenu" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -516,7 +411,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 0
 focus_neighbor_right = NodePath("../TabBar")
-focus_neighbor_bottom = NodePath("../../../ListHbox/CategoryBar/CategoryList")
+focus_neighbor_bottom = NodePath("../../../DrawerMenu/CategoryBar/CategoryList")
 theme = ExtResource("2_o8yq3")
 icon = ExtResource("8_7n6bf")
 
@@ -528,7 +423,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_left = NodePath("../OptionButton")
-focus_neighbor_bottom = NodePath("../../../ListHbox/ItemList")
+focus_neighbor_bottom = NodePath("../../../DrawerMenu/ItemList")
 theme = ExtResource("2_o8yq3")
 current_tab = 0
 tab_count = 3
@@ -542,20 +437,62 @@ size_flags_horizontal = 10
 texture = ExtResource("9_4eti7")
 expand_mode = 3
 
-[node name="ListHbox" type="HBoxContainer" parent="MainMenu/MainVbox"]
+[node name="BannerMenu" type="HBoxContainer" parent="MainMenu/MainVbox"]
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("8_lrgq2")
+
+[node name="GameBanner16" parent="MainMenu/MainVbox/BannerMenu" instance=ExtResource("8_ttsp2")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GameBanner18" parent="MainMenu/MainVbox/BannerMenu" instance=ExtResource("8_ttsp2")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GameBanner19" parent="MainMenu/MainVbox/BannerMenu" instance=ExtResource("8_ttsp2")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GameBanner20" parent="MainMenu/MainVbox/BannerMenu" instance=ExtResource("8_ttsp2")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GameBanner21" parent="MainMenu/MainVbox/BannerMenu" instance=ExtResource("8_ttsp2")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GameBanner22" parent="MainMenu/MainVbox/BannerMenu" instance=ExtResource("8_ttsp2")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GameBanner23" parent="MainMenu/MainVbox/BannerMenu" instance=ExtResource("8_ttsp2")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GameBanner24" parent="MainMenu/MainVbox/BannerMenu" instance=ExtResource("8_ttsp2")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GameBanner25" parent="MainMenu/MainVbox/BannerMenu" instance=ExtResource("8_ttsp2")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DrawerMenu" type="HBoxContainer" parent="MainMenu/MainVbox"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_o8yq3")
 theme_override_constants/separation = 0
 
-[node name="CategoryBar" type="ColorRect" parent="MainMenu/MainVbox/ListHbox"]
+[node name="CategoryBar" type="ColorRect" parent="MainMenu/MainVbox/DrawerMenu"]
 custom_minimum_size = Vector2(85, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("2_o8yq3")
 color = Color(0, 0, 0, 1)
 
-[node name="CategoryList" type="ItemList" parent="MainMenu/MainVbox/ListHbox/CategoryBar"]
+[node name="CategoryList" type="ItemList" parent="MainMenu/MainVbox/DrawerMenu/CategoryBar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -578,7 +515,7 @@ item_3/icon = ExtResource("12_vf2ow")
 item_4/text = " ZZ"
 item_4/icon = ExtResource("9_djdqi")
 
-[node name="ItemList" type="ItemList" parent="MainMenu/MainVbox/ListHbox"]
+[node name="ItemList" type="ItemList" parent="MainMenu/MainVbox/DrawerMenu"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -601,7 +538,7 @@ item_3/icon = ExtResource("9_bi3up")
 item_4/text = "Super Jeu 5"
 item_4/icon = ExtResource("9_bi3up")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MainMenu/MainVbox/ListHbox"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainMenu/MainVbox/DrawerMenu"]
 root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_qcudj")
@@ -616,11 +553,10 @@ libraries = {
 }
 speed_scale = 2.0
 
-[connection signal="game_list_loaded" from="." to="classicMenu" method="_on_main_game_list_loaded"]
 [connection signal="game_list_loaded" from="." to="MainMenu" method="_on_main_game_list_loaded"]
 [connection signal="animation_finished" from="MainMenu/Background/BackgroundAnimation" to="MainMenu" method="_on_background_animation_animation_finished"]
 [connection signal="pressed" from="MainMenu/MainVbox/TopBar/TobHbox/OptionButton" to="MainMenu" method="_on_option_button_pressed"]
-[connection signal="focus_entered" from="MainMenu/MainVbox/ListHbox/CategoryBar/CategoryList" to="MainMenu" method="_on_category_list_focus_entered"]
-[connection signal="focus_exited" from="MainMenu/MainVbox/ListHbox/CategoryBar/CategoryList" to="MainMenu" method="_on_category_list_focus_exited"]
-[connection signal="item_clicked" from="MainMenu/MainVbox/ListHbox/ItemList" to="MainMenu" method="_on_item_list_item_clicked"]
-[connection signal="item_selected" from="MainMenu/MainVbox/ListHbox/ItemList" to="MainMenu" method="_on_item_list_item_selected"]
+[connection signal="focus_entered" from="MainMenu/MainVbox/DrawerMenu/CategoryBar/CategoryList" to="MainMenu" method="_on_category_list_focus_entered"]
+[connection signal="focus_exited" from="MainMenu/MainVbox/DrawerMenu/CategoryBar/CategoryList" to="MainMenu" method="_on_category_list_focus_exited"]
+[connection signal="item_clicked" from="MainMenu/MainVbox/DrawerMenu/ItemList" to="MainMenu" method="_on_item_list_item_clicked"]
+[connection signal="item_selected" from="MainMenu/MainVbox/DrawerMenu/ItemList" to="MainMenu" method="_on_item_list_item_selected"]

@@ -22,12 +22,12 @@ func _on_item_list_item_clicked(index: int, at_position: Vector2, mouse_button_i
 
 
 func _on_main_game_list_loaded() -> void:
-	$MainVbox/ListHbox/ItemList.clear()
+	$MainVbox/DrawerMenu/ItemList.clear()
 	for game in $"../".game_list:
-		$MainVbox/ListHbox/ItemList.add_item(game.name, game.icon)
-	$MainVbox/ListHbox/ItemList.grab_focus()
-	$MainVbox/ListHbox/ItemList.select(0)
-	$MainVbox/ListHbox/CategoryBar/CategoryList.select(0)
+		$MainVbox/DrawerMenu/ItemList.add_item(game.name, game.icon)
+	$MainVbox/DrawerMenu/ItemList.grab_focus()
+	$MainVbox/DrawerMenu/ItemList.select(0)
+	$MainVbox/DrawerMenu/CategoryBar/CategoryList.select(0)
 
 func _on_item_list_item_selected(index: int) -> void:
 	# Load hero on background
@@ -37,11 +37,11 @@ func _on_item_list_item_selected(index: int) -> void:
 
 
 func _on_category_list_focus_entered() -> void:
-	$MainVbox/ListHbox/AnimationPlayer.play("open_category")
+	$MainVbox/DrawerMenu/AnimationPlayer.play("open_category")
 
 
 func _on_category_list_focus_exited() -> void:
-	$MainVbox/ListHbox/AnimationPlayer.play("close_category")
+	$MainVbox/DrawerMenu/AnimationPlayer.play("close_category")
 
 
 func _on_background_animation_animation_finished(anim_name: StringName) -> void:
