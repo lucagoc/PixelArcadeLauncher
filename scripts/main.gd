@@ -1,5 +1,7 @@
 extends Control
 
+var settings = load("res://scripts/sys/settings.gd").new()
+
 class Game:
 	var id: String
 	var name: String
@@ -13,61 +15,11 @@ class Game:
 	var hero: ImageTexture
 
 var game_list: Array = []
-var launcher_path = ""
-var games_folder_path = ""
 
 signal game_list_loaded
 
+var placeholder_banner = ImageTexture.create_from_image(load("res://assets/placeholder_banner.png"))
 
-# Convert a posix path to a windows path
-func posix_to_win_path(path: String) -> String:
-	var new_path = path.replace("/", "\\")
-	return new_path
-
-# Save the settings in the settings.conf file
-func save_settings():
-	var setting_file = FileAccess.open(launcher_path + "settings.conf", FileAccess.WRITE)
-	if setting_file != null:
-		setting_file.store_line("[PixelArcadeLauncher]")
-		setting_file.store_line("fullscreen = false")
-		setting_file.store_line("animation = true")
-		setting_file.store_line("sound = true")
-		setting_file.store_line("debug = false")
-		setting_file.store_line("scaling = 1")
-		setting_file.store_line("vsync = true")
-		setting_file.close()
-	else:
-		printerr("[ERROR] Cannot open the file " + launcher_path + "settings.conf")
-
-# Load the settings from the settings.conf file
-func load_settings():
-	var setting_file = FileAccess.open(launcher_path + "settings.conf", FileAccess.READ)
-	if setting_file != null:
-		var line = setting_file.get_line()
-		while line != "":
-			var parts = line.split("=")
-			if parts.size() == 2:
-				var key = parts[0].strip_edges()
-				var value = parts[1].strip_edges()
-				match key:
-					"fullscreen":
-						if value == "true":
-							DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-						else:
-							DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-					"scaling":
-						print("[INFO] Scaling: " + value)
-						key = int(value)
-						get_tree().root.content_scale_factor = key
-					"vsync":
-						if value == "true":
-							DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
-						else:
-							DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
-			line = setting_file.get_line()
-		setting_file.close()
-	else:
-		printerr("[ERROR] Cannot open the file " + launcher_path + "settings.conf")
 
 # Create a game and read game.conf file
 # First line must contain [PixelArcadePackage]
@@ -80,7 +32,8 @@ func load_settings():
 func load_game(id: String) -> Game:
 	var game = Game.new()
 	game.id = id
-	var file = FileAccess.open(games_folder_path + id + "/game.conf", FileAccess.READ)
+	var game_path = path.get_game(id)
+	var file = FileAccess.open(game_path + path.game_conf, FileAccess.READ)
 	if file != null:
 		var line = file.get_line()
 		if line == "[PixelArcadePackage]":
@@ -105,29 +58,32 @@ func load_game(id: String) -> Game:
 			
 			# Icon
 			var icon_img = Image.new()
-			icon_img.load(games_folder_path + id + "/icon.png")
+			icon_img.load(game_path + path.game_icon)
 			if icon_img == null:
-				printerr("[ERROR] Cannot open the file " + games_folder_path + id + "/icon.png")
+				printerr("[ERROR] Cannot open the file " + game_path + path.game_icon)
 				icon_img.load("res://icon.png")
-			icon_img.resize(64, 64)
+			#icon_img.resize(64, 64)
 			game.icon = ImageTexture.create_from_image(icon_img)
 
 			# Logo
 			var logo_img = Image.new()
-			logo_img.load(games_folder_path + id + "/logo.png")
+			logo_img.load(game_path + path.game_logo)
 			#img.resize(128, 128)
 			game.logo = ImageTexture.create_from_image(logo_img)
 			
 			# Banner
 			var banner_img = Image.new()
-			banner_img.load(games_folder_path + id + "/banner.png")
-			banner_img.resize(100, 150)
-			game.banner = ImageTexture.create_from_image(banner_img)
+			banner_img.load(game_path + path.game_banner)
+			if banner_img == null:
+				printerr("[ERROR] Cannot open the file " + game_path + path.game_banner)
+				game.banner = placeholder_banner
+			else:
+				game.banner = ImageTexture.create_from_image(banner_img)
 
 			# Hero
 			var hero_img = Image.new()
-			if FileAccess.file_exists(games_folder_path + id + "/hero.png"):
-				hero_img.load(games_folder_path + id + "/hero.png")
+			if FileAccess.file_exists(game_path + path.game_hero):
+				hero_img.load(game_path + path.game_hero)
 				game.hero = ImageTexture.create_from_image(hero_img)
 			else:
 				hero_img.load("res://assets/img/unknown.png")
@@ -135,7 +91,7 @@ func load_game(id: String) -> Game:
 		else:
 			printerr("[ERROR] " + id + "/game.conf isn't in the proper format")
 	else:
-		printerr("[ERROR] Cannot open the file " + games_folder_path + id + "/game.conf")
+		printerr("[ERROR] Cannot open the file " + game_path + path.game_conf)
 	if file != null:
 		file.close()
 	
@@ -144,9 +100,9 @@ func load_game(id: String) -> Game:
 
 # Load all the games folders by ID from the game folder
 func load_games_list():
-	var dir = DirAccess.open(games_folder_path)
+	var dir = DirAccess.open(path.data + path.games_folder)
 	if dir == null:
-		printerr("[ERROR] Cannot open the directory " + games_folder_path)
+		printerr("[ERROR] Cannot open the directory " + path.data + path.games_folder)
 		return
 	dir.list_dir_begin()
 	var dir_name = dir.get_next()
@@ -167,28 +123,22 @@ func load_games_list():
 
 func load_config():
 	# Check if the launcher folder exists
-	var home_path := OS.get_environment("USERPROFILE") if OS.has_feature("windows") else OS.get_environment("HOME")
-	launcher_path = home_path + "/PixelArcadeLauncher/"
-	games_folder_path = launcher_path + "games/"
-	if OS.has_feature("windows"):
-		launcher_path = posix_to_win_path(launcher_path)
-		games_folder_path = posix_to_win_path(games_folder_path)
-	var dir = DirAccess.open(launcher_path)
+	var dir = DirAccess.open(path.data)
 	if dir == null:
-		print("[INFO] Folder " + launcher_path + " not found, creating a new one...")
-		DirAccess.make_dir_absolute(launcher_path)
-		DirAccess.make_dir_absolute(games_folder_path)
-		save_settings()		
+		print("[INFO] Folder " + path.data + " not found, creating a new one...")
+		DirAccess.make_dir_absolute(path.data)
+		DirAccess.make_dir_absolute(path.data + path.games_folder)
+		settings.save_settings()		
 	else:
-		print("[INFO] Folder " + launcher_path + " found")
+		print("[INFO] Folder " + path.data + " found")
 
-	var setting_file = FileAccess.open(launcher_path + "settings.conf", FileAccess.READ)
+	var setting_file = FileAccess.open(path.data + path.settings_file, FileAccess.READ)
 	if setting_file == null:
 		print("[INFO] settings.conf not found, creating a new one...")
-		save_settings()
+		settings.save_settings()
 	else:
 		print("[INFO] settings.conf found, loading...")
-		load_settings()
+		settings.load_settings()
 	if setting_file != null:
 		setting_file.close()
 
@@ -212,7 +162,10 @@ func _ready():
 	load_games_list()
 	end_loading()
 
-
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
+
+func _on_path_ready():
+	print("[INFO] Path ready")
+	

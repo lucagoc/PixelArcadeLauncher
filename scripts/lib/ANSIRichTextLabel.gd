@@ -23,7 +23,7 @@ const color_values = [
 ]
 
 func add_data(text_line: String):
-	var text = data_buffer + text_line
+	var combinedText = data_buffer + text_line
 	data_buffer = ""
 	
 	var s = "" # s goes to screen regardless of escape codes
@@ -31,25 +31,25 @@ func add_data(text_line: String):
 	#            the part "Hello " goes to screen even if the escape
 	#            sequence is not yet fully received
 	
-	while ESCAPE_CSI in text:
-		var parts = text.split(ESCAPE_CSI, true, 1)
+	while ESCAPE_CSI in combinedText:
+		var parts = combinedText.split(ESCAPE_CSI, true, 1)
 		s += parts[0]
-		text = parts[1]
+		combinedText = parts[1]
 		
-		if "m" in text:
-			parts = text.split("m", true, 1)
-			text = parts[1]
+		if "m" in combinedText:
+			parts = combinedText.split("m", true, 1)
+			combinedText = parts[1]
 			
 			s += process_escape_code(parts[0])
 		
 		else:
 			# Escape not fully received yet
-			data_buffer = ESCAPE_CSI + text
-			text = ""
+			data_buffer = ESCAPE_CSI + combinedText
+			combinedText = ""
 			break
 	
-	if text.length() > 0:
-		s += text
+	if combinedText.length() > 0:
+		s += combinedText
 	
 	bbcode_text += s
 

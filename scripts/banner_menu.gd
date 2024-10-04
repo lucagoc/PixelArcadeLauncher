@@ -1,11 +1,20 @@
 extends HBoxContainer
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func _on_main_game_list_loaded() -> void:
+	# Clear the children
+	for child in get_children():
+		child.queue_free()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	# Add games as children
+	var games = get_node("../../../").game_list
+	print("Games: ", games)
+	for game in games:
+		var banner_scene = load("res://scenes/game_banner.tscn")
+		var banner = banner_scene.instantiate()
+		banner.set_banner_texture(game.banner)
+		add_child(banner)
+		print("Added game banner: ", game.name)
+		
+		# Set min x size (dirty)
+		banner.custom_minimum_size.x = 100

@@ -438,48 +438,40 @@ texture = ExtResource("9_4eti7")
 expand_mode = 3
 
 [node name="BannerMenu" type="HBoxContainer" parent="MainMenu/MainVbox"]
+visible = false
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 6
 script = ExtResource("8_lrgq2")
 
-[node name="GameBanner16" parent="MainMenu/MainVbox/BannerMenu" instance=ExtResource("8_ttsp2")]
+[node name="GameBanner44" parent="MainMenu/MainVbox/BannerMenu" instance=ExtResource("8_ttsp2")]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GameBanner18" parent="MainMenu/MainVbox/BannerMenu" instance=ExtResource("8_ttsp2")]
+[node name="GameBanner45" parent="MainMenu/MainVbox/BannerMenu" instance=ExtResource("8_ttsp2")]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GameBanner19" parent="MainMenu/MainVbox/BannerMenu" instance=ExtResource("8_ttsp2")]
+[node name="GameBanner47" parent="MainMenu/MainVbox/BannerMenu" instance=ExtResource("8_ttsp2")]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GameBanner20" parent="MainMenu/MainVbox/BannerMenu" instance=ExtResource("8_ttsp2")]
+[node name="GameBanner48" parent="MainMenu/MainVbox/BannerMenu" instance=ExtResource("8_ttsp2")]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GameBanner21" parent="MainMenu/MainVbox/BannerMenu" instance=ExtResource("8_ttsp2")]
+[node name="GameBanner49" parent="MainMenu/MainVbox/BannerMenu" instance=ExtResource("8_ttsp2")]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GameBanner22" parent="MainMenu/MainVbox/BannerMenu" instance=ExtResource("8_ttsp2")]
+[node name="GameBanner50" parent="MainMenu/MainVbox/BannerMenu" instance=ExtResource("8_ttsp2")]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GameBanner23" parent="MainMenu/MainVbox/BannerMenu" instance=ExtResource("8_ttsp2")]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="GameBanner24" parent="MainMenu/MainVbox/BannerMenu" instance=ExtResource("8_ttsp2")]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="GameBanner25" parent="MainMenu/MainVbox/BannerMenu" instance=ExtResource("8_ttsp2")]
+[node name="GameBanner46" parent="MainMenu/MainVbox/BannerMenu" instance=ExtResource("8_ttsp2")]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="DrawerMenu" type="HBoxContainer" parent="MainMenu/MainVbox"]
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_o8yq3")
@@ -546,6 +538,7 @@ libraries = {
 
 [node name="BottomBar" parent="MainMenu/MainVbox" instance=ExtResource("15_vw4ht")]
 layout_mode = 2
+size_flags_vertical = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -554,6 +547,7 @@ libraries = {
 speed_scale = 2.0
 
 [connection signal="game_list_loaded" from="." to="MainMenu" method="_on_main_game_list_loaded"]
+[connection signal="game_list_loaded" from="." to="MainMenu/MainVbox/BannerMenu" method="_on_main_game_list_loaded"]
 [connection signal="animation_finished" from="MainMenu/Background/BackgroundAnimation" to="MainMenu" method="_on_background_animation_animation_finished"]
 [connection signal="pressed" from="MainMenu/MainVbox/TopBar/TobHbox/OptionButton" to="MainMenu" method="_on_option_button_pressed"]
 [connection signal="focus_entered" from="MainMenu/MainVbox/DrawerMenu/CategoryBar/CategoryList" to="MainMenu" method="_on_category_list_focus_entered"]
