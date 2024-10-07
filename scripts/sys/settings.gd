@@ -1,5 +1,9 @@
 extends Control
 
+@export var scaling = 1
+
+signal scaling_changed
+
 # Save the settings in the settings.conf file
 func save_settings():
 	var setting_file = FileAccess.open(path.data + path.settings_file, FileAccess.WRITE)
@@ -33,8 +37,8 @@ func load_settings():
 							DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 					"scaling":
 						print("[INFO] Scaling: " + value)
-						key = int(value)
-						# get_tree().root.content_scale_factor = key TODO emit signal
+						scaling = int(value)
+						emit_signal("scaling_changed")
 					"vsync":
 						if value == "true":
 							DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)

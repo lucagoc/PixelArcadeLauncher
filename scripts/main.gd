@@ -25,8 +25,10 @@ func preload_data():
 		setting_file.close()
 
 func load_data():
+	start_loading()
 	preload_data()
 	GameList.reload_list()
+	end_loading()
 
 func start_loading():
 	print("PixelArcadeLauncher is starting...")
@@ -42,10 +44,14 @@ func end_loading():
 
 
 func _ready():
-	start_loading()
+	settings.connect("scaling_changed", _scale_changed)
 	load_data()
-	end_loading()
 
+@warning_ignore("unused_parameter")
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
+
+
+func _scale_changed():
+	get_tree().root.content_scale_factor = settings.scaling

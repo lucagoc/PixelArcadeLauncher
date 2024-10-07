@@ -14,6 +14,7 @@ class Game:
 
 var game_list: Array = []
 
+@warning_ignore("unused_signal")
 signal game_list_loaded # Do not remove this signal
 
 # Load a game from the game folder
