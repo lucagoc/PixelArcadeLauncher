@@ -19,5 +19,7 @@ func _on_main_game_list_loaded() -> void:
 		# Set min x size (dirty)
 		banner.custom_minimum_size.x = 100
 
+		banner.size_flags_horizontal = 2
+
 func _ready() -> void:
 	GameList.connect("game_list_loaded", _on_main_game_list_loaded)
