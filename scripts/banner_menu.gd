@@ -13,6 +13,7 @@ func _on_main_game_list_loaded() -> void:
 		var banner_scene = load("res://scenes/game_banner.tscn")
 		var banner = banner_scene.instantiate()
 		banner.set_banner_texture(game.banner)
+		banner.set_banner_bottom_label(game.name)
 		add_child(banner)
 		print("Added game banner: ", game.name)
 		
