@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bemlflx640ecp"]
+[gd_scene load_steps=30 format=3 uid="uid://bemlflx640ecp"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1x3i4"]
 [ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="2_o8yq3"]
@@ -16,6 +16,18 @@
 [ext_resource type="Texture2D" uid="uid://dp6au1s2cm1v0" path="res://assets/img/buttons/Green.png" id="11_5jn04"]
 [ext_resource type="Texture2D" uid="uid://dttgk3eadjifd" path="res://assets/img/buttons/Blue.png" id="12_vf2ow"]
 [ext_resource type="PackedScene" uid="uid://bveavdlpsb5lv" path="res://scenes/bottom_bar.tscn" id="15_vw4ht"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ofx2k"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 100, 0)
+emission_shape_scale = Vector3(100, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(10, 1, 1)
+gravity = Vector3(0, -2000, 0)
+scale_min = 5.0
+scale_max = 7.0
+turbulence_enabled = true
+turbulence_noise_scale = 1.0
 
 [sub_resource type="Animation" id="Animation_cbcuj"]
 length = 0.001
@@ -374,6 +386,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.156863)
+
+[node name="Control" type="Control" parent="MainMenu/Background"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="MainMenu/Background/Control"]
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_ofx2k")
+lifetime = 4.0
+fixed_fps = 60
+trail_lifetime = 1.73
 
 [node name="BackgroundAnimation" type="AnimationPlayer" parent="MainMenu/Background"]
 libraries = {
