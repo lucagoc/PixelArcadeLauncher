@@ -550,6 +550,7 @@ speed_scale = 2.0
 
 [connection signal="animation_finished" from="MainMenu/Background/BackgroundAnimation" to="MainMenu" method="_on_background_animation_animation_finished"]
 [connection signal="pressed" from="MainMenu/MainVbox/TopBar/TobHbox/OptionButton" to="MainMenu" method="_on_option_button_pressed"]
+[connection signal="game_selected" from="MainMenu/MainVbox/BannerMenu" to="MainMenu" method="_on_banner_menu_game_selected"]
 [connection signal="focus_entered" from="MainMenu/MainVbox/DrawerMenu/CategoryBar/CategoryList" to="MainMenu" method="_on_category_list_focus_entered"]
 [connection signal="focus_exited" from="MainMenu/MainVbox/DrawerMenu/CategoryBar/CategoryList" to="MainMenu" method="_on_category_list_focus_exited"]
 [connection signal="item_clicked" from="MainMenu/MainVbox/DrawerMenu/ItemList" to="MainMenu" method="_on_item_list_item_clicked"]

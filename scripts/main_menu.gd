@@ -1,6 +1,5 @@
 extends Control
 
-
 func _on_option_button_pressed() -> void:
 	# Open debug_menu
 	get_tree().change_scene_to_file("res://scenes/debug_menu.tscn")
@@ -32,3 +31,9 @@ func _on_background_animation_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade_out":
 		$Background/BackgroundHero.texture = $Background/BackgroundHero2.texture
 		$Background/BackgroundHero.modulate = Color(1, 1, 1, 1)
+
+func _on_banner_menu_game_selected(id: String) -> void:
+	print("Game selected: ", id)
+	var game = GameList.find_game(id)
+	$Background/BackgroundHero2.texture = game.hero
+	$Background/BackgroundAnimation.play("fade_out")

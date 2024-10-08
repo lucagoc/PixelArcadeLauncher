@@ -113,3 +113,10 @@ func load_list():
 func reload_list():
 	game_list.clear()
 	load_list()
+
+# Find a game by ID
+func find_game(id: String) -> Game:
+	for game in game_list:
+		if game.id == id:
+			return game
+	return null
