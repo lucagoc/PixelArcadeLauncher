@@ -1,8 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://bemlflx640ecp"]
+[gd_scene load_steps=35 format=3 uid="uid://bemlflx640ecp"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1x3i4"]
 [ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="2_o8yq3"]
 [ext_resource type="PackedScene" uid="uid://c4frsd4if6b7x" path="res://scenes/loading_screen.tscn" id="2_skuo7"]
+[ext_resource type="Script" path="res://scripts/main_vbox.gd" id="6_31f76"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="6_eo0ua"]
 [ext_resource type="Texture2D" uid="uid://dkcn3fu8n33sy" path="res://assets/img/buttons/Menu.png" id="8_7n6bf"]
 [ext_resource type="Script" path="res://scripts/banner_menu.gd" id="8_lrgq2"]
@@ -113,6 +114,57 @@ _data = {
 "RESET": SubResource("Animation_m3we3"),
 "close_category": SubResource("Animation_66ngf"),
 "open_category": SubResource("Animation_4m38c")
+}
+
+[sub_resource type="Animation" id="Animation_anar2"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DrawerMenu:custom_minimum_size:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_ys0tp"]
+resource_name = "close_drawer"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DrawerMenu:custom_minimum_size:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(400, -0.15, 0, 0.15, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="Animation" id="Animation_b5voc"]
+resource_name = "open_drawer"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DrawerMenu:custom_minimum_size:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0, 270, 400, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_anmaq"]
+_data = {
+"RESET": SubResource("Animation_anar2"),
+"close_drawer": SubResource("Animation_ys0tp"),
+"open_drawer": SubResource("Animation_b5voc")
 }
 
 [sub_resource type="Animation" id="Animation_t2tse"]
@@ -387,7 +439,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.156863)
 
-[node name="Control" type="Control" parent="MainMenu/Background"]
+[node name="Particles" type="Control" parent="MainMenu/Background"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -397,7 +449,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="MainMenu/Background/Control"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="MainMenu/Background/Particles"]
 amount = 100
 process_material = SubResource("ParticleProcessMaterial_ofx2k")
 lifetime = 4.0
@@ -417,6 +469,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
+script = ExtResource("6_31f76")
 
 [node name="TopBar" type="ColorRect" parent="MainMenu/MainVbox"]
 custom_minimum_size = Vector2(0, 70)
@@ -470,6 +523,8 @@ expand_mode = 3
 [node name="BannerMenu" type="HBoxContainer" parent="MainMenu/MainVbox"]
 layout_mode = 2
 size_flags_vertical = 6
+focus_neighbor_top = NodePath("../TopBar/TobHbox/TabBar")
+focus_neighbor_bottom = NodePath("../DrawerMenu")
 script = ExtResource("8_lrgq2")
 
 [node name="GameBanner44" parent="MainMenu/MainVbox/BannerMenu" instance=ExtResource("8_ttsp2")]
@@ -501,9 +556,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="DrawerMenu" type="HBoxContainer" parent="MainMenu/MainVbox"]
-visible = false
 layout_mode = 2
-size_flags_vertical = 3
+focus_neighbor_top = NodePath("../BannerMenu")
 theme = ExtResource("2_o8yq3")
 theme_override_constants/separation = 0
 script = ExtResource("10_2bhfd")
@@ -522,8 +576,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-focus_neighbor_top = NodePath("../../../TopBar/TobHbox/TabBar")
-focus_neighbor_right = NodePath("../../ItemList")
 theme = ExtResource("2_o8yq3")
 item_count = 5
 same_column_width = true
@@ -542,8 +594,6 @@ item_4/icon = ExtResource("9_djdqi")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-focus_neighbor_left = NodePath("../CategoryBar/CategoryList")
-focus_neighbor_top = NodePath("../../TopBar/TobHbox/TabBar")
 theme = ExtResource("2_o8yq3")
 item_count = 5
 max_columns = 0
@@ -571,6 +621,11 @@ libraries = {
 layout_mode = 2
 size_flags_vertical = 8
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainMenu/MainVbox"]
+libraries = {
+"": SubResource("AnimationLibrary_anmaq")
+}
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_2h2xi")
@@ -579,8 +634,12 @@ speed_scale = 2.0
 
 [connection signal="animation_finished" from="MainMenu/Background/BackgroundAnimation" to="MainMenu" method="_on_background_animation_animation_finished"]
 [connection signal="pressed" from="MainMenu/MainVbox/TopBar/TobHbox/OptionButton" to="MainMenu" method="_on_option_button_pressed"]
+[connection signal="focus_entered" from="MainMenu/MainVbox/BannerMenu" to="MainMenu/MainVbox" method="_on_banner_menu_focus_entered"]
 [connection signal="game_selected" from="MainMenu/MainVbox/BannerMenu" to="MainMenu" method="_on_banner_menu_game_selected"]
+[connection signal="game_selected" from="MainMenu/MainVbox/BannerMenu" to="MainMenu/MainVbox" method="_on_banner_menu_focus_entered"]
+[connection signal="focus_entered" from="MainMenu/MainVbox/DrawerMenu" to="MainMenu/MainVbox" method="_on_drawer_menu_focus_entered"]
 [connection signal="focus_entered" from="MainMenu/MainVbox/DrawerMenu/CategoryBar/CategoryList" to="MainMenu" method="_on_category_list_focus_entered"]
 [connection signal="focus_exited" from="MainMenu/MainVbox/DrawerMenu/CategoryBar/CategoryList" to="MainMenu" method="_on_category_list_focus_exited"]
+[connection signal="focus_entered" from="MainMenu/MainVbox/DrawerMenu/ItemList" to="MainMenu/MainVbox" method="_on_drawer_menu_focus_entered"]
 [connection signal="item_clicked" from="MainMenu/MainVbox/DrawerMenu/ItemList" to="MainMenu" method="_on_item_list_item_clicked"]
 [connection signal="item_selected" from="MainMenu/MainVbox/DrawerMenu/ItemList" to="MainMenu" method="_on_item_list_item_selected"]

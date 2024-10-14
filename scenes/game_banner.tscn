@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwq5lpo80io0d"]
+[gd_scene load_steps=8 format=3 uid="uid://cwq5lpo80io0d"]
 
 [ext_resource type="Texture2D" uid="uid://dkfnjychc24ah" path="res://assets/img/default/banner.png" id="1_gtc0v"]
 [ext_resource type="Script" path="res://scripts/game_banner.gd" id="1_spqyp"]
@@ -58,21 +58,6 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3)
 }
 
-[sub_resource type="Animation" id="Animation_8qqnm"]
-resource_name = "focus_exit"
-length = 0.5
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:custom_minimum_size:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(400, -0.15, 0, 0.0333333, -150, 100, -0.333333, 1, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5)
-}
-
 [sub_resource type="Animation" id="Animation_033jf"]
 resource_name = "spawn"
 length = 0.3
@@ -93,7 +78,6 @@ _data = {
 "RESET": SubResource("Animation_a6w6v"),
 "despawn": SubResource("Animation_hb66i"),
 "focus_entered": SubResource("Animation_guf86"),
-"focus_exit": SubResource("Animation_8qqnm"),
 "spawn": SubResource("Animation_033jf")
 }
 

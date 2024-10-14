@@ -1,9 +1,17 @@
 extends HBoxContainer
 
 signal game_selected(id: String)
+signal banner_menu_loaded
+
+var nb_displayed_banners = 5
+
+func get_index_last_banner(index):
+	return (index + nb_displayed_banners / 2) % GameList.game_list.size()
 
 func _on_banner_focused(id: String) -> void:
 	emit_signal("game_selected", id)
+	print(get_index_last_banner(0))
+	
 
 func _on_main_game_list_loaded() -> void:
 	# Clear the children
@@ -18,7 +26,9 @@ func _on_main_game_list_loaded() -> void:
 		var banner = banner_scene.instantiate()
 		banner.set_banner_texture(game.banner)
 		banner.set_banner_bottom_label(game.name)
+		#banner.connect_signal("game_selected")
 		banner.set_id(game.id)
+		banner.name = game.id
 		add_child(banner)
 		print("Added game banner: ", game.name)
 		
@@ -31,7 +41,8 @@ func _on_main_game_list_loaded() -> void:
 
 		# Connect the signal
 		banner.connect("banner_focused", _on_banner_focused)
-
+	
+	emit_signal("banner_menu_loaded")
 
 
 func _ready() -> void:
