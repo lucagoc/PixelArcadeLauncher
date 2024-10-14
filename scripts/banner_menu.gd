@@ -10,7 +10,6 @@ func get_index_last_banner(index):
 
 func _on_banner_focused(id: String) -> void:
 	emit_signal("game_selected", id)
-	print(get_index_last_banner(0))
 	
 
 func _on_main_game_list_loaded() -> void:

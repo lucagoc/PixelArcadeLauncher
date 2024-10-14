@@ -1,8 +1,9 @@
 extends VBoxContainer
 
-var isDrawerOpened = true
+var isDrawerOpened = false
 
-func _on_banner_menu_focus_entered() -> void:
+func _on_banner_menu_focus_entered(id: String) -> void:
+	print("_on_banner_menu_focus_entered")
 	if isDrawerOpened:
 		$AnimationPlayer.play("close_drawer")
 		isDrawerOpened = false
