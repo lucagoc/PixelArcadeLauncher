@@ -25,14 +25,13 @@ func _on_main_game_list_loaded() -> void:
 		var banner = banner_scene.instantiate()
 		banner.set_banner_texture(game.banner)
 		banner.set_banner_bottom_label(game.name)
-		#banner.connect_signal("game_selected")
 		banner.set_id(game.id)
 		banner.name = game.id
 		add_child(banner)
 		print("Added game banner: ", game.name)
 		
 		# Set min x size (dirty)
-		banner.custom_minimum_size.x = 100
+		# banner.custom_minimum_size.x = 100
 
 		# Set the size to develop
 		banner.size_flags_horizontal = 3

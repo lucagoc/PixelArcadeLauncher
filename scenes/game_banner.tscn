@@ -89,20 +89,20 @@ script = ExtResource("1_spqyp")
 [node name="TopLabel" type="Label" parent="."]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 10
+size_flags_vertical = 8
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_vertical = 3
 focus_mode = 2
 texture = ExtResource("1_gtc0v")
-expand_mode = 5
+expand_mode = 1
 stretch_mode = 5
 
 [node name="BottomLabel" type="Label" parent="."]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 2
+size_flags_vertical = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

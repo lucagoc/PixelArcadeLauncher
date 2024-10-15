@@ -42,8 +42,12 @@ func end_loading():
 	$AnimationPlayer.play("loading_end")
 	print("[INFO] PixelArcadeLauncher has been loaded successfully !")
 
+func add_console_commands():
+	LimboConsole.register_command(load_data, "reload", "Reload the game list")
+	LimboConsole.register_command(start_loading, "start_loading", "Start the loading screen")
 
 func _ready():
+	add_console_commands()
 	settings.connect("scaling_changed", _scale_changed)
 	load_data()
 
