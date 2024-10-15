@@ -47,6 +47,7 @@ func add_console_commands():
 	LimboConsole.register_command(start_loading, "start_loading", "Start the loading screen")
 
 func _ready():
+	get_tree().get_root().size_changed.connect(resize)
 	add_console_commands()
 	settings.connect("scaling_changed", _scale_changed)
 	load_data()
@@ -59,3 +60,6 @@ func _process(delta):
 
 func _scale_changed():
 	get_tree().root.content_scale_factor = settings.scaling
+
+func resize():
+	Global.window_size = get_viewport().size

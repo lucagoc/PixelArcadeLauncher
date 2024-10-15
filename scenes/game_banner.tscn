@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwq5lpo80io0d"]
+[gd_scene load_steps=10 format=3 uid="uid://cwq5lpo80io0d"]
 
 [ext_resource type="Texture2D" uid="uid://dkfnjychc24ah" path="res://assets/img/default/banner.png" id="1_gtc0v"]
 [ext_resource type="Script" path="res://scripts/game_banner.gd" id="1_spqyp"]
@@ -67,7 +67,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(100, -0.25, 0, 0, 295, 400, -0.166667, -15, 0.15, 0),
+"points": PackedFloat32Array(0, 0, 0, 0, 400, 400, 0, 0, 0, 0),
 "times": PackedFloat32Array(0, 0.3)
 }
 tracks/1/type = "value"
@@ -98,11 +98,39 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3)
 }
 
+[sub_resource type="Animation" id="Animation_8yl6o"]
+resource_name = "focus_exit"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:custom_minimum_size:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(400, 0, 0, 0, -400, 0, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1yxky"]
 _data = {
 "RESET": SubResource("Animation_a6w6v"),
 "despawn": SubResource("Animation_hb66i"),
 "focus_entered": SubResource("Animation_guf86"),
+"focus_exit": SubResource("Animation_8yl6o"),
 "spawn": SubResource("Animation_033jf")
 }
 
@@ -122,7 +150,7 @@ size_flags_vertical = 3
 focus_mode = 2
 texture = ExtResource("1_gtc0v")
 expand_mode = 1
-stretch_mode = 6
+stretch_mode = 5
 
 [node name="ColorRect" type="ColorRect" parent="TextureRect"]
 visible = false

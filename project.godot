@@ -24,6 +24,7 @@ config/icon="res://icon.png"
 path="*res://scripts/sys/path.gd"
 GameList="*res://scripts/sys/game_list.gd"
 LimboConsole="*res://addons/limbo_console/limbo_console.gd"
+Global="*res://scripts/sys/global.gd"
 
 [display]
 

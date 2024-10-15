@@ -3,11 +3,15 @@ extends VBoxContainer
 var BottomLabel
 var TopLabel
 var id
+var index
 
 signal banner_focused(id: String)
 
 func set_id(in_id: String) -> void:
 	id = in_id
+
+func set_index(in_index: int) -> void:
+	index = in_index
 
 func set_focus():
 	$TextureRect.grab_focus()
@@ -29,4 +33,11 @@ func _on_texture_rect_focus_entered() -> void:
 
 func _on_texture_rect_focus_exited() -> void:
 	$BottomLabel.text = ""
-	$AnimationPlayer.play_backwards("focus_entered")
+	$AnimationPlayer.play("focus_exit")
+
+func _on_banner_focused(focused_index: int):
+	print("Focused index: ", focused_index)
+	if (index < (focused_index - Global.number_of_banners / 2)) or ((focused_index + Global.number_of_banners / 2) < index):
+		self.hide()
+	else:
+		self.show()
