@@ -2,9 +2,6 @@ extends HBoxContainer
 
 signal game_selected(id: String)
 signal banner_menu_loaded
-signal other_banner_focused(index: int)
-
-var nb_displayed_banners = 5
 
 func get_banner_by_id(id: String) -> VBoxContainer:
 	for child in get_children():
@@ -16,6 +13,10 @@ func _on_banner_focused(id: String) -> void:
 	emit_signal("game_selected", id)
 	var banner = get_banner_by_id(id)
 	emit_signal("other_banner_focused", banner.index)
+
+	# Always center the banner focused
+	print($"../".get_h_scroll_bar().max_value)
+	$"../".scroll_horizontal = $"../".get_h_scroll_bar().max_value/GameList.game_list.size() * banner.index - $"../".size.x/2 + (($"../".get_h_scroll_bar().max_value/GameList.game_list.size())/2)
 
 func _on_main_game_list_loaded() -> void:
 	# Clear the children
@@ -44,7 +45,6 @@ func _on_main_game_list_loaded() -> void:
 
 		# Connect the signal
 		banner.connect("banner_focused", _on_banner_focused)
-		self.connect("other_banner_focused", banner._on_banner_focused)
 	
 	emit_signal("banner_menu_loaded")
 

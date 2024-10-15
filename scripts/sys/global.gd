@@ -4,4 +4,4 @@ extends Node
 
 var window_size
 var ratio = 2.0 / 3.0 # Banner ratio
-var number_of_banners = 5
+var number_of_banners = 7

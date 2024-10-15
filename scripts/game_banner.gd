@@ -33,11 +33,4 @@ func _on_texture_rect_focus_entered() -> void:
 
 func _on_texture_rect_focus_exited() -> void:
 	$BottomLabel.text = ""
-	$AnimationPlayer.play("focus_exit")
-
-func _on_banner_focused(focused_index: int):
-	print("Focused index: ", focused_index)
-	if (index < (focused_index - Global.number_of_banners / 2)) or ((focused_index + Global.number_of_banners / 2) < index):
-		self.hide()
-	else:
-		self.show()
+	$AnimationPlayer.play_backwards("focus_entered")
