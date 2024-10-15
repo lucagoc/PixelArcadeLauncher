@@ -524,14 +524,6 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GameBanner56" parent="MainMenu/MainVbox/BannerMenu" instance=ExtResource("8_ttsp2")]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="GameBanner46" parent="MainMenu/MainVbox/BannerMenu" instance=ExtResource("8_ttsp2")]
-layout_mode = 2
-size_flags_horizontal = 3
-
 [node name="DrawerMenu" type="HBoxContainer" parent="MainMenu/MainVbox"]
 layout_mode = 2
 size_flags_vertical = 8

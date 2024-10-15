@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwq5lpo80io0d"]
+[gd_scene load_steps=9 format=3 uid="uid://cwq5lpo80io0d"]
 
 [ext_resource type="Texture2D" uid="uid://dkfnjychc24ah" path="res://assets/img/default/banner.png" id="1_gtc0v"]
 [ext_resource type="Script" path="res://scripts/game_banner.gd" id="1_spqyp"]
+[ext_resource type="Material" uid="uid://e2ayymwahag0" path="res://scenes/highlight.tres" id="3_gxj7a"]
 
 [sub_resource type="Animation" id="Animation_a6w6v"]
 length = 0.001
@@ -26,6 +27,18 @@ tracks/1/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect/ColorRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_hb66i"]
@@ -56,6 +69,18 @@ tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(100, -0.25, 0, 0, 295, 400, -0.166667, -15, 0.15, 0),
 "times": PackedFloat32Array(0, 0.3)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_033jf"]
@@ -97,7 +122,17 @@ size_flags_vertical = 3
 focus_mode = 2
 texture = ExtResource("1_gtc0v")
 expand_mode = 1
-stretch_mode = 5
+stretch_mode = 6
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect"]
+visible = false
+material = ExtResource("3_gxj7a")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="BottomLabel" type="Label" parent="."]
 layout_mode = 2
