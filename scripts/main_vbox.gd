@@ -7,6 +7,9 @@ signal show_banner_tags
 
 func _on_banner_menu_focus_entered(id: String) -> void:
 	if isDrawerOpened:
+		var drawer_size = $DrawerMenu.custom_minimum_size.y
+		var animation = $AnimationPlayer.get_animation("close_drawer")
+		animation.bezier_track_set_key_value(0, 0, drawer_size)
 		$AnimationPlayer.play("close_drawer")
 		isDrawerOpened = false
 	
@@ -16,6 +19,13 @@ func _on_banner_menu_focus_entered(id: String) -> void:
 
 func _on_drawer_menu_focus_entered() -> void:
 	if not isDrawerOpened:
+		# Set the drawer size to 80% of the screen height
+		var drawer_size = get_viewport_rect().size.y * 0.7
+		print("Drawer_size (80% of screen)", drawer_size)
+		var animation = $AnimationPlayer.get_animation("open_drawer")
+		animation.bezier_track_set_key_value(0, 1, drawer_size)
+		
+		# Play the animation
 		$AnimationPlayer.play("open_drawer")
 		isDrawerOpened = true
 	
