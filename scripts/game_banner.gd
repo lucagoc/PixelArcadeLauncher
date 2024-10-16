@@ -34,9 +34,13 @@ func set_focus_neighbor_right(banner: VBoxContainer) -> void:
 func _on_texture_rect_focus_entered() -> void:
 	if BottomLabel != null:
 		$BottomLabel.text = BottomLabel
+
 	$AnimationPlayer.play("focus_entered")
 	emit_signal("banner_focused", id)
 
 func _on_texture_rect_focus_exited() -> void:
 	$BottomLabel.text = ""
-	$AnimationPlayer.play("RESET")
+	# Play animation backward from the last frame
+	var position = $AnimationPlayer.current_animation_position
+	$AnimationPlayer.play_backwards("focus_entered")
+	$AnimationPlayer.seek(position)
