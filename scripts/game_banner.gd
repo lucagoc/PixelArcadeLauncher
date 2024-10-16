@@ -29,7 +29,7 @@ func set_banner_bottom_label(label: String) -> void:
 
 func show_tags() -> void:
 	if tags_hidden:
-		$AnimationPlayer.play_backwards("hide_tags")
+		$AnimationPlayer.play("show_tags")
 		tags_hidden = false
 
 func hide_tags() -> void:
