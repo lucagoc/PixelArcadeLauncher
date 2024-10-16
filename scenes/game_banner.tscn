@@ -1,8 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwq5lpo80io0d"]
+[gd_scene load_steps=10 format=3 uid="uid://cwq5lpo80io0d"]
 
 [ext_resource type="Texture2D" uid="uid://dkfnjychc24ah" path="res://assets/img/default/banner.png" id="1_gtc0v"]
 [ext_resource type="Script" path="res://scripts/game_banner.gd" id="1_spqyp"]
 [ext_resource type="Material" uid="uid://e2ayymwahag0" path="res://scenes/highlight.tres" id="3_gxj7a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkuvb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.964706, 0.741176, 0.12549, 1)
+
+[sub_resource type="Theme" id="Theme_rsxnt"]
+Panel/styles/panel = SubResource("StyleBoxFlat_bkuvb")
 
 [sub_resource type="Animation" id="Animation_a6w6v"]
 length = 0.001
@@ -164,6 +175,16 @@ focus_mode = 2
 texture = ExtResource("1_gtc0v")
 expand_mode = 3
 stretch_mode = 6
+
+[node name="SelectionRect" type="Panel" parent="TextureRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_rsxnt")
 
 [node name="ColorRect" type="ColorRect" parent="TextureRect"]
 visible = false

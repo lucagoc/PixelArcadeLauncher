@@ -32,6 +32,7 @@ func set_focus_neighbor_right(banner: VBoxContainer) -> void:
 	$TextureRect.set_focus_neighbor(SIDE_RIGHT, banner.get_node("TextureRect").get_path())
 
 func _on_texture_rect_focus_entered() -> void:
+	$TextureRect/SelectionRect.show()
 	if BottomLabel != null:
 		$BottomLabel.text = BottomLabel
 
@@ -39,6 +40,7 @@ func _on_texture_rect_focus_entered() -> void:
 	emit_signal("banner_focused", id)
 
 func _on_texture_rect_focus_exited() -> void:
+	$TextureRect/SelectionRect.hide()
 	$BottomLabel.text = ""
 	# Play animation backward from the last frame
 	var position = $AnimationPlayer.current_animation_position
