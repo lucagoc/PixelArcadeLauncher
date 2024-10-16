@@ -15,8 +15,12 @@ func _on_banner_focused(id: String) -> void:
 	emit_signal("other_banner_focused", banner.index)
 
 	# Always center the banner focused
-	print($"../".get_h_scroll_bar().max_value)
-	$"../".scroll_horizontal = $"../".get_h_scroll_bar().max_value/GameList.game_list.size() * banner.index - $"../".size.x/2 + (($"../".get_h_scroll_bar().max_value/GameList.game_list.size())/2)
+	var destination = $"../".get_h_scroll_bar().max_value/GameList.game_list.size() * banner.index - $"../".size.x/2 + (($"../".get_h_scroll_bar().max_value/GameList.game_list.size())/2)
+	var animation = $"../".get_child(1).get_animation("scroll")
+	animation.bezier_track_set_key_value(0, 0, $"../".get_h_scroll_bar().value)
+	animation.bezier_track_set_key_value(0, 1, destination)
+	$"../".get_child(1).play("scroll")
+	print("Animation: ", $"../".get_h_scroll_bar().value, " -> ", destination)
 
 func _on_main_game_list_loaded() -> void:
 	# Clear the children

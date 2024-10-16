@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bemlflx640ecp"]
+[gd_scene load_steps=37 format=3 uid="uid://bemlflx640ecp"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1x3i4"]
 [ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="2_o8yq3"]
@@ -62,6 +62,41 @@ tracks/0/keys = {
 _data = {
 "RESET": SubResource("Animation_cbcuj"),
 "fade_out": SubResource("Animation_hkg4h")
+}
+
+[sub_resource type="Animation" id="Animation_7ccxi"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scroll_horizontal")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_07jry"]
+resource_name = "slide"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scroll_horizontal")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.0666667, 225.5, 600, -0.5, -0.5, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yls8f"]
+_data = {
+"RESET": SubResource("Animation_7ccxi"),
+"scroll": SubResource("Animation_07jry")
 }
 
 [sub_resource type="Animation" id="Animation_m3we3"]
@@ -477,6 +512,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 follow_focus = true
+horizontal_scroll_mode = 3
 vertical_scroll_mode = 0
 
 [node name="BannerMenu" type="HBoxContainer" parent="MainMenu/MainVbox/ScrollContainer"]
@@ -530,6 +566,11 @@ size_flags_horizontal = 3
 [node name="GameBanner55" parent="MainMenu/MainVbox/ScrollContainer/BannerMenu" instance=ExtResource("8_ttsp2")]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainMenu/MainVbox/ScrollContainer"]
+libraries = {
+"": SubResource("AnimationLibrary_yls8f")
+}
 
 [node name="DrawerMenu" type="HBoxContainer" parent="MainMenu/MainVbox"]
 layout_mode = 2

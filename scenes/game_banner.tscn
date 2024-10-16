@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwq5lpo80io0d"]
+[gd_scene load_steps=7 format=3 uid="uid://cwq5lpo80io0d"]
 
 [ext_resource type="Texture2D" uid="uid://dkfnjychc24ah" path="res://assets/img/default/banner.png" id="1_gtc0v"]
 [ext_resource type="Script" path="res://scripts/game_banner.gd" id="1_spqyp"]
@@ -48,7 +48,7 @@ tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(100, -0.15, 0, 0.15, 0),
+"points": PackedFloat32Array(200, -0.15, 0, 0.15, 0),
 "times": PackedFloat32Array(0)
 }
 tracks/4/type = "bezier"
@@ -59,23 +59,8 @@ tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(100, -0.15, 0, 0.15, 0),
+"points": PackedFloat32Array(200, -0.15, 0, 0.15, 0),
 "times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_hb66i"]
-resource_name = "despawn"
-length = 0.3
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:custom_minimum_size:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(100, -0.25, 0, 0.25, 0, 0, -0.15, 0, 0.15, 0),
-"times": PackedFloat32Array(0, 0.3)
 }
 
 [sub_resource type="Animation" id="Animation_guf86"]
@@ -101,7 +86,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(100, -0.15, 0, 0.15, 0, 30, -0.15, 0, 0.15, 0),
+"points": PackedFloat32Array(200, -0.15, 0, 0.15, 0, 60, -0.15, 0, 0.15, 0),
 "times": PackedFloat32Array(0, 0.3)
 }
 tracks/2/type = "bezier"
@@ -112,71 +97,26 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(100, -0.15, 0, 0.15, 0, 30, -0.15, 0, 0.15, 0),
+"points": PackedFloat32Array(200, -0.15, 0, 0.15, 0, 60, -0.15, 0, 0.15, 0),
 "times": PackedFloat32Array(0, 0.3)
-}
-
-[sub_resource type="Animation" id="Animation_033jf"]
-resource_name = "spawn"
-length = 0.3
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:custom_minimum_size:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 100, -0.15, 0, 0.15, 0),
-"times": PackedFloat32Array(0, 0.3)
-}
-
-[sub_resource type="Animation" id="Animation_8yl6o"]
-resource_name = "focus_exit"
-length = 0.3
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:custom_minimum_size:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(400, 0, 0, 0, -400, 0, 0, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.3)
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TextureRect/ColorRect:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1yxky"]
 _data = {
 "RESET": SubResource("Animation_a6w6v"),
-"despawn": SubResource("Animation_hb66i"),
-"focus_entered": SubResource("Animation_guf86"),
-"focus_exit": SubResource("Animation_8yl6o"),
-"spawn": SubResource("Animation_033jf")
+"focus_entered": SubResource("Animation_guf86")
 }
 
 [node name="GameBanner" type="VBoxContainer"]
 offset_right = 31.0
 offset_bottom = 127.0
+theme_override_constants/separation = 0
 script = ExtResource("1_spqyp")
 
 [node name="TopLabel" type="Label" parent="."]
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 8
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
@@ -197,10 +137,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="BottomLabel" type="Label" parent="."]
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
