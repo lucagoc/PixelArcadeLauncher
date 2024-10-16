@@ -25,6 +25,12 @@ func set_banner_top_label(label: String) -> void:
 func set_banner_bottom_label(label: String) -> void:
 	BottomLabel = label
 
+func set_focus_neighbor_left(banner: VBoxContainer) -> void:
+	$TextureRect.set_focus_neighbor(SIDE_LEFT, banner.get_node("TextureRect").get_path())
+
+func set_focus_neighbor_right(banner: VBoxContainer) -> void:
+	$TextureRect.set_focus_neighbor(SIDE_RIGHT, banner.get_node("TextureRect").get_path())
+
 func _on_texture_rect_focus_entered() -> void:
 	if BottomLabel != null:
 		$BottomLabel.text = BottomLabel

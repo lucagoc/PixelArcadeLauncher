@@ -29,6 +29,7 @@ func _on_main_game_list_loaded() -> void:
 
 	# Add games as children
 	var games = GameList.game_list
+	var first_banner
 	print("Games: ", games)
 	var i = 0
 	for game in games:
@@ -42,6 +43,12 @@ func _on_main_game_list_loaded() -> void:
 		add_child(banner)
 		print("Added game banner: ", game.name)
 
+		if i == 0:
+			first_banner = banner
+		elif i == GameList.game_list.size() - 1:
+			first_banner.set_focus_neighbor_left(banner)
+			banner.set_focus_neighbor_right(first_banner)
+
 		i += 1
 
 		# Set the size to develop
@@ -51,6 +58,7 @@ func _on_main_game_list_loaded() -> void:
 		banner.connect("banner_focused", _on_banner_focused)
 	
 	emit_signal("banner_menu_loaded")
+	first_banner.set_focus()
 
 
 func _ready() -> void:
