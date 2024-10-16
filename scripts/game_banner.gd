@@ -33,4 +33,4 @@ func _on_texture_rect_focus_entered() -> void:
 
 func _on_texture_rect_focus_exited() -> void:
 	$BottomLabel.text = ""
-	$AnimationPlayer.play_backwards("focus_entered")
+	$AnimationPlayer.play("RESET")
