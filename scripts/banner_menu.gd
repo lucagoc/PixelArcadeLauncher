@@ -56,6 +56,8 @@ func _on_main_game_list_loaded() -> void:
 
 		# Connect the signal
 		banner.connect("banner_focused", _on_banner_focused)
+		$"../../".connect("hide_banner_tags", banner.hide_tags)
+		$"../../".connect("show_banner_tags", banner.show_tags)
 	
 	emit_signal("banner_menu_loaded")
 	first_banner.set_focus()

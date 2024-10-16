@@ -5,6 +5,8 @@ var TopLabel
 var id
 var index
 
+var tags_hidden = false
+
 signal banner_focused(id: String)
 
 func set_id(in_id: String) -> void:
@@ -24,6 +26,17 @@ func set_banner_top_label(label: String) -> void:
 
 func set_banner_bottom_label(label: String) -> void:
 	BottomLabel = label
+
+func show_tags() -> void:
+	if tags_hidden:
+		$AnimationPlayer.play_backwards("hide_tags")
+		tags_hidden = false
+
+func hide_tags() -> void:
+	if not tags_hidden:
+		
+		$AnimationPlayer.play("hide_tags")
+		tags_hidden = true
 
 func set_focus_neighbor_left(banner: VBoxContainer) -> void:
 	$TextureRect.set_focus_neighbor(SIDE_LEFT, banner.get_node("TextureRect").get_path())

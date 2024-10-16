@@ -7,7 +7,6 @@ extends Control
 # 	# launch_game(game)
 # 	return
 
-
 func _on_item_list_item_selected(index: int) -> void:
 	# Load hero on background
 	var game = GameList.game_list[index]
