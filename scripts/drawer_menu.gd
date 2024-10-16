@@ -1,5 +1,11 @@
 extends HBoxContainer
 
+func _on_category_list_focus_entered() -> void:
+	$AnimationPlayer.play("open_category")
+
+func _on_category_list_focus_exited() -> void:
+	$AnimationPlayer.play("close_category")
+
 func _on_main_game_list_loaded() -> void:
 	$ItemList.clear()
 	for game in GameList.game_list:

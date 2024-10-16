@@ -21,7 +21,6 @@ func _on_drawer_menu_focus_entered() -> void:
 	if not isDrawerOpened:
 		# Set the drawer size to 80% of the screen height
 		var drawer_size = get_viewport_rect().size.y * 0.7
-		print("Drawer_size (80% of screen)", drawer_size)
 		var animation = $AnimationPlayer.get_animation("open_drawer")
 		animation.bezier_track_set_key_value(0, 1, drawer_size)
 		

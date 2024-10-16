@@ -12,7 +12,6 @@ func get_banner_by_id(id: String) -> VBoxContainer:
 func _on_banner_focused(id: String) -> void:
 	emit_signal("game_selected", id)
 	var banner = get_banner_by_id(id)
-	emit_signal("other_banner_focused", banner.index)
 
 	# Always center the banner focused
 	var destination = $"../".get_h_scroll_bar().max_value/GameList.game_list.size() * banner.index - $"../".size.x/2 + (($"../".get_h_scroll_bar().max_value/GameList.game_list.size())/2)

@@ -14,14 +14,6 @@ func _on_item_list_item_selected(index: int) -> void:
 	$Background/BackgroundAnimation.play("fade_out")
 
 
-func _on_category_list_focus_entered() -> void:
-	$MainVbox/DrawerMenu/AnimationPlayer.play("open_category")
-
-
-func _on_category_list_focus_exited() -> void:
-	$MainVbox/DrawerMenu/AnimationPlayer.play("close_category")
-
-
 func _on_background_animation_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade_out":
 		$Background/BackgroundHero.texture = $Background/BackgroundHero2.texture
