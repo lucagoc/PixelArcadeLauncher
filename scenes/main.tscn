@@ -511,7 +511,6 @@ layout_mode = 2
 [node name="ScrollContainer" type="ScrollContainer" parent="MainMenu/MainVbox"]
 layout_mode = 2
 size_flags_vertical = 3
-follow_focus = true
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 0
 
@@ -594,6 +593,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_right = NodePath("../../ItemList")
 theme = ExtResource("2_o8yq3")
 item_count = 5
 same_column_width = true
@@ -612,7 +612,9 @@ item_4/icon = ExtResource("9_djdqi")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+focus_neighbor_left = NodePath("../CategoryBar/CategoryList")
 theme = ExtResource("2_o8yq3")
+max_text_lines = 2
 item_count = 5
 max_columns = 0
 same_column_width = true
@@ -655,6 +657,7 @@ speed_scale = 2.0
 [connection signal="game_selected" from="MainMenu/MainVbox/ScrollContainer/BannerMenu" to="MainMenu" method="_on_banner_menu_game_selected"]
 [connection signal="game_selected" from="MainMenu/MainVbox/ScrollContainer/BannerMenu" to="MainMenu/MainVbox" method="_on_banner_menu_focus_entered"]
 [connection signal="focus_entered" from="MainMenu/MainVbox/DrawerMenu" to="MainMenu/MainVbox" method="_on_drawer_menu_focus_entered"]
+[connection signal="focus_entered" from="MainMenu/MainVbox/DrawerMenu/CategoryBar/CategoryList" to="MainMenu/MainVbox" method="_on_category_list_focus_entered"]
 [connection signal="focus_entered" from="MainMenu/MainVbox/DrawerMenu/CategoryBar/CategoryList" to="MainMenu/MainVbox/DrawerMenu" method="_on_category_list_focus_entered"]
 [connection signal="focus_exited" from="MainMenu/MainVbox/DrawerMenu/CategoryBar/CategoryList" to="MainMenu/MainVbox/DrawerMenu" method="_on_category_list_focus_exited"]
 [connection signal="focus_entered" from="MainMenu/MainVbox/DrawerMenu/ItemList" to="MainMenu/MainVbox" method="_on_drawer_menu_focus_entered"]

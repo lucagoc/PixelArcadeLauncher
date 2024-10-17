@@ -34,3 +34,7 @@ func _on_drawer_menu_focus_entered() -> void:
 func _ready() -> void:
 	LimboConsole.register_command(_on_banner_menu_focus_entered, "close_drawer", "Close the drawer")
 	LimboConsole.register_command(_on_drawer_menu_focus_entered, "open_drawer", "Open the drawer")
+
+
+func _on_category_list_focus_entered() -> void:
+	_on_drawer_menu_focus_entered()

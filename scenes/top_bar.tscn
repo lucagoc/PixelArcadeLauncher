@@ -27,7 +27,7 @@ layout_mode = 2
 [node name="OptionButton" type="Button" parent="TobHbox"]
 layout_mode = 2
 size_flags_horizontal = 0
-focus_neighbor_bottom = NodePath("../../../DrawerMenu/CategoryBar/CategoryList")
+focus_mode = 1
 theme = ExtResource("1_p42sk")
 icon = ExtResource("2_gb8e4")
 
