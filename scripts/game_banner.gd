@@ -34,7 +34,7 @@ func show_tags() -> void:
 
 func hide_tags() -> void:
 	if not tags_hidden:
-		
+		$TextureRect/ColorRect.hide()
 		$AnimationPlayer.play("hide_tags")
 		tags_hidden = true
 
@@ -49,13 +49,15 @@ func _on_texture_rect_focus_entered() -> void:
 	if BottomLabel != null:
 		$BottomLabel.text = BottomLabel
 
-	$AnimationPlayer.play("focus_entered")
+	show_tags()
+	$AnimationPlayer.queue("focus_entered")
 	emit_signal("banner_focused", id)
 
 func _on_texture_rect_focus_exited() -> void:
 	$TextureRect/SelectionRect.hide()
 	$BottomLabel.text = ""
+
 	# Play animation backward from the last frame
-	var position = $AnimationPlayer.current_animation_position
+	var last_position = $AnimationPlayer.current_animation_position
 	$AnimationPlayer.play_backwards("focus_entered")
-	$AnimationPlayer.seek(position)
+	$AnimationPlayer.seek(last_position)
