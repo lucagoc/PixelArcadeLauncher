@@ -14,6 +14,8 @@ func _on_banner_focused(id: String) -> void:
 	var banner = get_banner_by_id(id)
 
 	# Always center the banner focused
+	if $"../".get_child(1).is_playing():
+		$"../".get_child(1).stop(true)
 	var destination = $"../".get_h_scroll_bar().max_value/GameList.game_list.size() * banner.index - $"../".size.x/2 + (($"../".get_h_scroll_bar().max_value/GameList.game_list.size())/2)
 	var animation = $"../".get_child(1).get_animation("scroll")
 	animation.bezier_track_set_key_value(0, 0, $"../".get_h_scroll_bar().value)
