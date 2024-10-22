@@ -46,6 +46,7 @@ func _on_texture_rect_focus_entered() -> void:
 	show_tags()
 	$AnimationPlayer.queue("focus_entered")
 	BusEvent.emit_signal("GAME_SELECTED", id)
+	BusEvent.emit_signal("BANNER_MENU_FOCUSED")
 
 func _on_texture_rect_focus_exited() -> void:
 	$TextureRect/SelectionRect.hide()

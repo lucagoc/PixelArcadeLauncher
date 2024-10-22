@@ -100,7 +100,7 @@ func load_list():
 	dir.list_dir_end()
 
 	# Signal the game list is loaded
-	BusEvent.emit_signal("GAME_LIST_LOAD_SUCCESSFULL")
+	BusEvent.emit_signal("GAME_LIST_LOADED")
 
 # Reload the game list
 func reload():

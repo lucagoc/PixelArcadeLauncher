@@ -9,10 +9,6 @@ func _on_banner_menu_focus_entered() -> void:
 		animation.bezier_track_set_key_value(0, 0, drawer_size)
 		$AnimationPlayer.play("close_drawer")
 		isDrawerOpened = false
-	
-	# Emit signal to show all tags in the banners
-	BusEvent.emit_signal("BANNER_MENU_FOCUSED")
-
 
 func _on_drawer_menu_focus_entered() -> void:
 	if not isDrawerOpened:
@@ -31,6 +27,7 @@ func _on_drawer_menu_focus_entered() -> void:
 func _ready() -> void:
 	LimboConsole.register_command(_on_banner_menu_focus_entered, "close_drawer", "Close the drawer")
 	LimboConsole.register_command(_on_drawer_menu_focus_entered, "open_drawer", "Open the drawer")
+	BusEvent.connect("BANNER_MENU_FOCUSED", _on_banner_menu_focus_entered)
 
 func _on_category_list_focus_entered() -> void:
 	_on_drawer_menu_focus_entered()
