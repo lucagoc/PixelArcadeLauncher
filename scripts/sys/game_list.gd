@@ -22,9 +22,6 @@ class Game:
 
 var GAME_LIST: Array = []
 
-@warning_ignore("unused_signal")
-signal GAME_LIST_LOADED # Do not remove this signal : passer sur un bus d'événements
-
 # Load an img asset and return an ImageTexture
 # Load a placeholder if the asset doesn't exist
 func load_asset(asset_path) -> ImageTexture:
@@ -83,7 +80,6 @@ func load_game(folder_name: String) -> Game:
 	
 	return game
 
-
 # Load all the games folders by ID from the game folder
 func load_list():
 	var dir = DirAccess.open(Path.data + Path.games_folder)
@@ -104,7 +100,7 @@ func load_list():
 	dir.list_dir_end()
 
 	# Signal the game list is loaded
-	emit_signal("GAME_LIST_LOADED")
+	BusEvent.emit_signal("GAME_LIST_LOAD_SUCCESSFULL")
 
 # Reload the game list
 func reload():

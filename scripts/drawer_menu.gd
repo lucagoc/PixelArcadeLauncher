@@ -3,9 +3,6 @@ extends HBoxContainer
 func _on_category_list_focus_entered() -> void:
 	$AnimationPlayer.play("open_category")
 
-func select_game(id: int):
-	pass
-
 func _on_category_list_focus_exited() -> void:
 	$AnimationPlayer.play("close_category")
 

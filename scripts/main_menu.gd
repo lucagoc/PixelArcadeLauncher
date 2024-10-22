@@ -1,12 +1,5 @@
 extends Control
 
-
-# func _on_item_list_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
-# 	# Open the game
-# 	# var game = game_list[index]
-# 	# launch_game(game)
-# 	return
-
 func _on_item_list_item_selected(id: int) -> void:
 	# Load hero on background
 	var game = GameList.GAME_LIST[id]

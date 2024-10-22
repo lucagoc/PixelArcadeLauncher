@@ -6,8 +6,6 @@ var TopLabel: String		# Top label of the banner
 
 var tags_hidden = false
 
-signal banner_focused(id: int)
-
 func set_id(in_id: int) -> void:
 	id = in_id
 
@@ -47,7 +45,7 @@ func _on_texture_rect_focus_entered() -> void:
 
 	show_tags()
 	$AnimationPlayer.queue("focus_entered")
-	emit_signal("banner_focused", id)
+	BusEvent.emit_signal("GAME_SELECTED", id)
 
 func _on_texture_rect_focus_exited() -> void:
 	$TextureRect/SelectionRect.hide()

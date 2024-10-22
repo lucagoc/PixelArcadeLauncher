@@ -1,17 +1,13 @@
+##############################################################
+#                     	Banner Menu	                         #
+#          This file contains the banner menu script         #
+##############################################################
+
 extends HBoxContainer
 
-signal game_selected(id: int)
-signal banner_menu_loaded
-
-func get_banner_by_id(id: int) -> VBoxContainer:
-	for child in get_children():
-		if child.name.to_int() == id:
-			return child
-	return null
-
-func _on_banner_focused(id: int) -> void:
-	emit_signal("game_selected", id)
-	var banner = get_banner_by_id(id)
+# When a game is selected
+func _on_game_selection(id: int) -> void:
+	var banner = get_child(id)
 
 	# Always center the banner focused
 	if $"../".get_child(1).is_playing():
@@ -22,34 +18,40 @@ func _on_banner_focused(id: int) -> void:
 	animation.bezier_track_set_key_value(0, 1, destination)
 	$"../".get_child(1).play("scroll")
 
-func _on_main_game_list_loaded() -> void:
-	# Clear the children
+# Add a banner to the container
+func add_banner(game: GameList.Game) -> void:
+	var banner_scene = load("res://scenes/game_banner.tscn")
+	var banner = banner_scene.instantiate()
+	
+	# Set the banner node properties
+	banner.set_banner_texture(game.banner)
+	banner.size_flags_horizontal = 3 # Set the size to develop
+	banner.set_banner_bottom_label(game.name)
+	banner.set_id(game.id)
+	banner.name = str(game.id)
+
+	# Add the banner to the container
+	add_child(banner)
+
+	# Connect the signal
+	banner.connect("GAME_SELECTED", _on_game_selection)
+
+func reload_banners() -> void:
+
+	# Remove all children
 	for child in get_children():
 		child.queue_free()
-
-	# Add games as children
-	var games = GameList.GAME_LIST
-	var first_banner
-	for game in games:
-		var banner_scene = load("res://scenes/game_banner.tscn")
-		var banner = banner_scene.instantiate()
-		banner.set_banner_texture(game.banner)
-		banner.set_banner_bottom_label(game.name)
-		banner.set_id(game.id)
-		banner.name = str(game.id)
-		add_child(banner)
-		print("Added game banner: ", game.name)
-
-		# Set the size to develop
-		banner.size_flags_horizontal = 3
-
-		# Connect the signal
-		banner.connect("banner_focused", _on_banner_focused)
-		$"../../".connect("hide_banner_tags", banner.hide_tags)
-		$"../../".connect("show_banner_tags", banner.show_tags)
 	
-	emit_signal("banner_menu_loaded")
+	# Add all banners
+	for game in GameList.GAME_LIST:
+		add_banner(game)
 
+	BusEvent.emit_signal("BANNER_MENU_RELOADED")
+
+# When the game list is loaded
+func _on_main_game_list_loaded() -> void:
+	reload_banners()
 
 func _ready() -> void:
-	GameList.connect("GAME_LIST_LOADED", _on_main_game_list_loaded)
+	BusEvent.connect("GAME_LIST_LOADED", _on_main_game_list_loaded)
+	BusEvent.connect("GAME_SELECTED", _on_game_selection)
