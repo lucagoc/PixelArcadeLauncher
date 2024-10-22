@@ -56,3 +56,7 @@ func _on_texture_rect_focus_exited() -> void:
 	var last_position = $AnimationPlayer.current_animation_position
 	$AnimationPlayer.play_backwards("focus_entered")
 	$AnimationPlayer.seek(last_position)
+
+func _ready() -> void:
+	BusEvent.connect("DRAWER_FOCUSED", hide_tags)
+	BusEvent.connect("BANNER_MENU_FOCUSED", show_tags)

@@ -13,8 +13,7 @@ signal GAME_SELECTED(id: int)       # When a game is selected (indepedent of the
 signal GAME_DESELECTED(id: int)     # When a game is deselected (indepedent of the context menu)
 
 signal DRAWER_RELOADED              # Drawer reloaded
-signal DRAWER_OPENED                # Drawer opened
-signal DRAWER_CLOSED                # Drawer closed
+signal DRAWER_FOCUSED               # Drawer focused
 signal DRAWER_CATEGORY_OPENED       # Drawer category opened
 signal DRAWER_CATEGORY_CLOSED       # Drawer category closed
 
@@ -39,11 +38,8 @@ func _on_game_deselected(id: int) -> void:
 func _on_drawer_reloaded() -> void:
     print("[SIGNAL] Drawer reloaded")
 
-func _on_drawer_opened() -> void:
+func _on_drawer_focused() -> void:
     print("[SIGNAL] Drawer opened")
-
-func _on_drawer_closed() -> void:
-    print("[SIGNAL] Drawer closed")
 
 func _on_drawer_category_opened() -> void:
     print("[SIGNAL] Drawer category opened")
@@ -66,8 +62,7 @@ func _ready() -> void:
     connect("GAME_DESELECTED", _on_game_deselected)
     
     connect("DRAWER_RELOADED", _on_drawer_reloaded)
-    connect("DRAWER_OPENED", _on_drawer_opened)
-    connect("DRAWER_CLOSED", _on_drawer_closed)
+    connect("DRAWER_FOCUSED", _on_drawer_focused)
     connect("DRAWER_CATEGORY_OPENED", _on_drawer_category_opened)
     connect("DRAWER_CATEGORY_CLOSED", _on_drawer_category_closed)
 

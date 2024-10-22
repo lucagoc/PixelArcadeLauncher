@@ -31,10 +31,7 @@ func add_banner(game: GameList.Game) -> void:
 	banner.name = str(game.id)
 
 	# Add the banner to the container
-	add_child(banner)	
-
-	# Connect the signal
-	banner.connect("GAME_SELECTED", _on_game_selection)
+	add_child(banner)
 
 func reload_banners() -> void:
 

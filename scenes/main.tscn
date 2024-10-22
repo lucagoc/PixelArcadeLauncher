@@ -135,7 +135,7 @@ length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DrawerMenu/CategoryBar:custom_minimum_size:x")
+tracks/0/path = NodePath("Drawer/CategoryBar:custom_minimum_size:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -150,7 +150,7 @@ length = 0.3
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DrawerMenu/CategoryBar:custom_minimum_size:x")
+tracks/0/path = NodePath("Drawer/CategoryBar:custom_minimum_size:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -165,7 +165,7 @@ length = 0.3
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DrawerMenu/CategoryBar:custom_minimum_size:x")
+tracks/0/path = NodePath("Drawer/CategoryBar:custom_minimum_size:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -186,7 +186,7 @@ length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DrawerMenu:custom_minimum_size:y")
+tracks/0/path = NodePath("Drawer:custom_minimum_size:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -201,7 +201,7 @@ length = 0.3
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DrawerMenu:custom_minimum_size:y")
+tracks/0/path = NodePath("Drawer:custom_minimum_size:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -216,7 +216,7 @@ length = 0.3
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DrawerMenu:custom_minimum_size:y")
+tracks/0/path = NodePath("Drawer:custom_minimum_size:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -555,7 +555,7 @@ clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
-focus_neighbor_bottom = NodePath("../../DrawerMenu")
+focus_neighbor_bottom = NodePath("../../Drawer")
 script = ExtResource("8_lrgq2")
 
 [node name="GameBanner44" parent="MainMenu/MainVbox/ScrollContainer/BannerMenu" instance=ExtResource("8_ttsp2")]
@@ -607,7 +607,7 @@ libraries = {
 "": SubResource("AnimationLibrary_yls8f")
 }
 
-[node name="DrawerMenu" type="HBoxContainer" parent="MainMenu/MainVbox"]
+[node name="Drawer" type="HBoxContainer" parent="MainMenu/MainVbox"]
 layout_mode = 2
 size_flags_vertical = 8
 focus_neighbor_top = NodePath("../ScrollContainer/BannerMenu")
@@ -615,14 +615,14 @@ theme = ExtResource("2_o8yq3")
 theme_override_constants/separation = 0
 script = ExtResource("10_2bhfd")
 
-[node name="CategoryBar" type="ColorRect" parent="MainMenu/MainVbox/DrawerMenu"]
+[node name="CategoryBar" type="ColorRect" parent="MainMenu/MainVbox/Drawer"]
 custom_minimum_size = Vector2(85, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("2_o8yq3")
 color = Color(0, 0, 0, 1)
 
-[node name="CategoryList" type="ItemList" parent="MainMenu/MainVbox/DrawerMenu/CategoryBar"]
+[node name="CategoryList" type="ItemList" parent="MainMenu/MainVbox/Drawer/CategoryBar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -644,7 +644,7 @@ item_3/icon = ExtResource("12_vf2ow")
 item_4/text = " ZZ"
 item_4/icon = ExtResource("9_djdqi")
 
-[node name="ItemList" type="ItemList" parent="MainMenu/MainVbox/DrawerMenu"]
+[node name="ItemList" type="ItemList" parent="MainMenu/MainVbox/Drawer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -667,7 +667,7 @@ item_3/icon = ExtResource("9_bi3up")
 item_4/text = "Super Jeu 5"
 item_4/icon = ExtResource("9_bi3up")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MainMenu/MainVbox/DrawerMenu"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainMenu/MainVbox/Drawer"]
 root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_qcudj")
@@ -691,10 +691,8 @@ speed_scale = 2.0
 [connection signal="animation_finished" from="MainMenu/Background/BackgroundAnimation" to="MainMenu" method="_on_background_animation_animation_finished"]
 [connection signal="animation_finished" from="MainMenu/Background/BackgroundAnimation2" to="MainMenu" method="_on_background_animation_2_animation_finished"]
 [connection signal="focus_entered" from="MainMenu/MainVbox/ScrollContainer/BannerMenu" to="MainMenu/MainVbox" method="_on_banner_menu_focus_entered"]
-[connection signal="focus_entered" from="MainMenu/MainVbox/DrawerMenu" to="MainMenu/MainVbox" method="_on_drawer_menu_focus_entered"]
-[connection signal="focus_entered" from="MainMenu/MainVbox/DrawerMenu/CategoryBar/CategoryList" to="MainMenu/MainVbox" method="_on_category_list_focus_entered"]
-[connection signal="focus_entered" from="MainMenu/MainVbox/DrawerMenu/CategoryBar/CategoryList" to="MainMenu/MainVbox/DrawerMenu" method="_on_category_list_focus_entered"]
-[connection signal="focus_exited" from="MainMenu/MainVbox/DrawerMenu/CategoryBar/CategoryList" to="MainMenu/MainVbox/DrawerMenu" method="_on_category_list_focus_exited"]
-[connection signal="focus_entered" from="MainMenu/MainVbox/DrawerMenu/ItemList" to="MainMenu/MainVbox" method="_on_drawer_menu_focus_entered"]
-[connection signal="item_clicked" from="MainMenu/MainVbox/DrawerMenu/ItemList" to="MainMenu" method="_on_item_list_item_clicked"]
-[connection signal="item_selected" from="MainMenu/MainVbox/DrawerMenu/ItemList" to="MainMenu" method="_on_item_list_item_selected"]
+[connection signal="focus_entered" from="MainMenu/MainVbox/Drawer" to="MainMenu/MainVbox" method="_on_drawer_menu_focus_entered"]
+[connection signal="focus_entered" from="MainMenu/MainVbox/Drawer/CategoryBar/CategoryList" to="MainMenu/MainVbox/Drawer" method="_on_category_list_focus_entered"]
+[connection signal="focus_exited" from="MainMenu/MainVbox/Drawer/CategoryBar/CategoryList" to="MainMenu/MainVbox/Drawer" method="_on_category_list_focus_exited"]
+[connection signal="focus_entered" from="MainMenu/MainVbox/Drawer/ItemList" to="MainMenu/MainVbox/Drawer" method="_on_item_list_focus_entered"]
+[connection signal="item_selected" from="MainMenu/MainVbox/Drawer/ItemList" to="MainMenu/MainVbox/Drawer" method="_on_item_list_item_selected"]
