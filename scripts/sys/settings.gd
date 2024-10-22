@@ -6,7 +6,7 @@ signal scaling_changed
 
 # Save the settings in the settings.conf file
 func save_settings():
-	var setting_file = FileAccess.open(path.data + path.settings_file, FileAccess.WRITE)
+	var setting_file = FileAccess.open(Path.data + Path.settings_file, FileAccess.WRITE)
 	if setting_file != null:
 		setting_file.store_line("[PixelArcadeLauncher]")
 		setting_file.store_line("fullscreen = false")
@@ -17,11 +17,11 @@ func save_settings():
 		setting_file.store_line("vsync = true")
 		setting_file.close()
 	else:
-		printerr("[ERROR] Cannot open the file " + path.data + path.settings_file)
+		printerr("Cannot open the file " + Path.data + Path.settings_file)
 
 # Load the settings from the settings.conf file
 func load_settings():
-	var settings_file = FileAccess.open(path.data + path.settings_file, FileAccess.READ)
+	var settings_file = FileAccess.open(Path.data + Path.settings_file, FileAccess.READ)
 	if settings_file != null:
 		var line = settings_file.get_line()
 		while line != "":
@@ -36,7 +36,6 @@ func load_settings():
 						else:
 							DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 					"scaling":
-						print("[INFO] Scaling: " + value)
 						scaling = int(value)
 						emit_signal("scaling_changed")
 					"vsync":
@@ -47,4 +46,4 @@ func load_settings():
 			line = settings_file.get_line()
 		settings_file.close()
 	else:
-		printerr("[ERROR] Cannot open the file " + path.data + path.settings_file)
+		printerr("Cannot open the file " + Path.data + Path.settings_file)

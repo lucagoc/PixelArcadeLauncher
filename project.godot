@@ -21,10 +21,10 @@ config/icon="res://icon.png"
 
 [autoload]
 
-path="*res://scripts/sys/path.gd"
+BusEvent="*res://scripts/sys/bus_event.gd"
 GameList="*res://scripts/sys/game_list.gd"
+Path="*res://scripts/sys/path.gd"
 LimboConsole="*res://addons/limbo_console/limbo_console.gd"
-Global="*res://scripts/sys/global.gd"
 
 [display]
 

@@ -5,7 +5,7 @@ var isDrawerOpened = false
 signal hide_banner_tags
 signal show_banner_tags
 
-func _on_banner_menu_focus_entered(id: String) -> void:
+func _on_banner_menu_focus_entered(id: int) -> void:
 	if isDrawerOpened:
 		var drawer_size = $DrawerMenu.custom_minimum_size.y
 		var animation = $AnimationPlayer.get_animation("close_drawer")

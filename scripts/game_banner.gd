@@ -1,19 +1,15 @@
 extends VBoxContainer
 
-var BottomLabel
-var TopLabel
-var id
-var index
+var id: int					# Unique ID of the game
+var BottomLabel: String		# Bottom label of the banner
+var TopLabel: String		# Top label of the banner
 
 var tags_hidden = false
 
-signal banner_focused(id: String)
+signal banner_focused(id: int)
 
-func set_id(in_id: String) -> void:
+func set_id(in_id: int) -> void:
 	id = in_id
-
-func set_index(in_index: int) -> void:
-	index = in_index
 
 func set_focus():
 	$TextureRect.grab_focus()
