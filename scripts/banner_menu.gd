@@ -9,22 +9,23 @@ func fix_banner_index():
 	for i in range(get_child_count()):
 		var node = get_child(i)
 		node.index = i
-		print("Attributing index: ", i)
 		i += 1
 
 # Get the next game, circular
 func get_game_id_circular(from_id: int, direction: int) -> int:
 	return int(fposmod(from_id + direction, GameList.GAME_LIST.size()))
 
-# When a banner is selected (index != int)
 func _on_banner_selection(index: int):
 	var banner = get_child(index)
 	
+	var direction = int(index - GameList.GAME_LIST.size()/2.0)
 	# Each banner has an index, which is the position of the banner in the container
-	if(index < GameList.GAME_LIST.size()/2):
-		move_banner_last_to_first()
+	if(direction < 0):
+		for i in range(abs(direction)):
+			move_banner_last_to_first()
 	else:
-		move_banner_first_to_last()
+		for i in range(abs(direction)):
+			move_banner_first_to_last()
 	fix_banner_index()
 	
 	# Always center the banner focused

@@ -21,6 +21,7 @@ func _ready() -> void:
 
 func _on_item_list_focus_entered() -> void:
 	BusEvent.emit_signal("DRAWER_FOCUSED")
+	BusEvent.emit_signal("GAME_SELECTED")
 
 func _on_item_list_item_selected(index: int) -> void:
 	BusEvent.emit_signal("GAME_SELECTED", index)

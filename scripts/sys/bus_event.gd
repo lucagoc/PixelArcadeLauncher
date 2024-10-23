@@ -5,6 +5,8 @@
 
 extends Node
 
+var print_debug_info: bool = false
+
 @warning_ignore("unused_signal")
 signal GAME_LIST_LOADED
 @warning_ignore("unused_signal")
@@ -72,20 +74,21 @@ func _on_scaling_changed() -> void:
 	print("[SIGNAL] Scaling changed")
 
 func _ready() -> void:
-	connect("GAME_LIST_LOADED", _on_game_list_loaded)
+	if print_debug_info:
+		connect("GAME_LIST_LOADED", _on_game_list_loaded)
 
-	connect("GAME_LAUNCHED", _on_game_launched)
-	connect("GAME_EXITED", _on_game_exited)
-	connect("GAME_SELECTED", _on_game_selected)
-	connect("GAME_DESELECTED", _on_game_deselected)
+		connect("GAME_LAUNCHED", _on_game_launched)
+		connect("GAME_EXITED", _on_game_exited)
+		connect("GAME_SELECTED", _on_game_selected)
+		connect("GAME_DESELECTED", _on_game_deselected)
 	
-	connect("DRAWER_RELOADED", _on_drawer_reloaded)
-	connect("DRAWER_FOCUSED", _on_drawer_focused)
-	connect("DRAWER_CATEGORY_OPENED", _on_drawer_category_opened)
-	connect("DRAWER_CATEGORY_CLOSED", _on_drawer_category_closed)
+		connect("DRAWER_RELOADED", _on_drawer_reloaded)
+		connect("DRAWER_FOCUSED", _on_drawer_focused)
+		connect("DRAWER_CATEGORY_OPENED", _on_drawer_category_opened)
+		connect("DRAWER_CATEGORY_CLOSED", _on_drawer_category_closed)
 
-	connect("BANNER_MENU_RELOADED", _on_banner_menu_reloaded)
-	connect("BANNER_MENU_FOCUSED", _on_banner_menu_focused)
-	connect("BANNER_SELECTED", _on_banner_selection)
+		connect("BANNER_MENU_RELOADED", _on_banner_menu_reloaded)
+		connect("BANNER_MENU_FOCUSED", _on_banner_menu_focused)
+		connect("BANNER_SELECTED", _on_banner_selection)
 
-	connect("SCALING_CHANGED", _on_scaling_changed)
+		connect("SCALING_CHANGED", _on_scaling_changed)

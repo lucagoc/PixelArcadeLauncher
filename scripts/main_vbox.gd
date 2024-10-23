@@ -1,6 +1,7 @@
 extends VBoxContainer
 
-var _is_drawer_focused = false
+var _is_drawer_focused := false
+const DRAWER_SIZE := 0.70
 
 func _on_banner_menu_focused() -> void:
 	if _is_drawer_focused:
@@ -13,7 +14,7 @@ func _on_banner_menu_focused() -> void:
 func _on_drawer_focused() -> void:
 	if not _is_drawer_focused:
 		# Set the drawer size to 70% of the screen height
-		var drawer_size = get_viewport_rect().size.y * 0.7
+		var drawer_size = get_viewport_rect().size.y * DRAWER_SIZE
 		var animation = $AnimationPlayer.get_animation("open_drawer")
 		animation.bezier_track_set_key_value(0, 1, drawer_size)
 		
