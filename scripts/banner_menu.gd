@@ -74,7 +74,6 @@ func reload_banners() -> void:
 		remove_child(child)
 		child.propagate_call("queue_free", [])
 	
-	print("STOP")
 	# Add NUMBERS of banners
 	for game in GameList.GAME_LIST:
 		add_banner(game)
