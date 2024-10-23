@@ -1,13 +1,14 @@
 extends VBoxContainer
 
-var id: int					# Unique ID of the game
+var index
+var game_id: int			# Unique ID of the game
 var BottomLabel: String		# Bottom label of the banner
 var TopLabel: String		# Top label of the banner
 
 var tags_hidden = false
 
-func set_id(in_id: int) -> void:
-	id = in_id
+func set_game_id(in_id: int) -> void:
+	game_id = in_id
 
 func set_focus():
 	$TextureRect.grab_focus()
@@ -45,8 +46,7 @@ func _on_texture_rect_focus_entered() -> void:
 
 	show_tags()
 	$AnimationPlayer.queue("focus_entered")
-	BusEvent.emit_signal("GAME_SELECTED", id)
-	BusEvent.emit_signal("BANNER_MENU_FOCUSED")
+	BusEvent.emit_signal("BANNER_SELECTED", index)
 
 func _on_texture_rect_focus_exited() -> void:
 	$TextureRect/SelectionRect.hide()

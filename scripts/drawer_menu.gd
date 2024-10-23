@@ -7,7 +7,7 @@ func _on_category_list_focus_entered() -> void:
 
 func _on_category_list_focus_exited() -> void:
 	$AnimationPlayer.play("close_category")
-	emit_signal("DRAWER_CATEGORY_CLOSED")
+	BusEvent.emit_signal("DRAWER_CATEGORY_CLOSED")
 
 func _on_game_list_loaded() -> void:
 	$ItemList.clear()
