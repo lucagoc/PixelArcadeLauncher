@@ -48,7 +48,7 @@ func add_console_commands():
 
 func _ready():
 	add_console_commands()
-	settings.connect("scaling_changed", _scale_changed)
+	BusEvent.connect("SCALING_CHANGED", _on_scaling_changed)
 	load_data()
 
 @warning_ignore("unused_parameter")
@@ -57,5 +57,5 @@ func _process(delta):
 		get_tree().quit()
 
 
-func _scale_changed():
+func _on_scaling_changed():
 	get_tree().root.content_scale_factor = settings.scaling

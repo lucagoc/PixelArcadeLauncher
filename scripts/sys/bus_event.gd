@@ -29,6 +29,8 @@ signal BANNER_MENU_RELOADED         # Banner menu loaded/reloaded
 signal BANNER_MENU_FOCUSED          # Banner menu focused
 @warning_ignore("unused_signal")
 signal BANNER_SELECTED(id: int)     # Banner selected
+@warning_ignore("unused_signal")
+signal SCALING_CHANGED
 
 func _on_game_list_loaded() -> void:
 	print("[SIGNAL] Game list loaded")
@@ -66,6 +68,9 @@ func _on_banner_menu_focused() -> void:
 func _on_banner_selection(id: int) -> void:
 	print("[SIGNAL] Banner selected: ", id)
 
+func _on_scaling_changed() -> void:
+	print("[SIGNAL] Scaling changed")
+
 func _ready() -> void:
 	connect("GAME_LIST_LOADED", _on_game_list_loaded)
 
@@ -82,3 +87,5 @@ func _ready() -> void:
 	connect("BANNER_MENU_RELOADED", _on_banner_menu_reloaded)
 	connect("BANNER_MENU_FOCUSED", _on_banner_menu_focused)
 	connect("BANNER_SELECTED", _on_banner_selection)
+
+	connect("SCALING_CHANGED", _on_scaling_changed)

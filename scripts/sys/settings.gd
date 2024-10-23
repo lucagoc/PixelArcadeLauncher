@@ -35,7 +35,7 @@ func load_settings():
 							DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 					"scaling":
 						scaling = float(value)
-						emit_signal("scaling_changed")
+						BusEvent.emit_signal("SCALING_CHANGED")
 					"vsync":
 						if value == "true":
 							DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
