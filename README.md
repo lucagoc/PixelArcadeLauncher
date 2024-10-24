@@ -3,7 +3,7 @@
 
 **The Pixel Arcade Launcher (PAL) is a lightweight and customizable arcade machine launcher built using Godot Engine (v4.3). It is designed to provide a seamless and attractive interface for accessing and launching games on an arcade setup.**
 
-![PAL Screenshot](.github/readme/screenshot.png)
+![PAL Screenshot](.github/readme/screenshot.jpg)
 
 ## Features
 
