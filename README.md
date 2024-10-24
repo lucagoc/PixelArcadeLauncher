@@ -1,8 +1,5 @@
-<div style="width: 20%; margin: auto; text-align: center;">
-  
-  ![](.github/readme/logo.png)
-
-</div>
+# The Pixel Arcade Launcher (PAL)
+![logo](.github/readme/logo.png)
 
 **The Pixel Arcade Launcher (PAL) is a lightweight and customizable arcade machine launcher built using Godot Engine (v4.3). It is designed to provide a seamless and attractive interface for accessing and launching games on an arcade setup.**
 
@@ -10,8 +7,8 @@
 
 ## Features
 
-- 🖌️ **Customizable UI**: Modify the launcher appearance with themes
-- 💾 **Library Management** : Install/Uninstall games easily
+- 🖌️ **Customizable UI**: Modular and themable design
+- 💾 **Library Management** : Install and uninstall games easily
 - 🐧 **Platform-Agnostic** : Works both on Windows and Linux
 - ⚡ **Fast and Lightweight** : Minimal overhead for quick game launching.
 
