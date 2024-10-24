@@ -1,4 +1,4 @@
-<div style="width: 35%; margin: auto; text-align: center;">
+<div style="width: 20%; margin: auto; text-align: center;">
   
   ![](.github/readme/logo.png)
 
@@ -10,10 +10,10 @@
 
 ## Features
 
-- **Customizable UI**: Modify the launcher appearance with themes
-- **Library Management** : Install/Uninstall games easily
-- **Platform-Agnostic** : Works both on Windows and Linux
-- **Fast and Lightweight** : Minimal overhead for quick game launching.
+- 🖌️ **Customizable UI**: Modify the launcher appearance with themes
+- 💾 **Library Management** : Install/Uninstall games easily
+- 🐧 **Platform-Agnostic** : Works both on Windows and Linux
+- ⚡ **Fast and Lightweight** : Minimal overhead for quick game launching.
 
 ## Requirements
 
