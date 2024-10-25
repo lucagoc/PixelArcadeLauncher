@@ -11,11 +11,13 @@
 - 💾 **Library Management** : Install and uninstall games easily
 - 🐧 **Platform-Agnostic** : Works both on Windows and Linux
 - ⚡ **Fast and Lightweight** : Minimal overhead for quick game launching.
+- ✨ **Animations and effects** : Gives a modern feel to the launcher.
 
 ## Requirements
 
-- System running Windows, Linux, or another platform supported by Godot
-- At least 2 GB of RAM (more recommended for higher-end games)
+- System running Windows, Linux, or another platform supported by Godot.
+- At least 2 GB of RAM (more recommended for higher-end games).
+- A graphics card that supports OpenGL 3.3 or higher.
 
 ## License
 
