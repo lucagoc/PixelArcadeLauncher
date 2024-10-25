@@ -1,40 +1,27 @@
 extends VBoxContainer
 
-var isDrawerOpened = false
+var _is_drawer_focused := false
+const DRAWER_SIZE := 0.70
 
-signal hide_banner_tags
-signal show_banner_tags
-
-func _on_banner_menu_focus_entered(id: int) -> void:
-	if isDrawerOpened:
-		var drawer_size = $DrawerMenu.custom_minimum_size.y
+func _on_banner_menu_focused() -> void:
+	if _is_drawer_focused:
+		var drawer_size = $Drawer.custom_minimum_size.y
 		var animation = $AnimationPlayer.get_animation("close_drawer")
 		animation.bezier_track_set_key_value(0, 0, drawer_size)
 		$AnimationPlayer.play("close_drawer")
-		isDrawerOpened = false
-	
-	# Emit signal to show all tags in the banners
-	emit_signal("show_banner_tags")
+		_is_drawer_focused = false
 
-
-func _on_drawer_menu_focus_entered() -> void:
-	if not isDrawerOpened:
-		# Set the drawer size to 80% of the screen height
-		var drawer_size = get_viewport_rect().size.y * 0.7
+func _on_drawer_focused() -> void:
+	if not _is_drawer_focused:
+		# Set the drawer size to 70% of the screen height
+		var drawer_size = get_viewport_rect().size.y * DRAWER_SIZE
 		var animation = $AnimationPlayer.get_animation("open_drawer")
 		animation.bezier_track_set_key_value(0, 1, drawer_size)
 		
 		# Play the animation
 		$AnimationPlayer.play("open_drawer")
-		isDrawerOpened = true
-	
-	# Emit signal to hide all tags in the banners
-	emit_signal("hide_banner_tags")
+		_is_drawer_focused = true
 
 func _ready() -> void:
-	LimboConsole.register_command(_on_banner_menu_focus_entered, "close_drawer", "Close the drawer")
-	LimboConsole.register_command(_on_drawer_menu_focus_entered, "open_drawer", "Open the drawer")
-
-
-func _on_category_list_focus_entered() -> void:
-	_on_drawer_menu_focus_entered()
+	BusEvent.connect("BANNER_MENU_FOCUSED", _on_banner_menu_focused)
+	BusEvent.connect("DRAWER_FOCUSED", _on_drawer_focused)

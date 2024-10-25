@@ -2,16 +2,4 @@ Pour les animations du background, plutôt faire une queue d'appelle de fonction
 Cette queue pourrait se vider des appels de fonctions en trop en limitant sa taille à 2/3 éléments les plus récents.
 Possiblement mettre un délai pour éviter les animations fortuites.
 
-Pour le problème du décalage du scrolling qd on passe d'une bannière à une autre de la gauche vers la droite.
-Le calcul du pas de départ n'est pas correct.
-
 Pour fixer les bannières à une taille fixe, utiliser une fausse bannière 600x900 et draw par dessus l'autre bannière ?
-
-
-Implémenter un vrai scrolling infini ou alors faire une animation spécifique pour le retour au début de la liste.
-
-
-- TODO :
-	- Création de tableau avec tri des bannières
-	- Afficher les bannières en fonction de l'index et non plus du sens d'importation
-	- Scrolling infini des bannière en utilisant les indexs. variables du nombre de bannière à précharger.

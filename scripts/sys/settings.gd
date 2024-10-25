@@ -1,8 +1,6 @@
 extends Control
 
-@export var scaling = 1
-
-signal scaling_changed
+@export var scaling := 1.0
 
 # Save the settings in the settings.conf file
 func save_settings():
@@ -36,8 +34,8 @@ func load_settings():
 						else:
 							DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 					"scaling":
-						scaling = int(value)
-						emit_signal("scaling_changed")
+						scaling = float(value)
+						BusEvent.emit_signal("SCALING_CHANGED")
 					"vsync":
 						if value == "true":
 							DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
