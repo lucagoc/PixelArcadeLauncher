@@ -5,8 +5,6 @@
 
 extends HBoxContainer
 
-var last_selected_banner = null
-
 func fix_banner_index():
 	for i in range(get_child_count()):
 		var node = get_child(i)
@@ -109,3 +107,12 @@ func _ready() -> void:
 	BusEvent.connect("GAME_LIST_LOADED", _on_main_game_list_loaded)
 	BusEvent.connect("BANNER_SELECTED", _on_banner_selection)
 	BusEvent.connect("CENTER_MENU_BANNER", center_banner)
+
+
+func _on_auto_scroll_timeout() -> void:
+	## press right
+	#var a = InputEventKey.new()
+	#a.keycode = KEY_RIGHT
+	#a.pressed = true
+	#Input.parse_input_event(a)
+	pass
