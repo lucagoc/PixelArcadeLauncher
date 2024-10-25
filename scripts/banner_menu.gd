@@ -47,13 +47,13 @@ func _on_banner_selection(index: int):
 
 	# Each banner has an index, which is the position of the banner in the container
 	if(direction < 0):
-		for i in range(direction_int):
+		for i in range(abs(direction_int)):
 			move_banner_last_to_first()
 			$"../".get_h_scroll_bar().value += + 2 * $"../".get_h_scroll_bar().max_value/GameList.GAME_LIST.size()
 	elif(direction > 0):
 		for i in range(abs(direction_int)):
 			move_banner_first_to_last()
-			$"../".get_h_scroll_bar().value += - 3 * $"../".get_h_scroll_bar().max_value/GameList.GAME_LIST.size()
+			$"../".get_h_scroll_bar().value += - 5 * $"../".get_h_scroll_bar().max_value/GameList.GAME_LIST.size()
 
 	# Emit game selected
 	BusEvent.emit_signal("BANNER_MENU_FOCUSED")

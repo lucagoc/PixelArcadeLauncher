@@ -547,8 +547,7 @@ layout_mode = 2
 [node name="ScrollContainer" type="ScrollContainer" parent="MainMenu/MainVbox"]
 layout_mode = 2
 size_flags_vertical = 3
-scroll_horizontal_custom_step = 437.964
-horizontal_scroll_mode = 2
+horizontal_scroll_mode = 3
 vertical_scroll_mode = 0
 
 [node name="BannerMenu" type="HBoxContainer" parent="MainMenu/MainVbox/ScrollContainer"]
