@@ -64,7 +64,7 @@ func _on_banner_selection(index: int):
 
 # Add a banner to the container, last position
 func add_banner(game: GameList.Game) -> void:
-	var banner_scene = load("res://scenes/game_banner.tscn")
+	var banner_scene = load("res://scenes/home/banner_list/game_banner.tscn")
 	var banner = banner_scene.instantiate()
 	
 	# Set the banner node properties

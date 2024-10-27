@@ -1,7 +1,6 @@
 extends Control
 
-
-var settings = load("res://scripts/common/settings.gd").new()
+var settings = load("res://scenes/common/settings.gd").new()
 
 func preload_data():
 	# Check if the launcher folder exists
@@ -40,6 +39,7 @@ func start_loading():
 
 func end_loading():
 	$AnimationPlayer.play("loading_end")
+	BusEvent.emit_signal("SELECT_GAME", 0)
 	print("[SUCCESS] PixelArcadeLauncher has been loaded successfully !")
 
 func add_console_commands():

@@ -1,185 +1,14 @@
-[gd_scene load_steps=39 format=3 uid="uid://bemlflx640ecp"]
+[gd_scene load_steps=19 format=3 uid="uid://bemlflx640ecp"]
 
-[ext_resource type="Script" path="res://scripts/main.gd" id="1_1x3i4"]
-[ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="2_o8yq3"]
-[ext_resource type="PackedScene" uid="uid://c4frsd4if6b7x" path="res://scenes/loading_screen.tscn" id="2_skuo7"]
-[ext_resource type="Script" path="res://scripts/home/front.gd" id="6_31f76"]
-[ext_resource type="Script" path="res://scripts/home/home.gd" id="6_eo0ua"]
-[ext_resource type="PackedScene" uid="uid://nlbgb1sdxsw5" path="res://scenes/top_bar.tscn" id="7_kwa70"]
-[ext_resource type="Script" path="res://scripts/home/banner_list/banner_scroll_list.gd" id="8_lrgq2"]
-[ext_resource type="PackedScene" uid="uid://cwq5lpo80io0d" path="res://scenes/game_banner.tscn" id="8_ttsp2"]
-[ext_resource type="Texture2D" uid="uid://cgc7asuvr1um5" path="res://assets/img/default/placeholder.svg" id="9_bi3up"]
-[ext_resource type="Texture2D" uid="uid://c43xlomsm26k2" path="res://assets/img/zz_mouse_64.png" id="9_djdqi"]
-[ext_resource type="Texture2D" uid="uid://ccxqk685vpfmr" path="res://assets/img/buttons/Yellow.png" id="9_o2r0a"]
-[ext_resource type="Script" path="res://scripts/home/drawer/drawer_menu.gd" id="10_2bhfd"]
-[ext_resource type="Texture2D" uid="uid://baldfvib8npgc" path="res://assets/img/buttons/Red.png" id="10_fkcj7"]
-[ext_resource type="Texture2D" uid="uid://dp6au1s2cm1v0" path="res://assets/img/buttons/Green.png" id="11_5jn04"]
-[ext_resource type="Texture2D" uid="uid://dttgk3eadjifd" path="res://assets/img/buttons/Blue.png" id="12_vf2ow"]
-[ext_resource type="PackedScene" uid="uid://bveavdlpsb5lv" path="res://scenes/bottom_bar.tscn" id="15_vw4ht"]
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ofx2k"]
-particle_flag_disable_z = true
-emission_shape_offset = Vector3(0, 100, 0)
-emission_shape_scale = Vector3(100, 1, 1)
-emission_shape = 3
-emission_box_extents = Vector3(10, 1, 1)
-gravity = Vector3(0, -2000, 0)
-scale_min = 5.0
-scale_max = 7.0
-turbulence_enabled = true
-turbulence_noise_scale = 1.0
-
-[sub_resource type="Animation" id="Animation_cbcuj"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BackgroundHero:modulate:a")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BackgroundHero2:modulate:a")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_hkg4h"]
-resource_name = "change_background"
-length = 0.5
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BackgroundHero:modulate:a")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5)
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_h2la0"]
-_data = {
-"RESET": SubResource("Animation_cbcuj"),
-"fade_out": SubResource("Animation_hkg4h")
-}
-
-[sub_resource type="Animation" id="Animation_k1vjm"]
-resource_name = "fade_out_2"
-length = 0.5
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BackgroundHero2:modulate:a")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5)
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kt45j"]
-_data = {
-"fade_out_2": SubResource("Animation_k1vjm")
-}
-
-[sub_resource type="Animation" id="Animation_7ccxi"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scroll_horizontal")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_07jry"]
-resource_name = "slide"
-length = 0.3
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scroll_horizontal")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.0666667, 225.5, 600, -0.5, -0.5, 0.25, 0),
-"times": PackedFloat32Array(0, 0.3)
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_yls8f"]
-_data = {
-"RESET": SubResource("Animation_7ccxi"),
-"scroll": SubResource("Animation_07jry")
-}
-
-[sub_resource type="Animation" id="Animation_m3we3"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Drawer/CategoryBar:custom_minimum_size:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(85, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_66ngf"]
-resource_name = "close_category"
-length = 0.3
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Drawer/CategoryBar:custom_minimum_size:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(300, -0.25, 0, 0.25, 0, 85, -0.15, 0, 0.15, 0),
-"times": PackedFloat32Array(0, 0.3)
-}
-
-[sub_resource type="Animation" id="Animation_4m38c"]
-resource_name = "open_category"
-length = 0.3
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Drawer/CategoryBar:custom_minimum_size:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(85, -0.25, 0, 0, 82.5, 300, -0.233333, -2.5, 0.25, 0),
-"times": PackedFloat32Array(0, 0.3)
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qcudj"]
-_data = {
-"RESET": SubResource("Animation_m3we3"),
-"close_category": SubResource("Animation_66ngf"),
-"open_category": SubResource("Animation_4m38c")
-}
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_srogu"]
+[ext_resource type="PackedScene" uid="uid://c4frsd4if6b7x" path="res://scenes/special/loading_screen.tscn" id="2_io48b"]
+[ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="3_qj2xj"]
+[ext_resource type="PackedScene" uid="uid://ds2js8kmbdnu5" path="res://scenes/home/background.tscn" id="4_uvh1k"]
+[ext_resource type="Script" path="res://scenes/home/front.gd" id="5_v2f7h"]
+[ext_resource type="PackedScene" uid="uid://nlbgb1sdxsw5" path="res://scenes/bars/top_bar.tscn" id="6_5rdxe"]
+[ext_resource type="PackedScene" uid="uid://dnmfvwbgonwdj" path="res://scenes/home/banner_list/banner_scroll_list.tscn" id="7_yqq1d"]
+[ext_resource type="PackedScene" uid="uid://b8xcoqpmgts1i" path="res://scenes/home/drawer/drawer.tscn" id="8_14dml"]
+[ext_resource type="PackedScene" uid="uid://bveavdlpsb5lv" path="res://scenes/bars/bottom_bar.tscn" id="16_x1ks8"]
 
 [sub_resource type="Animation" id="Animation_anar2"]
 length = 0.001
@@ -452,10 +281,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_1x3i4")
-
-[node name="LoadingScreen" parent="." instance=ExtResource("2_skuo7")]
-layout_mode = 1
+script = ExtResource("1_srogu")
 
 [node name="Home" type="Control" parent="."]
 layout_mode = 1
@@ -464,72 +290,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_o8yq3")
-script = ExtResource("6_eo0ua")
+theme = ExtResource("3_qj2xj")
 
-[node name="Background" type="Control" parent="Home"]
+[node name="Background" parent="Home" instance=ExtResource("4_uvh1k")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="BackgroundHero2" type="TextureRect" parent="Home/Background"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_bi3up")
-stretch_mode = 6
-
-[node name="BackgroundHero" type="TextureRect" parent="Home/Background"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_bi3up")
-stretch_mode = 6
-
-[node name="BackgroundColorPanel" type="ColorRect" parent="Home/Background"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.235294)
-
-[node name="Particles" type="Control" parent="Home/Background"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Home/Background/Particles"]
-amount = 100
-process_material = SubResource("ParticleProcessMaterial_ofx2k")
-lifetime = 4.0
-fixed_fps = 60
-trail_lifetime = 1.73
-
-[node name="BackgroundAnimation" type="AnimationPlayer" parent="Home/Background"]
-libraries = {
-"": SubResource("AnimationLibrary_h2la0")
-}
-
-[node name="BackgroundAnimation2" type="AnimationPlayer" parent="Home/Background"]
-libraries = {
-"": SubResource("AnimationLibrary_kt45j")
-}
 
 [node name="Front" type="VBoxContainer" parent="Home"]
 layout_mode = 1
@@ -539,145 +303,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
-script = ExtResource("6_31f76")
+script = ExtResource("5_v2f7h")
 
-[node name="TopBar" parent="Home/Front" instance=ExtResource("7_kwa70")]
+[node name="TopBar" parent="Home/Front" instance=ExtResource("6_5rdxe")]
 layout_mode = 2
 
-[node name="BannerScrollList" type="ScrollContainer" parent="Home/Front"]
+[node name="BannerScrollList" parent="Home/Front" instance=ExtResource("7_yqq1d")]
 layout_mode = 2
-size_flags_vertical = 3
-horizontal_scroll_mode = 3
-vertical_scroll_mode = 0
-script = ExtResource("8_lrgq2")
 
-[node name="BannerList" type="HBoxContainer" parent="Home/Front/BannerScrollList"]
-clip_contents = true
+[node name="Drawer" parent="Home/Front" instance=ExtResource("8_14dml")]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 3
-focus_neighbor_bottom = NodePath("../../Drawer")
 
-[node name="GameBanner44" parent="Home/Front/BannerScrollList/BannerList" instance=ExtResource("8_ttsp2")]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="GameBanner45" parent="Home/Front/BannerScrollList/BannerList" instance=ExtResource("8_ttsp2")]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="GameBanner47" parent="Home/Front/BannerScrollList/BannerList" instance=ExtResource("8_ttsp2")]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="GameBanner48" parent="Home/Front/BannerScrollList/BannerList" instance=ExtResource("8_ttsp2")]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="GameBanner49" parent="Home/Front/BannerScrollList/BannerList" instance=ExtResource("8_ttsp2")]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="GameBanner50" parent="Home/Front/BannerScrollList/BannerList" instance=ExtResource("8_ttsp2")]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="GameBanner51" parent="Home/Front/BannerScrollList/BannerList" instance=ExtResource("8_ttsp2")]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="GameBanner52" parent="Home/Front/BannerScrollList/BannerList" instance=ExtResource("8_ttsp2")]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="GameBanner53" parent="Home/Front/BannerScrollList/BannerList" instance=ExtResource("8_ttsp2")]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="GameBanner54" parent="Home/Front/BannerScrollList/BannerList" instance=ExtResource("8_ttsp2")]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="GameBanner55" parent="Home/Front/BannerScrollList/BannerList" instance=ExtResource("8_ttsp2")]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Home/Front/BannerScrollList"]
-libraries = {
-"": SubResource("AnimationLibrary_yls8f")
-}
-
-[node name="AutoScroll" type="Timer" parent="Home/Front/BannerScrollList"]
-wait_time = 5.0
-autostart = true
-
-[node name="Drawer" type="HBoxContainer" parent="Home/Front"]
-layout_mode = 2
-size_flags_vertical = 8
-focus_neighbor_top = NodePath("../BannerScrollList/BannerList")
-theme = ExtResource("2_o8yq3")
-theme_override_constants/separation = 0
-script = ExtResource("10_2bhfd")
-
-[node name="CategoryBar" type="ColorRect" parent="Home/Front/Drawer"]
-custom_minimum_size = Vector2(85, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-theme = ExtResource("2_o8yq3")
-color = Color(0, 0, 0, 1)
-
-[node name="CategoryList" type="ItemList" parent="Home/Front/Drawer/CategoryBar"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-focus_neighbor_right = NodePath("../../ItemList")
-theme = ExtResource("2_o8yq3")
-item_count = 5
-same_column_width = true
-item_0/text = " Tout"
-item_0/icon = ExtResource("9_o2r0a")
-item_1/text = " Populaire"
-item_1/icon = ExtResource("10_fkcj7")
-item_2/text = " Arcade"
-item_2/icon = ExtResource("11_5jn04")
-item_3/text = " PC"
-item_3/icon = ExtResource("12_vf2ow")
-item_4/text = " ZZ"
-item_4/icon = ExtResource("9_djdqi")
-
-[node name="ItemList" type="ItemList" parent="Home/Front/Drawer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-focus_neighbor_left = NodePath("../CategoryBar/CategoryList")
-theme = ExtResource("2_o8yq3")
-max_text_lines = 2
-item_count = 5
-max_columns = 0
-same_column_width = true
-icon_mode = 0
-fixed_icon_size = Vector2i(128, 128)
-item_0/text = "Super Jeu 1"
-item_0/icon = ExtResource("9_bi3up")
-item_1/text = "Super Jeu 2"
-item_1/icon = ExtResource("9_bi3up")
-item_2/text = "Super Jeu 3"
-item_2/icon = ExtResource("9_bi3up")
-item_3/text = "Super Jeu 4"
-item_3/icon = ExtResource("9_bi3up")
-item_4/text = "Super Jeu 5"
-item_4/icon = ExtResource("9_bi3up")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Home/Front/Drawer"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_qcudj")
-}
-
-[node name="BottomBar" parent="Home/Front" instance=ExtResource("15_vw4ht")]
+[node name="BottomBar" parent="Home/Front" instance=ExtResource("16_x1ks8")]
 layout_mode = 2
 size_flags_vertical = 8
 
@@ -686,19 +323,13 @@ libraries = {
 "": SubResource("AnimationLibrary_anmaq")
 }
 
+[node name="LoadingScreen" parent="." instance=ExtResource("2_io48b")]
+layout_mode = 1
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_2h2xi")
 }
 speed_scale = 2.0
 
-[connection signal="animation_finished" from="Home/Background/BackgroundAnimation" to="Home" method="_on_background_animation_animation_finished"]
-[connection signal="animation_finished" from="Home/Background/BackgroundAnimation2" to="Home" method="_on_background_animation_2_animation_finished"]
-[connection signal="focus_entered" from="Home/Front/BannerScrollList/BannerList" to="Home/Front" method="_on_banner_menu_focus_entered"]
-[connection signal="timeout" from="Home/Front/BannerScrollList/AutoScroll" to="Home/Front/BannerScrollList/BannerList" method="_on_auto_scroll_timeout"]
-[connection signal="focus_entered" from="Home/Front/Drawer" to="Home/Front" method="_on_drawer_menu_focus_entered"]
-[connection signal="focus_entered" from="Home/Front/Drawer/CategoryBar/CategoryList" to="Home/Front/Drawer" method="_on_category_list_focus_entered"]
-[connection signal="focus_exited" from="Home/Front/Drawer/CategoryBar/CategoryList" to="Home/Front/Drawer" method="_on_category_list_focus_exited"]
-[connection signal="focus_entered" from="Home/Front/Drawer/ItemList" to="Home/Front/Drawer" method="_on_item_list_focus_entered"]
-[connection signal="item_selected" from="Home/Front/Drawer/ItemList" to="Home/Front/Drawer" method="_on_item_list_item_selected"]
 [connection signal="animation_finished" from="Home/Front/AnimationPlayer" to="Home/Front" method="_on_animation_player_animation_finished"]

@@ -57,6 +57,11 @@ func _on_texture_rect_focus_exited() -> void:
 	$AnimationPlayer.play_backwards("focus_entered")
 	$AnimationPlayer.seek(last_position)
 
+func _on_select_game(id: int) -> void:
+	if id == game_id:
+		$TextureRect.grab_focus()
+
 func _ready() -> void:
 	BusEvent.connect("DRAWER_FOCUSED", hide_tags)
 	BusEvent.connect("BANNER_MENU_FOCUSED", show_tags)
+	BusEvent.connect("SELECT_GAME", _on_select_game)

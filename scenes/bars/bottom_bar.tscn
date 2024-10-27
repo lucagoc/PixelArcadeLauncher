@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bveavdlpsb5lv"]
 
-[ext_resource type="Script" path="res://scripts/bars/bottom_bar.gd" id="1_u5ya3"]
+[ext_resource type="Script" path="res://scenes/bars/bottom_bar.gd" id="1_u5ya3"]
 [ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="2_w4b71"]
 
 [node name="BottomBar" type="ColorRect"]

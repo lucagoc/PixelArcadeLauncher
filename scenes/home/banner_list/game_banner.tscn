@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://cwq5lpo80io0d"]
 
 [ext_resource type="Texture2D" uid="uid://dkfnjychc24ah" path="res://assets/img/default/banner.png" id="1_gtc0v"]
-[ext_resource type="Script" path="res://scripts/home/banner_list/game_banner.gd" id="1_spqyp"]
-[ext_resource type="Material" uid="uid://e2ayymwahag0" path="res://scenes/highlight.tres" id="3_gxj7a"]
+[ext_resource type="Script" path="res://scenes/home/banner_list/game_banner.gd" id="1_spqyp"]
+[ext_resource type="Material" uid="uid://e2ayymwahag0" path="res://themes/highlight.tres" id="3_gxj7a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkuvb"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
