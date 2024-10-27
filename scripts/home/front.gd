@@ -25,3 +25,8 @@ func _on_drawer_focused() -> void:
 func _ready() -> void:
 	BusEvent.connect("BANNER_MENU_FOCUSED", _on_banner_menu_focused)
 	BusEvent.connect("DRAWER_FOCUSED", _on_drawer_focused)
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "close_drawer":
+		BusEvent.emit_signal("CENTER_SELECTED_BANNER")

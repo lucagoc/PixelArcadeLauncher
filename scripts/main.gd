@@ -1,7 +1,7 @@
 extends Control
 
 
-var settings = load("res://scripts/sys/settings.gd").new()
+var settings = load("res://scripts/common/settings.gd").new()
 
 func preload_data():
 	# Check if the launcher folder exists
@@ -34,7 +34,7 @@ func start_loading():
 	print("PixelArcadeLauncher is starting...")
 	$LoadingScreen.show()
 	$LoadingScreen/Mouse/AnimatedSprite2D.play("mouseRun")
-	$MainMenu.hide()
+	$Home.hide()
 	$AnimationPlayer.play("loading_start")
 
 

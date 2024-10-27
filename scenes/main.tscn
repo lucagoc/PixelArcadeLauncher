@@ -3,15 +3,15 @@
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1x3i4"]
 [ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="2_o8yq3"]
 [ext_resource type="PackedScene" uid="uid://c4frsd4if6b7x" path="res://scenes/loading_screen.tscn" id="2_skuo7"]
-[ext_resource type="Script" path="res://scripts/main_vbox.gd" id="6_31f76"]
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="6_eo0ua"]
+[ext_resource type="Script" path="res://scripts/home/front.gd" id="6_31f76"]
+[ext_resource type="Script" path="res://scripts/home/home.gd" id="6_eo0ua"]
 [ext_resource type="PackedScene" uid="uid://nlbgb1sdxsw5" path="res://scenes/top_bar.tscn" id="7_kwa70"]
-[ext_resource type="Script" path="res://scripts/banner_menu.gd" id="8_lrgq2"]
+[ext_resource type="Script" path="res://scripts/home/banner_list/banner_scroll_list.gd" id="8_lrgq2"]
 [ext_resource type="PackedScene" uid="uid://cwq5lpo80io0d" path="res://scenes/game_banner.tscn" id="8_ttsp2"]
 [ext_resource type="Texture2D" uid="uid://cgc7asuvr1um5" path="res://assets/img/default/placeholder.svg" id="9_bi3up"]
 [ext_resource type="Texture2D" uid="uid://c43xlomsm26k2" path="res://assets/img/zz_mouse_64.png" id="9_djdqi"]
 [ext_resource type="Texture2D" uid="uid://ccxqk685vpfmr" path="res://assets/img/buttons/Yellow.png" id="9_o2r0a"]
-[ext_resource type="Script" path="res://scripts/drawer_menu.gd" id="10_2bhfd"]
+[ext_resource type="Script" path="res://scripts/home/drawer/drawer_menu.gd" id="10_2bhfd"]
 [ext_resource type="Texture2D" uid="uid://baldfvib8npgc" path="res://assets/img/buttons/Red.png" id="10_fkcj7"]
 [ext_resource type="Texture2D" uid="uid://dp6au1s2cm1v0" path="res://assets/img/buttons/Green.png" id="11_5jn04"]
 [ext_resource type="Texture2D" uid="uid://dttgk3eadjifd" path="res://assets/img/buttons/Blue.png" id="12_vf2ow"]
@@ -261,7 +261,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("MainMenu:visible")
+tracks/2/path = NodePath("Home:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -273,7 +273,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("MainMenu:modulate")
+tracks/3/path = NodePath("Home:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -285,7 +285,7 @@ tracks/3/keys = {
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("MainMenu:position:x")
+tracks/4/path = NodePath("Home:position:x")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -296,7 +296,7 @@ tracks/4/keys = {
 tracks/5/type = "bezier"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("MainMenu:position:y")
+tracks/5/path = NodePath("Home:position:y")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -335,7 +335,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("MainMenu:modulate")
+tracks/2/path = NodePath("Home:modulate")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -347,7 +347,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("MainMenu:visible")
+tracks/3/path = NodePath("Home:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -387,7 +387,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("MainMenu:visible")
+tracks/2/path = NodePath("Home:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -399,7 +399,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("MainMenu:modulate")
+tracks/3/path = NodePath("Home:modulate")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -415,7 +415,7 @@ length = 0.5
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MainMenu:position:x")
+tracks/0/path = NodePath("Home:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -426,7 +426,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = false
-tracks/1/path = NodePath("MainMenu:position:y")
+tracks/1/path = NodePath("Home:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -457,7 +457,7 @@ script = ExtResource("1_1x3i4")
 [node name="LoadingScreen" parent="." instance=ExtResource("2_skuo7")]
 layout_mode = 1
 
-[node name="MainMenu" type="Control" parent="."]
+[node name="Home" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -467,7 +467,7 @@ grow_vertical = 2
 theme = ExtResource("2_o8yq3")
 script = ExtResource("6_eo0ua")
 
-[node name="Background" type="Control" parent="MainMenu"]
+[node name="Background" type="Control" parent="Home"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -475,17 +475,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BackgroundHero2" type="TextureRect" parent="MainMenu/Background"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_bi3up")
-stretch_mode = 6
-
-[node name="BackgroundHero" type="TextureRect" parent="MainMenu/Background"]
+[node name="BackgroundHero2" type="TextureRect" parent="Home/Background"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -495,7 +485,17 @@ grow_vertical = 2
 texture = ExtResource("9_bi3up")
 stretch_mode = 6
 
-[node name="BackgroundColorPanel" type="ColorRect" parent="MainMenu/Background"]
+[node name="BackgroundHero" type="TextureRect" parent="Home/Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_bi3up")
+stretch_mode = 6
+
+[node name="BackgroundColorPanel" type="ColorRect" parent="Home/Background"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -504,7 +504,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.235294)
 
-[node name="Particles" type="Control" parent="MainMenu/Background"]
+[node name="Particles" type="Control" parent="Home/Background"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -514,24 +514,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="MainMenu/Background/Particles"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Home/Background/Particles"]
 amount = 100
 process_material = SubResource("ParticleProcessMaterial_ofx2k")
 lifetime = 4.0
 fixed_fps = 60
 trail_lifetime = 1.73
 
-[node name="BackgroundAnimation" type="AnimationPlayer" parent="MainMenu/Background"]
+[node name="BackgroundAnimation" type="AnimationPlayer" parent="Home/Background"]
 libraries = {
 "": SubResource("AnimationLibrary_h2la0")
 }
 
-[node name="BackgroundAnimation2" type="AnimationPlayer" parent="MainMenu/Background"]
+[node name="BackgroundAnimation2" type="AnimationPlayer" parent="Home/Background"]
 libraries = {
 "": SubResource("AnimationLibrary_kt45j")
 }
 
-[node name="MainVbox" type="VBoxContainer" parent="MainMenu"]
+[node name="Front" type="VBoxContainer" parent="Home"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -541,92 +541,92 @@ grow_vertical = 2
 theme_override_constants/separation = 0
 script = ExtResource("6_31f76")
 
-[node name="TopBar" parent="MainMenu/MainVbox" instance=ExtResource("7_kwa70")]
+[node name="TopBar" parent="Home/Front" instance=ExtResource("7_kwa70")]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MainMenu/MainVbox"]
+[node name="BannerScrollList" type="ScrollContainer" parent="Home/Front"]
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 0
+script = ExtResource("8_lrgq2")
 
-[node name="BannerMenu" type="HBoxContainer" parent="MainMenu/MainVbox/ScrollContainer"]
+[node name="BannerList" type="HBoxContainer" parent="Home/Front/BannerScrollList"]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
 focus_neighbor_bottom = NodePath("../../Drawer")
-script = ExtResource("8_lrgq2")
 
-[node name="GameBanner44" parent="MainMenu/MainVbox/ScrollContainer/BannerMenu" instance=ExtResource("8_ttsp2")]
+[node name="GameBanner44" parent="Home/Front/BannerScrollList/BannerList" instance=ExtResource("8_ttsp2")]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GameBanner45" parent="MainMenu/MainVbox/ScrollContainer/BannerMenu" instance=ExtResource("8_ttsp2")]
+[node name="GameBanner45" parent="Home/Front/BannerScrollList/BannerList" instance=ExtResource("8_ttsp2")]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GameBanner47" parent="MainMenu/MainVbox/ScrollContainer/BannerMenu" instance=ExtResource("8_ttsp2")]
+[node name="GameBanner47" parent="Home/Front/BannerScrollList/BannerList" instance=ExtResource("8_ttsp2")]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GameBanner48" parent="MainMenu/MainVbox/ScrollContainer/BannerMenu" instance=ExtResource("8_ttsp2")]
+[node name="GameBanner48" parent="Home/Front/BannerScrollList/BannerList" instance=ExtResource("8_ttsp2")]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GameBanner49" parent="MainMenu/MainVbox/ScrollContainer/BannerMenu" instance=ExtResource("8_ttsp2")]
+[node name="GameBanner49" parent="Home/Front/BannerScrollList/BannerList" instance=ExtResource("8_ttsp2")]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GameBanner50" parent="MainMenu/MainVbox/ScrollContainer/BannerMenu" instance=ExtResource("8_ttsp2")]
+[node name="GameBanner50" parent="Home/Front/BannerScrollList/BannerList" instance=ExtResource("8_ttsp2")]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GameBanner51" parent="MainMenu/MainVbox/ScrollContainer/BannerMenu" instance=ExtResource("8_ttsp2")]
+[node name="GameBanner51" parent="Home/Front/BannerScrollList/BannerList" instance=ExtResource("8_ttsp2")]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GameBanner52" parent="MainMenu/MainVbox/ScrollContainer/BannerMenu" instance=ExtResource("8_ttsp2")]
+[node name="GameBanner52" parent="Home/Front/BannerScrollList/BannerList" instance=ExtResource("8_ttsp2")]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GameBanner53" parent="MainMenu/MainVbox/ScrollContainer/BannerMenu" instance=ExtResource("8_ttsp2")]
+[node name="GameBanner53" parent="Home/Front/BannerScrollList/BannerList" instance=ExtResource("8_ttsp2")]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GameBanner54" parent="MainMenu/MainVbox/ScrollContainer/BannerMenu" instance=ExtResource("8_ttsp2")]
+[node name="GameBanner54" parent="Home/Front/BannerScrollList/BannerList" instance=ExtResource("8_ttsp2")]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GameBanner55" parent="MainMenu/MainVbox/ScrollContainer/BannerMenu" instance=ExtResource("8_ttsp2")]
+[node name="GameBanner55" parent="Home/Front/BannerScrollList/BannerList" instance=ExtResource("8_ttsp2")]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MainMenu/MainVbox/ScrollContainer"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Home/Front/BannerScrollList"]
 libraries = {
 "": SubResource("AnimationLibrary_yls8f")
 }
 
-[node name="AutoScroll" type="Timer" parent="MainMenu/MainVbox/ScrollContainer"]
+[node name="AutoScroll" type="Timer" parent="Home/Front/BannerScrollList"]
 wait_time = 5.0
 autostart = true
 
-[node name="Drawer" type="HBoxContainer" parent="MainMenu/MainVbox"]
+[node name="Drawer" type="HBoxContainer" parent="Home/Front"]
 layout_mode = 2
 size_flags_vertical = 8
-focus_neighbor_top = NodePath("../ScrollContainer/BannerMenu")
+focus_neighbor_top = NodePath("../BannerScrollList/BannerList")
 theme = ExtResource("2_o8yq3")
 theme_override_constants/separation = 0
 script = ExtResource("10_2bhfd")
 
-[node name="CategoryBar" type="ColorRect" parent="MainMenu/MainVbox/Drawer"]
+[node name="CategoryBar" type="ColorRect" parent="Home/Front/Drawer"]
 custom_minimum_size = Vector2(85, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("2_o8yq3")
 color = Color(0, 0, 0, 1)
 
-[node name="CategoryList" type="ItemList" parent="MainMenu/MainVbox/Drawer/CategoryBar"]
+[node name="CategoryList" type="ItemList" parent="Home/Front/Drawer/CategoryBar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -648,7 +648,7 @@ item_3/icon = ExtResource("12_vf2ow")
 item_4/text = " ZZ"
 item_4/icon = ExtResource("9_djdqi")
 
-[node name="ItemList" type="ItemList" parent="MainMenu/MainVbox/Drawer"]
+[node name="ItemList" type="ItemList" parent="Home/Front/Drawer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -671,17 +671,17 @@ item_3/icon = ExtResource("9_bi3up")
 item_4/text = "Super Jeu 5"
 item_4/icon = ExtResource("9_bi3up")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MainMenu/MainVbox/Drawer"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Home/Front/Drawer"]
 root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_qcudj")
 }
 
-[node name="BottomBar" parent="MainMenu/MainVbox" instance=ExtResource("15_vw4ht")]
+[node name="BottomBar" parent="Home/Front" instance=ExtResource("15_vw4ht")]
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MainMenu/MainVbox"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Home/Front"]
 libraries = {
 "": SubResource("AnimationLibrary_anmaq")
 }
@@ -692,12 +692,13 @@ libraries = {
 }
 speed_scale = 2.0
 
-[connection signal="animation_finished" from="MainMenu/Background/BackgroundAnimation" to="MainMenu" method="_on_background_animation_animation_finished"]
-[connection signal="animation_finished" from="MainMenu/Background/BackgroundAnimation2" to="MainMenu" method="_on_background_animation_2_animation_finished"]
-[connection signal="focus_entered" from="MainMenu/MainVbox/ScrollContainer/BannerMenu" to="MainMenu/MainVbox" method="_on_banner_menu_focus_entered"]
-[connection signal="timeout" from="MainMenu/MainVbox/ScrollContainer/AutoScroll" to="MainMenu/MainVbox/ScrollContainer/BannerMenu" method="_on_auto_scroll_timeout"]
-[connection signal="focus_entered" from="MainMenu/MainVbox/Drawer" to="MainMenu/MainVbox" method="_on_drawer_menu_focus_entered"]
-[connection signal="focus_entered" from="MainMenu/MainVbox/Drawer/CategoryBar/CategoryList" to="MainMenu/MainVbox/Drawer" method="_on_category_list_focus_entered"]
-[connection signal="focus_exited" from="MainMenu/MainVbox/Drawer/CategoryBar/CategoryList" to="MainMenu/MainVbox/Drawer" method="_on_category_list_focus_exited"]
-[connection signal="focus_entered" from="MainMenu/MainVbox/Drawer/ItemList" to="MainMenu/MainVbox/Drawer" method="_on_item_list_focus_entered"]
-[connection signal="item_selected" from="MainMenu/MainVbox/Drawer/ItemList" to="MainMenu/MainVbox/Drawer" method="_on_item_list_item_selected"]
+[connection signal="animation_finished" from="Home/Background/BackgroundAnimation" to="Home" method="_on_background_animation_animation_finished"]
+[connection signal="animation_finished" from="Home/Background/BackgroundAnimation2" to="Home" method="_on_background_animation_2_animation_finished"]
+[connection signal="focus_entered" from="Home/Front/BannerScrollList/BannerList" to="Home/Front" method="_on_banner_menu_focus_entered"]
+[connection signal="timeout" from="Home/Front/BannerScrollList/AutoScroll" to="Home/Front/BannerScrollList/BannerList" method="_on_auto_scroll_timeout"]
+[connection signal="focus_entered" from="Home/Front/Drawer" to="Home/Front" method="_on_drawer_menu_focus_entered"]
+[connection signal="focus_entered" from="Home/Front/Drawer/CategoryBar/CategoryList" to="Home/Front/Drawer" method="_on_category_list_focus_entered"]
+[connection signal="focus_exited" from="Home/Front/Drawer/CategoryBar/CategoryList" to="Home/Front/Drawer" method="_on_category_list_focus_exited"]
+[connection signal="focus_entered" from="Home/Front/Drawer/ItemList" to="Home/Front/Drawer" method="_on_item_list_focus_entered"]
+[connection signal="item_selected" from="Home/Front/Drawer/ItemList" to="Home/Front/Drawer" method="_on_item_list_item_selected"]
+[connection signal="animation_finished" from="Home/Front/AnimationPlayer" to="Home/Front" method="_on_animation_player_animation_finished"]

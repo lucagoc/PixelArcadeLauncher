@@ -32,9 +32,9 @@ signal BANNER_MENU_FOCUSED          # Banner menu focused
 @warning_ignore("unused_signal")
 signal BANNER_SELECTED(id: int)     # Banner selected
 @warning_ignore("unused_signal")
-signal SCALING_CHANGED
+signal SCALING_CHANGED				# Scaling changed
 @warning_ignore("unused_signal")
-signal CENTER_MENU_BANNER(banner: Node)  # Center the screen on a banner
+signal CENTER_SELECTED_BANNER  		# Center the screen on a banner
 
 func _on_game_list_loaded() -> void:
 	print("[SIGNAL] Game list loaded")
@@ -75,7 +75,7 @@ func _on_banner_selection(id: int) -> void:
 func _on_scaling_changed() -> void:
 	print("[SIGNAL] Scaling changed")
 
-func _on_center_banner_menu(banner: Node) -> void:
+func _on_center_selected_banner() -> void:
 	print("[SIGNAL] Centered banner")
 
 func _ready() -> void:
@@ -97,4 +97,4 @@ func _ready() -> void:
 		connect("BANNER_SELECTED", _on_banner_selection)
 
 		connect("SCALING_CHANGED", _on_scaling_changed)
-		connect("CENTER_MENU_BANNER", _on_center_banner_menu)
+		connect("CENTER_SELECTED_BANNER", _on_center_selected_banner)
