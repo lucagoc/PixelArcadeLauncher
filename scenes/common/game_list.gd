@@ -25,12 +25,23 @@ var GAME_LIST: Array = []
 # Load an img asset and return an ImageTexture
 # Load a placeholder if the asset doesn't exist
 func load_asset(asset_path) -> ImageTexture:
-	var icon_img = Image.new()
+	var asset_img = Image.new()
 	if FileAccess.file_exists(asset_path):
-		icon_img.load(asset_path)
+		asset_img.load(asset_path)
 	else:
-		icon_img.load(Path.placeholder)
-	return ImageTexture.create_from_image(icon_img)
+		asset_img.load(Path.placeholder)
+	return ImageTexture.create_from_image(asset_img)
+
+func load_banner(asset_path) -> ImageTexture:
+	var banner_img = Image.new()
+	if FileAccess.file_exists(asset_path):
+		banner_img.load(asset_path)
+		# resize 600x900
+		#banner_img.resize(600, 900)
+	else:
+		banner_img.load(Path.placeholder)
+	return ImageTexture.create_from_image(banner_img)
+
 
 # Load the game configuration file
 func load_config_file(game, path) -> void:
@@ -75,7 +86,7 @@ func load_game(folder_name: String) -> Game:
 	load_config_file(game, game_path + Path.game_conf)
 	game.icon = load_asset(game_path + Path.game_icon)
 	game.logo = load_asset(game_path + Path.game_logo)
-	game.banner = load_asset(game_path + Path.game_banner)
+	game.banner = load_banner(game_path + Path.game_banner)
 	game.hero = load_asset(game_path + Path.game_hero)
 	
 	return game

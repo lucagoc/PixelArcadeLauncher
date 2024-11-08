@@ -19,14 +19,9 @@ grow_vertical = 2
 [node name="LeftPadding" type="Container" parent="BottomHbox"]
 layout_mode = 2
 
-[node name="RamLabel" type="Label" parent="BottomHbox"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "..."
-
 [node name="TimeLabel" type="Label" parent="BottomHbox"]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 2
 size_flags_vertical = 6
 theme = ExtResource("2_w4b71")
 text = "........"

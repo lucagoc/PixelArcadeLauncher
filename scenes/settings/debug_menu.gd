@@ -1,6 +1,6 @@
 extends Control
 
-var ANSIRichTextLabel = preload("res://scripts/lib/ANSIRichTextLabel.gd").new()
+var ANSIRichTextLabel = preload("res://lib/ANSIRichTextLabel.gd").new()
 
 var pipe
 var thread

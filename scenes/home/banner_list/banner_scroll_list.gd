@@ -26,15 +26,16 @@ func center_selected_banner() -> void:
 	
 	# Get the positions
 	var from = get_h_scroll_bar().value
-	var destination = get_h_scroll_bar().max_value/GameList.GAME_LIST.size() * selected_banner.index - size.x/2 + (get_h_scroll_bar().max_value/GameList.GAME_LIST.size()/2)
-
-	# Set the animation keys
-	var animation = $AnimationPlayer.get_animation("scroll")
-	animation.bezier_track_set_key_value(0, 0, from)
-	animation.bezier_track_set_key_value(0, 1, destination)
+	var destination = int(get_h_scroll_bar().max_value/GameList.GAME_LIST.size() * selected_banner.index - size.x/2 + (get_h_scroll_bar().max_value/GameList.GAME_LIST.size()/2))
 	
-	# Play the animation
-	$AnimationPlayer.play("scroll")
+	if from != destination:
+		# Set the animation keys
+		var animation = $AnimationPlayer.get_animation("scroll")
+		animation.bezier_track_set_key_value(0, 0, from)
+		animation.bezier_track_set_key_value(0, 1, destination)
+	
+		# Play the animation
+		$AnimationPlayer.play("scroll")
 
 # When a banner is selected
 func _on_banner_selection(index: int):
@@ -119,3 +120,22 @@ func _on_auto_scroll_timeout() -> void:
 	a.pressed = true
 	Input.parse_input_event(a)
 	pass
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	# Stop the current animation
+	if $AnimationPlayer.is_playing():
+		$AnimationPlayer.stop(true)
+	
+	# Get the positions
+	var from = get_h_scroll_bar().value
+	var destination = int(get_h_scroll_bar().max_value/GameList.GAME_LIST.size() * selected_banner.index - size.x/2 + (get_h_scroll_bar().max_value/GameList.GAME_LIST.size()/2))
+	
+	if from != destination:
+		# Set the animation keys
+		var animation = $AnimationPlayer.get_animation("scroll_2")
+		animation.bezier_track_set_key_value(0, 0, from)
+		animation.bezier_track_set_key_value(0, 1, destination)
+	
+		# Play the animation
+		$AnimationPlayer.play("scroll_2")

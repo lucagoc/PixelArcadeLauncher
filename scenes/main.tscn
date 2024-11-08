@@ -310,6 +310,7 @@ layout_mode = 2
 
 [node name="BannerScrollList" parent="Home/Front" instance=ExtResource("7_yqq1d")]
 layout_mode = 2
+scroll_horizontal = 0
 
 [node name="Drawer" parent="Home/Front" instance=ExtResource("8_14dml")]
 layout_mode = 2
