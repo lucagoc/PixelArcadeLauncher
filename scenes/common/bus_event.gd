@@ -34,6 +34,8 @@ signal BANNER_MENU_FOCUSED          # Banner menu focused
 signal BANNER_SELECTED(id: int)     # Banner selected
 @warning_ignore("unused_signal")
 signal SCALING_CHANGED				# Scaling changed
+@warning_ignore("unused_signal")
+signal AUTO_SCROLL					# Auto scroll banners
 
 # Action signals
 @warning_ignore("unused_signal")
@@ -86,6 +88,9 @@ func _on_center_selected_banner() -> void:
 func _on_select_game(id: int) -> void:
 	print("[SIGNAL] Select game: ", id)
 
+func _on_auto_scroll() -> void:
+	print("[SIGNAL] Auto scroll")
+
 func _ready() -> void:
 	if print_debug_info:
 		# State signals
@@ -106,3 +111,4 @@ func _ready() -> void:
 		# Action signals
 		connect("CENTER_SELECTED_BANNER", _on_center_selected_banner)
 		connect("SELECT_GAME", _on_select_game)
+		connect("AUTO_SCROLL", _on_auto_scroll)

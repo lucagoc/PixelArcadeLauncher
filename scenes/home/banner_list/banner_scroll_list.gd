@@ -117,15 +117,6 @@ func grab_focus_on_banner(id: int):
 			banner.grab_banner_focus()
 			break
 
-# Automatically scroll through banners on idle.
-func _on_auto_scroll_timeout() -> void:
-	## press right
-	var a = InputEventKey.new()
-	a.keycode = KEY_RIGHT
-	a.pressed = true
-	Input.parse_input_event(a)
-	pass
-
 # Adjust recenter a second time when scrolling (giggle effect)
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	# Stop the current animation
@@ -145,7 +136,11 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		# Play the animation
 		$AnimationPlayer.play("scroll_2")
 
+func _on_auto_scroll() -> void:
+	grab_focus_on_banner(get_game_id_circular(selected_banner.game_id, 1))
+
 func _ready() -> void:
 	BusEvent.connect("GAME_LIST_LOADED", _on_main_game_list_loaded)
 	BusEvent.connect("BANNER_SELECTED", _on_banner_selection)
 	BusEvent.connect("CENTER_SELECTED_BANNER", center_selected_banner)
+	BusEvent.connect("AUTO_SCROLL", _on_auto_scroll)
