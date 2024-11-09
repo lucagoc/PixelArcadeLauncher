@@ -27,7 +27,8 @@ func _on_game_launched(id: int):
 	$Drawer.hide()
 
 func _on_game_exited(id: int):
-	$AnimationPlayer.play_backwards("hide_bars")
+	$BannerScrollList.grab_focus_on_banner(id)
+	$AnimationPlayer.play("RESET")
 	$Drawer.show()
 
 func _ready() -> void:

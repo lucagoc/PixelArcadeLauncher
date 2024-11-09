@@ -1,8 +1,8 @@
 extends Control
 
-func _on_game_launched(id: int):
+func _on_game_launched(_id: int):
 	$BlackOutDelay.start()
-	ProcessManager.set_game(id)
+	ProcessManager.set_game(_id)
 
 func _on_black_out_delay_timeout() -> void:
 	$AnimationPlayer.play("black_out")
@@ -13,7 +13,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	elif anim_name == "black_in":
 		BusEvent.emit_signal("CENTER_SELECTED_BANNER")
 
-func _on_game_exited(id: int):
+func _on_game_exited(_id: int):
 	$AnimationPlayer.play("black_in")
 
 func _ready() -> void:

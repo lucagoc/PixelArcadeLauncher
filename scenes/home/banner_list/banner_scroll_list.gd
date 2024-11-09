@@ -107,6 +107,13 @@ func reload_banners() -> void:
 func _on_main_game_list_loaded() -> void:
 	reload_banners()
 
+func grab_focus_on_banner(id: int):
+	for i in range($BannerList.get_child_count()):
+		var banner = $BannerList.get_child(i)
+		if banner.game_id == id:
+			banner.grab_banner_focus()
+			break
+
 func _ready() -> void:
 	BusEvent.connect("GAME_LIST_LOADED", _on_main_game_list_loaded)
 	BusEvent.connect("BANNER_SELECTED", _on_banner_selection)

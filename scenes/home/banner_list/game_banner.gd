@@ -74,6 +74,9 @@ func _on_game_exited(id: int) -> void:
 	else:
 		self.show()
 
+func grab_banner_focus():
+	$TextureRect.grab_focus()
+
 func _ready() -> void:
 	BusEvent.connect("DRAWER_FOCUSED", hide_tags)
 	BusEvent.connect("BANNER_MENU_FOCUSED", show_tags)
