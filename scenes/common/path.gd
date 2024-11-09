@@ -14,7 +14,7 @@ var game_banner = "banner.png"             # Path to the game banner
 var game_hero   = "hero.png"               # Path to the game hero
 var game_icon   = "icon.png"               # Path to the game icon
 var game_logo   = "logo.png"               # Path to the game logo
-
+var game_theme  = "theme.ogg"              # Path to the game theme
 
 # Default images
 var placeholder = "res://assets/img/default/placeholder.svg"

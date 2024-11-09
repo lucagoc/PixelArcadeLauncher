@@ -79,8 +79,8 @@ libraries = {
 }
 
 [node name="AutoScroll" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 60.0
 autostart = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="timeout" from="AutoScroll" to="BannerList" method="_on_auto_scroll_timeout"]
+[connection signal="timeout" from="AutoScroll" to="." method="_on_auto_scroll_timeout"]

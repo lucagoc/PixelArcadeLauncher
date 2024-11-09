@@ -15,6 +15,7 @@ class Game:
 	var logo: ImageTexture		# Logo (more info, loading screen)
 	var banner: ImageTexture	# Banner (main menu)
 	var hero: ImageTexture		# Hero (background)
+	var theme: AudioStreamOggVorbis		# Theme music
 	
 	# Internal data
 	var path: String			# Absolute path to the game folder
@@ -42,6 +43,11 @@ func load_banner(asset_path) -> ImageTexture:
 		banner_img.load(Path.placeholder)
 	return ImageTexture.create_from_image(banner_img)
 
+func load_theme(asset_path) -> AudioStreamOggVorbis:
+	if FileAccess.file_exists(asset_path):
+		return AudioStreamOggVorbis.load_from_file(asset_path)
+	else:
+		return null
 
 # Load the game configuration file
 func load_config_file(game, path) -> void:
@@ -88,6 +94,7 @@ func load_game(folder_name: String) -> Game:
 	game.logo = load_asset(game_path + Path.game_logo)
 	game.banner = load_banner(game_path + Path.game_banner)
 	game.hero = load_asset(game_path + Path.game_hero)
+	game.theme = load_theme(game_path + Path.game_theme)
 	
 	return game
 

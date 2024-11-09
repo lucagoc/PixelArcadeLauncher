@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cwq5lpo80io0d"]
+[gd_scene load_steps=14 format=3 uid="uid://cwq5lpo80io0d"]
 
 [ext_resource type="Texture2D" uid="uid://dkfnjychc24ah" path="res://assets/img/default/banner.png" id="1_gtc0v"]
 [ext_resource type="Script" path="res://scenes/home/banner_list/game_banner.gd" id="1_spqyp"]
@@ -172,6 +172,41 @@ _data = {
 "show_tags": SubResource("Animation_p1bai")
 }
 
+[sub_resource type="Animation" id="Animation_vws6v"]
+resource_name = "fade_out"
+length = 4.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -40, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 4)
+}
+
+[sub_resource type="Animation" id="Animation_0isxn"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rs6oc"]
+_data = {
+"RESET": SubResource("Animation_0isxn"),
+"fade_out": SubResource("Animation_vws6v")
+}
+
 [node name="GameBanner" type="VBoxContainer"]
 offset_right = 31.0
 offset_bottom = 127.0
@@ -221,5 +256,19 @@ libraries = {
 "": SubResource("AnimationLibrary_1yxky")
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+
+[node name="MaxThemeLength" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+
+[node name="AudioStreamAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rs6oc")
+}
+
 [connection signal="focus_entered" from="TextureRect" to="." method="_on_texture_rect_focus_entered"]
 [connection signal="focus_exited" from="TextureRect" to="." method="_on_texture_rect_focus_exited"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
+[connection signal="timeout" from="MaxThemeLength" to="." method="_on_max_theme_length_timeout"]
+[connection signal="animation_finished" from="AudioStreamAnimation" to="." method="_on_audio_stream_animation_animation_finished"]

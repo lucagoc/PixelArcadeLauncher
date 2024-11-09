@@ -389,6 +389,7 @@ libraries = {
 layout_mode = 1
 
 [node name="Extras" parent="." instance=ExtResource("10_mhu4u")]
+visible = false
 layout_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -72,6 +72,7 @@ func add_banner(game: GameList.Game) -> void:
 	banner.set_banner_texture(game.banner)
 	banner.set_banner_bottom_label(game.name)
 	banner.set_game_id(game.id)
+	banner.set_banner_theme(game.theme)
 	banner.index = -1
 	
 	banner.size_flags_horizontal = 3 # Set the size to develop
@@ -79,19 +80,20 @@ func add_banner(game: GameList.Game) -> void:
 	# Add the banner to the container
 	$BannerList.add_child(banner)
 
-
+# Move to the right
 func move_banner_last_to_first() -> void:
 	var last_banner = $BannerList.get_child($BannerList.get_child_count() - 1)
 	$BannerList.move_child(last_banner, 0)
 	fix_banner_index()
 
+# Move to the left
 func move_banner_first_to_last() -> void:
 	var first_banner = $BannerList.get_child(0)
 	$BannerList.move_child(first_banner, $BannerList.get_child_count() - 1)
 	fix_banner_index()
 
+# Reload the BannerList
 func reload_banners() -> void:
-
 	# Remove all children
 	for child in $BannerList.get_children():
 		$BannerList.remove_child(child)
@@ -103,10 +105,11 @@ func reload_banners() -> void:
 
 	BusEvent.emit_signal("BANNER_MENU_RELOADED")
 
-# When the game list is loaded
+# When the game list is loaded.
 func _on_main_game_list_loaded() -> void:
 	reload_banners()
 
+# Grab the focus on a particular banner.
 func grab_focus_on_banner(id: int):
 	for i in range($BannerList.get_child_count()):
 		var banner = $BannerList.get_child(i)
@@ -114,12 +117,7 @@ func grab_focus_on_banner(id: int):
 			banner.grab_banner_focus()
 			break
 
-func _ready() -> void:
-	BusEvent.connect("GAME_LIST_LOADED", _on_main_game_list_loaded)
-	BusEvent.connect("BANNER_SELECTED", _on_banner_selection)
-	BusEvent.connect("CENTER_SELECTED_BANNER", center_selected_banner)
-
-
+# Automatically scroll through banners on idle.
 func _on_auto_scroll_timeout() -> void:
 	## press right
 	var a = InputEventKey.new()
@@ -128,7 +126,7 @@ func _on_auto_scroll_timeout() -> void:
 	Input.parse_input_event(a)
 	pass
 
-
+# Adjust recenter a second time when scrolling (giggle effect)
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	# Stop the current animation
 	if $AnimationPlayer.is_playing():
@@ -146,3 +144,8 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	
 		# Play the animation
 		$AnimationPlayer.play("scroll_2")
+
+func _ready() -> void:
+	BusEvent.connect("GAME_LIST_LOADED", _on_main_game_list_loaded)
+	BusEvent.connect("BANNER_SELECTED", _on_banner_selection)
+	BusEvent.connect("CENTER_SELECTED_BANNER", center_selected_banner)
