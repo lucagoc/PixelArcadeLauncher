@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://nlbgb1sdxsw5" path="res://scenes/bars/top_bar.tscn" id="6_5rdxe"]
 [ext_resource type="PackedScene" uid="uid://dnmfvwbgonwdj" path="res://scenes/home/banner_list/banner_scroll_list.tscn" id="7_yqq1d"]
 [ext_resource type="PackedScene" uid="uid://b8xcoqpmgts1i" path="res://scenes/home/drawer/drawer.tscn" id="8_14dml"]
+[ext_resource type="PackedScene" uid="uid://f2rysqj78eqv" path="res://scenes/special/extras.tscn" id="10_mhu4u"]
 [ext_resource type="PackedScene" uid="uid://bveavdlpsb5lv" path="res://scenes/bars/bottom_bar.tscn" id="16_x1ks8"]
 
 [sub_resource type="Animation" id="Animation_anar2"]
@@ -185,7 +186,7 @@ tracks/5/keys = {
 tracks/6/type = "bezier"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("BlackRect:color:a")
+tracks/6/path = NodePath("Extras/BlackRect:color:a")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -324,25 +325,9 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5)
 }
 
-[sub_resource type="Animation" id="Animation_aqr4g"]
-resource_name = "black_out"
-length = 0.4
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BlackRect:color:a")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.4)
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2h2xi"]
 _data = {
 "RESET": SubResource("Animation_t2tse"),
-"black_out": SubResource("Animation_aqr4g"),
 "loading_end": SubResource("Animation_ryx21"),
 "loading_start": SubResource("Animation_bvvna"),
 "shake": SubResource("Animation_oygq0")
@@ -403,14 +388,8 @@ libraries = {
 [node name="LoadingScreen" parent="." instance=ExtResource("2_io48b")]
 layout_mode = 1
 
-[node name="BlackRect" type="ColorRect" parent="."]
+[node name="Extras" parent="." instance=ExtResource("10_mhu4u")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -418,8 +397,4 @@ libraries = {
 }
 speed_scale = 2.0
 
-[node name="BlackOutDelay" type="Timer" parent="."]
-one_shot = true
-
 [connection signal="animation_finished" from="Home/Front/AnimationPlayer" to="Home/Front" method="_on_animation_player_animation_finished"]
-[connection signal="timeout" from="BlackOutDelay" to="." method="_on_black_out_delay_timeout"]
