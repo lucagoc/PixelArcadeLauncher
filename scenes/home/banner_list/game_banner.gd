@@ -50,6 +50,7 @@ func _on_texture_rect_focus_entered() -> void:
 
 	show_tags()
 	$AudioStreamPlayer.play()
+	$AudioStreamAnimation.play("fade_in")
 	$MaxThemeLength.start()
 	$AnimationPlayer.queue("focus_entered")
 	BusEvent.emit_signal("BANNER_SELECTED", index)
@@ -60,8 +61,7 @@ func _on_texture_rect_focus_exited() -> void:
 
 	# Play animation backward from the last frame
 	var last_position = $AnimationPlayer.current_animation_position
-	$AudioStreamPlayer.stop()
-	$MaxThemeLength.stop()
+	$AudioStreamAnimation.play("fast_fade_out")
 	$AnimationPlayer.play_backwards("focus_entered")
 	$AnimationPlayer.seek(last_position)
 
@@ -72,7 +72,7 @@ func _on_select_game(id: int) -> void:
 func _on_game_launched(id: int) -> void:
 	if id == game_id:
 		$TextureRect/SelectionRect.hide()
-		$AudioStreamPlayer.stop()
+		$AudioStreamAnimation.play("fast_fade_out")
 	else:
 		self.hide()
 
@@ -106,6 +106,7 @@ func _on_audio_stream_player_finished() -> void:
 
 
 func _on_audio_stream_animation_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "fade_out":
+	if anim_name == "fade_out" || anim_name == "fast_fade_out":
 		$AudioStreamPlayer.stop()
+		$MaxThemeLength.stop()
 		$AudioStreamAnimation.play("RESET")

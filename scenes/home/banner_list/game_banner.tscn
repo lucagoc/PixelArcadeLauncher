@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cwq5lpo80io0d"]
+[gd_scene load_steps=16 format=3 uid="uid://cwq5lpo80io0d"]
 
 [ext_resource type="Texture2D" uid="uid://dkfnjychc24ah" path="res://assets/img/default/banner.png" id="1_gtc0v"]
 [ext_resource type="Script" path="res://scenes/home/banner_list/game_banner.gd" id="1_spqyp"]
@@ -183,7 +183,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -40, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -40, -0.4, 45, 0.25, 0),
 "times": PackedFloat32Array(0, 4)
 }
 
@@ -197,14 +197,45 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(-40, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_agg83"]
+resource_name = "fade_in"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-40, -0.25, 0, 0.251406, 49, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_r4gu1"]
+resource_name = "fast_fade_out"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.133333, -35, -40, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rs6oc"]
 _data = {
 "RESET": SubResource("Animation_0isxn"),
-"fade_out": SubResource("Animation_vws6v")
+"fade_in": SubResource("Animation_agg83"),
+"fade_out": SubResource("Animation_vws6v"),
+"fast_fade_out": SubResource("Animation_r4gu1")
 }
 
 [node name="GameBanner" type="VBoxContainer"]
@@ -257,6 +288,7 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+volume_db = -40.0
 
 [node name="MaxThemeLength" type="Timer" parent="."]
 wait_time = 15.0

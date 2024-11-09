@@ -18,3 +18,5 @@
 0.4 CuteDevil
 	- Fixed BannerScrollList hierarchy
 	- Added versioning file
+	- Refactoring project files
+	- Added support for banner audio themes
