@@ -14,8 +14,14 @@ func _on_game_launched(id: int):
 	$BottomHbox/GameTitle.hide()
 	$BottomHbox/Help2.hide()
 
+func _on_game_exited(id: int):
+	$BottomHbox/Help1.show()
+	$BottomHbox/GameTitle.show()
+	$BottomHbox/Help2.show()
+
 func _ready() -> void:
 	BusEvent.connect("GAME_SELECTED", _on_game_selected)
 	BusEvent.connect("DRAWER_FOCUSED", _on_drawer_focused)
 	BusEvent.connect("BANNER_MENU_FOCUSED", _on_banner_focused)
 	BusEvent.connect("GAME_LAUNCHED", _on_game_launched)
+	BusEvent.connect("GAME_EXITED", _on_game_exited)

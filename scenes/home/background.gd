@@ -27,6 +27,10 @@ func _on_banner_menu_game_selected(id: int) -> void:
 func _on_game_launched(id: int):
 	$ColorAnimationPlayer.play("to_black")
 
+func _on_game_exited(id: int):
+	$ColorAnimationPlayer.play_backwards("to_black")
+
 func _ready() -> void:
 	BusEvent.connect("GAME_SELECTED", _on_game_selection)
 	BusEvent.connect("GAME_LAUNCHED", _on_game_launched)
+	BusEvent.connect("GAME_EXITED", _on_game_exited)

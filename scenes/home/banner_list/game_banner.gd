@@ -68,11 +68,18 @@ func _on_game_launched(id: int) -> void:
 	else:
 		self.hide()
 
+func _on_game_exited(id: int) -> void:
+	if id == game_id:
+		$TextureRect/SelectionRect.show()
+	else:
+		self.show()
+
 func _ready() -> void:
 	BusEvent.connect("DRAWER_FOCUSED", hide_tags)
 	BusEvent.connect("BANNER_MENU_FOCUSED", show_tags)
 	BusEvent.connect("SELECT_GAME", _on_select_game)
 	BusEvent.connect("GAME_LAUNCHED", _on_game_launched)
+	BusEvent.connect("GAME_EXITED", _on_game_exited)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and $TextureRect/SelectionRect.visible:

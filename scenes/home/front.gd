@@ -26,11 +26,15 @@ func _on_game_launched(id: int):
 	$AnimationPlayer.play("hide_bars")
 	$Drawer.hide()
 
+func _on_game_exited(id: int):
+	$AnimationPlayer.play_backwards("hide_bars")
+	$Drawer.show()
+
 func _ready() -> void:
 	BusEvent.connect("BANNER_MENU_FOCUSED", _on_banner_menu_focused)
 	BusEvent.connect("DRAWER_FOCUSED", _on_drawer_focused)
 	BusEvent.connect("GAME_LAUNCHED", _on_game_launched)
-
+	BusEvent.connect("GAME_EXITED", _on_game_exited)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "close_drawer":

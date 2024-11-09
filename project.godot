@@ -26,6 +26,7 @@ BusEvent="*res://scenes/common/bus_event.gd"
 GameList="*res://scenes/common/game_list.gd"
 Path="*res://scenes/common/path.gd"
 LimboConsole="*res://addons/limbo_console/limbo_console.gd"
+ProcessManager="*res://scenes/common/process_manager.gd"
 
 [display]
 

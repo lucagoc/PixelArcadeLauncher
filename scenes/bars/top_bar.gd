@@ -11,5 +11,9 @@ func _on_timer_timeout() -> void:
 func _on_game_launched(id: int):
 	$AnimationPlayer.play("fade_out")
 
+func _on_game_exited(id: int):
+	$AnimationPlayer.play_backwards("fade_out")
+
 func _ready() -> void:
 	BusEvent.connect("GAME_LAUNCHED", _on_game_launched)
+	BusEvent.connect("GAME_EXITED", _on_game_exited)
