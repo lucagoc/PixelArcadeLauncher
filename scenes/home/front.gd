@@ -22,9 +22,14 @@ func _on_drawer_focused() -> void:
 		$AnimationPlayer.play("open_drawer")
 		_is_drawer_focused = true
 
+func _on_game_launched(id: int):
+	$AnimationPlayer.play("hide_bars")
+	$Drawer.hide()
+
 func _ready() -> void:
 	BusEvent.connect("BANNER_MENU_FOCUSED", _on_banner_menu_focused)
 	BusEvent.connect("DRAWER_FOCUSED", _on_drawer_focused)
+	BusEvent.connect("GAME_LAUNCHED", _on_game_launched)
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

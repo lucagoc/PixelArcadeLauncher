@@ -42,7 +42,8 @@ func set_focus_neighbor_right(banner: VBoxContainer) -> void:
 func _on_texture_rect_focus_entered() -> void:
 	$TextureRect/SelectionRect.show()
 	if BottomLabel != null:
-		$BottomLabel.text = BottomLabel
+		#$BottomLabel.text = BottomLabel
+		pass
 
 	show_tags()
 	$AnimationPlayer.queue("focus_entered")
@@ -61,7 +62,18 @@ func _on_select_game(id: int) -> void:
 	if id == game_id:
 		$TextureRect.grab_focus()
 
+func _on_game_launched(id: int) -> void:
+	if id == game_id:
+		$TextureRect/SelectionRect.hide()
+	else:
+		self.hide()
+
 func _ready() -> void:
 	BusEvent.connect("DRAWER_FOCUSED", hide_tags)
 	BusEvent.connect("BANNER_MENU_FOCUSED", show_tags)
 	BusEvent.connect("SELECT_GAME", _on_select_game)
+	BusEvent.connect("GAME_LAUNCHED", _on_game_launched)
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_accept") and $TextureRect/SelectionRect.visible:
+		BusEvent.emit_signal("GAME_LAUNCHED", game_id)

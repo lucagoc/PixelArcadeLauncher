@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bemlflx640ecp"]
+[gd_scene load_steps=21 format=3 uid="uid://bemlflx640ecp"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_srogu"]
 [ext_resource type="PackedScene" uid="uid://c4frsd4if6b7x" path="res://scenes/special/loading_screen.tscn" id="2_io48b"]
@@ -23,6 +23,28 @@ tracks/0/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TopBar:custom_minimum_size:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(70, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BottomBar:custom_minimum_size:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(50, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_ys0tp"]
 resource_name = "close_drawer"
@@ -37,6 +59,32 @@ tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(600, -0.15, 0, 0.15, 0, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="Animation" id="Animation_ociks"]
+resource_name = "hide_bars"
+length = 0.4
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TopBar:custom_minimum_size:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(70, -0.25, 0, 0.1, -71.5, 0, -0.2, 0, 0.2, 0),
+"times": PackedFloat32Array(0, 0.4)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BottomBar:custom_minimum_size:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(50, -0.25, 0, 0.1, -58.5, 0, -0.2, 0, 0.2, 0),
+"times": PackedFloat32Array(0, 0.4)
 }
 
 [sub_resource type="Animation" id="Animation_b5voc"]
@@ -58,6 +106,7 @@ tracks/0/keys = {
 _data = {
 "RESET": SubResource("Animation_anar2"),
 "close_drawer": SubResource("Animation_ys0tp"),
+"hide_bars": SubResource("Animation_ociks"),
 "open_drawer": SubResource("Animation_b5voc")
 }
 
@@ -129,6 +178,17 @@ tracks/5/path = NodePath("Home:position:y")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BlackRect:color:a")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
@@ -264,9 +324,25 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5)
 }
 
+[sub_resource type="Animation" id="Animation_aqr4g"]
+resource_name = "black_out"
+length = 0.4
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackRect:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2h2xi"]
 _data = {
 "RESET": SubResource("Animation_t2tse"),
+"black_out": SubResource("Animation_aqr4g"),
 "loading_end": SubResource("Animation_ryx21"),
 "loading_start": SubResource("Animation_bvvna"),
 "shake": SubResource("Animation_oygq0")
@@ -327,10 +403,23 @@ libraries = {
 [node name="LoadingScreen" parent="." instance=ExtResource("2_io48b")]
 layout_mode = 1
 
+[node name="BlackRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_2h2xi")
 }
 speed_scale = 2.0
 
+[node name="BlackOutDelay" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="animation_finished" from="Home/Front/AnimationPlayer" to="Home/Front" method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="BlackOutDelay" to="." method="_on_black_out_delay_timeout"]

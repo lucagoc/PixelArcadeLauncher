@@ -95,3 +95,6 @@ trail_lifetime = 1.73
 [node name="Sprite2D" type="Sprite2D" parent="Center"]
 scale = Vector2(2, 2)
 texture = ExtResource("3_d5vh0")
+
+[node name="MinDelay" type="Timer" parent="."]
+one_shot = true

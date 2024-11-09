@@ -24,5 +24,9 @@ func _on_banner_menu_game_selected(id: int) -> void:
 	$BackgroundHero2.texture = game.hero
 	$BackgroundAnimation.play("fade_out")
 
+func _on_game_launched(id: int):
+	$ColorAnimationPlayer.play("to_black")
+
 func _ready() -> void:
 	BusEvent.connect("GAME_SELECTED", _on_game_selection)
+	BusEvent.connect("GAME_LAUNCHED", _on_game_launched)

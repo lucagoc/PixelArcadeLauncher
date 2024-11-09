@@ -19,17 +19,25 @@ grow_vertical = 2
 [node name="LeftPadding" type="Container" parent="BottomHbox"]
 layout_mode = 2
 
-[node name="TimeLabel" type="Label" parent="BottomHbox"]
+[node name="Help1" type="Label" parent="BottomHbox"]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 6
 theme = ExtResource("2_w4b71")
-text = "........"
+text = "Grille"
 
-[node name="VersionLabel" type="Label" parent="BottomHbox"]
+[node name="GameTitle" type="Label" parent="BottomHbox"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("2_w4b71")
+text = "GameName"
+
+[node name="Help2" type="Label" parent="BottomHbox"]
 layout_mode = 2
 size_flags_horizontal = 10
-text = "..."
+theme = ExtResource("2_w4b71")
+text = "Lancer A"
 
 [node name="RightPadding" type="Container" parent="BottomHbox"]
 layout_mode = 2

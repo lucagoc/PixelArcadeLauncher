@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ds2js8kmbdnu5"]
+[gd_scene load_steps=12 format=3 uid="uid://ds2js8kmbdnu5"]
 
 [ext_resource type="Script" path="res://scenes/home/background.gd" id="1_b5uaf"]
 [ext_resource type="Texture2D" uid="uid://cgc7asuvr1um5" path="res://assets/img/default/placeholder.svg" id="2_fw8yn"]
@@ -81,6 +81,41 @@ _data = {
 "fade_out_2": SubResource("Animation_k1vjm")
 }
 
+[sub_resource type="Animation" id="Animation_w2gd0"]
+resource_name = "to_black"
+length = 0.4
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundColorPanel:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.235294, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4)
+}
+
+[sub_resource type="Animation" id="Animation_vm7vb"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundColorPanel:color:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.235294, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6jqub"]
+_data = {
+"RESET": SubResource("Animation_vm7vb"),
+"to_black": SubResource("Animation_w2gd0")
+}
+
 [node name="Background" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -144,6 +179,11 @@ libraries = {
 [node name="BackgroundAnimation2" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_kt45j")
+}
+
+[node name="ColorAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6jqub")
 }
 
 [connection signal="animation_finished" from="BackgroundAnimation" to="." method="_on_background_animation_animation_finished"]

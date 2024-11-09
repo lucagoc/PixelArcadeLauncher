@@ -46,9 +46,13 @@ func add_console_commands():
 	LimboConsole.register_command(load_data, "reload", "Reload the game list")
 	LimboConsole.register_command(start_loading, "start_loading", "Start the loading screen")
 
+func _on_game_launched(id: int):
+	$BlackOutDelay.start()
+
 func _ready():
 	add_console_commands()
 	BusEvent.connect("SCALING_CHANGED", _on_scaling_changed)
+	BusEvent.connect("GAME_LAUNCHED", _on_game_launched)
 	load_data()
 
 @warning_ignore("unused_parameter")
@@ -56,6 +60,8 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
 
-
 func _on_scaling_changed():
 	get_tree().root.content_scale_factor = settings.scaling
+
+func _on_black_out_delay_timeout() -> void:
+	$AnimationPlayer.play("black_out")
