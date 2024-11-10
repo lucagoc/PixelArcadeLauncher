@@ -60,8 +60,10 @@ func _on_texture_rect_focus_exited() -> void:
 	$BottomLabel.text = ""
 
 	# Play animation backward from the last frame
-	var last_position = $AnimationPlayer.current_animation_position
+	var animation = $AudioStreamAnimation.get_animation("fast_fade_out")
+	animation.bezier_track_set_key_value(0, 0, $AudioStreamPlayer.volume_db)
 	$AudioStreamAnimation.play("fast_fade_out")
+	var last_position = $AnimationPlayer.current_animation_position
 	$AnimationPlayer.play_backwards("focus_entered")
 	$AnimationPlayer.seek(last_position)
 
@@ -72,6 +74,8 @@ func _on_select_game(id: int) -> void:
 func _on_game_launched(id: int) -> void:
 	if id == game_id:
 		$TextureRect/SelectionRect.hide()
+		var animation = $AudioStreamAnimation.get_animation("fast_fade_out")
+		animation.bezier_track_set_key_value(0, 0, $AudioStreamPlayer.volume_db)
 		$AudioStreamAnimation.play("fast_fade_out")
 	else:
 		self.hide()

@@ -22,3 +22,7 @@
 	- Added support for banner audio themes
 	- Added UI sounds
 	- Added Screensaver (logo)
+
+0.5 DancingAstronaut
+	- Fixed banner audio crossfading
+	
