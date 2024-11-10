@@ -1,5 +1,0 @@
-Pour les animations du background, plutôt faire une queue d'appelle de fonction qui change le background.
-Cette queue pourrait se vider des appels de fonctions en trop en limitant sa taille à 2/3 éléments les plus récents.
-Possiblement mettre un délai pour éviter les animations fortuites.
-
-Pour fixer les bannières à une taille fixe, utiliser une fausse bannière 600x900 et draw par dessus l'autre bannière ?

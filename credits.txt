@@ -1,8 +1,0 @@
-Extensions : 
-- Onscreen keyboard - mrtnfchs - MIT
-
-External Scripts:
-- godot-ansi-escape-to-bbcode by fbcosentino (https://github.com/fbcosentino/godot-ansi-escape-to-bbcode)
-
-Engine :
-- Godot Engine - MIT

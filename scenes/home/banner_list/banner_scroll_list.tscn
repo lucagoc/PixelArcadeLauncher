@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnmfvwbgonwdj"]
+
+[ext_resource type="Script" path="res://scenes/home/banner_list/banner_scroll_list.gd" id="1_btmcm"]
+[ext_resource type="PackedScene" uid="uid://cwq5lpo80io0d" path="res://scenes/home/banner_list/game_banner.tscn" id="2_domia"]
+
+[sub_resource type="Animation" id="Animation_07jry"]
+resource_name = "slide"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scroll_horizontal")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.0666667, 225.5, 600, -0.5, -0.5, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="Animation" id="Animation_n72b3"]
+resource_name = "scroll_2"
+length = 0.8
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scroll_horizontal")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0, -17, 600, -0.5, -0.5, 0.25, 0),
+"times": PackedFloat32Array(0, 0.8)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yls8f"]
+_data = {
+"scroll": SubResource("Animation_07jry"),
+"scroll_2": SubResource("Animation_n72b3")
+}
+
+[node name="BannerScrollList" type="ScrollContainer"]
+size_flags_vertical = 3
+scroll_horizontal = 21
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+script = ExtResource("1_btmcm")
+
+[node name="BannerList" type="HBoxContainer" parent="."]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+focus_neighbor_bottom = NodePath("../../Drawer")
+
+[node name="GameBanner44" parent="BannerList" instance=ExtResource("2_domia")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GameBanner45" parent="BannerList" instance=ExtResource("2_domia")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GameBanner47" parent="BannerList" instance=ExtResource("2_domia")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GameBanner48" parent="BannerList" instance=ExtResource("2_domia")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GameBanner55" parent="BannerList" instance=ExtResource("2_domia")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yls8f")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

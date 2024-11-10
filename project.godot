@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Pixel Arcade Launcher"
+config/version="0.4 CuteDevil"
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
@@ -21,9 +22,11 @@ config/icon="res://icon.png"
 
 [autoload]
 
-BusEvent="*res://scripts/sys/bus_event.gd"
-GameList="*res://scripts/sys/game_list.gd"
-Path="*res://scripts/sys/path.gd"
+BusEvent="*res://scenes/common/bus_event.gd"
+GameList="*res://scenes/common/game_list.gd"
+Path="*res://scenes/common/path.gd"
+ProcessManager="*res://scenes/common/process_manager.gd"
+IdleManager="*res://scenes/common/idle_manager.gd"
 LimboConsole="*res://addons/limbo_console/limbo_console.gd"
 
 [display]
@@ -33,7 +36,7 @@ window/size/viewport_height=900
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/limbo_console/plugin.cfg", "res://addons/onscreenkeyboard/plugin.cfg")
+enabled=PackedStringArray("res://addons/limbo_console/plugin.cfg")
 
 [input]
 

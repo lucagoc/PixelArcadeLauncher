@@ -1,0 +1,9 @@
+Extensions : 
+- Onscreen keyboard - mrtnfchs
+- LimboConsole
+
+External Scripts:
+- godot-ansi-escape-to-bbcode - fbcosentino
+
+Engine :
+- Godot Engine - The Godot Foundation
