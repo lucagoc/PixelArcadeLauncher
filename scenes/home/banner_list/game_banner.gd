@@ -93,7 +93,7 @@ func _ready() -> void:
 	BusEvent.connect("GAME_EXITED", _on_game_exited)
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept") and $TextureRect/SelectionRect.visible:
+	if Input.is_action_just_pressed("ui_accept") and $TextureRect/SelectionRect.visible and not IdleManager.screensaver:
 		BusEvent.emit_signal("GAME_LAUNCHED", game_id)
 
 

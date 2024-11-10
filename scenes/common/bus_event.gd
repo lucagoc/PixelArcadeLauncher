@@ -34,14 +34,18 @@ signal BANNER_MENU_FOCUSED          # Banner menu focused
 signal BANNER_SELECTED(id: int)     # Banner selected
 @warning_ignore("unused_signal")
 signal SCALING_CHANGED				# Scaling changed
-@warning_ignore("unused_signal")
-signal AUTO_SCROLL					# Auto scroll banners
 
 # Action signals
 @warning_ignore("unused_signal")
 signal CENTER_SELECTED_BANNER  		# Center the screen on a banner
 @warning_ignore("unused_signal")
 signal SELECT_GAME(id: int)         # Select a game
+@warning_ignore("unused_signal")
+signal AUTO_SCROLL					# Auto scroll banners
+@warning_ignore("unused_signal")
+signal START_SCREENSAVER			# Start screensaver
+@warning_ignore("unused_signal")
+signal STOP_SCREENSAVER				# Stop screensaver
 
 func _on_game_list_loaded() -> void:
 	print("[SIGNAL] Game list loaded")
@@ -91,6 +95,12 @@ func _on_select_game(id: int) -> void:
 func _on_auto_scroll() -> void:
 	print("[SIGNAL] Auto scroll")
 
+func _on_start_screensaver() -> void:
+	print("[SIGNAL] Start screensaver")
+
+func _on_stop_screensaver() -> void:
+	print("[SIGNAL] Stop screensaver")
+
 func _ready() -> void:
 	if print_debug_info:
 		# State signals
@@ -112,3 +122,6 @@ func _ready() -> void:
 		connect("CENTER_SELECTED_BANNER", _on_center_selected_banner)
 		connect("SELECT_GAME", _on_select_game)
 		connect("AUTO_SCROLL", _on_auto_scroll)
+		connect("START_SCREENSAVER", _on_start_screensaver)
+		connect("STOP_SCREENSAVER", _on_stop_screensaver)
+		
