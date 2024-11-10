@@ -20,3 +20,5 @@
 	- Added versioning file
 	- Refactoring project files
 	- Added support for banner audio themes
+	- Added UI sounds
+	- Added Screensaver (logo)
