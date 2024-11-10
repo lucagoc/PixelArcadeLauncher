@@ -407,7 +407,7 @@ horizontal_alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/About"]
 layout_mode = 2
-text = "Pixel Arcade Launcher v0.4 (CuteDevil)
+text = "Pixel Arcade Launcher v0.5 (DancingAstronaut)
 Conçu par les ZZ de l'ISIMA
 
 Création du projet:
