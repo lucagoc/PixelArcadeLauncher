@@ -1,11 +1,14 @@
 extends Control
 
+func _on_screensaver_start():
+	$SelfAnimation.play("screensaver_in")
+
+func _on_screensaver_stop():
+	$SelfAnimation.play("screensaver_out")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$AnimationPlayer.play("background_breath")
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	BusEvent.connect("START_SCREENSAVER", _on_screensaver_start)
+	BusEvent.connect("STOP_SCREENSAVER", _on_screensaver_stop)
+	
+	$BackgroundAnimation.play("breath")
