@@ -1,6 +1,7 @@
 extends Control
 
 @export var scaling := 1.0
+var maintenance = false
 
 # Save the settings in the settings.conf file
 func save_settings():
@@ -41,6 +42,9 @@ func load_settings():
 							DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 						else:
 							DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+					"maintenance":
+						if value == "true":
+							maintenance = true
 			line = settings_file.get_line()
 		settings_file.close()
 	else:

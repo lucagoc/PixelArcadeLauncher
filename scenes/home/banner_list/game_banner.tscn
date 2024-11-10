@@ -289,7 +289,7 @@ libraries = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 volume_db = -40.0
-panning_strength = 3.0
+panning_strength = 2.0
 
 [node name="MaxThemeLength" type="Timer" parent="."]
 wait_time = 15.0

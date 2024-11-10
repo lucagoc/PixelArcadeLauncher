@@ -51,8 +51,8 @@ func _ready():
 	add_console_commands()
 	BusEvent.connect("SCALING_CHANGED", _on_scaling_changed)
 	load_data()
-
-@warning_ignore("unused_parameter")
+	if settings.maintenance:
+		get_tree().change_scene_to_file("res://scenes/special/maintenance_screen.tscn")
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
