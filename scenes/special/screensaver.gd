@@ -2,27 +2,28 @@ extends Control
 
 func _on_screensaver_start():
 	$SelfAnimation.play("screensaver_in")
+	$BackgroundAnimation.play("breath")
 
 func _on_screensaver_stop():
 	$SelfAnimation.play("screensaver_out")
-
-func _on_game_selection(id: int):
-	var r = randi()%5
-	if r == 0:
-		$Logo.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
-	elif r == 1:
-		$Logo.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
-	elif r == 2:
-		$Logo.set_anchors_preset(Control.PRESET_CENTER)
-	elif r == 3:
-		$Logo.set_anchors_preset(Control.PRESET_TOP_LEFT)
-	else:
-		$Logo.set_anchors_preset(Control.PRESET_TOP_RIGHT)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	BusEvent.connect("START_SCREENSAVER", _on_screensaver_start)
 	BusEvent.connect("STOP_SCREENSAVER", _on_screensaver_stop)
-	BusEvent.connect("GAME_SELECTED", _on_game_selection)
 	
+	$LabelAnimation.play("blink")
+
+
+func _on_background_animation_animation_finished(anim_name: StringName) -> void:
+	BusEvent.emit_signal("AUTO_SCROLL")
 	$BackgroundAnimation.play("breath")
+
+
+func _on_timer_timeout() -> void:
+	$CenterBox/Time.text = Time.get_time_string_from_system()
+
+
+func _on_self_animation_animation_finished(anim_name: StringName) -> void:
+	if(anim_name == "screensaver_out"):
+		$BackgroundAnimation.stop()
