@@ -9,7 +9,7 @@ func preload_data():
 		print("[WARNING] Folder " + Path.data + " not found, creating a new one...")
 		DirAccess.make_dir_absolute(Path.data)
 		DirAccess.make_dir_absolute(Path.data + Path.games_folder)
-		settings.save_settings()		
+		settings.save_settings()	
 	else:
 		print("Folder " + Path.data + " found")
 

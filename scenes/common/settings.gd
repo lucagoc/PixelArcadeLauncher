@@ -1,20 +1,26 @@
 extends Control
 
 @export var scaling := 1.0
-var maintenance = false
+@export var maintenance = false
+@export var maintenance_message = "Promis c'est pour bientôt !"
 
 # Save the settings in the settings.conf file
 func save_settings():
+	
 	var setting_file = FileAccess.open(Path.data + Path.settings_file, FileAccess.WRITE)
-	if setting_file != null:
-		setting_file.store_line("[PixelArcadeLauncher]")
-		setting_file.store_line("fullscreen = false")
-		setting_file.store_line("animation = true")
-		setting_file.store_line("sound = true")
-		setting_file.store_line("debug = false")
-		setting_file.store_line("scaling = 1")
-		setting_file.store_line("vsync = true")
-		setting_file.close()
+
+	# If the settings file does not exist, create it
+	if setting_file == null:
+		var blank_setting_file = FileAccess.open("res://settings.conf", FileAccess.READ)
+		if blank_setting_file != null:
+			setting_file = FileAccess.open(Path.data + Path.settings_file, FileAccess.WRITE)
+			if setting_file != null:
+				setting_file.store_line(blank_setting_file.get_as_text())
+				setting_file.close()
+			else:
+				printerr("Cannot open the file " + Path.data + Path.settings_file)
+		else:
+			printerr("Cannot open the file res://settings.conf")
 	else:
 		printerr("Cannot open the file " + Path.data + Path.settings_file)
 
@@ -45,6 +51,8 @@ func load_settings():
 					"maintenance":
 						if value == "true":
 							maintenance = true
+					"message":
+						maintenance_message = value
 			line = settings_file.get_line()
 		settings_file.close()
 	else:

@@ -14,7 +14,7 @@ func _on_idle_timeout() -> void:
 
 # Automatically scroll through banners on idle.
 func _on_auto_scroll_timeout() -> void:
-	if idling:
+	if idling and not screensaver:
 		BusEvent.emit_signal("AUTO_SCROLL")
 
 func _on_screensaver_timeout() -> void:

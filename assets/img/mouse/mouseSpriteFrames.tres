@@ -2,50 +2,50 @@
 
 [ext_resource type="Texture2D" uid="uid://2lbshj6xx7y7" path="res://assets/img/mouse/MouseRun.png" id="1_3vx40"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mjyxf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0k4mp"]
 atlas = ExtResource("1_3vx40")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(7, 10, 17, 10)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ffud"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jkvm"]
 atlas = ExtResource("1_3vx40")
-region = Rect2(0, 32, 32, 32)
+region = Rect2(7, 42, 17, 10)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_alqf2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_etroo"]
 atlas = ExtResource("1_3vx40")
-region = Rect2(0, 64, 32, 32)
+region = Rect2(7, 74, 17, 10)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qbe22"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_klarg"]
 atlas = ExtResource("1_3vx40")
-region = Rect2(0, 96, 32, 32)
+region = Rect2(7, 106, 17, 10)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4mmhb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_24ta1"]
 atlas = ExtResource("1_3vx40")
-region = Rect2(0, 128, 32, 32)
+region = Rect2(7, 138, 17, 10)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a48tw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdio8"]
 atlas = ExtResource("1_3vx40")
-region = Rect2(0, 160, 32, 32)
+region = Rect2(7, 170, 17, 10)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mjyxf")
+"texture": SubResource("AtlasTexture_0k4mp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4ffud")
+"texture": SubResource("AtlasTexture_1jkvm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_alqf2")
+"texture": SubResource("AtlasTexture_etroo")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qbe22")
+"texture": SubResource("AtlasTexture_klarg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4mmhb")
+"texture": SubResource("AtlasTexture_24ta1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a48tw")
+"texture": SubResource("AtlasTexture_qdio8")
 }],
 "loop": true,
 "name": &"mouseRun",
