@@ -32,11 +32,19 @@ func _on_game_exited(id: int):
 	$AnimationPlayer.play("RESET")
 	$Drawer.show()
 
+func _on_screensaver_start():
+	$AnimationPlayer.play_backwards("fade_in")
+
+func _on_screensaver_stop():
+	$AnimationPlayer.play("fade_in")
+
 func _ready() -> void:
 	BusEvent.connect("BANNER_MENU_FOCUSED", _on_banner_menu_focused)
 	BusEvent.connect("DRAWER_FOCUSED", _on_drawer_focused)
 	BusEvent.connect("GAME_LAUNCHED", _on_game_launched)
 	BusEvent.connect("GAME_EXITED", _on_game_exited)
+	BusEvent.connect("START_SCREENSAVER", _on_screensaver_start)
+	BusEvent.connect("STOP_SCREENSAVER", _on_screensaver_stop)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "close_drawer":

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ddyel6wldr06b"]
 
+[ext_resource type="Script" path="res://scenes/special/maintenance_screen.gd" id="1_7odj3"]
 [ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="2_1s7mh"]
-[ext_resource type="PackedScene" uid="uid://bxqy35wah5fxc" path="res://scenes/special/screensaver.tscn" id="3_72a7o"]
 [ext_resource type="Texture2D" uid="uid://cee2yg1wx6fnq" path="res://assets/img/pixel_logo.png" id="3_yrdhw"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_byrr5"]
@@ -22,6 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_7odj3")
 
 [node name="Center" type="Control" parent="."]
 layout_mode = 1
@@ -43,23 +44,30 @@ trail_lifetime = 1.73
 scale = Vector2(2, 2)
 texture = ExtResource("3_yrdhw")
 
-[node name="Label" type="Label" parent="."]
+[node name="Text" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -589.0
-offset_top = -81.0
-offset_right = 589.0
+offset_left = -485.5
+offset_top = -166.0
+offset_right = 485.5
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="Title" type="Label" parent="Text"]
+layout_mode = 2
 theme = ExtResource("2_1s7mh")
-text = "En cours de réanimation, je reviens bientôt...
-#fixtheborne"
+theme_override_font_sizes/font_size = 60
+text = "En cours de réanimation"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Screensaver" parent="." instance=ExtResource("3_72a7o")]
-layout_mode = 1
+[node name="Desc" type="Label" parent="Text"]
+layout_mode = 2
+theme = ExtResource("2_1s7mh")
+text = "Je reviens avec quelques améliorations..."
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -6,6 +6,7 @@ var BottomLabel: String		# Bottom label of the banner
 var TopLabel: String		# Top label of the banner
 
 var tags_hidden = false
+var audio_playback = true
 
 func set_game_id(in_id: int) -> void:
 	game_id = in_id
@@ -49,9 +50,11 @@ func _on_texture_rect_focus_entered() -> void:
 		pass
 
 	show_tags()
-	$AudioStreamPlayer.play()
-	$AudioStreamAnimation.play("fade_in")
-	$MaxThemeLength.start()
+
+	if audio_playback:
+		$AudioStreamPlayer.play()
+		$AudioStreamAnimation.play("fade_in")
+		$MaxThemeLength.start()
 	$AnimationPlayer.queue("focus_entered")
 	BusEvent.emit_signal("BANNER_SELECTED", index)
 
@@ -86,6 +89,12 @@ func _on_game_exited(id: int) -> void:
 	else:
 		self.show()
 
+func _on_screensaver_start():
+	audio_playback = false
+
+func _on_screensaver_stop():
+	audio_playback = true
+
 func grab_banner_focus():
 	$TextureRect.grab_focus()
 
@@ -95,6 +104,8 @@ func _ready() -> void:
 	BusEvent.connect("SELECT_GAME", _on_select_game)
 	BusEvent.connect("GAME_LAUNCHED", _on_game_launched)
 	BusEvent.connect("GAME_EXITED", _on_game_exited)
+	BusEvent.connect("START_SCREENSAVER", _on_screensaver_start)
+	BusEvent.connect("STOP_SCREENSAVER", _on_screensaver_stop)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and $TextureRect/SelectionRect.visible and not IdleManager.screensaver:
@@ -104,10 +115,8 @@ func _process(delta: float) -> void:
 func _on_max_theme_length_timeout() -> void:
 	$AudioStreamAnimation.play("fade_out")
 
-
 func _on_audio_stream_player_finished() -> void:
 	pass
-
 
 func _on_audio_stream_animation_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade_out" || anim_name == "fast_fade_out":

@@ -17,3 +17,4 @@ mono_crash.*.json
 
 # Visual Studio Code specific ignores
 .vscode/
+*.x86_64
