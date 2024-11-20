@@ -33,7 +33,7 @@ signal BANNER_MENU_FOCUSED          # Banner menu focused
 @warning_ignore("unused_signal")
 signal BANNER_SELECTED(id: int)     # Banner selected
 @warning_ignore("unused_signal")
-signal SCALING_CHANGED				# Scaling changed
+signal SCALING_CHANGED(scale: float)# Scaling changed
 
 # Action signals
 @warning_ignore("unused_signal")
@@ -83,7 +83,7 @@ func _on_banner_menu_focused() -> void:
 func _on_banner_selection(id: int) -> void:
 	print("[SIGNAL] Banner selected: ", id)
 
-func _on_scaling_changed() -> void:
+func _on_scaling_changed(scale: float) -> void:
 	print("[SIGNAL] Scaling changed")
 
 func _on_center_selected_banner() -> void:

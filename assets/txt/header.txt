@@ -15,25 +15,4 @@
 #                                                                                          #
 #                                   Settings File                                          #
 ############################################################################################                                                                                      
-[General]
-debug_mode = false
-animations = true
 
-[Maintenance]
-enabled = true
-message = "Maintenance mode is currently enabled."
-
-[Sound]
-enabled = true
-volume = 100
-
-[Video]
-scaling = 1
-vsync = true
-fullscreen = true
-
-[Menu]
-disable_drawer = false
-
-[Screensaver]
-disable_screensaver = false

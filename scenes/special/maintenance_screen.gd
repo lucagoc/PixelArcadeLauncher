@@ -4,13 +4,13 @@ var offset = 20
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Text/Desc.text = Settings.maintenance_message
+	$Text/Desc.text = Settings.maintenance.message
 	$AnimatedSprite2D.play()
 	
 	refresh_animation()
 
 	# If the maintenance message is empty, hide the text
-	if Settings.maintenance_message == "":
+	if Settings.maintenance.message == "":
 		$Text.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
