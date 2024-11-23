@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://nlbgb1sdxsw5"]
 
 [ext_resource type="Script" path="res://scenes/bars/top_bar.gd" id="1_rmyrv"]
-[ext_resource type="Texture2D" uid="uid://c88fnr814igpc" path="res://assets/img/pixel_logo_long.png" id="3_q1c76"]
+[ext_resource type="Texture2D" uid="uid://c88fnr814igpc" path="res://assets/img/pixel_logo/pixel_logo_long.png" id="3_q1c76"]
 
 [sub_resource type="Animation" id="Animation_xtsgc"]
 length = 0.001

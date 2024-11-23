@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/special/screensaver.gd" id="1_0h2ly"]
 [ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="1_opb5y"]
-[ext_resource type="Texture2D" uid="uid://dv41uwmvv376p" path="res://assets/img/logo_long_mono.png" id="1_sdbiu"]
+[ext_resource type="Texture2D" uid="uid://dv41uwmvv376p" path="res://assets/img/pixel_logo/logo_long_mono.png" id="1_sdbiu"]
 
 [sub_resource type="Animation" id="Animation_cva8t"]
 length = 0.001

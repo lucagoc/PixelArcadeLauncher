@@ -45,11 +45,16 @@ func add_console_commands():
 func _on_scaling_changed(scale: float) -> void:
 	get_tree().root.content_scale_factor = scale
 
+func _on_secret_shake() -> void:
+	if not $AnimationPlayer.is_playing():
+		$AnimationPlayer.play("shake")
+
 func _ready():
 	start_loading()
 	
 	add_console_commands()
 	BusEvent.connect("SCALING_CHANGED", _on_scaling_changed)
+	BusEvent.connect("START_SECRET_SHAKE", _on_secret_shake)
 	preload_data()
 	GameList.reload()
 

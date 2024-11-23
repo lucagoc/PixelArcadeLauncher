@@ -29,6 +29,7 @@ ProcessManager="*res://scenes/common/process_manager.gd"
 IdleManager="*res://scenes/common/idle_manager.gd"
 LimboConsole="*res://addons/limbo_console/limbo_console.gd"
 Settings="*res://scenes/common/settings.gd"
+SecretManager="*res://scenes/common/secret_manager.gd"
 
 [display]
 

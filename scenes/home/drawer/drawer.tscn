@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://baldfvib8npgc" path="res://assets/img/buttons/Red.png" id="4_1abol"]
 [ext_resource type="Texture2D" uid="uid://dp6au1s2cm1v0" path="res://assets/img/buttons/Green.png" id="5_g2vai"]
 [ext_resource type="Texture2D" uid="uid://dttgk3eadjifd" path="res://assets/img/buttons/Blue.png" id="6_sb4eg"]
-[ext_resource type="Texture2D" uid="uid://c43xlomsm26k2" path="res://assets/img/zz_mouse_64.png" id="7_hwf45"]
+[ext_resource type="Texture2D" uid="uid://c43xlomsm26k2" path="res://assets/img/mouse/zz_mouse_64.png" id="7_hwf45"]
 [ext_resource type="Texture2D" uid="uid://cgc7asuvr1um5" path="res://assets/img/default/placeholder.svg" id="8_mp2f3"]
 
 [sub_resource type="Animation" id="Animation_m3we3"]
