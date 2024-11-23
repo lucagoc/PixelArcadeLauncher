@@ -93,7 +93,7 @@ theme_override_font_sizes/font_size = 30
 text = "V0.5"
 
 [node name="PaddingRight" type="Container" parent="TopHbox"]
-custom_minimum_size = Vector2(20, 0)
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 
 [node name="Timer" type="Timer" parent="."]

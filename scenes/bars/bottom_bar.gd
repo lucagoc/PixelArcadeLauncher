@@ -5,9 +5,13 @@ func _on_game_selected(index: int) -> void:
 
 func _on_drawer_focused():
 	$BottomHbox/GameTitle.hide()
+	$BottomHbox/HelperLeft/HelpLabel.text = "Bannière"
+	$BottomHbox/HelperLeft/Arrow/TextureRect.flip_v = false
 
 func _on_banner_focused():
 	$BottomHbox/GameTitle.show()
+	$BottomHbox/HelperLeft/HelpLabel.text = "Grille"
+	$BottomHbox/HelperLeft/Arrow/TextureRect.flip_v = true
 
 func _on_game_launched(id: int):
 	$BottomHbox/Help1.hide()

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bveavdlpsb5lv"]
+[gd_scene load_steps=5 format=3 uid="uid://bveavdlpsb5lv"]
 
 [ext_resource type="Script" path="res://scenes/bars/bottom_bar.gd" id="1_u5ya3"]
 [ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="2_w4b71"]
+[ext_resource type="Texture2D" uid="uid://ccxqk685vpfmr" path="res://assets/img/buttons/Yellow.png" id="3_f5cub"]
+[ext_resource type="Texture2D" uid="uid://b42b228x633g2" path="res://assets/img/buttons/arrow_h.png" id="3_wqc6l"]
 
 [node name="BottomBar" type="ColorRect"]
 custom_minimum_size = Vector2(0, 50)
@@ -19,10 +21,35 @@ grow_vertical = 2
 [node name="LeftPadding" type="Container" parent="BottomHbox"]
 layout_mode = 2
 
-[node name="Help1" type="Label" parent="BottomHbox"]
+[node name="HelperLeft" type="HBoxContainer" parent="BottomHbox"]
 layout_mode = 2
 size_flags_horizontal = 2
-size_flags_vertical = 6
+theme_override_constants/separation = 10
+
+[node name="Arrow" type="VBoxContainer" parent="BottomHbox/HelperLeft"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 0
+
+[node name="TopPadding" type="Container" parent="BottomHbox/HelperLeft/Arrow"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BottomHbox/HelperLeft/Arrow"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("3_wqc6l")
+expand_mode = 3
+stretch_mode = 5
+flip_v = true
+
+[node name="BottomPadding" type="Container" parent="BottomHbox/HelperLeft/Arrow"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+
+[node name="HelpLabel" type="Label" parent="BottomHbox/HelperLeft"]
+layout_mode = 2
+size_flags_horizontal = 10
 theme = ExtResource("2_w4b71")
 text = "Grille"
 
@@ -33,11 +60,36 @@ size_flags_vertical = 6
 theme = ExtResource("2_w4b71")
 text = "GameName"
 
-[node name="Help2" type="Label" parent="BottomHbox"]
+[node name="HelperRight" type="HBoxContainer" parent="BottomHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="HelpLabel" type="Label" parent="BottomHbox/HelperRight"]
 layout_mode = 2
 size_flags_horizontal = 10
 theme = ExtResource("2_w4b71")
-text = "Lancer A"
+text = "Lancer"
+
+[node name="Button" type="VBoxContainer" parent="BottomHbox/HelperRight"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 0
+
+[node name="TopPadding" type="Container" parent="BottomHbox/HelperRight/Button"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BottomHbox/HelperRight/Button"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("3_f5cub")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="BottomPadding" type="Container" parent="BottomHbox/HelperRight/Button"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
 
 [node name="RightPadding" type="Container" parent="BottomHbox"]
 layout_mode = 2
