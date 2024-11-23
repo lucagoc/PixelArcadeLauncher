@@ -162,5 +162,10 @@ func apply_settings():
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	if video.vsync:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
-
+	
+	if OS.has_feature("linux"):
+		if sound.enabled:
+			var sound_volume = str(sound.volume) + "%"
+			OS.execute("/usr/bin/amixer", ["set", "Master", sound_volume])
+	
 	BusEvent.emit_signal("SCALING_CHANGED", video.scaling)
