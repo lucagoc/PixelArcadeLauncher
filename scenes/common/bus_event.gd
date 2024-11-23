@@ -46,6 +46,8 @@ signal AUTO_SCROLL					# Auto scroll banners
 signal START_SCREENSAVER			# Start screensaver
 @warning_ignore("unused_signal")
 signal STOP_SCREENSAVER				# Stop screensaver
+@warning_ignore("unused_signal")
+signal START_SECRET_SHAKE           # Start secret shake
 
 func _on_game_list_loaded() -> void:
 	print("[SIGNAL] Game list loaded")
@@ -101,6 +103,9 @@ func _on_start_screensaver() -> void:
 func _on_stop_screensaver() -> void:
 	print("[SIGNAL] Stop screensaver")
 
+func _on_start_secret_shake() -> void:
+	print("[SIGNAL] Start secret shake")
+
 func _ready() -> void:
 	if print_debug_info:
 		# State signals
@@ -124,4 +129,4 @@ func _ready() -> void:
 		connect("AUTO_SCROLL", _on_auto_scroll)
 		connect("START_SCREENSAVER", _on_start_screensaver)
 		connect("STOP_SCREENSAVER", _on_stop_screensaver)
-		
+		connect("START_SECRET_SHAKE", _on_start_secret_shake)
