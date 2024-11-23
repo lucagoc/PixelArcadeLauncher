@@ -33,7 +33,7 @@ func center_selected_banner() -> void:
 		var animation = $AnimationPlayer.get_animation("scroll")
 		animation.bezier_track_set_key_value(0, 0, from)
 		animation.bezier_track_set_key_value(0, 1, destination)
-	
+
 		# Play the animation
 		$AnimationPlayer.play("scroll")
 
@@ -55,12 +55,12 @@ func _on_banner_selection(index: int):
 	elif(direction > 0):
 		for i in range(abs(direction_int)):
 			move_banner_first_to_last()
-			get_h_scroll_bar().value += - 5 * get_h_scroll_bar().max_value/GameList.GAME_LIST.size()
+			get_h_scroll_bar().value += - 3 * get_h_scroll_bar().max_value/GameList.GAME_LIST.size()
 
 	# Emit game selected
 	BusEvent.emit_signal("BANNER_MENU_FOCUSED")
 	BusEvent.emit_signal("GAME_SELECTED", banner.game_id)
-	BusEvent.emit_signal("CENTER_SELECTED_BANNER")
+	center_selected_banner()
 
 
 # Add a banner to the container, last position
