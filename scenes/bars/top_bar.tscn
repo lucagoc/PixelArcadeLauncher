@@ -1,8 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://nlbgb1sdxsw5"]
+[gd_scene load_steps=6 format=3 uid="uid://nlbgb1sdxsw5"]
 
-[ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="1_p42sk"]
 [ext_resource type="Script" path="res://scenes/bars/top_bar.gd" id="1_rmyrv"]
-[ext_resource type="Texture2D" uid="uid://dkcn3fu8n33sy" path="res://assets/img/buttons/Menu.png" id="2_gb8e4"]
 [ext_resource type="Texture2D" uid="uid://c88fnr814igpc" path="res://assets/img/pixel_logo_long.png" id="3_q1c76"]
 
 [sub_resource type="Animation" id="Animation_xtsgc"]
@@ -55,16 +53,14 @@ grow_vertical = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Padding Left" type="Container" parent="TopHbox"]
+[node name="PaddingLeft" type="Container" parent="TopHbox"]
 custom_minimum_size = Vector2(7, 0)
 layout_mode = 2
 
-[node name="OptionButton" type="Button" parent="TopHbox"]
+[node name="PaddingLeft2" type="Container" parent="TopHbox"]
+custom_minimum_size = Vector2(7, 0)
 layout_mode = 2
-size_flags_horizontal = 2
-focus_mode = 1
-theme = ExtResource("1_p42sk")
-icon = ExtResource("2_gb8e4")
+size_flags_horizontal = 3
 
 [node name="TimeLabel" type="Label" parent="TopHbox"]
 layout_mode = 2
@@ -72,11 +68,32 @@ size_flags_horizontal = 6
 theme_override_font_sizes/font_size = 40
 text = "TIME"
 
-[node name="Logo" type="TextureRect" parent="TopHbox"]
+[node name="Logo" type="VBoxContainer" parent="TopHbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="PaddingUp" type="Container" parent="TopHbox/Logo"]
+custom_minimum_size = Vector2(7, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Logo" type="TextureRect" parent="TopHbox/Logo"]
 layout_mode = 2
 size_flags_horizontal = 10
+size_flags_vertical = 3
 texture = ExtResource("3_q1c76")
 expand_mode = 3
+stretch_mode = 6
+
+[node name="PaddingBottom" type="Container" parent="TopHbox/Logo"]
+custom_minimum_size = Vector2(7, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PaddingRight" type="Container" parent="TopHbox"]
+custom_minimum_size = Vector2(7, 0)
+layout_mode = 2
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
@@ -86,5 +103,4 @@ libraries = {
 "": SubResource("AnimationLibrary_e0ubm")
 }
 
-[connection signal="pressed" from="TopHbox/OptionButton" to="." method="_on_option_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
