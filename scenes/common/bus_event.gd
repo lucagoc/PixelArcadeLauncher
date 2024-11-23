@@ -34,6 +34,8 @@ signal BANNER_MENU_FOCUSED          # Banner menu focused
 signal BANNER_SELECTED(id: int)     # Banner selected
 @warning_ignore("unused_signal")
 signal SCALING_CHANGED(scale: float)# Scaling changed
+@warning_ignore("unused_signal")
+signal LOADING_SCREEN_ENDED
 
 # Action signals
 @warning_ignore("unused_signal")
@@ -106,6 +108,9 @@ func _on_stop_screensaver() -> void:
 func _on_start_secret_shake() -> void:
 	print("[SIGNAL] Start secret shake")
 
+func _on_loading_screen_ended() -> void:
+	print("[SIGNAL] Loading screen ended")
+
 func _ready() -> void:
 	if print_debug_info:
 		# State signals
@@ -122,6 +127,7 @@ func _ready() -> void:
 		connect("BANNER_MENU_FOCUSED", _on_banner_menu_focused)
 		connect("BANNER_SELECTED", _on_banner_selection)
 		connect("SCALING_CHANGED", _on_scaling_changed)
+		connect("LOADING_SCREEN_ENDED", _on_loading_screen_ended)
 
 		# Action signals
 		connect("CENTER_SELECTED_BANNER", _on_center_selected_banner)

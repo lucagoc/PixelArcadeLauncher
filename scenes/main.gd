@@ -49,17 +49,19 @@ func _on_secret_shake() -> void:
 	if not $AnimationPlayer.is_playing():
 		$AnimationPlayer.play("shake")
 
+func _on_loading_screen_ended():
+	end_loading()
+
 func _ready():
 	start_loading()
 	
 	add_console_commands()
 	BusEvent.connect("SCALING_CHANGED", _on_scaling_changed)
 	BusEvent.connect("START_SECRET_SHAKE", _on_secret_shake)
+	BusEvent.connect("LOADING_SCREEN_ENDED", _on_loading_screen_ended)
 	preload_data()
 	GameList.reload()
 
-	end_loading()
-	
 	if Settings.maintenance.enabled:
 		get_tree().change_scene_to_file("res://scenes/special/maintenance_screen.tscn")
 
