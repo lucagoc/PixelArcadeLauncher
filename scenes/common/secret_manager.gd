@@ -11,7 +11,6 @@ func _on_game_selected(id: int):
 		game_selection_count += 1
 
 func _on_timer_timeout():
-	print("VOU")
 	if game_selection_count > 0:
 		game_selection_count -= 1
 

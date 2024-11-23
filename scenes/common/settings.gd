@@ -3,6 +3,7 @@ extends Control
 class General:
 	var debug_mode := false
 	var animations := true
+	var mame_plugins_home := "$HOME"
 
 class Maintenance:
 	var enabled := false
@@ -47,6 +48,7 @@ func save_settings():
 	setting_file.store_line("[General]")
 	setting_file.store_line("debug_mode = " + str(general.debug_mode))
 	setting_file.store_line("animations = " + str(general.animations))
+	setting_file.store_line("mame_plugins_home = " + general.mame_plugins_home)
 	setting_file.store_line("")
 
 	setting_file.store_line("[Maintenance]")
@@ -115,6 +117,8 @@ func load_settings():
 					general.debug_mode = setting[1].matchn("true")
 				elif setting[0] == "animations":
 					general.animations = setting[1].matchn("true")
+				elif setting[0] == "mame_plugins_home":
+					general.mame_plugins_home = setting[1]
 
 			# Maintenance
 			elif section == "Maintenance":
