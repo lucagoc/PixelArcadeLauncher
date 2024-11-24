@@ -27,3 +27,4 @@ func _on_timer_timeout() -> void:
 func _on_self_animation_animation_finished(anim_name: StringName) -> void:
 	if(anim_name == "screensaver_out"):
 		$BackgroundAnimation.stop()
+		IdleManager.screensaver = false

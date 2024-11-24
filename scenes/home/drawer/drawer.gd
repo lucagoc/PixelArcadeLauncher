@@ -36,4 +36,5 @@ func _on_item_list_item_selected(index: int) -> void:
 	BusEvent.emit_signal("GAME_SELECTED", index)
 
 func _on_item_list_item_activated(index: int) -> void:
-	BusEvent.emit_signal("GAME_LAUNCHED", index)
+	if not IdleManager.screensaver:
+		BusEvent.emit_signal("GAME_LAUNCHED", index)

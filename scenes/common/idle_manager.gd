@@ -2,7 +2,6 @@ extends Node
 
 var idling = false
 var screensaver = false
-var index_game_selected = 0
 
 var IDLE_TIME = 5				# 30 seconds 	Time to wait before idle mode
 var AUTO_SCROLL_TIME = 5		# 5 seconds		Delay between auto scrolling
@@ -12,9 +11,6 @@ func _on_idle_timeout() -> void:
 	if not idling:
 		print("[INFO] Idling...")
 		idling = true
-
-func _on_game_selection(id: int):
-	index_game_selected = id
 
 # Automatically scroll through banners on idle.
 func _on_auto_scroll_timeout() -> void:
@@ -27,8 +23,6 @@ func _on_screensaver_timeout() -> void:
 		screensaver = true
 
 func _ready() -> void:
-
-	BusEvent.connect("GAME_SELECTED", _on_game_selection)
 
 	# Set up the idle timer
 	var idle_timer = Timer.new()
@@ -70,5 +64,3 @@ func _process(delta: float) -> void:
 		
 		if screensaver:
 			BusEvent.emit_signal("STOP_SCREENSAVER")
-			screensaver = false
-			BusEvent.emit_signal("SELECT_GAME", index_game_selected)
