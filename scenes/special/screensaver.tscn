@@ -133,7 +133,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CenterBox/Label:self_modulate")
+tracks/0/path = NodePath("MainVbox/CenterBox/Label:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -150,7 +150,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CenterBox/Label:self_modulate")
+tracks/0/path = NodePath("MainVbox/CenterBox/Label:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -187,45 +187,56 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Logo" type="TextureRect" parent="."]
+[node name="MainVbox" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -118.5
-offset_top = -85.7234
-offset_right = 118.5
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("1_sdbiu")
-expand_mode = 5
-stretch_mode = 5
-
-[node name="CenterBox" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -376.5
-offset_top = -97.5
-offset_right = 376.5
-offset_bottom = 97.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Time" type="Label" parent="CenterBox"]
+[node name="PaddingBottom" type="Container" parent="MainVbox"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenterBox" type="VBoxContainer" parent="MainVbox"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Time" type="Label" parent="MainVbox/CenterBox"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 100
 text = "20:04:44"
 
-[node name="Label" type="Label" parent="CenterBox"]
+[node name="Label" type="Label" parent="MainVbox/CenterBox"]
 layout_mode = 2
 text = "Appuyer sur une touche pour commencer"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainVbox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PaddingTop" type="Container" parent="MainVbox/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PaddingTop2" type="Container" parent="MainVbox/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Texture" type="TextureRect" parent="MainVbox/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_sdbiu")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="PaddingBottom" type="Container" parent="MainVbox/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
 
 [node name="BackgroundAnimation" type="AnimationPlayer" parent="."]
 libraries = {

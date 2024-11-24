@@ -50,6 +50,10 @@ signal START_SCREENSAVER			# Start screensaver
 signal STOP_SCREENSAVER				# Stop screensaver
 @warning_ignore("unused_signal")
 signal START_SECRET_SHAKE           # Start secret shake
+@warning_ignore("unused_signal")
+signal ENABLE_BANNER_FOCUS				# Stop screensaver
+@warning_ignore("unused_signal")
+signal DISABLE_BANNER_FOCUS           # Start secret shake
 
 func _on_game_list_loaded() -> void:
 	print("[SIGNAL] Game list loaded")

@@ -2,15 +2,19 @@ extends Node
 
 var idling = false
 var screensaver = false
+var index_game_selected = 0
 
-var IDLE_TIME = 30				# 30 seconds 	Time to wait before idle mode
+var IDLE_TIME = 5				# 30 seconds 	Time to wait before idle mode
 var AUTO_SCROLL_TIME = 5		# 5 seconds		Delay between auto scrolling
-var SCREENSAVER_TIME = 120		# 2 minutes		Time to wait before screensaver (Logo)
+var SCREENSAVER_TIME = 10		# 2 minutes		Time to wait before screensaver (Logo)
 
 func _on_idle_timeout() -> void:
 	if not idling:
 		print("[INFO] Idling...")
 		idling = true
+
+func _on_game_selection(id: int):
+	index_game_selected = id
 
 # Automatically scroll through banners on idle.
 func _on_auto_scroll_timeout() -> void:
@@ -22,12 +26,9 @@ func _on_screensaver_timeout() -> void:
 		BusEvent.emit_signal("START_SCREENSAVER")
 		screensaver = true
 
-func _on_screensaver_2_timeout() -> void:
-	if idling:
-		BusEvent.emit_signal("START_SCREENSAVER_2")
-		screensaver = true
-
 func _ready() -> void:
+
+	BusEvent.connect("GAME_SELECTED", _on_game_selection)
 
 	# Set up the idle timer
 	var idle_timer = Timer.new()
@@ -58,7 +59,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	# Reset the idle timer a key is pressed
-	if Input.is_action_just_pressed("ui_right") or Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("ui_down"):
+	if Input.is_action_just_pressed("stop_idle"):
 		idling = false
 
 		$idle_timer.stop()
@@ -70,3 +71,4 @@ func _process(delta: float) -> void:
 		if screensaver:
 			BusEvent.emit_signal("STOP_SCREENSAVER")
 			screensaver = false
+			BusEvent.emit_signal("SELECT_GAME", index_game_selected)

@@ -14,14 +14,14 @@ func _on_banner_focused():
 	$BottomHbox/HelperLeft/Arrow/TextureRect.flip_v = true
 
 func _on_game_launched(id: int):
-	$BottomHbox/Help1.hide()
+	$BottomHbox/HelperLeft.hide()
 	$BottomHbox/GameTitle.hide()
-	$BottomHbox/Help2.hide()
+	$BottomHbox/HelperRight.hide()
 
 func _on_game_exited(id: int):
-	$BottomHbox/Help1.show()
+	$BottomHbox/HelperLeft.show()
 	$BottomHbox/GameTitle.show()
-	$BottomHbox/Help2.show()
+	$BottomHbox/HelperRight.show()
 
 func _ready() -> void:
 	BusEvent.connect("GAME_SELECTED", _on_game_selected)

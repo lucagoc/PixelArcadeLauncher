@@ -21,7 +21,7 @@ func _on_background_animation_animation_finished(anim_name: StringName) -> void:
 
 
 func _on_timer_timeout() -> void:
-	$CenterBox/Time.text = Time.get_time_string_from_system()
+	$MainVbox/CenterBox/Time.text = Time.get_time_string_from_system()
 
 
 func _on_self_animation_animation_finished(anim_name: StringName) -> void:

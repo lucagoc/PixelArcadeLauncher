@@ -89,6 +89,12 @@ func _on_game_exited(id: int) -> void:
 	else:
 		self.show()
 
+func _on_disable_banner_focus():
+	$TextureRect.focus_mode = FOCUS_NONE
+
+func _on_enable_banner_focus():
+	$TextureRect.focus_mode = FOCUS_ALL
+
 func _on_screensaver_start():
 	audio_playback = false
 
@@ -106,6 +112,8 @@ func _ready() -> void:
 	BusEvent.connect("GAME_EXITED", _on_game_exited)
 	BusEvent.connect("START_SCREENSAVER", _on_screensaver_start)
 	BusEvent.connect("STOP_SCREENSAVER", _on_screensaver_stop)
+	BusEvent.connect("ENABLE_BANNER_FOCUS", _on_enable_banner_focus)
+	BusEvent.connect("DISABLE_BANNER_FOCUS", _on_disable_banner_focus)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and $TextureRect/SelectionRect.visible and not IdleManager.screensaver:
