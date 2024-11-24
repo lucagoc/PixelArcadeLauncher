@@ -3,9 +3,9 @@ extends Node
 var idling = false
 var screensaver = false
 
-var IDLE_TIME = 5				# 30 seconds 	Time to wait before idle mode
+var IDLE_TIME = 30				# 30 seconds 	Time to wait before idle mode
 var AUTO_SCROLL_TIME = 5		# 5 seconds		Delay between auto scrolling
-var SCREENSAVER_TIME = 10		# 2 minutes		Time to wait before screensaver (Logo)
+var SCREENSAVER_TIME = 120		# 2 minutes		Time to wait before screensaver (Logo)
 
 func _on_idle_timeout() -> void:
 	if not idling:
