@@ -3,6 +3,7 @@ extends Node
 # Common node to manage the process currently running
 var running_process = null
 var game_id = -1
+var game_running = false
 
 func set_game(id: int) -> void:
 	game_id = id

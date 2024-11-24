@@ -116,7 +116,7 @@ func _ready() -> void:
 	BusEvent.connect("DISABLE_BANNER_FOCUS", _on_disable_banner_focus)
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept") and $TextureRect/SelectionRect.visible and not IdleManager.screensaver:
+	if Input.is_action_just_pressed("ui_accept") and $TextureRect/SelectionRect.visible and not IdleManager.screensaver and not ProcessManager.game_running:
 		BusEvent.emit_signal("GAME_LAUNCHED", game_id)
 
 
