@@ -27,4 +27,6 @@
 	- Fixed banner audio crossfading
 	- Changed topbar stuff
 	- Patched scroll stick drift
-	- N
+	- Added shaking menu
+	- New config file
+	- Volume manager agent

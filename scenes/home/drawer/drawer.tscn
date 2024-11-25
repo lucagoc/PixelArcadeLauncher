@@ -82,7 +82,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_neighbor_right = NodePath("../../ItemList")
-mouse_filter = 1
 theme = ExtResource("1_deuv8")
 item_count = 5
 same_column_width = true
