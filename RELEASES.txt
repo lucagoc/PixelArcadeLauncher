@@ -25,4 +25,6 @@
 
 0.5 DancingAstronaut
 	- Fixed banner audio crossfading
-	
+	- Changed topbar stuff
+	- Patched scroll stick drift
+	- N
