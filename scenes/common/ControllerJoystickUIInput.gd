@@ -48,7 +48,6 @@ func _process(delta):
 
 	if threshold_timer.is_stopped() && tick_timer.is_stopped() && (joystickLeftThisTick || joystickRightThisTick || joystickUpThisTick || joystickDownThisTick):
 		threshold_timer.start()
-		print("Starting threshold timer")
 	
 	if not (joystickLeftThisTick || joystickRightThisTick || joystickUpThisTick || joystickDownThisTick):
 		threshold_timer.stop()
