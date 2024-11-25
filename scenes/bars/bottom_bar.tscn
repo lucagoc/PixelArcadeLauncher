@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bveavdlpsb5lv"]
 
 [ext_resource type="Script" path="res://scenes/bars/bottom_bar.gd" id="1_u5ya3"]
+[ext_resource type="Texture2D" uid="uid://c64763mnxyh3g" path="res://assets/img/buttons/arrow_up.png" id="2_k7bld"]
 [ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="2_w4b71"]
 [ext_resource type="Texture2D" uid="uid://ccxqk685vpfmr" path="res://assets/img/buttons/Yellow.png" id="3_f5cub"]
-[ext_resource type="Texture2D" uid="uid://b42b228x633g2" path="res://assets/img/buttons/arrow_h.png" id="3_wqc6l"]
 
 [node name="BottomBar" type="ColorRect"]
 custom_minimum_size = Vector2(0, 50)
@@ -38,7 +38,7 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="BottomHbox/HelperLeft/Arrow"]
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("3_wqc6l")
+texture = ExtResource("2_k7bld")
 expand_mode = 3
 stretch_mode = 5
 flip_v = true
