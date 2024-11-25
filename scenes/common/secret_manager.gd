@@ -20,7 +20,7 @@ func _ready() -> void:
 
 	# Create a timer to decrease the game selection count
 	var timer = Timer.new()
-	timer.set_wait_time(0.1)
+	timer.set_wait_time(0.05)
 	timer.connect("timeout", _on_timer_timeout)
 	add_child(timer)
 	timer.start()

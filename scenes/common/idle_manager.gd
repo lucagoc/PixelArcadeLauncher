@@ -53,7 +53,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	# Reset the idle timer a key is pressed
-	if Input.is_action_just_pressed("stop_idle"):
+	if Input.is_action_pressed("stop_idle") || Input.is_action_pressed("ui_up_joystick") || Input.is_action_pressed("ui_down_joystick") || Input.is_action_pressed("ui_left_joystick") || Input.is_action_pressed("ui_right_joystick"):
 		idling = false
 
 		$idle_timer.stop()

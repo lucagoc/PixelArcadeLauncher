@@ -10,7 +10,7 @@ var joystickUpThisTick : bool = false
 var joystickDownThisTick : bool = false
 
 const THRESHOLD = 0.5
-const TICK = 0.15
+const TICK = 0.18
 
 var threshold_timer : Timer
 var tick_timer : Timer
@@ -105,6 +105,11 @@ func _on_action_timeout() -> void:
 		Input.parse_input_event(uiEvent)
 	else:
 		tick_timer.stop()
+		tick_timer.set_wait_time(TICK)
+
+	# Increase the speed of the timer
+	if tick_timer.get_wait_time() > 0.01:
+		tick_timer.set_wait_time(tick_timer.get_wait_time() - 0.001)
 
 func _on_threshold_timeout() -> void:
 	tick_timer.start()
