@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4frsd4if6b7x"]
+[gd_scene load_steps=8 format=3 uid="uid://c4frsd4if6b7x"]
 
 [ext_resource type="SpriteFrames" uid="uid://54wr72e4qehg" path="res://assets/img/mouse/mouseSpriteFrames.tres" id="1_1vm6i"]
+[ext_resource type="Script" path="res://scenes/special/loading_screen.gd" id="1_nbs1e"]
 [ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="2_wvhsn"]
-[ext_resource type="Texture2D" uid="uid://cee2yg1wx6fnq" path="res://assets/img/pixel_logo.png" id="3_d5vh0"]
+[ext_resource type="Texture2D" uid="uid://cee2yg1wx6fnq" path="res://assets/img/pixel_logo/pixel_logo.png" id="3_d5vh0"]
 
 [sub_resource type="Gradient" id="Gradient_uejjg"]
 offsets = PackedFloat32Array(0)
@@ -29,6 +30,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_nbs1e")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -53,7 +55,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Mouse"]
-position = Vector2(0, -25)
+position = Vector2(0, -30)
 scale = Vector2(5, 5)
 sprite_frames = ExtResource("1_1vm6i")
 animation = &"mouseRun"
@@ -98,3 +100,6 @@ texture = ExtResource("3_d5vh0")
 
 [node name="MinDelay" type="Timer" parent="."]
 one_shot = true
+autostart = true
+
+[connection signal="timeout" from="MinDelay" to="." method="_on_min_delay_timeout"]

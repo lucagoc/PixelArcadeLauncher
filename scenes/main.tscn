@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bemlflx640ecp"]
+[gd_scene load_steps=24 format=3 uid="uid://bemlflx640ecp"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_srogu"]
 [ext_resource type="PackedScene" uid="uid://c4frsd4if6b7x" path="res://scenes/special/loading_screen.tscn" id="2_io48b"]
@@ -9,7 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dnmfvwbgonwdj" path="res://scenes/home/banner_list/banner_scroll_list.tscn" id="7_yqq1d"]
 [ext_resource type="PackedScene" uid="uid://b8xcoqpmgts1i" path="res://scenes/home/drawer/drawer.tscn" id="8_14dml"]
 [ext_resource type="AudioStream" uid="uid://hsdpagkfjr40" path="res://assets/sounds/ui/game_launch.mp3" id="9_g7vwn"]
-[ext_resource type="PackedScene" uid="uid://f2rysqj78eqv" path="res://scenes/special/extras.tscn" id="10_mhu4u"]
+[ext_resource type="PackedScene" uid="uid://bxqy35wah5fxc" path="res://scenes/special/screensaver.tscn" id="10_62net"]
+[ext_resource type="PackedScene" uid="uid://f2rysqj78eqv" path="res://scenes/special/transition_layer.tscn" id="10_mhu4u"]
 [ext_resource type="PackedScene" uid="uid://bveavdlpsb5lv" path="res://scenes/bars/bottom_bar.tscn" id="16_x1ks8"]
 
 [sub_resource type="Animation" id="Animation_anar2"]
@@ -47,6 +48,18 @@ tracks/2/keys = {
 "points": PackedFloat32Array(50, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_ys0tp"]
 resource_name = "close_drawer"
@@ -61,6 +74,22 @@ tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(600, -0.15, 0, 0.15, 0, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="Animation" id="Animation_akoqn"]
+resource_name = "fade_in"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_ociks"]
@@ -108,6 +137,7 @@ tracks/0/keys = {
 _data = {
 "RESET": SubResource("Animation_anar2"),
 "close_drawer": SubResource("Animation_ys0tp"),
+"fade_in": SubResource("Animation_akoqn"),
 "hide_bars": SubResource("Animation_ociks"),
 "open_drawer": SubResource("Animation_b5voc")
 }
@@ -136,7 +166,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -187,7 +217,7 @@ tracks/5/keys = {
 tracks/6/type = "bezier"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Home/Extras/BlackRect:color:a")
+tracks/6/path = NodePath("Home/TransitionLayer/BlackRect:color:a")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -258,10 +288,10 @@ tracks/0/path = NodePath("LoadingScreen:modulate")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 0.5),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.5),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -316,7 +346,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
-tracks/1/enabled = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("Home:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -389,10 +419,14 @@ libraries = {
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Home/Front"]
 stream = ExtResource("9_g7vwn")
 
-[node name="Extras" parent="Home" instance=ExtResource("10_mhu4u")]
+[node name="Screensaver" parent="Home" instance=ExtResource("10_62net")]
+layout_mode = 1
+
+[node name="TransitionLayer" parent="Home" instance=ExtResource("10_mhu4u")]
 layout_mode = 1
 
 [node name="LoadingScreen" parent="." instance=ExtResource("2_io48b")]
+visible = false
 layout_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

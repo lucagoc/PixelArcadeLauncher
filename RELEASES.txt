@@ -22,3 +22,11 @@
 	- Added support for banner audio themes
 	- Added UI sounds
 	- Added Screensaver (logo)
+
+0.5 DancingAstronaut
+	- Fixed banner audio crossfading
+	- Changed topbar stuff
+	- Patched scroll stick drift
+	- Added shaking menu
+	- New config file
+	- Volume manager agent

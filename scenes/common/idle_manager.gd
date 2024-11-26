@@ -6,7 +6,6 @@ var screensaver = false
 var IDLE_TIME = 30				# 30 seconds 	Time to wait before idle mode
 var AUTO_SCROLL_TIME = 5		# 5 seconds		Delay between auto scrolling
 var SCREENSAVER_TIME = 120		# 2 minutes		Time to wait before screensaver (Logo)
-var SCREENSAVER_2_TIME = 240 	# 4 minutes		Time to wait before screensaver (Hero images)
 
 func _on_idle_timeout() -> void:
 	if not idling:
@@ -21,11 +20,6 @@ func _on_auto_scroll_timeout() -> void:
 func _on_screensaver_timeout() -> void:
 	if idling:
 		BusEvent.emit_signal("START_SCREENSAVER")
-		screensaver = true
-
-func _on_screensaver_2_timeout() -> void:
-	if idling:
-		BusEvent.emit_signal("START_SCREENSAVER_2")
 		screensaver = true
 
 func _ready() -> void:
@@ -57,18 +51,9 @@ func _ready() -> void:
 	add_child(screensaver_timer)
 	screensaver_timer.start()
 
-	# Set up the screensaver 2 timer
-	var screensaver_2_timer = Timer.new()
-	screensaver_2_timer.set_wait_time(SCREENSAVER_2_TIME)
-	screensaver_2_timer.set_one_shot(true)
-	screensaver_2_timer.connect("timeout", _on_screensaver_2_timeout)
-	screensaver_2_timer.name = "screensaver_2_timer"
-	add_child(screensaver_2_timer)
-	screensaver_2_timer.start()
-
 func _process(delta: float) -> void:
 	# Reset the idle timer a key is pressed
-	if Input.is_action_just_pressed("ui_right") or Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("ui_down"):
+	if Input.is_action_pressed("stop_idle") || Input.is_action_pressed("ui_up_joystick") || Input.is_action_pressed("ui_down_joystick") || Input.is_action_pressed("ui_left_joystick") || Input.is_action_pressed("ui_right_joystick"):
 		idling = false
 
 		$idle_timer.stop()
@@ -77,9 +62,5 @@ func _process(delta: float) -> void:
 		$screensaver_timer.stop()
 		$screensaver_timer.start()
 		
-		$screensaver_2_timer.stop()
-		$screensaver_2_timer.start()
-		
 		if screensaver:
 			BusEvent.emit_signal("STOP_SCREENSAVER")
-			screensaver = false

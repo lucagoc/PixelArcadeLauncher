@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dkfnjychc24ah" path="res://assets/img/default/banner.png" id="1_gtc0v"]
 [ext_resource type="Script" path="res://scenes/home/banner_list/game_banner.gd" id="1_spqyp"]
-[ext_resource type="Material" path="res://themes/highlight.tres" id="3_gxj7a"]
+[ext_resource type="Material" uid="uid://dxuvdeqy4wr2b" path="res://themes/highlight.tres" id="3_gxj7a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkuvb"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -196,7 +196,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-40, -0.25, 0, 0.251406, 49, 0, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(-40, -0.25, 0, 0.251406, 49, 5, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
 }
 
@@ -211,7 +211,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -40, -0.4, 45, 0.25, 0),
+"points": PackedFloat32Array(5, -0.25, 0, 0.25, 0, -40, -0.4, 45, 0.25, 0),
 "times": PackedFloat32Array(0, 4)
 }
 
@@ -226,7 +226,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.133333, -35, -40, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(5, -0.25, 0, 0.133333, -35, -40, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.5)
 }
 
@@ -289,6 +289,7 @@ libraries = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 volume_db = -40.0
+panning_strength = 2.0
 
 [node name="MaxThemeLength" type="Timer" parent="."]
 wait_time = 15.0

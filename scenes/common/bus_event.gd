@@ -33,7 +33,9 @@ signal BANNER_MENU_FOCUSED          # Banner menu focused
 @warning_ignore("unused_signal")
 signal BANNER_SELECTED(id: int)     # Banner selected
 @warning_ignore("unused_signal")
-signal SCALING_CHANGED				# Scaling changed
+signal SCALING_CHANGED(scale: float)# Scaling changed
+@warning_ignore("unused_signal")
+signal LOADING_SCREEN_ENDED
 
 # Action signals
 @warning_ignore("unused_signal")
@@ -46,6 +48,12 @@ signal AUTO_SCROLL					# Auto scroll banners
 signal START_SCREENSAVER			# Start screensaver
 @warning_ignore("unused_signal")
 signal STOP_SCREENSAVER				# Stop screensaver
+@warning_ignore("unused_signal")
+signal START_SECRET_SHAKE           # Start secret shake
+@warning_ignore("unused_signal")
+signal ENABLE_BANNER_FOCUS				# Stop screensaver
+@warning_ignore("unused_signal")
+signal DISABLE_BANNER_FOCUS           # Start secret shake
 
 func _on_game_list_loaded() -> void:
 	print("[SIGNAL] Game list loaded")
@@ -83,7 +91,7 @@ func _on_banner_menu_focused() -> void:
 func _on_banner_selection(id: int) -> void:
 	print("[SIGNAL] Banner selected: ", id)
 
-func _on_scaling_changed() -> void:
+func _on_scaling_changed(scale: float) -> void:
 	print("[SIGNAL] Scaling changed")
 
 func _on_center_selected_banner() -> void:
@@ -101,6 +109,12 @@ func _on_start_screensaver() -> void:
 func _on_stop_screensaver() -> void:
 	print("[SIGNAL] Stop screensaver")
 
+func _on_start_secret_shake() -> void:
+	print("[SIGNAL] Start secret shake")
+
+func _on_loading_screen_ended() -> void:
+	print("[SIGNAL] Loading screen ended")
+
 func _ready() -> void:
 	if print_debug_info:
 		# State signals
@@ -117,6 +131,7 @@ func _ready() -> void:
 		connect("BANNER_MENU_FOCUSED", _on_banner_menu_focused)
 		connect("BANNER_SELECTED", _on_banner_selection)
 		connect("SCALING_CHANGED", _on_scaling_changed)
+		connect("LOADING_SCREEN_ENDED", _on_loading_screen_ended)
 
 		# Action signals
 		connect("CENTER_SELECTED_BANNER", _on_center_selected_banner)
@@ -124,4 +139,4 @@ func _ready() -> void:
 		connect("AUTO_SCROLL", _on_auto_scroll)
 		connect("START_SCREENSAVER", _on_start_screensaver)
 		connect("STOP_SCREENSAVER", _on_stop_screensaver)
-		
+		connect("START_SECRET_SHAKE", _on_start_secret_shake)

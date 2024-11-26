@@ -4,6 +4,7 @@ Extensions :
 
 External Scripts:
 - godot-ansi-escape-to-bbcode - fbcosentino
+- ControllerJoystickUIInput (see https://github.com/godotengine/godot/issues/35751)
 
 Engine :
 - Godot Engine - The Godot Foundation
