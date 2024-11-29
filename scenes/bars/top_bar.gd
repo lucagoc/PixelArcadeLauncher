@@ -17,3 +17,5 @@ func _on_game_exited(id: int):
 func _ready() -> void:
 	BusEvent.connect("GAME_LAUNCHED", _on_game_launched)
 	BusEvent.connect("GAME_EXITED", _on_game_exited)
+	
+	$TopHbox/VersionLabel.text = ProjectSettings.get_setting("application/config/version")

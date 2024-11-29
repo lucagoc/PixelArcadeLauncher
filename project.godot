@@ -11,15 +11,16 @@ config_version=5
 [application]
 
 config/name="Pixel Arcade Launcher"
-config/version="0.5 DancingAstronaut"
+config/version="1.0 StableShrine-DEV"
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
-boot_splash/image="res://icon.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false
-config/icon="res://icon.png"
+config/icon="res://assets/img/pixel_logo/icon.png"
+config/macos_native_icon="res://assets/img/pixel_logo/icon.icns"
+config/windows_native_icon="res://assets/img/pixel_logo/icon.ico"
 
 [autoload]
 
