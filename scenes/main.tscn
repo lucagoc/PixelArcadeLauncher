@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bemlflx640ecp"]
+[gd_scene load_steps=27 format=3 uid="uid://bemlflx640ecp"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_srogu"]
 [ext_resource type="PackedScene" uid="uid://c4frsd4if6b7x" path="res://scenes/special/loading_screen.tscn" id="2_io48b"]
@@ -142,6 +142,13 @@ _data = {
 "open_drawer": SubResource("Animation_b5voc")
 }
 
+[sub_resource type="Gradient" id="Gradient_ao3k5"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rfn04"]
+gradient = SubResource("Gradient_ao3k5")
+
 [sub_resource type="Animation" id="Animation_t2tse"]
 length = 0.001
 tracks/0/type = "value"
@@ -221,6 +228,29 @@ tracks/6/path = NodePath("Home/TransitionLayer/BlackRect:color:a")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("BlackOut:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("BlackOut:modulate:a")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
@@ -356,9 +386,37 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5)
 }
 
+[sub_resource type="Animation" id="Animation_4mo40"]
+resource_name = "black_out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackOut:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlackOut:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -1.1573, 1, 0.25, 0),
+"times": PackedFloat32Array(0.0333333, 2)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2h2xi"]
 _data = {
 "RESET": SubResource("Animation_t2tse"),
+"black_out": SubResource("Animation_4mo40"),
 "loading_end": SubResource("Animation_ryx21"),
 "loading_start": SubResource("Animation_bvvna"),
 "shake": SubResource("Animation_oygq0")
@@ -429,6 +487,17 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
+[node name="BlackOut" type="TextureRect" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_rfn04")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_2h2xi")
@@ -436,3 +505,4 @@ libraries = {
 speed_scale = 2.0
 
 [connection signal="animation_finished" from="Home/Front/AnimationPlayer" to="Home/Front" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

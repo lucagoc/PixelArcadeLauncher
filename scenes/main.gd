@@ -65,6 +65,24 @@ func _ready():
 	if Settings.maintenance.enabled:
 		get_tree().change_scene_to_file("res://scenes/special/maintenance_screen.tscn")
 
+var quitting = false
+
 func _process(delta):
-	if Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_pressed("ui_cancel"):
+		if not quitting:
+			var state = $AnimationPlayer.get_current_animation_position()
+			$AnimationPlayer.play("black_out")
+			$AnimationPlayer.speed_scale = 1
+			$AnimationPlayer.seek(state)
+			quitting = true
+	else:
+		if quitting:
+			var state = $AnimationPlayer.get_current_animation_position()
+			$AnimationPlayer.play_backwards("black_out")
+			$AnimationPlayer.speed_scale = 2
+			$AnimationPlayer.seek(state)
+			quitting = false
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if quitting:
 		get_tree().quit()
