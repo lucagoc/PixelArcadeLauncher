@@ -1,14 +1,91 @@
 extends Panel
 
-func _on_category_list_focus_entered() -> void:
-	$MainHbox/AnimationPlayer.play("open_category")
-
-func _on_category_list_focus_exited() -> void:
-	$MainHbox/AnimationPlayer.play("close_category")
+var default_icon = preload("res://assets/img/icons/settings/default.png")
 
 func _on_settings_loaded() -> void:
-	$MainHbox/CategoryBar/CategoryList.select(0) # Select the first category
+	$MainHbox/CategoryBar.select(0) # Select the first category
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready() -> void:
-	pass
+	# Empty the CategoryList
+	$MainHbox/CategoryBar.clear()
+
+	# Create for each section a new item in the CategoryList
+	for section in Settings.settings.keys():
+		$MainHbox/CategoryBar.add_item(section, default_icon)
+	
+	# Select the first category
+	$MainHbox/CategoryBar.select(0)
+	$MainHbox/CategoryBar.grab_focus()
+	_on_category_bar_item_selected(0)
+
+
+func _on_option_toggled(button: CheckButton, option: Array) -> void:
+	Settings.settings[$MainHbox/CategoryBar/List.get_item_text(option[1])][option[0]] = button.button_pressed
+
+func _on_option_value_changed(spinbox: SpinBox, option: Array) -> void:
+	Settings.settings[$MainHbox/CategoryBar/List.get_item_text(option[1])][option[0]] = spinbox.value
+
+func _on_option_text_changed(lineedit: LineEdit, option: Array) -> void:
+	Settings.settings[$MainHbox/CategoryBar/List.get_item_text(option[1])][option[0]] = lineedit.text
+
+func _on_save_button_pressed() -> void:
+	Settings.save_settings()
+
+func _on_category_bar_item_selected(index: int) -> void:
+	$MainHbox/OptionBar.clear()
+	$MainHbox/ValueBar.clear()
+
+	# Create for each option a new item in the OptionList
+	for key in Settings.settings[$MainHbox/CategoryBar/List.get_item_text(index)].keys():
+		var option = Settings.settings[$MainHbox/CategoryBar/List.get_item_text(index)][key]
+		var option_type = typeof(option)
+		var option_name = key
+		
+		$MainHbox/OptionBar.add_item(option_name, default_icon)
+
+	$MainHbox/OptionBar.select(0)
+	_on_option_bar_item_selected(0)
+
+
+func _on_category_bar_item_activated(int: Variant) -> void:
+	$MainHbox/OptionBar.grab_focus()
+
+
+func add_bool_option(value: bool) -> void:
+	$MainHbox/ValueBar.add_item("Activer", default_icon)
+	$MainHbox/ValueBar.add_item("Désactiver", default_icon)
+
+	if value:
+		$MainHbox/ValueBar.select(0)
+	else:
+		$MainHbox/ValueBar.select(1)
+
+
+func _on_option_bar_item_selected(index: int) -> void:
+	$MainHbox/ValueBar.clear()
+
+	var category = index_to_category($MainHbox/CategoryBar.get_selected_item())
+	var key = index_to_key(category, index)
+
+	var option = Settings.settings[category][key]
+	var option_type = typeof(option)
+
+	if option_type == TYPE_BOOL:
+		add_bool_option(option)
+
+
+func _on_option_bar_item_activated(int: Variant) -> void:
+	$MainHbox/ValueBar.grab_focus()
+
+func index_to_key(category: String, index: int) -> String:
+	return Settings.settings[category].keys()[index]
+
+func index_to_category(index: int) -> String:
+	return Settings.settings.keys()[index]
+
+func get_selected_category() -> String:
+	return index_to_category($MainHbox/CategoryBar.get_selected_item())
+
+func get_selected_key() -> String:
+	return index_to_key(get_selected_category(), $MainHbox/OptionBar.get_selected_item())

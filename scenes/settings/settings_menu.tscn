@@ -1,59 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://r7uast7vl6td"]
+[gd_scene load_steps=4 format=3 uid="uid://r7uast7vl6td"]
 
 [ext_resource type="Script" path="res://scenes/settings/settings_menu.gd" id="1_hje5c"]
 [ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="2_hsiy5"]
-[ext_resource type="Texture2D" uid="uid://c43xlomsm26k2" path="res://assets/img/mouse/zz_mouse_64.png" id="8_3jlj0"]
-
-[sub_resource type="Animation" id="Animation_m3we3"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MainHbox/CategoryBar:custom_minimum_size:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(85, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_66ngf"]
-resource_name = "close_category"
-length = 0.3
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MainHbox/CategoryBar:custom_minimum_size:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(300, -0.25, 0, 0.25, 0, 85, -0.15, 0, 0.15, 0),
-"times": PackedFloat32Array(0, 0.3)
-}
-
-[sub_resource type="Animation" id="Animation_4m38c"]
-resource_name = "open_category"
-length = 0.3
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MainHbox/CategoryBar:custom_minimum_size:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(85, -0.25, 0, 0, 82.5, 300, -0.233333, -2.5, 0.25, 0),
-"times": PackedFloat32Array(0, 0.3)
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qcudj"]
-_data = {
-"RESET": SubResource("Animation_m3we3"),
-"close_category": SubResource("Animation_66ngf"),
-"open_category": SubResource("Animation_4m38c")
-}
+[ext_resource type="PackedScene" uid="uid://ddeg0tk1y4cdd" path="res://scenes/settings/item_bar.tscn" id="3_eougr"]
 
 [node name="SettingsMenu" type="Panel"]
 anchors_preset = 15
@@ -76,39 +25,17 @@ focus_neighbor_top = NodePath("../BannerScrollList/BannerList")
 theme = ExtResource("2_hsiy5")
 theme_override_constants/separation = 0
 
-[node name="CategoryBar" type="ColorRect" parent="MainHbox"]
-custom_minimum_size = Vector2(85, 0)
+[node name="CategoryBar" parent="MainHbox" instance=ExtResource("3_eougr")]
 layout_mode = 2
-size_flags_horizontal = 0
-theme = ExtResource("2_hsiy5")
-color = Color(0, 0, 0, 1)
 
-[node name="CategoryList" type="ItemList" parent="MainHbox/CategoryBar"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_hsiy5")
-item_count = 5
-same_column_width = true
-item_0/text = " Général"
-item_1/text = " Écran"
-item_2/text = " Son"
-item_3/text = " Maintenance"
-item_4/text = " À propos"
-item_4/icon = ExtResource("8_3jlj0")
-
-[node name="OptionsVbox" type="VBoxContainer" parent="MainHbox"]
+[node name="OptionBar" parent="MainHbox" instance=ExtResource("3_eougr")]
 layout_mode = 2
-size_flags_horizontal = 3
+focus_neighbor_right = NodePath("../ValueBar")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MainHbox"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_qcudj")
-}
+[node name="ValueBar" parent="MainHbox" instance=ExtResource("3_eougr")]
+layout_mode = 2
 
-[connection signal="focus_entered" from="MainHbox/CategoryBar/CategoryList" to="." method="_on_category_list_focus_entered"]
-[connection signal="focus_exited" from="MainHbox/CategoryBar/CategoryList" to="." method="_on_category_list_focus_exited"]
+[connection signal="item_activated" from="MainHbox/CategoryBar" to="." method="_on_category_bar_item_activated"]
+[connection signal="item_selected" from="MainHbox/CategoryBar" to="." method="_on_category_bar_item_selected"]
+[connection signal="item_activated" from="MainHbox/OptionBar" to="." method="_on_option_bar_item_activated"]
+[connection signal="item_selected" from="MainHbox/OptionBar" to="." method="_on_option_bar_item_selected"]
