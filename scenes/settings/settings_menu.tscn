@@ -1,72 +1,61 @@
-[gd_scene load_steps=12 format=3 uid="uid://r7uast7vl6td"]
+[gd_scene load_steps=8 format=3 uid="uid://r7uast7vl6td"]
 
 [ext_resource type="Script" path="res://scenes/settings/settings_menu.gd" id="1_hje5c"]
 [ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="2_hsiy5"]
-[ext_resource type="Script" path="res://scenes/settings/settings_main_button.gd" id="3_gtspp"]
-[ext_resource type="PackedScene" uid="uid://bveavdlpsb5lv" path="res://scenes/bars/bottom_bar.tscn" id="4_ndm0s"]
+[ext_resource type="Texture2D" uid="uid://c43xlomsm26k2" path="res://assets/img/mouse/zz_mouse_64.png" id="8_3jlj0"]
 
-[sub_resource type="Animation" id="Animation_mhsjo"]
+[sub_resource type="Animation" id="Animation_m3we3"]
 length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:theme_override_font_sizes/font_size")
+tracks/0/path = NodePath("MainHbox/CategoryBar:custom_minimum_size:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(85, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 
-[sub_resource type="Animation" id="Animation_3ceip"]
-resource_name = "focus_entered"
+[sub_resource type="Animation" id="Animation_66ngf"]
+resource_name = "close_category"
 length = 0.3
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:theme_override_font_sizes/font_size")
+tracks/0/path = NodePath("MainHbox/CategoryBar:custom_minimum_size:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(25, -0.25, 0, 0, 26.5, 55, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(300, -0.25, 0, 0.25, 0, 85, -0.15, 0, 0.15, 0),
 "times": PackedFloat32Array(0, 0.3)
 }
 
-[sub_resource type="Animation" id="Animation_w38ov"]
-resource_name = "focus_exit"
+[sub_resource type="Animation" id="Animation_4m38c"]
+resource_name = "open_category"
 length = 0.3
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:theme_override_font_sizes/font_size")
+tracks/0/path = NodePath("MainHbox/CategoryBar:custom_minimum_size:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(55, -0.15, 0, 0.15, 0, 25, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(85, -0.25, 0, 0, 82.5, 300, -0.233333, -2.5, 0.25, 0),
 "times": PackedFloat32Array(0, 0.3)
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_x8eo4"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qcudj"]
 _data = {
-"RESET": SubResource("Animation_mhsjo"),
-"focus_entered": SubResource("Animation_3ceip"),
-"focus_exit": SubResource("Animation_w38ov")
+"RESET": SubResource("Animation_m3we3"),
+"close_category": SubResource("Animation_66ngf"),
+"open_category": SubResource("Animation_4m38c")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2fqy"]
-bg_color = Color(0.760387, 0.564779, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dgdh1"]
-bg_color = Color(0.760387, 0.564779, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1lxt2"]
-bg_color = Color(0.760387, 0.564779, 0, 1)
-
-[node name="SettingsMenu" type="Control"]
-layout_mode = 3
+[node name="SettingsMenu" type="Panel"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -75,378 +64,51 @@ grow_vertical = 2
 theme = ExtResource("2_hsiy5")
 script = ExtResource("1_hje5c")
 
-[node name="BackgroundColor" type="ColorRect" parent="."]
+[node name="MainHbox" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.259294, 0.259294, 0.259294, 1)
+size_flags_vertical = 8
+focus_neighbor_top = NodePath("../BannerScrollList/BannerList")
+theme = ExtResource("2_hsiy5")
+theme_override_constants/separation = 0
 
-[node name="MainVbox" type="VBoxContainer" parent="."]
+[node name="CategoryBar" type="ColorRect" parent="MainHbox"]
+custom_minimum_size = Vector2(85, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("2_hsiy5")
+color = Color(0, 0, 0, 1)
+
+[node name="CategoryList" type="ItemList" parent="MainHbox/CategoryBar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="MainHbox" type="HBoxContainer" parent="MainVbox"]
-layout_mode = 2
-size_flags_vertical = 3
 theme = ExtResource("2_hsiy5")
+item_count = 5
+same_column_width = true
+item_0/text = " Général"
+item_1/text = " Écran"
+item_2/text = " Son"
+item_3/text = " Maintenance"
+item_4/text = " À propos"
+item_4/icon = ExtResource("8_3jlj0")
 
-[node name="PaddingLeft" type="Container" parent="MainVbox/MainHbox"]
-layout_mode = 2
-
-[node name="MainSettings" type="VBoxContainer" parent="MainVbox/MainHbox"]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="System" type="Button" parent="MainVbox/MainHbox/MainSettings"]
-custom_minimum_size = Vector2(150, 0)
+[node name="OptionsVbox" type="VBoxContainer" parent="MainHbox"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 0
-text = "Système"
-script = ExtResource("3_gtspp")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MainVbox/MainHbox/MainSettings/System"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainHbox"]
+root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_x8eo4")
+"": SubResource("AnimationLibrary_qcudj")
 }
 
-[node name="Maintenance" type="Button" parent="MainVbox/MainHbox/MainSettings"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 0
-text = "Maintenance"
-script = ExtResource("3_gtspp")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MainVbox/MainHbox/MainSettings/Maintenance"]
-libraries = {
-"": SubResource("AnimationLibrary_x8eo4")
-}
-
-[node name="Display" type="Button" parent="MainVbox/MainHbox/MainSettings"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 0
-text = "Écran"
-script = ExtResource("3_gtspp")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MainVbox/MainHbox/MainSettings/Display"]
-libraries = {
-"": SubResource("AnimationLibrary_x8eo4")
-}
-
-[node name="Sound" type="Button" parent="MainVbox/MainHbox/MainSettings"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 0
-text = "Son"
-script = ExtResource("3_gtspp")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MainVbox/MainHbox/MainSettings/Sound"]
-libraries = {
-"": SubResource("AnimationLibrary_x8eo4")
-}
-
-[node name="Update" type="Button" parent="MainVbox/MainHbox/MainSettings"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 0
-text = "Mise à jour"
-script = ExtResource("3_gtspp")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MainVbox/MainHbox/MainSettings/Update"]
-libraries = {
-"": SubResource("AnimationLibrary_x8eo4")
-}
-
-[node name="About" type="Button" parent="MainVbox/MainHbox/MainSettings"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 0
-text = "À propos"
-script = ExtResource("3_gtspp")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MainVbox/MainHbox/MainSettings/About"]
-libraries = {
-"": SubResource("AnimationLibrary_x8eo4")
-}
-
-[node name="ColorRect" type="ColorRect" parent="MainVbox/MainHbox"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-color = Color(0, 0, 0, 0.235294)
-
-[node name="ScrollContainer" type="ScrollContainer" parent="MainVbox/MainHbox/ColorRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-follow_focus = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainVbox/MainHbox/ColorRect/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="SystemSettings" type="VBoxContainer" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="SystemLabel" type="Label" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/SystemSettings"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_d2fqy")
-text = "Système"
-horizontal_alignment = 1
-
-[node name="Vsync" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/SystemSettings"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_hsiy5")
-button_pressed = true
-text = "Vsync
-"
-
-[node name="Fastboot" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/SystemSettings"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_hsiy5")
-button_pressed = true
-text = "Démarrage Rapide"
-
-[node name="DebugMode" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/SystemSettings"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_hsiy5")
-text = "Mode débug"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/SystemSettings"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/SystemSettings/HBoxContainer"]
-layout_mode = 2
-text = "Thème de la bar d'état"
-
-[node name="OptionButton" type="OptionButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/SystemSettings/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 10
-item_count = 3
-popup/item_0/text = "Pixel"
-popup/item_1/text = "Xmas"
-popup/item_1/id = 1
-popup/item_2/text = "Happy birthday !"
-popup/item_2/id = 2
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/SystemSettings"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/SystemSettings/HBoxContainer2"]
-layout_mode = 2
-text = "Thème de l'écran de CHRGT"
-
-[node name="OptionButton" type="OptionButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/SystemSettings/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 10
-item_count = 3
-popup/item_0/text = "Pixel"
-popup/item_1/text = "Xmas"
-popup/item_1/id = 1
-popup/item_2/text = "Happy birthday !"
-popup/item_2/id = 2
-
-[node name="MaintenanceSettings" type="VBoxContainer" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="MaintenanceLabel" type="Label" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/MaintenanceSettings"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_dgdh1")
-text = "Maintenance"
-horizontal_alignment = 1
-
-[node name="MaintenanceMode" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/MaintenanceSettings"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_hsiy5")
-button_pressed = true
-text = "Mode Maintenance"
-
-[node name="AutoRestart" type="HBoxContainer" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/MaintenanceSettings"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/MaintenanceSettings/AutoRestart"]
-layout_mode = 2
-text = "Redémarrage automatique"
-
-[node name="OptionButton" type="OptionButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/MaintenanceSettings/AutoRestart"]
-layout_mode = 2
-size_flags_horizontal = 10
-item_count = 3
-popup/item_0/text = "Pixel"
-popup/item_1/text = "Xmas"
-popup/item_1/id = 1
-popup/item_2/text = "Happy birthday !"
-popup/item_2/id = 2
-
-[node name="ExtensionManager3" type="Button" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/MaintenanceSettings"]
-layout_mode = 2
-text = "Gestionnaire de PAP"
-
-[node name="ExtensionManager" type="Button" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/MaintenanceSettings"]
-layout_mode = 2
-text = "Gestionnaire d'extensions"
-
-[node name="ExtensionManager2" type="Button" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/MaintenanceSettings"]
-layout_mode = 2
-text = "Ouvrir La console"
-
-[node name="DisplaySettings" type="VBoxContainer" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="DisplayLabel" type="Label" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/DisplaySettings"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_1lxt2")
-text = "Écran"
-horizontal_alignment = 1
-
-[node name="MaintenanceMode" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/DisplaySettings"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_hsiy5")
-button_pressed = true
-text = "Activer Sortie vidéo"
-
-[node name="AutoRestart" type="HBoxContainer" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/DisplaySettings"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/DisplaySettings/AutoRestart"]
-layout_mode = 2
-text = "Mode d'anti-aliasing"
-
-[node name="OptionButton" type="OptionButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/DisplaySettings/AutoRestart"]
-layout_mode = 2
-size_flags_horizontal = 10
-item_count = 3
-popup/item_0/text = "Pixel"
-popup/item_1/text = "Xmas"
-popup/item_1/id = 1
-popup/item_2/text = "Happy birthday !"
-popup/item_2/id = 2
-
-[node name="ExtensionManager" type="Button" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/DisplaySettings"]
-layout_mode = 2
-text = "Gestionnaire d'extensions"
-
-[node name="SoundSettings" type="VBoxContainer" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="DisplayLabel" type="Label" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/SoundSettings"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_1lxt2")
-text = "Son"
-horizontal_alignment = 1
-
-[node name="MaintenanceMode" type="CheckButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/SoundSettings"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_hsiy5")
-button_pressed = true
-text = "Activer le son"
-
-[node name="Volume" type="HBoxContainer" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/SoundSettings"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/SoundSettings/Volume"]
-layout_mode = 2
-text = "Volume"
-
-[node name="OptionButton" type="OptionButton" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/SoundSettings/Volume"]
-layout_mode = 2
-size_flags_horizontal = 10
-item_count = 3
-popup/item_0/text = "Pixel"
-popup/item_1/text = "Xmas"
-popup/item_1/id = 1
-popup/item_2/text = "Happy birthday !"
-popup/item_2/id = 2
-
-[node name="ExtensionManager" type="Button" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/SoundSettings"]
-layout_mode = 2
-text = "Gestionnaire d'extensions"
-
-[node name="About" type="VBoxContainer" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="DisplayLabel" type="Label" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/About"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_1lxt2")
-text = "À Propos"
-horizontal_alignment = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/About"]
-layout_mode = 2
-text = "Pixel Arcade Launcher v0.5 (DancingAstronaut)
-Conçu par les ZZ de l'ISIMA
-
-Création du projet:
-- Lucagoc
-
-Contributeurs:
-- Lucagoc
-
-N'hésitez pas à rapporter des bugs ou proposer des améliorations !"
-fit_content = true
-
-[node name="ExtensionManager3" type="Button" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/About"]
-layout_mode = 2
-text = "Réinitialiser les paramètres"
-
-[node name="ExtensionManager4" type="Button" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/About"]
-layout_mode = 2
-text = "Supprimer toutes les données"
-
-[node name="ExtensionManager2" type="Button" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/About"]
-layout_mode = 2
-text = "Vérifier les mises à jours (Arch LInux)"
-
-[node name="ExtensionManager" type="Button" parent="MainVbox/MainHbox/ColorRect/ScrollContainer/VBoxContainer/About"]
-layout_mode = 2
-text = "Vérifier les mises à jours (Launcher)"
-
-[node name="BottomBar" parent="MainVbox" instance=ExtResource("4_ndm0s")]
-layout_mode = 2
-
-[connection signal="focus_entered" from="MainVbox/MainHbox/MainSettings/System" to="MainVbox/MainHbox/MainSettings/System" method="_on_focus_entered"]
-[connection signal="focus_exited" from="MainVbox/MainHbox/MainSettings/System" to="MainVbox/MainHbox/MainSettings/System" method="_on_focus_exited"]
-[connection signal="focus_entered" from="MainVbox/MainHbox/MainSettings/Maintenance" to="MainVbox/MainHbox/MainSettings/Maintenance" method="_on_focus_entered"]
-[connection signal="focus_exited" from="MainVbox/MainHbox/MainSettings/Maintenance" to="MainVbox/MainHbox/MainSettings/Maintenance" method="_on_focus_exited"]
-[connection signal="focus_entered" from="MainVbox/MainHbox/MainSettings/Display" to="MainVbox/MainHbox/MainSettings/Display" method="_on_focus_entered"]
-[connection signal="focus_exited" from="MainVbox/MainHbox/MainSettings/Display" to="MainVbox/MainHbox/MainSettings/Display" method="_on_focus_exited"]
-[connection signal="focus_entered" from="MainVbox/MainHbox/MainSettings/Sound" to="MainVbox/MainHbox/MainSettings/Sound" method="_on_focus_entered"]
-[connection signal="focus_exited" from="MainVbox/MainHbox/MainSettings/Sound" to="MainVbox/MainHbox/MainSettings/Sound" method="_on_focus_exited"]
-[connection signal="focus_entered" from="MainVbox/MainHbox/MainSettings/Update" to="MainVbox/MainHbox/MainSettings/Update" method="_on_focus_entered"]
-[connection signal="focus_exited" from="MainVbox/MainHbox/MainSettings/Update" to="MainVbox/MainHbox/MainSettings/Update" method="_on_focus_exited"]
-[connection signal="focus_entered" from="MainVbox/MainHbox/MainSettings/About" to="MainVbox/MainHbox/MainSettings/About" method="_on_focus_entered"]
-[connection signal="focus_exited" from="MainVbox/MainHbox/MainSettings/About" to="MainVbox/MainHbox/MainSettings/About" method="_on_focus_exited"]
+[connection signal="focus_entered" from="MainHbox/CategoryBar/CategoryList" to="." method="_on_category_list_focus_entered"]
+[connection signal="focus_exited" from="MainHbox/CategoryBar/CategoryList" to="." method="_on_category_list_focus_exited"]

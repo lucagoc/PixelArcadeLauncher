@@ -2,7 +2,8 @@ extends Node
 
 # File dedicated to Secret Settings and Easter Eggs. Activated using key combinaison.
 
-var konami_code = []
+var konami_code = ["ui_up_joystick", "ui_up_joystick", "ui_down_joystick", "ui_down_joystick", "ui_left_joystick", "ui_right_joystick", "ui_left_joystick", "ui_right_joystick", "ui_a", "ui_b"]
+var progress_code = 0
 
 var game_selection_count = 0
 
@@ -28,7 +29,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
 
+	# Shake the screen when the secret is activated
 	if game_selection_count > 10:
 		BusEvent.emit_signal("START_SECRET_SHAKE")
+	
+	# Check if the Konami code is activated
+	if Input.is_action_just_pressed(konami_code[progress_code]):
+		progress_code += 1
+		if progress_code == konami_code.size():
+			BusEvent.emit_signal("KONAMI_ACTIVATED")
+			progress_code = 0
+	elif Input.is_action_just_pressed("stop_idle"):
+		progress_code = 0

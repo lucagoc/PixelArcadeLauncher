@@ -1,6 +1,14 @@
-extends Control
+extends Panel
 
-@onready var animation_player = $MainVbox/MainHbox/MainSettings/AnimationPlayer
+func _on_category_list_focus_entered() -> void:
+	$MainHbox/AnimationPlayer.play("open_category")
 
-func _ready():
-	$MainVbox/MainHbox/MainSettings/System.grab_focus()
+func _on_category_list_focus_exited() -> void:
+	$MainHbox/AnimationPlayer.play("close_category")
+
+func _on_settings_loaded() -> void:
+	$MainHbox/CategoryBar/CategoryList.select(0) # Select the first category
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _ready() -> void:
+	pass

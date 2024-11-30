@@ -62,7 +62,7 @@ func _ready():
 	preload_data()
 	GameList.reload()
 
-	if Settings.maintenance.enabled:
+	if Settings.get_setting("Maintenance", "enabled"):
 		get_tree().change_scene_to_file("res://scenes/special/maintenance_screen.tscn")
 
 var quitting = false

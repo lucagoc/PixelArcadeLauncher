@@ -22,7 +22,6 @@ func launch_game() -> void:
 		if game.platform == "mame":
 			args = ["-homepath", Settings.general.mame_plugins_home]
 			print("[INFO] MAME homepath: " + Settings.general.mame_plugins_home)
-
 			# Launch the game
 			print("[INFO] Launching game: " + game.name)
 			running_process = OS.execute(game.exec, args)

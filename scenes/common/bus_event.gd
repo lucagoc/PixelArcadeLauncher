@@ -11,31 +11,33 @@ var print_debug_info: bool = false
 @warning_ignore("unused_signal")
 signal GAME_LIST_LOADED
 @warning_ignore("unused_signal")
-signal GAME_LAUNCHED(id: int)       # When a game is launched
+signal GAME_LAUNCHED(id: int)       	# When a game is launched
 @warning_ignore("unused_signal")
-signal GAME_EXITED(id: int)         # When a game is exited
+signal GAME_EXITED(id: int)         	# When a game is exited
 @warning_ignore("unused_signal")
-signal GAME_SELECTED(id: int)       # When a game is selected (indepedent of the context menu)
+signal GAME_SELECTED(id: int)       	# When a game is selected (indepedent of the context menu)
 @warning_ignore("unused_signal")
-signal GAME_DESELECTED(id: int)     # When a game is deselected (indepedent of the context menu)
+signal GAME_DESELECTED(id: int)     	# When a game is deselected (indepedent of the context menu)
 @warning_ignore("unused_signal")
-signal DRAWER_RELOADED              # Drawer reloaded
+signal DRAWER_RELOADED              	# Drawer reloaded
 @warning_ignore("unused_signal")
-signal DRAWER_FOCUSED               # Drawer focused
+signal DRAWER_FOCUSED               	# Drawer focused
 @warning_ignore("unused_signal")
-signal DRAWER_CATEGORY_OPENED       # Drawer category opened
+signal DRAWER_CATEGORY_OPENED       	# Drawer category opened
 @warning_ignore("unused_signal")
-signal DRAWER_CATEGORY_CLOSED       # Drawer category closed
+signal DRAWER_CATEGORY_CLOSED       	# Drawer category closed
 @warning_ignore("unused_signal")
-signal BANNER_MENU_RELOADED         # Banner menu loaded/reloaded
+signal BANNER_MENU_RELOADED         	# Banner menu loaded/reloaded
 @warning_ignore("unused_signal")
-signal BANNER_MENU_FOCUSED          # Banner menu focused
+signal BANNER_MENU_FOCUSED          	# Banner menu focused
 @warning_ignore("unused_signal")
-signal BANNER_SELECTED(id: int)     # Banner selected
+signal BANNER_SELECTED(id: int)     	# Banner selected
 @warning_ignore("unused_signal")
-signal SCALING_CHANGED(scale: float)# Scaling changed
+signal SCALING_CHANGED(scale: float)	# Scaling changed
 @warning_ignore("unused_signal")
-signal LOADING_SCREEN_ENDED
+signal LOADING_SCREEN_ENDED				# Loading screen ended
+@warning_ignore("unused_signal")
+signal KONAMI_ACTIVATED					# Konami code activated
 
 # Action signals
 @warning_ignore("unused_signal")
@@ -51,9 +53,9 @@ signal STOP_SCREENSAVER				# Stop screensaver
 @warning_ignore("unused_signal")
 signal START_SECRET_SHAKE           # Start secret shake
 @warning_ignore("unused_signal")
-signal ENABLE_BANNER_FOCUS				# Stop screensaver
+signal ENABLE_BANNER_FOCUS			# Stop screensaver
 @warning_ignore("unused_signal")
-signal DISABLE_BANNER_FOCUS           # Start secret shake
+signal DISABLE_BANNER_FOCUS         # Start secret shake
 
 func _on_game_list_loaded() -> void:
 	print("[SIGNAL] Game list loaded")
@@ -115,6 +117,9 @@ func _on_start_secret_shake() -> void:
 func _on_loading_screen_ended() -> void:
 	print("[SIGNAL] Loading screen ended")
 
+func _on_konami_activated() -> void:
+	print("[SIGNAL] Konami code activated")
+
 func _ready() -> void:
 	if print_debug_info:
 		# State signals
@@ -132,6 +137,7 @@ func _ready() -> void:
 		connect("BANNER_SELECTED", _on_banner_selection)
 		connect("SCALING_CHANGED", _on_scaling_changed)
 		connect("LOADING_SCREEN_ENDED", _on_loading_screen_ended)
+		connect("KONAMI_ACTIVATED", _on_konami_activated)
 
 		# Action signals
 		connect("CENTER_SELECTED_BANNER", _on_center_selected_banner)

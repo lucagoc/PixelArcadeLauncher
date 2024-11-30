@@ -90,7 +90,7 @@ text = "TIME"
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_font_sizes/font_size = 30
-text = "V0.5.1"
+text = "VERSION"
 
 [node name="PaddingRight" type="Container" parent="TopHbox"]
 custom_minimum_size = Vector2(30, 0)
