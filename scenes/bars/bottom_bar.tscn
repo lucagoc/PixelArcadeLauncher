@@ -76,7 +76,7 @@ size_flags_horizontal = 8
 theme_override_constants/separation = 0
 
 [node name="TopPadding" type="Container" parent="BottomHbox/HelperRight/Button"]
-custom_minimum_size = Vector2(0, 10)
+custom_minimum_size = Vector2(0, 7)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="BottomHbox/HelperRight/Button"]
@@ -87,7 +87,7 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="BottomPadding" type="Container" parent="BottomHbox/HelperRight/Button"]
-custom_minimum_size = Vector2(0, 10)
+custom_minimum_size = Vector2(0, 7)
 layout_mode = 2
 
 [node name="RightPadding" type="Container" parent="BottomHbox"]

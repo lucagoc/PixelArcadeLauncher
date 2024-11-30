@@ -1,6 +1,7 @@
 extends Panel
 
-var default_icon = preload("res://assets/img/icons/settings/default.png")
+var default_icon = load("res://assets/img/icons/settings/default.png")
+var check_icon = load("")
 
 func _on_settings_loaded() -> void:
 	$MainHbox/CategoryBar.select(0) # Select the first category
