@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://dpmpa00q1a1fq"]
+
+[ext_resource type="Script" path="res://scenes/exp/3d_banner.gd" id="1_p4ket"]
+[ext_resource type="Texture2D" uid="uid://dkfnjychc24ah" path="res://assets/img/default/banner.png" id="2_fc7ch"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70qqf"]
+albedo_texture = ExtResource("2_fc7ch")
+roughness = 0.23
+
+[sub_resource type="BoxMesh" id="BoxMesh_wljhg"]
+material = SubResource("StandardMaterial3D_70qqf")
+size = Vector3(1.5, 2.5, 0.2)
+
+[sub_resource type="Animation" id="Animation_fmnex"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:rotation:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_puntb"]
+resource_name = "selected"
+loop_mode = 2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:rotation:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.5, -0.25, 0, 0.5, 0, 0.5, -0.5, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ecs40"]
+_data = {
+"RESET": SubResource("Animation_fmnex"),
+"selected": SubResource("Animation_puntb")
+}
+
+[node name="3DBanner" type="SubViewportContainer"]
+offset_right = 740.0
+offset_bottom = 845.0
+stretch = true
+script = ExtResource("1_p4ket")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(740, 845)
+render_target_update_mode = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport"]
+mesh = SubResource("BoxMesh_wljhg")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(0.997216, -0.0221658, -0.071194, 0.0007584, 0.957759, -0.28757, 0.0745609, 0.286715, 0.95511, -0.213501, -0.967629, 3.40713)
+projection = 1
+size = 3.10807
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.742069, 0.670323, 0, -0.670323, 0.742069, 0, 3.25826, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewport"]
+libraries = {
+"": SubResource("AnimationLibrary_ecs40")
+}
