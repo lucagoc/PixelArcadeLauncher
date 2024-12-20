@@ -1,44 +1,76 @@
+##############################################################
+#                     Process Manager                        #
+#          Manage the game process currently running         #
+##############################################################
+
 extends Node
 
 # Common node to manage the process currently running
-var running_process = null
-var game_id = -1
-var game_running = false
-
-func set_game(id: int) -> void:
-	game_id = id
-
-func launch_game_linux(game) -> void:
-	running_process = OS.execute(game.exec, [])
+var _running_process = null # Process currently running
+var _running_game = -1 # -1 no game running, others = game running
 
 
-func launch_game() -> void:
-	if game_id == -1:
-		print("[ERROR] No game selected")
+# Launch game on a new thread
+func _launch_game_linux(game) -> void:
+	var _path = game.path + "files/" + game.exec
+	_running_process = OS.create_process(_path, [])
+	print("[INFO] Game running with PID: " + str(_running_process))
+
+# Launch game in a blocking way
+func _launch_game_mame(game) -> void:
+	var args = ["-homepath", Settings.get_setting("General", "mame_plugins_home")]
+	print("[LAUNCH_GAME] Launching game: " + game.name)
+	_running_process = OS.execute(game.exec, args)
+	BusEvent.emit_signal("GAME_EXITED", _running_game)
+
+# Called when the game is exited
+func _on_game_exited(_id: int) -> void:
+	print("[DEBUG] Game exited: " + str(_id))
+	_running_game = -1
+
+@warning_ignore("unused_parameter")
+func _process(delta):
+	if _running_game != -1 and Input.is_action_just_pressed("exit_game"):
+		OS.kill(_running_process)
+		BusEvent.emit_signal("GAME_EXITED", _running_game)
+
+func _on_timeout():
+	if _running_game != -1 and not OS.is_process_running(_running_process):
+		BusEvent.emit_signal("GAME_EXITED", _running_game)
+
+func _ready():
+	BusEvent.connect("GAME_EXITED", _on_game_exited)
+
+	# Create a timer that will check if the game is still running
+	var timer = Timer.new()
+	timer.set_wait_time(1)
+	timer.set_one_shot(false)
+	timer.connect("timeout", _on_timeout)
+	add_child(timer)
+	timer.start()
+
+func is_game_running() -> bool:
+	return _running_game != -1
+
+
+# Take the game_id and launch the game
+func launch_game(game_id) -> void:
+	if game_id < 0:
+		printerr("[LAUNCH_GAME] Invalid game_id: " + str(game_id))
 	else:
 		var game = GameList.GAME_LIST[game_id]
-		var args = []
+		_running_game = game_id
 
 		if game.platform == "mame":
-			args = ["-homepath", Settings.general.mame_plugins_home]
-			print("[INFO] MAME homepath: " + Settings.general.mame_plugins_home)
-			# Launch the game
-			print("[INFO] Launching game: " + game.name)
-			running_process = OS.execute(game.exec, args)
-			# Emit the signal when exited
-			BusEvent.emit_signal("GAME_EXITED", game_id)
+			_launch_game_mame(game)
 		
 		elif game.platform == "linux":
-			# Create a new thread to launch the game
-			game_running = true
-			running_process = OS.create_process(game.exec, [])
-			print("[INFO] Game running with PID: " + str(running_process))
+			_launch_game_linux(game)
+		
+		elif game.platform == "windows":
+			printerr("[LAUNCH_GAME] Windows is currently not supported, please wait until next update for wine support.")
+			BusEvent.emit_signal("GAME_EXITED", _running_game)
 
-func _process(delta):
-	if Input.is_action_just_pressed("exit_game"):
-		print("[INFO] Exit game")
-		if game_running:
-			# Kill the game process
-			OS.kill(running_process)
-			game_running = false
-			BusEvent.emit_signal("GAME_EXITED", game_id)
+		else:
+			printerr("[LAUNCH_GAME] Platform not supported: " + game.platform)
+			BusEvent.emit_signal("GAME_EXITED", _running_game)

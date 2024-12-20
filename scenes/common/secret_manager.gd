@@ -34,6 +34,7 @@ func _process(delta: float) -> void:
 	if game_selection_count > 10:
 		BusEvent.emit_signal("START_SECRET_SHAKE")
 	
+	
 	# Check if the Konami code is activated
 	if Input.is_action_just_pressed(konami_code[progress_code]):
 		progress_code += 1

@@ -24,7 +24,7 @@ func set_banner_bottom_label(label: String) -> void:
 	BottomLabel = label
 
 func set_banner_theme(theme: AudioStreamOggVorbis) -> void:
-	$AudioStreamPlayer.stream = theme
+	$Theme.stream = theme
 
 func show_tags() -> void:
 	if tags_hidden:
@@ -45,14 +45,11 @@ func set_focus_neighbor_right(banner: VBoxContainer) -> void:
 
 func _on_texture_rect_focus_entered() -> void:
 	$TextureRect/SelectionRect.show()
-	if BottomLabel != null:
-		#$BottomLabel.text = BottomLabel
-		pass
-
 	show_tags()
 
 	if audio_playback:
-		$AudioStreamPlayer.play()
+		$Theme.play()
+		$Click.play()
 		$AudioStreamAnimation.play("fade_in")
 		$MaxThemeLength.start()
 	$AnimationPlayer.queue("focus_entered")
@@ -64,7 +61,7 @@ func _on_texture_rect_focus_exited() -> void:
 
 	# Play animation backward from the last frame
 	var animation = $AudioStreamAnimation.get_animation("fast_fade_out")
-	animation.bezier_track_set_key_value(0, 0, $AudioStreamPlayer.volume_db)
+	animation.bezier_track_set_key_value(0, 0, $Theme.volume_db)
 	$AudioStreamAnimation.play("fast_fade_out")
 	var last_position = $AnimationPlayer.current_animation_position
 	$AnimationPlayer.play_backwards("focus_entered")
@@ -78,7 +75,7 @@ func _on_game_launched(id: int) -> void:
 	if id == game_id:
 		$TextureRect/SelectionRect.hide()
 		var animation = $AudioStreamAnimation.get_animation("fast_fade_out")
-		animation.bezier_track_set_key_value(0, 0, $AudioStreamPlayer.volume_db)
+		animation.bezier_track_set_key_value(0, 0, $Theme.volume_db)
 		$AudioStreamAnimation.play("fast_fade_out")
 	else:
 		self.hide()
@@ -116,18 +113,15 @@ func _ready() -> void:
 	BusEvent.connect("DISABLE_BANNER_FOCUS", _on_disable_banner_focus)
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept") and $TextureRect/SelectionRect.visible and not IdleManager.screensaver and not ProcessManager.game_running:
+	if Input.is_action_just_pressed("ui_accept") and $TextureRect/SelectionRect.visible and not IdleManager.screensaver and not ProcessManager.is_game_running():
 		BusEvent.emit_signal("GAME_LAUNCHED", game_id)
 
 
 func _on_max_theme_length_timeout() -> void:
 	$AudioStreamAnimation.play("fade_out")
 
-func _on_audio_stream_player_finished() -> void:
-	pass
-
 func _on_audio_stream_animation_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "fade_out" || anim_name == "fast_fade_out":
-		$AudioStreamPlayer.stop()
+		$Theme.stop()
 		$MaxThemeLength.stop()
 		$AudioStreamAnimation.play("RESET")

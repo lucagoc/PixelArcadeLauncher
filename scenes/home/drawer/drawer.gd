@@ -33,6 +33,7 @@ func _on_item_list_focus_entered() -> void:
 	BusEvent.emit_signal("DRAWER_FOCUSED")
 
 func _on_item_list_item_selected(index: int) -> void:
+	$Click.play()
 	BusEvent.emit_signal("GAME_SELECTED", index)
 
 func _on_item_list_item_activated(index: int) -> void:
