@@ -49,10 +49,11 @@ func _on_item_list_focus_entered() -> void:
 
 func _on_item_list_item_selected(index: int) -> void:
 	$Click.play()
-	index = GameList.get_games_by_category(selected_category)[index].id
+	index = GameList.get_games_by_category(selected_category)[index].id		# Get the game ID
 	BusEvent.emit_signal("GAME_SELECTED", index)
 
 func _on_item_list_item_activated(index: int) -> void:
+	index = GameList.get_games_by_category(selected_category)[index].id 	# Get the game ID
 	if not IdleManager.screensaver:
 		BusEvent.emit_signal("GAME_LAUNCHED", index)
 
