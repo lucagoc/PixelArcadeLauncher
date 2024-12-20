@@ -132,6 +132,7 @@ stream = ExtResource("9_v8hon")
 
 [connection signal="focus_entered" from="CategoryBar/CategoryList" to="." method="_on_category_list_focus_entered"]
 [connection signal="focus_exited" from="CategoryBar/CategoryList" to="." method="_on_category_list_focus_exited"]
+[connection signal="item_selected" from="CategoryBar/CategoryList" to="." method="_on_category_list_item_selected"]
 [connection signal="focus_entered" from="ItemList" to="." method="_on_item_list_focus_entered"]
 [connection signal="item_activated" from="ItemList" to="." method="_on_item_list_item_activated"]
 [connection signal="item_selected" from="ItemList" to="." method="_on_item_list_item_selected"]
