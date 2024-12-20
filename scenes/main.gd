@@ -42,8 +42,8 @@ func end_loading():
 func add_console_commands():
 	pass
 
-func _on_scaling_changed(scale: float) -> void:
-	get_tree().root.content_scale_factor = scale
+func _on_scaling_changed(scaling: float) -> void:
+	get_tree().root.content_scale_factor = scaling
 
 func _on_secret_shake() -> void:
 	if not $AnimationPlayer.is_playing():
@@ -83,6 +83,6 @@ func _process(delta):
 			$AnimationPlayer.seek(state)
 			quitting = false
 
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	if quitting:
 		get_tree().quit()

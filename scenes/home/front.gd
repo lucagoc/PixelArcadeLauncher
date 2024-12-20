@@ -22,7 +22,7 @@ func _on_drawer_focused() -> void:
 		$AnimationPlayer.play("open_drawer")
 		_is_drawer_focused = true
 
-func _on_game_launched(id: int):
+func _on_game_launched(_id: int):
 	$AnimationPlayer.play("hide_bars")
 	$AudioStreamPlayer.play()
 	$Drawer.hide()

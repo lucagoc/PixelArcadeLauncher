@@ -7,7 +7,7 @@ var progress_code = 0
 
 var game_selection_count = 0
 
-func _on_game_selected(id: int):
+func _on_game_selected(_id: int):
 	if game_selection_count < 13:
 		game_selection_count += 1
 
@@ -28,7 +28,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 
 	# Shake the screen when the secret is activated
 	if game_selection_count > 10:

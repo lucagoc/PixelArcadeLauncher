@@ -8,10 +8,10 @@ func _on_option_button_pressed() -> void:
 func _on_timer_timeout() -> void:
 	$TopHbox/TimeLabel.text = Time.get_time_string_from_system()
 
-func _on_game_launched(id: int):
+func _on_game_launched(_id: int):
 	$AnimationPlayer.play("fade_out")
 
-func _on_game_exited(id: int):
+func _on_game_exited(_id: int):
 	$AnimationPlayer.play_backwards("fade_out")
 
 func _ready() -> void:

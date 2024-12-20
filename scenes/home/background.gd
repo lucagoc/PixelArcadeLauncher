@@ -24,10 +24,10 @@ func _on_banner_menu_game_selected(id: int) -> void:
 	$BackgroundHero2.texture = game.hero
 	$BackgroundAnimation.play("fade_out")
 
-func _on_game_launched(id: int):
+func _on_game_launched(_id: int):
 	$ColorAnimationPlayer.play("to_black")
 
-func _on_game_exited(id: int):
+func _on_game_exited(_id: int):
 	$ColorAnimationPlayer.play_backwards("to_black")
 
 func _ready() -> void:

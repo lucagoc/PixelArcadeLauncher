@@ -1,6 +1,6 @@
 extends HBoxContainer
 
-var selected_category := "all"
+var selected_category := "All"
 
 func _on_category_list_focus_entered() -> void:
 	$AnimationPlayer.play("open_category")
@@ -21,7 +21,12 @@ func _on_game_list_loaded() -> void:
 
 	# Add the categories to the category list
 	for category in GameList.games_by_category.keys():
-		$CategoryBar/CategoryList.add_item(category)
+		# Check if the category has an icon in the folder "categories"
+		var icon_path = "res://assets/img/categories/" + category + ".png"
+		var icon = null
+		if FileAccess.file_exists(icon_path):
+			icon = load(icon_path)
+		$CategoryBar/CategoryList.add_item(" " + category, icon)
 
 	$CategoryBar/CategoryList.select(0) # Select the first category
 
@@ -52,8 +57,10 @@ func _on_item_list_item_activated(index: int) -> void:
 		BusEvent.emit_signal("GAME_LAUNCHED", index)
 
 func _on_category_list_item_selected(index: int) -> void:
-	selected_category = $CategoryBar/CategoryList.get_item_text(index)
+	selected_category = $CategoryBar/CategoryList.get_item_text(index).strip_edges()
 	var games = GameList.get_games_by_category(selected_category)
 	$ItemList.clear()
 	for game in games:
 		$ItemList.add_item(game.name, game.icon)
+	
+	$ItemList.select(0)

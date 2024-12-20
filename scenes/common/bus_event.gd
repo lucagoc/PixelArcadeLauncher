@@ -93,7 +93,7 @@ func _on_banner_menu_focused() -> void:
 func _on_banner_selection(id: int) -> void:
 	print("[SIGNAL] Banner selected: ", id)
 
-func _on_scaling_changed(scale: float) -> void:
+func _on_scaling_changed(_scale: float) -> void:
 	print("[SIGNAL] Scaling changed")
 
 func _on_center_selected_banner() -> void:

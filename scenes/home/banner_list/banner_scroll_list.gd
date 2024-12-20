@@ -118,7 +118,7 @@ func grab_focus_on_banner(id: int):
 			break
 
 # Adjust recenter a second time when scrolling (giggle effect)
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	# Stop the current animation
 	if $AnimationPlayer.is_playing():
 		$AnimationPlayer.stop(true)

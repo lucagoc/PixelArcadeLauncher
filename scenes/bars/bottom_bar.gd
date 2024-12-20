@@ -1,12 +1,12 @@
 extends ColorRect
 
-var button_up = load("res://assets/img/icons/buttons/yellow_up.png")
-var button_down = load("res://assets/img/icons/buttons/yellow_down.png")
+var button_up = load("res://assets/img/buttons/yellow_up.png")
+var button_down = load("res://assets/img/buttons/yellow_down.png")
 var button_frame = 0
 
-var joystick_up = load("res://assets/img/icons/joysticks/p1_up.png")
-var joystick_idle = load("res://assets/img/icons/joysticks/p1_idle.png")
-var joystick_down = load("res://assets/img/icons/joysticks/p1_down.png")
+var joystick_up = load("res://assets/img/joysticks/p1_up.png")
+var joystick_idle = load("res://assets/img/joysticks/p1_idle.png")
+var joystick_down = load("res://assets/img/joysticks/p1_down.png")
 var joystick_frame = 0
 
 func _on_game_selected(index: int) -> void:
@@ -18,12 +18,12 @@ func _on_drawer_focused():
 func _on_banner_focused():
 	$BottomHbox/GameTitle.show()
 
-func _on_game_launched(id: int):
+func _on_game_launched(_id: int):
 	$BottomHbox/HelperLeft.hide()
 	$BottomHbox/GameTitle.hide()
 	$BottomHbox/HelperRight.hide()
 
-func _on_game_exited(id: int):
+func _on_game_exited(_id: int):
 	$BottomHbox/HelperLeft.show()
 	$BottomHbox/GameTitle.show()
 	$BottomHbox/HelperRight.show()

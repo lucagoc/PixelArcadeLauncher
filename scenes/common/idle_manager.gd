@@ -51,7 +51,7 @@ func _ready() -> void:
 	add_child(screensaver_timer)
 	screensaver_timer.start()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Reset the idle timer a key is pressed
 	if Input.is_action_pressed("stop_idle") || Input.is_action_pressed("ui_up_joystick") || Input.is_action_pressed("ui_down_joystick") || Input.is_action_pressed("ui_left_joystick") || Input.is_action_pressed("ui_right_joystick"):
 		idling = false

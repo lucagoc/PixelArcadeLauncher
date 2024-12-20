@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="1_qh1ha"]
 [ext_resource type="Script" path="res://scenes/settings/item_bar.gd" id="2_nqtcn"]
-[ext_resource type="Texture2D" uid="uid://doy7b4gjutco6" path="res://assets/img/icons/settings/default.png" id="3_khohq"]
+[ext_resource type="Texture2D" uid="uid://doy7b4gjutco6" path="res://assets/img/settings/default.png" id="3_khohq"]
 
 [sub_resource type="Animation" id="Animation_m3we3"]
 length = 0.001

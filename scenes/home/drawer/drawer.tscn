@@ -2,11 +2,11 @@
 
 [ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="1_deuv8"]
 [ext_resource type="Script" path="res://scenes/home/drawer/drawer.gd" id="2_kt8np"]
-[ext_resource type="Texture2D" uid="uid://bly2mxfjp5tus" path="res://assets/img/icons/categories/all.png" id="3_0irsh"]
-[ext_resource type="Texture2D" uid="uid://ciq2efju5yoqt" path="res://assets/img/icons/categories/popular.png" id="4_cs6qq"]
-[ext_resource type="Texture2D" uid="uid://cfi8khisux3f1" path="res://assets/img/icons/categories/stm.png" id="5_1usqh"]
-[ext_resource type="Texture2D" uid="uid://bn8itqekhpu3e" path="res://assets/img/icons/categories/fighting.png" id="5_71w78"]
-[ext_resource type="Texture2D" uid="uid://df6cqmrwf7g31" path="res://assets/img/icons/categories/racing.png" id="5_mdmg1"]
+[ext_resource type="Texture2D" uid="uid://bly2mxfjp5tus" path="res://assets/img/categories/ALL.png" id="3_0irsh"]
+[ext_resource type="Texture2D" uid="uid://ciq2efju5yoqt" path="res://assets/img/categories/POPULAIRE.png" id="4_cs6qq"]
+[ext_resource type="Texture2D" uid="uid://cfi8khisux3f1" path="res://assets/img/categories/STM.png" id="5_1usqh"]
+[ext_resource type="Texture2D" uid="uid://bn8itqekhpu3e" path="res://assets/img/categories/COMBAT.png" id="5_71w78"]
+[ext_resource type="Texture2D" uid="uid://df6cqmrwf7g31" path="res://assets/img/categories/COURSE.png" id="5_mdmg1"]
 [ext_resource type="Texture2D" uid="uid://cgc7asuvr1um5" path="res://assets/img/default/placeholder.svg" id="8_mp2f3"]
 [ext_resource type="AudioStream" uid="uid://crmvyqs82udn4" path="res://assets/sounds/ui/click.mp3" id="9_v8hon"]
 
@@ -35,7 +35,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(300, -0.25, 0, 0.25, 0, 85, -0.15, 0, 0.15, 0),
+"points": PackedFloat32Array(400, -0.25, 0, 0.25, 0, 85, -0.15, 0, 0.15, 0),
 "times": PackedFloat32Array(0, 0.3)
 }
 
@@ -50,7 +50,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(85, -0.25, 0, 0, 82.5, 300, -0.233333, -2.5, 0.25, 0),
+"points": PackedFloat32Array(85, -0.25, 0, 0, 82.5, 400, -0.233333, -2.5, 0.25, 0),
 "times": PackedFloat32Array(0, 0.3)
 }
 
@@ -84,6 +84,7 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_neighbor_right = NodePath("../../ItemList")
 theme = ExtResource("1_deuv8")
+text_overrun_behavior = 0
 item_count = 5
 same_column_width = true
 fixed_icon_size = Vector2i(60, 60)

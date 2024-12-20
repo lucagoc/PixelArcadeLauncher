@@ -26,7 +26,7 @@ class Game:
 	var id: int					# Unique ID (int) of the game, attributed on load
 
 var GAME_LIST: Array = []
-var games_by_category: Dictionary = {"all": []}
+var games_by_category: Dictionary = {"All": []}
 
 # Load an img asset and return an ImageTexture
 # Load a placeholder if the asset doesn't exist
@@ -74,7 +74,7 @@ func process_categories(value: String) -> Array:
 
 # Fonction pour ajouter un jeu dans toutes ses catégories
 func add_game_to_categories(game):
-	games_by_category["all"].append(game)
+	games_by_category["All"].append(game)
 	for category in game.categories:
 		if not games_by_category.has(category):
 			games_by_category[category] = []  # Initialiser la liste si elle n'existe pas

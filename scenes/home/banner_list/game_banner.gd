@@ -23,8 +23,8 @@ func set_banner_top_label(label: String) -> void:
 func set_banner_bottom_label(label: String) -> void:
 	BottomLabel = label
 
-func set_banner_theme(theme: AudioStreamOggVorbis) -> void:
-	$Theme.stream = theme
+func set_banner_theme(theme_file: AudioStreamOggVorbis) -> void:
+	$Theme.stream = theme_file
 
 func show_tags() -> void:
 	if tags_hidden:
@@ -112,7 +112,7 @@ func _ready() -> void:
 	BusEvent.connect("ENABLE_BANNER_FOCUS", _on_enable_banner_focus)
 	BusEvent.connect("DISABLE_BANNER_FOCUS", _on_disable_banner_focus)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and $TextureRect/SelectionRect.visible and not IdleManager.screensaver and not ProcessManager.is_game_running():
 		BusEvent.emit_signal("GAME_LAUNCHED", game_id)
 
