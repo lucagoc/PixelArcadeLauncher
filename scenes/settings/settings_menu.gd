@@ -1,6 +1,6 @@
 extends Panel
 
-var default_icon = load("res://assets/img/icons/settings/default.png")
+var default_icon = load("res://assets/img/settings/Default.png")
 
 func _on_settings_loaded() -> void:
 	$MainHbox/CategoryBar.select(0) # Select the first category
@@ -12,7 +12,11 @@ func _ready() -> void:
 
 	# Create for each section a new item in the CategoryList
 	for section in Settings.settings.keys():
-		$MainHbox/CategoryBar.add_item(section, default_icon)
+		var icon_path = "res://assets/img/settings/" + section + ".png"
+		var icon = default_icon
+		if FileAccess.file_exists(icon_path):
+			icon = load(icon_path)
+		$MainHbox/CategoryBar.add_item(section, icon)
 	
 	# Select the first category
 	$MainHbox/CategoryBar.select(0)
@@ -38,11 +42,12 @@ func _on_category_bar_item_selected(index: int) -> void:
 
 	# Create for each option a new item in the OptionList
 	for key in Settings.settings[$MainHbox/CategoryBar/List.get_item_text(index)].keys():
-		var option = Settings.settings[$MainHbox/CategoryBar/List.get_item_text(index)][key]
-		var option_type = typeof(option)
-		var option_name = key
-		
-		$MainHbox/OptionBar.add_item(option_name, default_icon)
+		var section = $MainHbox/CategoryBar/List.get_item_text(index)
+		var icon_path = "res://assets/img/settings/" + section + "/" + key + ".png"
+		var icon = default_icon
+		if FileAccess.file_exists(icon_path):
+			icon = load(icon_path)
+		$MainHbox/OptionBar.add_item(key, icon)
 
 	$MainHbox/OptionBar.select(0)
 	_on_option_bar_item_selected(0)

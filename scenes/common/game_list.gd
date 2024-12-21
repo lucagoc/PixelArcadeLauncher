@@ -1,3 +1,8 @@
+##############################################################
+#                     Game_list file                         #
+#          		Manage the list of games loaded 	         #
+##############################################################
+
 extends Node
 
 class Game:
@@ -101,13 +106,15 @@ func load_config_file(game, path) -> void:
 					var value = parts[1].strip_edges()
 					match key:
 						"name":
-							game.name = value
+							game.name = strip_quotes(value)
 						"platform":
-							game.platform = value
+							game.platform = strip_quotes(value)
 						"exec":
 							game.exec = strip_quotes(value)
+						"rom":
+							game.exec = strip_quotes(value)
 						"description":
-							game.description = value
+							game.description = strip_quotes(value)
 						"categories":
 							game.categories = process_categories(value)
 							add_game_to_categories(game)

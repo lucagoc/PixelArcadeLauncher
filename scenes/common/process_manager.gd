@@ -18,10 +18,15 @@ func _launch_game_linux(game) -> void:
 
 # Launch game in a blocking way
 func _launch_game_mame(game) -> void:
-	var args = ["-homepath", Settings.get_setting("General", "mame_plugins_home")]
-	print("[LAUNCH_GAME] Launching game: " + game.name)
-	_running_process = OS.execute(game.exec, args)
+	var args = [game.exec, "-homepath", Settings.get_setting("General", "mame_plugins_home")]
+	print("[LAUNCH_GAME] Executing : " + game.exec + " " + args[0] + " " + args[1] + " " + args[2])
+	_running_process = OS.execute("mame", args)
 	BusEvent.emit_signal("GAME_EXITED", _running_game)
+
+# Launch game in a blocking way [EXP]
+func _launch_game_flycast(game) -> void:
+	var args = [game.path + "roms/" + game.exec + ".zip"]
+	_running_process = OS.execute("$HOME/PixelArcadeLauncher/" + "emulators/flycast-x86_64.AppImage", args)
 
 # Called when the game is exited
 func _on_game_exited(_id: int) -> void:
@@ -47,11 +52,9 @@ func _ready():
 	timer.set_one_shot(false)
 	timer.connect("timeout", _on_timeout)
 	add_child(timer)
-	timer.start()
 
 func is_game_running() -> bool:
 	return _running_game != -1
-
 
 # Take the game_id and launch the game
 func launch_game(game_id) -> void:
@@ -69,6 +72,10 @@ func launch_game(game_id) -> void:
 		
 		elif game.platform == "windows":
 			printerr("[LAUNCH_GAME] Windows is currently not supported, please wait until next update for wine support.")
+			BusEvent.emit_signal("GAME_EXITED", _running_game)
+
+		elif game.platform == "flycast":
+			_launch_game_flycast(game)
 			BusEvent.emit_signal("GAME_EXITED", _running_game)
 
 		else:

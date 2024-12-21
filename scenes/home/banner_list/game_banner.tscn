@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dkfnjychc24ah" path="res://assets/img/default/banner.png" id="1_gtc0v"]
 [ext_resource type="Script" path="res://scenes/home/banner_list/game_banner.gd" id="1_spqyp"]
 [ext_resource type="Material" uid="uid://dxuvdeqy4wr2b" path="res://themes/highlight.tres" id="3_gxj7a"]
-[ext_resource type="AudioStream" uid="uid://crmvyqs82udn4" path="res://assets/sounds/ui/click.mp3" id="4_riwca"]
+[ext_resource type="AudioStream" uid="uid://1lxym6ernowe" path="res://assets/sounds/ui/swipe.mp3" id="4_opugm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkuvb"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -297,8 +297,8 @@ libraries = {
 volume_db = -40.0
 panning_strength = 2.0
 
-[node name="Click" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_riwca")
+[node name="Swipe" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_opugm")
 volume_db = 10.0
 panning_strength = 2.0
 

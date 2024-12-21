@@ -1,3 +1,8 @@
+##############################################################
+#                      Setting file	   	                     #
+#          	 Manage the settings of the launcher 	         #
+##############################################################
+
 extends Control
 
 # Paramètres stockés dans des dictionnaires
@@ -5,7 +10,7 @@ var settings = {
 	"General": {
 		"debug_mode": false,
 		"animations": true,
-		"mame_plugins_home": "$HOME"
+		"mame_plugins_home": "\"~/PixelArcadeLauncher/data\""
 	},
 	"Maintenance": {
 		"enabled": false,

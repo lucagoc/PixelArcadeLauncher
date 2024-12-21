@@ -49,7 +49,7 @@ func _on_texture_rect_focus_entered() -> void:
 
 	if audio_playback:
 		$Theme.play()
-		$Click.play()
+		$Swipe.play()
 		$AudioStreamAnimation.play("fade_in")
 		$MaxThemeLength.start()
 	$AnimationPlayer.queue("focus_entered")

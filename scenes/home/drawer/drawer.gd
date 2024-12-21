@@ -3,11 +3,13 @@ extends HBoxContainer
 var selected_category := "All"
 
 func _on_category_list_focus_entered() -> void:
+	$Click2.play()
 	$AnimationPlayer.play("open_category")
 	BusEvent.emit_signal("DRAWER_FOCUSED")
 	BusEvent.emit_signal("DRAWER_CATEGORY_OPENED")
 
 func _on_category_list_focus_exited() -> void:
+	$Click.play()
 	$AnimationPlayer.play("close_category")
 	BusEvent.emit_signal("DRAWER_CATEGORY_CLOSED")
 
@@ -60,6 +62,7 @@ func _on_item_list_item_activated(index: int) -> void:
 func _on_category_list_item_selected(index: int) -> void:
 	selected_category = $CategoryBar/CategoryList.get_item_text(index).strip_edges()
 	var games = GameList.get_games_by_category(selected_category)
+	$Click2.play()
 	$ItemList.clear()
 	for game in games:
 		$ItemList.add_item(game.name, game.icon)

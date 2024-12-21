@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b8xcoqpmgts1i"]
+[gd_scene load_steps=15 format=3 uid="uid://b8xcoqpmgts1i"]
 
 [ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="1_deuv8"]
 [ext_resource type="Script" path="res://scenes/home/drawer/drawer.gd" id="2_kt8np"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://df6cqmrwf7g31" path="res://assets/img/categories/COURSE.png" id="5_mdmg1"]
 [ext_resource type="Texture2D" uid="uid://cgc7asuvr1um5" path="res://assets/img/default/placeholder.svg" id="8_mp2f3"]
 [ext_resource type="AudioStream" uid="uid://crmvyqs82udn4" path="res://assets/sounds/ui/click.mp3" id="9_v8hon"]
+[ext_resource type="AudioStream" uid="uid://clkeoy0alu47j" path="res://assets/sounds/ui/click2.mp3" id="10_p4fs3"]
 
 [sub_resource type="Animation" id="Animation_m3we3"]
 length = 0.001
@@ -131,6 +132,9 @@ libraries = {
 
 [node name="Click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_v8hon")
+
+[node name="Click2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_p4fs3")
 
 [connection signal="focus_entered" from="CategoryBar/CategoryList" to="." method="_on_category_list_focus_entered"]
 [connection signal="focus_exited" from="CategoryBar/CategoryList" to="." method="_on_category_list_focus_exited"]

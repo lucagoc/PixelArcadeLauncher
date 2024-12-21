@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="1_qh1ha"]
 [ext_resource type="Script" path="res://scenes/settings/item_bar.gd" id="2_nqtcn"]
-[ext_resource type="Texture2D" uid="uid://doy7b4gjutco6" path="res://assets/img/settings/default.png" id="3_khohq"]
+[ext_resource type="Texture2D" uid="uid://djjap48cd7l7n" path="res://assets/img/settings/Default.png" id="3_om1ho"]
 
 [sub_resource type="Animation" id="Animation_m3we3"]
 length = 0.001
@@ -82,9 +82,9 @@ item_count = 2
 same_column_width = true
 fixed_icon_size = Vector2i(64, 64)
 item_0/text = "Option1"
-item_0/icon = ExtResource("3_khohq")
+item_0/icon = ExtResource("3_om1ho")
 item_1/text = "Option2propos"
-item_1/icon = ExtResource("3_khohq")
+item_1/icon = ExtResource("3_om1ho")
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_entered" from="List" to="." method="_on_list_focus_entered"]

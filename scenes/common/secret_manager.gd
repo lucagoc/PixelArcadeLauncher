@@ -1,3 +1,8 @@
+##############################################################
+#                     Secret Manager	                     #
+#   Manage different easter eggs and secret combinaition     #
+##############################################################
+
 extends Node
 
 # File dedicated to Secret Settings and Easter Eggs. Activated using key combinaison.

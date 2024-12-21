@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bis7kk0fmkucw"
-path="res://.godot/imported/power.png-f054cd7e20028ee35570a240ed8ab9be.ctex"
+uid="uid://bu6s8clv5a4b8"
+path="res://.godot/imported/brightness.png-396ef6763cd055baf951485a6913314b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/settings/power.png"
-dest_files=["res://.godot/imported/power.png-f054cd7e20028ee35570a240ed8ab9be.ctex"]
+source_file="res://assets/img/settings/Video/brightness.png"
+dest_files=["res://.godot/imported/brightness.png-396ef6763cd055baf951485a6913314b.ctex"]
 
 [params]
 

@@ -52,6 +52,9 @@ func _on_secret_shake() -> void:
 func _on_loading_screen_ended():
 	end_loading()
 
+func _on_konami_activated():
+	$SettingsMenu.show()
+
 func _ready():
 	start_loading()
 	
@@ -59,6 +62,7 @@ func _ready():
 	BusEvent.connect("SCALING_CHANGED", _on_scaling_changed)
 	BusEvent.connect("START_SECRET_SHAKE", _on_secret_shake)
 	BusEvent.connect("LOADING_SCREEN_ENDED", _on_loading_screen_ended)
+	BusEvent.connect("KONAMI_ACTIVATED", _on_konami_activated)
 	preload_data()
 	GameList.reload()
 
@@ -69,7 +73,9 @@ var quitting = false
 
 func _process(delta):
 	if Input.is_action_pressed("ui_cancel"):
-		if not quitting:
+		if $SettingsMenu.visible:
+			$SettingsMenu.hide()
+		elif not quitting:
 			var state = $AnimationPlayer.get_current_animation_position()
 			$AnimationPlayer.play("black_out")
 			$AnimationPlayer.speed_scale = 1

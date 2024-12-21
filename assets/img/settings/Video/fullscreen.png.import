@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnkfxl67inn5"
-path="res://.godot/imported/enabled.png-7553e7d9d02a5c8cea76d3a1116afc5f.ctex"
+uid="uid://dooerp8bh74tc"
+path="res://.godot/imported/fullscreen.png-17491bf302df48c9c0cbb44fc736e056.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/settings/enabled.png"
-dest_files=["res://.godot/imported/enabled.png-7553e7d9d02a5c8cea76d3a1116afc5f.ctex"]
+source_file="res://assets/img/settings/Video/fullscreen.png"
+dest_files=["res://.godot/imported/fullscreen.png-17491bf302df48c9c0cbb44fc736e056.ctex"]
 
 [params]
 

@@ -5,6 +5,7 @@ const DRAWER_SIZE := 0.70
 
 func _on_banner_menu_focused() -> void:
 	if _is_drawer_focused:
+		$DrawerSound.play()
 		var drawer_size = $Drawer.custom_minimum_size.y
 		var animation = $AnimationPlayer.get_animation("close_drawer")
 		animation.bezier_track_set_key_value(0, 0, drawer_size)
@@ -13,6 +14,7 @@ func _on_banner_menu_focused() -> void:
 
 func _on_drawer_focused() -> void:
 	if not _is_drawer_focused:
+		$DrawerSound.play()
 		# Set the drawer size to 70% of the screen height
 		var drawer_size = get_viewport_rect().size.y * DRAWER_SIZE
 		var animation = $AnimationPlayer.get_animation("open_drawer")
