@@ -503,6 +503,7 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_rfn04")
 
 [node name="SettingsMenu" parent="." instance=ExtResource("13_07sqf")]
+visible = false
 layout_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

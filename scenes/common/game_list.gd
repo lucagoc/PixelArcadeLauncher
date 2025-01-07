@@ -7,28 +7,28 @@ extends Node
 
 class Game:
 	# Game data
-	var name: String					# Name of the game
-	var platform: String				# Platform of the game (windows, mame, linux)
-	var description: String				# Description of the game
-	var categories: Array					# categories (action, arcade, adventure, etc.)
+	var name: String # Name of the game
+	var platform: String # Platform of the game (windows, mame, linux)
+	var description: String # Description of the game
+	var categories: Array # categories (action, arcade, adventure, etc.)
 
 	# Executable
-	var exec: String			# Command to launch the game
+	var exec: String # Command to launch the game
 
 	# Assets
-	var icon: ImageTexture				# Icon (drawer menu)
-	var logo: ImageTexture				# Logo (more info, loading screen)
-	var banner: ImageTexture			# Banner (main menu)
-	var hero: ImageTexture				# Hero (background)
-	var theme: AudioStreamOggVorbis		# Theme music
+	var icon: ImageTexture # Icon (drawer menu)
+	var logo: ImageTexture # Logo (more info, loading screen)
+	var banner: ImageTexture # Banner (main menu)
+	var hero: ImageTexture # Hero (background)
+	var theme: AudioStreamOggVorbis # Theme music
 	
 	# Data
-	var nb_launches: int		# Number of times the game has been launched
-	var last_launch: int		# Last time the game has been launched
+	var nb_launches: int # Number of times the game has been launched
+	var last_launch: int # Last time the game has been launched
 
 	# Internal data
-	var path: String			# Absolute path to the game folder
-	var id: int					# Unique ID (int) of the game, attributed on load
+	var path: String # Absolute path to the game folder
+	var id: int # Unique ID (int) of the game, attributed on load
 
 var GAME_LIST: Array = []
 var games_by_category: Dictionary = {"All": []}
@@ -59,21 +59,11 @@ func load_theme(asset_path) -> AudioStreamOggVorbis:
 	else:
 		return null
 
-func strip_quotes(string: String) -> String:
-	if string.begins_with("\"") and string.ends_with("\""):
-		return string.substr(1, string.length() - 2)
-	return string
-
-func strip_brackets(string: String) -> String:
-	if string.begins_with("[") and string.ends_with("]"):
-		return string.substr(1, string.length() - 2)
-	return string
-
 func process_categories(value: String) -> Array:
 	var categories = []
-	var parts = strip_brackets(value).split(",")
+	var parts = Path.strip_brackets(value).split(",")
 	for part in parts:
-		categories.append(strip_quotes(part.strip_edges()).capitalize())
+		categories.append(Path.strip_quotes(part.strip_edges()).capitalize())
 	print(categories)
 	return categories
 
@@ -82,7 +72,7 @@ func add_game_to_categories(game):
 	games_by_category["All"].append(game)
 	for category in game.categories:
 		if not games_by_category.has(category):
-			games_by_category[category] = []  # Initialiser la liste si elle n'existe pas
+			games_by_category[category] = [] # Initialiser la liste si elle n'existe pas
 		games_by_category[category].append(game)
 
 # Fonction pour récupérer la liste des jeux dans une catégorie
@@ -90,7 +80,7 @@ func get_games_by_category(category: String) -> Array:
 	if games_by_category.has(category):
 		return games_by_category[category]
 	else:
-		return []  # Retourner une liste vide si la catégorie n'existe pas
+		return [] # Retourner une liste vide si la catégorie n'existe pas
 
 # Load the game configuration file
 func load_config_file(game, path) -> void:
@@ -106,15 +96,15 @@ func load_config_file(game, path) -> void:
 					var value = parts[1].strip_edges()
 					match key:
 						"name":
-							game.name = strip_quotes(value)
+							game.name = Path.strip_quotes(value)
 						"platform":
-							game.platform = strip_quotes(value)
+							game.platform = Path.strip_quotes(value)
 						"exec":
-							game.exec = strip_quotes(value)
+							game.exec = Path.strip_quotes(value)
 						"rom":
-							game.exec = strip_quotes(value)
+							game.exec = Path.strip_quotes(value)
 						"description":
-							game.description = strip_quotes(value)
+							game.description = Path.strip_quotes(value)
 						"categories":
 							game.categories = process_categories(value)
 							add_game_to_categories(game)
@@ -154,7 +144,7 @@ func load_game(folder_name: String) -> Game:
 	
 	var game_path = Path.data + Path.games_folder + folder_name + "/"
 
-	load_config_file(game, game_path + Path.game_conf)	# Load the game configuration file
+	load_config_file(game, game_path + Path.game_conf) # Load the game configuration file
 
 	game.icon = load_asset(game_path + Path.game_icon)
 	game.logo = load_asset(game_path + Path.game_logo)
@@ -170,7 +160,7 @@ func load_game(folder_name: String) -> Game:
 			file.store_line("last_launch=0")
 			file.close()
 	
-	load_data_pal(game, game_path + Path.data_pal)		# Load the PAL data (nb of launches, last launch)
+	load_data_pal(game, game_path + Path.data_pal) # Load the PAL data (nb of launches, last launch)
 	
 	return game
 

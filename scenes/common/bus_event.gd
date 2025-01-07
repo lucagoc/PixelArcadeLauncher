@@ -38,6 +38,8 @@ signal SCALING_CHANGED(scale: float)	# Scaling changed
 signal LOADING_SCREEN_ENDED				# Loading screen ended
 @warning_ignore("unused_signal")
 signal KONAMI_ACTIVATED					# Konami code activated
+@warning_ignore("unused_signal")
+signal SETTINGS_LOADED
 
 # Action signals
 @warning_ignore("unused_signal")
@@ -120,6 +122,9 @@ func _on_loading_screen_ended() -> void:
 func _on_konami_activated() -> void:
 	print("[SIGNAL] Konami code activated")
 
+func _on_settings_loaded() -> void:
+	print("[SIGNAL] Settings loaded")
+
 func _ready() -> void:
 	if print_debug_info:
 		# State signals
@@ -138,6 +143,7 @@ func _ready() -> void:
 		connect("SCALING_CHANGED", _on_scaling_changed)
 		connect("LOADING_SCREEN_ENDED", _on_loading_screen_ended)
 		connect("KONAMI_ACTIVATED", _on_konami_activated)
+		connect("SETTINGS_LOADED", _on_settings_loaded)
 
 		# Action signals
 		connect("CENTER_SELECTED_BANNER", _on_center_selected_banner)

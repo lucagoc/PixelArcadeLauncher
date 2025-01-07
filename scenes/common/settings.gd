@@ -10,7 +10,10 @@ var settings = {
 	"General": {
 		"debug_mode": false,
 		"animations": true,
-		"mame_plugins_home": "\"~/PixelArcadeLauncher/data\""
+		"mame_plugins_home": "\"~/PixelArcadeLauncher/data/\"",
+		"plugins_folder_path": "\"~/PixelArcadeLauncher/plugins/\"",
+		"games_folder_path": "\"~/PixelArcadeLauncher/games/\"",
+		"emulators_folder_path": "\"~/PixelArcadeLauncher/emulators/\"",
 	},
 	"Maintenance": {
 		"enabled": false,
@@ -78,6 +81,7 @@ func load_settings():
 				settings[current_section][key] = parse_value(settings[current_section][key], value)
 
 	setting_file.close()
+	BusEvent.emit_signal("SETTINGS_LOADED")
 
 # Parse les valeurs en fonction de leur type attendu
 func parse_value(existing_value, new_value):
@@ -87,6 +91,8 @@ func parse_value(existing_value, new_value):
 		return new_value.to_int()
 	elif typeof(existing_value) == TYPE_FLOAT:
 		return new_value.to_float()
+	if typeof(existing_value) == TYPE_STRING:
+		return Path.string_to_path(new_value)
 	else:
 		return new_value
 
