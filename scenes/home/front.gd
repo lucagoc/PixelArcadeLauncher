@@ -9,7 +9,7 @@ func _on_banner_menu_focused() -> void:
 		var drawer_size = $Drawer.custom_minimum_size.y
 		var animation = $AnimationPlayer.get_animation("close_drawer")
 		animation.bezier_track_set_key_value(0, 0, drawer_size)
-		$AnimationPlayer.play("close_drawer")
+		$AnimationPlayer.queue("close_drawer")
 		_is_drawer_focused = false
 
 func _on_drawer_focused() -> void:
@@ -30,8 +30,8 @@ func _on_game_launched(_id: int):
 	$Drawer.hide()
 
 func _on_game_exited(id: int):
-	$BannerScrollList.grab_focus_on_banner(id)
 	$AnimationPlayer.play("RESET")
+	$BannerScrollList.grab_focus_on_banner(id)
 	$Drawer.show()
 
 func _on_screensaver_start():

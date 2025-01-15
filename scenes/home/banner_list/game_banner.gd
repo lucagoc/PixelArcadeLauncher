@@ -81,10 +81,10 @@ func _on_game_launched(id: int) -> void:
 		self.hide()
 
 func _on_game_exited(id: int) -> void:
+	self.show()
+	print("[DEBUG] ID value: " + str(id) + " Game ID: " + str(game_id))
 	if id == game_id:
 		$TextureRect/SelectionRect.show()
-	else:
-		self.show()
 
 func _on_disable_banner_focus():
 	$TextureRect.focus_mode = FOCUS_NONE
