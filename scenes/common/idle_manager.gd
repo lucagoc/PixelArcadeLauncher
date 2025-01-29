@@ -11,8 +11,9 @@ var ecomode_enabled = false
 
 func _on_idle_timeout() -> void:
 	if not idling:
-		print("[INFO] Idling...")
-		idling = true
+		if !ProcessManager.is_game_running():
+			print("[INFO] Idling...")
+			idling = true
 
 # Automatically scroll through banners on idle.
 func _on_auto_scroll_timeout() -> void:
