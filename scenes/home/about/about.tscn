@@ -1,0 +1,102 @@
+[gd_scene load_steps=4 format=3 uid="uid://rd82pdd8t020"]
+
+[ext_resource type="Script" path="res://scenes/about.gd" id="1_6jntd"]
+[ext_resource type="PackedScene" uid="uid://dpmpa00q1a1fq" path="res://scenes/exp/3d_banner.tscn" id="2_rpetx"]
+[ext_resource type="Texture2D" uid="uid://cgc7asuvr1um5" path="res://assets/img/default/placeholder.svg" id="3_78rqr"]
+
+[node name="About" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 300)
+focus_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("1_6jntd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 0.556863)
+
+[node name="Padding" type="HBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left" type="Control" parent="ColorRect/Padding"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="Main" type="VBoxContainer" parent="ColorRect/Padding"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="ColorRect/Padding/Main"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "PACMAN"
+horizontal_alignment = 1
+
+[node name="GameInfo" type="HBoxContainer" parent="ColorRect/Padding/Main"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CoverBox" type="VBoxContainer" parent="ColorRect/Padding/Main/GameInfo"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="Top" type="Control" parent="ColorRect/Padding/Main/GameInfo/CoverBox"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="SubViewportContainer" parent="ColorRect/Padding/Main/GameInfo/CoverBox" instance=ExtResource("2_rpetx")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Bottom" type="Control" parent="ColorRect/Padding/Main/GameInfo/CoverBox"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Desc" type="VBoxContainer" parent="ColorRect/Padding/Main/GameInfo"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Images" type="HBoxContainer" parent="ColorRect/Padding/Main/GameInfo/Desc"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Image" type="TextureRect" parent="ColorRect/Padding/Main/GameInfo/Desc/Images"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("3_78rqr")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="DescBox" type="HBoxContainer" parent="ColorRect/Padding/Main/GameInfo/Desc"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Desc" type="Label" parent="ColorRect/Padding/Main/GameInfo/Desc/DescBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Pac-Man (パックマン, Pakkuman) (initialement intitulé Puckman) est un jeu vidéo créé par TOru Iwatani pour l’entreprise japonaise Namco, sorti au Japon le 22 mai 1980. Le jeu consiste à déplacer Pac-Man, un personnage qui, vu de profil, ressemble à un diagramme circulaire à l’intérieur d’un labyrinthe, afin de lui faire manger toutes les pac-gommes qui s’y trouvent en évitant d’être touché par des fantômes.
+
+"
+autowrap_mode = 2
+
+[node name="MoreInfo" type="Label" parent="ColorRect/Padding/Main"]
+layout_mode = 2
+text = "Éditeur: NAMCO | Année: 1979"
+horizontal_alignment = 1
+
+[node name="PaddingBottom" type="Control" parent="ColorRect/Padding/Main"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Right" type="Control" parent="ColorRect/Padding"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

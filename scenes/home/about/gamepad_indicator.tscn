@@ -1,0 +1,178 @@
+[gd_scene load_steps=17 format=3 uid="uid://ckkex67088ywo"]
+
+[ext_resource type="Texture2D" uid="uid://2rev1h3jo7k7" path="res://assets/img/buttons/white_up.png" id="1_bjb6f"]
+[ext_resource type="Texture2D" uid="uid://wl3k5etlp5jg" path="res://assets/img/joysticks/p1_idle.png" id="1_n0j7i"]
+[ext_resource type="Script" path="res://scenes/home/about/gamepad_indicator.gd" id="1_rdfji"]
+[ext_resource type="Texture2D" uid="uid://bdg6w83wmevh1" path="res://assets/img/buttons/yellow_up.png" id="3_os63s"]
+[ext_resource type="Texture2D" uid="uid://bho2vd8ok8ldk" path="res://assets/img/joysticks/p1_up.png" id="3_wsgqm"]
+[ext_resource type="Texture2D" uid="uid://5y5q7recbhs2" path="res://assets/img/joysticks/p2_idle.png" id="4_5sb8p"]
+[ext_resource type="Texture2D" uid="uid://im882i4dlpoc" path="res://assets/img/joysticks/p1_down.png" id="4_vfyoq"]
+[ext_resource type="Texture2D" uid="uid://b6rt65v7j2j4a" path="res://assets/img/buttons/black_up.png" id="5_dblwr"]
+[ext_resource type="Texture2D" uid="uid://bq3mmhy2m4o3x" path="res://assets/img/joysticks/p1_left.png" id="5_yipho"]
+[ext_resource type="Texture2D" uid="uid://ddbcsy2ldaw0s" path="res://assets/img/joysticks/p1_right.png" id="6_43inm"]
+[ext_resource type="Texture2D" uid="uid://dsy6yraphruqk" path="res://assets/img/buttons/white_down.png" id="8_my7o0"]
+[ext_resource type="Texture2D" uid="uid://depwha7cue1ep" path="res://assets/img/joysticks/p2_up.png" id="10_a21te"]
+[ext_resource type="Texture2D" uid="uid://5qlvgond0s0a" path="res://assets/img/joysticks/p2_down.png" id="11_a6y5v"]
+[ext_resource type="Texture2D" uid="uid://bith56cive3vp" path="res://assets/img/joysticks/p2_left.png" id="12_m310h"]
+[ext_resource type="Texture2D" uid="uid://rwrqjg3jpmgu" path="res://assets/img/joysticks/p2_right.png" id="13_ksm27"]
+[ext_resource type="Texture2D" uid="uid://dvr08xekrya4q" path="res://assets/img/buttons/yellow_down.png" id="15_24j85"]
+
+[node name="GamepadIndicator" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_rdfji")
+textures_P1_stick = [ExtResource("1_n0j7i"), ExtResource("3_wsgqm"), ExtResource("4_vfyoq"), ExtResource("5_yipho"), ExtResource("6_43inm")]
+textures_P1_buttons = [ExtResource("1_bjb6f"), ExtResource("8_my7o0")]
+textures_P2_stick = [ExtResource("4_5sb8p"), ExtResource("10_a21te"), ExtResource("11_a6y5v"), ExtResource("12_m310h"), ExtResource("13_ksm27")]
+textures_P2_buttons = Array[Texture]([ExtResource("3_os63s"), ExtResource("15_24j85")])
+
+[node name="StickP1" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+texture = ExtResource("1_n0j7i")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="White" type="Control" parent="."]
+custom_minimum_size = Vector2(135, 0)
+layout_mode = 2
+
+[node name="1" type="TextureRect" parent="White"]
+layout_mode = 0
+offset_top = 24.0
+offset_right = 40.0
+offset_bottom = 64.0
+texture = ExtResource("1_bjb6f")
+
+[node name="2" type="TextureRect" parent="White"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 2.0
+offset_right = 84.0
+offset_bottom = 42.0
+texture = ExtResource("1_bjb6f")
+
+[node name="3" type="TextureRect" parent="White"]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 14.0
+offset_right = 131.0
+offset_bottom = 54.0
+texture = ExtResource("1_bjb6f")
+
+[node name="4" type="TextureRect" parent="White"]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 40.0
+offset_bottom = 107.0
+texture = ExtResource("1_bjb6f")
+
+[node name="5" type="TextureRect" parent="White"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 45.0
+offset_right = 84.0
+offset_bottom = 85.0
+texture = ExtResource("1_bjb6f")
+
+[node name="6" type="TextureRect" parent="White"]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 57.0
+offset_right = 131.0
+offset_bottom = 97.0
+texture = ExtResource("1_bjb6f")
+
+[node name="Separator" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Center" type="Control" parent="."]
+custom_minimum_size = Vector2(131, 0)
+layout_mode = 2
+
+[node name="1" type="TextureRect" parent="Center"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 48.0
+offset_bottom = 46.0
+texture = ExtResource("1_bjb6f")
+
+[node name="2" type="TextureRect" parent="Center"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 35.0
+offset_right = 85.0
+offset_bottom = 75.0
+texture = ExtResource("3_os63s")
+
+[node name="3" type="TextureRect" parent="Center"]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 6.0
+offset_right = 123.0
+offset_bottom = 46.0
+texture = ExtResource("1_bjb6f")
+
+[node name="Separator2" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StickP2" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+texture = ExtResource("4_5sb8p")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Black" type="Control" parent="."]
+custom_minimum_size = Vector2(135, 0)
+layout_mode = 2
+
+[node name="1" type="TextureRect" parent="Black"]
+layout_mode = 0
+offset_top = 23.0
+offset_right = 40.0
+offset_bottom = 63.0
+texture = ExtResource("5_dblwr")
+
+[node name="2" type="TextureRect" parent="Black"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 1.0
+offset_right = 84.0
+offset_bottom = 41.0
+texture = ExtResource("5_dblwr")
+
+[node name="3" type="TextureRect" parent="Black"]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 13.0
+offset_right = 131.0
+offset_bottom = 53.0
+texture = ExtResource("5_dblwr")
+
+[node name="4" type="TextureRect" parent="Black"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 64.0
+offset_right = 41.0
+offset_bottom = 104.0
+texture = ExtResource("5_dblwr")
+
+[node name="5" type="TextureRect" parent="Black"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 42.0
+offset_right = 85.0
+offset_bottom = 82.0
+texture = ExtResource("5_dblwr")
+
+[node name="6" type="TextureRect" parent="Black"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 54.0
+offset_right = 132.0
+offset_bottom = 94.0
+texture = ExtResource("5_dblwr")

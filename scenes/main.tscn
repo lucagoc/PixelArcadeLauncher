@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dpmpa00q1a1fq" path="res://scenes/exp/3d_banner.tscn" id="7_83j7o"]
 [ext_resource type="PackedScene" uid="uid://dnmfvwbgonwdj" path="res://scenes/home/banner_list/banner_scroll_list.tscn" id="7_yqq1d"]
 [ext_resource type="PackedScene" uid="uid://b8xcoqpmgts1i" path="res://scenes/home/drawer/drawer.tscn" id="8_14dml"]
-[ext_resource type="Texture2D" uid="uid://cgc7asuvr1um5" path="res://assets/img/default/placeholder.svg" id="8_rpyss"]
 [ext_resource type="AudioStream" uid="uid://hsdpagkfjr40" path="res://assets/sounds/ui/game_launch.mp3" id="9_g7vwn"]
+[ext_resource type="PackedScene" uid="uid://ckkex67088ywo" path="res://scenes/home/about/gamepad_indicator.tscn" id="9_po7fb"]
 [ext_resource type="PackedScene" uid="uid://bxqy35wah5fxc" path="res://scenes/special/screensaver.tscn" id="10_62net"]
 [ext_resource type="PackedScene" uid="uid://f2rysqj78eqv" path="res://scenes/special/transition_layer.tscn" id="10_mhu4u"]
 [ext_resource type="AudioStream" uid="uid://1lxym6ernowe" path="res://assets/sounds/ui/swipe.mp3" id="10_uyrmg"]
@@ -194,7 +194,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 300, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 800, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.3)
 }
 
@@ -531,7 +531,6 @@ size_flags_horizontal = 3
 color = Color(0, 0, 0, 0.556863)
 
 [node name="Padding" type="HBoxContainer" parent="Home/Front/About/ColorRect"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -577,12 +576,17 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Images" type="TextureRect" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc"]
+[node name="GamepadBox" type="VBoxContainer" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+
+[node name="Control" type="Control" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/GamepadBox"]
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("8_rpyss")
-expand_mode = 3
-stretch_mode = 5
+
+[node name="GamepadIndicator" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/GamepadBox" instance=ExtResource("9_po7fb")]
+layout_mode = 2
 
 [node name="DescBox" type="HBoxContainer" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc"]
 layout_mode = 2
