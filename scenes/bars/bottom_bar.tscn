@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bveavdlpsb5lv"]
+[gd_scene load_steps=4 format=3 uid="uid://bveavdlpsb5lv"]
 
 [ext_resource type="Script" path="res://scenes/bars/bottom_bar.gd" id="1_u5ya3"]
 [ext_resource type="Texture2D" uid="uid://wl3k5etlp5jg" path="res://assets/img/joysticks/p1_idle.png" id="2_c3gwd"]
-[ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="2_w4b71"]
 [ext_resource type="Texture2D" uid="uid://bdg6w83wmevh1" path="res://assets/img/buttons/yellow_up.png" id="4_8tes5"]
 
 [node name="BottomBar" type="ColorRect"]
@@ -49,14 +48,12 @@ layout_mode = 2
 [node name="HelpLabel" type="Label" parent="BottomHbox/HelperLeft"]
 layout_mode = 2
 size_flags_horizontal = 10
-theme = ExtResource("2_w4b71")
 text = "Affichage"
 
 [node name="GameTitle" type="Label" parent="BottomHbox"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
-theme = ExtResource("2_w4b71")
 text = "GameName"
 
 [node name="HelperRight" type="HBoxContainer" parent="BottomHbox"]
@@ -67,7 +64,6 @@ theme_override_constants/separation = 10
 [node name="HelpLabel" type="Label" parent="BottomHbox/HelperRight"]
 layout_mode = 2
 size_flags_horizontal = 10
-theme = ExtResource("2_w4b71")
 text = "Lancer"
 
 [node name="Button" type="VBoxContainer" parent="BottomHbox/HelperRight"]

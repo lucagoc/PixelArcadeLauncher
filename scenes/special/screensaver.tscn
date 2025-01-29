@@ -1,7 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://bxqy35wah5fxc"]
+[gd_scene load_steps=13 format=3 uid="uid://bxqy35wah5fxc"]
 
 [ext_resource type="Script" path="res://scenes/special/screensaver.gd" id="1_0h2ly"]
-[ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="1_opb5y"]
 [ext_resource type="Texture2D" uid="uid://dv41uwmvv376p" path="res://assets/img/pixel_logo/banner_mono.png" id="1_sdbiu"]
 
 [sub_resource type="Animation" id="Animation_cva8t"]
@@ -175,7 +174,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_opb5y")
 script = ExtResource("1_0h2ly")
 
 [node name="Background" type="ColorRect" parent="."]

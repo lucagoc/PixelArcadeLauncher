@@ -28,13 +28,21 @@ func _on_game_exited(_id: int):
 	$BottomHbox/GameTitle.show()
 	$BottomHbox/HelperRight.show()
 
+func _on_christmas():
+	color = "a81e1e"
+
+func _on_april_fools():
+	color = "ef5700"
+
 func _ready() -> void:
 	BusEvent.connect("GAME_SELECTED", _on_game_selected)
 	BusEvent.connect("DRAWER_FOCUSED", _on_drawer_focused)
 	BusEvent.connect("BANNER_MENU_FOCUSED", _on_banner_focused)
 	BusEvent.connect("GAME_LAUNCHED", _on_game_launched)
 	BusEvent.connect("GAME_EXITED", _on_game_exited)
-
+	
+	BusEvent.connect("CHRISTMAS_MODE", _on_christmas)
+	BusEvent.connect('APRIL_FOOLS_MODE', _on_april_fools)
 
 func _on_refresh_timer_timeout() -> void:
 	if button_frame:

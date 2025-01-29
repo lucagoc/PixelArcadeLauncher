@@ -26,7 +26,7 @@ func _on_drawer_focused() -> void:
 
 func _on_game_launched(_id: int):
 	$AnimationPlayer.play("hide_bars")
-	$AudioStreamPlayer.play()
+	$GameLaunchSound.play()
 	$Drawer.hide()
 
 func _on_game_exited(id: int):

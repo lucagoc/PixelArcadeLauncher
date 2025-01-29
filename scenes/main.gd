@@ -55,6 +55,14 @@ func _on_loading_screen_ended():
 func _on_konami_activated():
 	$SettingsMenu.show()
 
+func _on_april_fools():
+	var theme_data = load("res://themes/pixel_lmao.tres")
+	theme = theme_data
+
+func _on_christmas():
+	var theme_data = load("res://themes/pixel_christmas.tres")
+	theme = theme_data
+
 func _ready():
 	start_loading()
 	
@@ -63,6 +71,10 @@ func _ready():
 	BusEvent.connect("START_SECRET_SHAKE", _on_secret_shake)
 	BusEvent.connect("LOADING_SCREEN_ENDED", _on_loading_screen_ended)
 	BusEvent.connect("KONAMI_ACTIVATED", _on_konami_activated)
+	
+	BusEvent.connect("CHRISTMAS_MODE", _on_christmas)
+	BusEvent.connect("APRIL_FOOLS_MODE", _on_april_fools)
+	
 	preload_data()
 	GameList.reload()
 

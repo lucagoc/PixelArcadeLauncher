@@ -60,6 +60,10 @@ signal START_SECRET_SHAKE           # Start secret shake
 signal ENABLE_BANNER_FOCUS			# Stop screensaver
 @warning_ignore("unused_signal")
 signal DISABLE_BANNER_FOCUS         # Start secret shake
+@warning_ignore("unused_signal")
+signal CHRISTMAS_MODE
+@warning_ignore("unused_signal")
+signal APRIL_FOOLS_MODE
 
 func _on_game_list_loaded() -> void:
 	print("[SIGNAL] Game list loaded")
@@ -130,6 +134,12 @@ func _on_settings_loaded() -> void:
 func _on_ecomode_activated() -> void:
 	print("[SIGNAL] Ecomode activated")
 
+func _on_christmas() -> void:
+	print("[SIGNAL] Christmas activated ! xD")
+
+func _on_april_fools() -> void:
+	print("[SIGNAL] April fools activated ! xD")
+
 func _ready() -> void:
 	if print_debug_info:
 		# State signals
@@ -158,3 +168,5 @@ func _ready() -> void:
 		connect("START_SCREENSAVER", _on_start_screensaver)
 		connect("STOP_SCREENSAVER", _on_stop_screensaver)
 		connect("START_SECRET_SHAKE", _on_start_secret_shake)
+		connect("CHRISTMAS_MODE", _on_christmas)
+		connect("APRIL_FOOLS_MODE", _on_april_fools)

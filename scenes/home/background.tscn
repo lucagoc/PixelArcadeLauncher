@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ds2js8kmbdnu5"]
+[gd_scene load_steps=14 format=3 uid="uid://ds2js8kmbdnu5"]
 
 [ext_resource type="Script" path="res://scenes/home/background.gd" id="1_b5uaf"]
 [ext_resource type="Texture2D" uid="uid://cgc7asuvr1um5" path="res://assets/img/default/placeholder.svg" id="2_fw8yn"]
@@ -10,6 +10,37 @@ emission_shape_scale = Vector3(100, 1, 1)
 emission_shape = 3
 emission_box_extents = Vector3(10, 1, 1)
 gravity = Vector3(0, -2000, 0)
+scale_min = 5.0
+scale_max = 7.0
+turbulence_enabled = true
+turbulence_noise_scale = 1.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wj3m4"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 100, 0)
+emission_shape_scale = Vector3(100, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(10, 1, 1)
+gravity = Vector3(0, -6000, 0)
+scale_min = 5.0
+scale_max = 92.0
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+anim_speed_max = 16.0
+anim_offset_max = 1.0
+turbulence_enabled = true
+turbulence_noise_scale = 1.0
+turbulence_influence_min = 0.105
+turbulence_influence_max = 0.369
+turbulence_initial_displacement_min = -72.6
+turbulence_initial_displacement_max = 100.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_11v5s"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(100, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(10, 1, 1)
+gravity = Vector3(0, 2000, 0)
 scale_min = 5.0
 scale_max = 7.0
 turbulence_enabled = true
@@ -164,9 +195,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Particles"]
+[node name="Normal" type="GPUParticles2D" parent="Particles"]
 amount = 100
 process_material = SubResource("ParticleProcessMaterial_ofx2k")
+lifetime = 4.0
+fixed_fps = 60
+trail_lifetime = 1.73
+
+[node name="AprilFools" type="GPUParticles2D" parent="Particles"]
+visible = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_wj3m4")
+lifetime = 4.0
+fixed_fps = 60
+trail_lifetime = 1.73
+
+[node name="Christmas" type="GPUParticles2D" parent="Particles"]
+visible = false
+position = Vector2(-42, -1055)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_11v5s")
 lifetime = 4.0
 fixed_fps = 60
 trail_lifetime = 1.73

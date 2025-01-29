@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://2g4tm7haxalr"]
+[gd_scene load_steps=5 format=3 uid="uid://2g4tm7haxalr"]
 
-[ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="1_0qene"]
 [ext_resource type="PackedScene" uid="uid://dpmpa00q1a1fq" path="res://scenes/exp/3d_banner.tscn" id="1_o0opx"]
 [ext_resource type="Texture2D" uid="uid://cgc7asuvr1um5" path="res://assets/img/default/placeholder.svg" id="3_ydbne"]
 
@@ -18,7 +17,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_0qene")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

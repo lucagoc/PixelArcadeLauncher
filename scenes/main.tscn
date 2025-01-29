@@ -432,6 +432,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("3_qj2xj")
 script = ExtResource("1_srogu")
 
 [node name="Home" type="Control" parent="."]
@@ -441,7 +442,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("3_qj2xj")
 
 [node name="Background" parent="Home" instance=ExtResource("4_uvh1k")]
 layout_mode = 1
@@ -475,7 +475,7 @@ libraries = {
 "": SubResource("AnimationLibrary_anmaq")
 }
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Home/Front"]
+[node name="GameLaunchSound" type="AudioStreamPlayer" parent="Home/Front"]
 stream = ExtResource("9_g7vwn")
 
 [node name="DrawerSound" type="AudioStreamPlayer" parent="Home/Front"]

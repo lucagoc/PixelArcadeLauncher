@@ -20,9 +20,20 @@ func _on_timer_timeout():
 	if game_selection_count > 0:
 		game_selection_count -= 1
 
+func _on_gamelist_loaded():
+	# Check date for easter eggs
+	var date = Time.get_date_dict_from_system()
+	if date.month == 12:
+		BusEvent.emit_signal("CHRISTMAS_MODE")
+	elif date.month == 4 and date.day == 1:
+		BusEvent.emit_signal("APRIL_FOOLS_MODE")
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	BusEvent.connect("GAME_SELECTED", _on_game_selected)
+	BusEvent.connect("GAME_LIST_LOADED", _on_gamelist_loaded)
 
 	# Create a timer to decrease the game selection count
 	var timer = Timer.new()
@@ -30,7 +41,7 @@ func _ready() -> void:
 	timer.connect("timeout", _on_timer_timeout)
 	add_child(timer)
 	timer.start()
-
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
