@@ -22,10 +22,6 @@ class Game:
 	var hero: ImageTexture # Hero (background)
 	var theme: AudioStreamOggVorbis # Theme music
 	
-	# Data
-	var nb_launches: int # Number of times the game has been launched
-	var last_launch: int # Last time the game has been launched
-
 	# Internal data
 	var path: String # Absolute path to the game folder
 	var id: int # Unique ID (int) of the game, attributed on load
@@ -116,25 +112,6 @@ func load_config_file(game, path) -> void:
 	if file != null:
 		file.close()
 
-# Load the PAL data
-func load_data_pal(game, path) -> void:
-	var file = FileAccess.open(path, FileAccess.READ)
-	if file != null:
-		var line = file.get_line()
-		while line != "":
-			var parts = line.split("=")
-			if parts.size() == 2:
-				var key = parts[0].strip_edges()
-				var value = parts[1].strip_edges()
-				match key:
-					"nb_launches":
-						game.nb_launches = int(value)
-					"last_launch":
-						game.last_launch = int(value)
-			line = file.get_line()
-	else:
-		printerr("Cannot open the file " + game.folder + "/game.pal")
-
 # Load a game from the game folder
 func load_game(folder_name: String) -> Game:
 	var game = Game.new()
@@ -151,16 +128,6 @@ func load_game(folder_name: String) -> Game:
 	game.banner = load_banner(game_path + Path.game_banner)
 	game.hero = load_asset(game_path + Path.game_hero)
 	game.theme = load_theme(game_path + Path.game_theme)
-
-	# Create the PAL file if it doesn't exist
-	if not FileAccess.file_exists(game_path + Path.data_pal):
-		var file = FileAccess.open(game_path + Path.data_pal, FileAccess.WRITE)
-		if file != null:
-			file.store_line("nb_launches=0")
-			file.store_line("last_launch=0")
-			file.close()
-	
-	load_data_pal(game, game_path + Path.data_pal) # Load the PAL data (nb of launches, last launch)
 	
 	return game
 

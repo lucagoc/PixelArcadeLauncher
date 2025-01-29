@@ -6,6 +6,8 @@ var screensaver = false
 var IDLE_TIME = 30				# 30 seconds 	Time to wait before idle mode
 var AUTO_SCROLL_TIME = 5		# 5 seconds		Delay between auto scrolling
 var SCREENSAVER_TIME = 120		# 2 minutes		Time to wait before screensaver (Logo)
+var ECOMODE_TIME = 1200			# 20 minutes	Time to activate ECO mode.
+var ecomode_enabled = false
 
 func _on_idle_timeout() -> void:
 	if not idling:
@@ -21,6 +23,13 @@ func _on_screensaver_timeout() -> void:
 	if idling:
 		BusEvent.emit_signal("START_SCREENSAVER")
 		screensaver = true
+
+func _on_ecomode_timeout() -> void:
+	if idling and ecomode_enabled:
+		BusEvent.emit_signal("ECOMODE_ACTIVATED")
+		await get_tree().create_timer(1.0).timeout
+		#OS.execute("brightnessctl", ["s", "10"])
+		OS.execute("systemctl", ["suspend"])
 
 func _ready() -> void:
 
@@ -50,6 +59,15 @@ func _ready() -> void:
 	screensaver_timer.name = "screensaver_timer"
 	add_child(screensaver_timer)
 	screensaver_timer.start()
+	
+		# Set up the screensaver timer
+	var ecomode_timer = Timer.new()
+	ecomode_timer.set_wait_time(ECOMODE_TIME)
+	ecomode_timer.set_one_shot(true)
+	ecomode_timer.connect("timeout", _on_ecomode_timeout)
+	ecomode_timer.name = "ecomode_timer"
+	add_child(ecomode_timer)
+	ecomode_timer.start()
 
 func _process(_delta: float) -> void:
 	# Reset the idle timer a key is pressed
@@ -61,6 +79,9 @@ func _process(_delta: float) -> void:
 		
 		$screensaver_timer.stop()
 		$screensaver_timer.start()
+		
+		$ecomode_timer.stop()
+		$ecomode_timer.start()
 		
 		if screensaver:
 			BusEvent.emit_signal("STOP_SCREENSAVER")

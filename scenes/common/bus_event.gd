@@ -40,8 +40,10 @@ signal LOADING_SCREEN_ENDED				# Loading screen ended
 signal KONAMI_ACTIVATED					# Konami code activated
 @warning_ignore("unused_signal")
 signal SETTINGS_LOADED
+@warning_ignore("unused_signal")
+signal ECOMODE_ACTIVATED
 
-# Action signals
+# Action signals=
 @warning_ignore("unused_signal")
 signal CENTER_SELECTED_BANNER  		# Center the screen on a banner
 @warning_ignore("unused_signal")
@@ -125,6 +127,9 @@ func _on_konami_activated() -> void:
 func _on_settings_loaded() -> void:
 	print("[SIGNAL] Settings loaded")
 
+func _on_ecomode_activated() -> void:
+	print("[SIGNAL] Ecomode activated")
+
 func _ready() -> void:
 	if print_debug_info:
 		# State signals
@@ -144,6 +149,7 @@ func _ready() -> void:
 		connect("LOADING_SCREEN_ENDED", _on_loading_screen_ended)
 		connect("KONAMI_ACTIVATED", _on_konami_activated)
 		connect("SETTINGS_LOADED", _on_settings_loaded)
+		connect("ECOMODE_ACTIVATED", _on_ecomode_activated)
 
 		# Action signals
 		connect("CENTER_SELECTED_BANNER", _on_center_selected_banner)
