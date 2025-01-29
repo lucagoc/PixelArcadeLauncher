@@ -1,6 +1,7 @@
 extends HBoxContainer
 
-var selected_category := "All"
+var selected_category := tr("ALL")
+var category_icons := {}  # Dictionnaire pour stocker les icônes
 
 func _on_category_list_focus_entered() -> void:
 	$Click2.play()
@@ -13,24 +14,31 @@ func _on_category_list_focus_exited() -> void:
 	$AnimationPlayer.play("close_category")
 	BusEvent.emit_signal("DRAWER_CATEGORY_CLOSED")
 
+func _load_all_category_icons() -> void:
+	var dir = DirAccess.open("res://assets/img/categories/")
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if file_name.ends_with(".png"):
+				var category_name = file_name.trim_suffix(".png")
+				category_icons[tr(category_name)] = load("res://assets/img/categories/" + file_name)
+			file_name = dir.get_next()
+
 func _on_game_list_loaded() -> void:
 	$ItemList.clear()
 	for game in GameList.GAME_LIST:
 		$ItemList.add_item(game.name, game.icon)
-	
+
 	# Clear the category list
 	$CategoryBar/CategoryList.clear()
 
-	# Add the categories to the category list
+	# Ajouter les catégories avec leur icône correspondante si disponible
 	for category in GameList.games_by_category.keys():
-		# Check if the category has an icon in the folder "categories"
-		var icon_path = "res://assets/img/categories/" + category + ".png"
-		var icon = null
-		if FileAccess.file_exists(icon_path):
-			icon = load(icon_path)
+		var icon = category_icons.get(category, category_icons.get("PLACEHOLDER"))
 		$CategoryBar/CategoryList.add_item(" " + category, icon)
 
-	$CategoryBar/CategoryList.select(0) # Select the first category
+	$CategoryBar/CategoryList.select(0) # Sélectionne la première catégorie
 
 func _on_start_screensaver():
 	$CategoryBar/CategoryList.focus_mode = FOCUS_NONE
@@ -45,6 +53,8 @@ func _ready() -> void:
 	BusEvent.connect("GAME_LIST_LOADED", _on_game_list_loaded)
 	BusEvent.connect("START_SCREENSAVER", _on_start_screensaver)
 	BusEvent.connect("STOP_SCREENSAVER", _on_stop_screensaver)
+	
+	_load_all_category_icons()
 
 func _on_item_list_focus_entered() -> void:
 	BusEvent.emit_signal("DRAWER_FOCUSED")
@@ -66,5 +76,5 @@ func _on_category_list_item_selected(index: int) -> void:
 	$ItemList.clear()
 	for game in games:
 		$ItemList.add_item(game.name, game.icon)
-	
+
 	$ItemList.select(0)

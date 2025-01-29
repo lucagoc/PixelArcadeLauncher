@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c13ducd6l55uc"
-path="res://.godot/imported/Rythme.png-a5cc7b2ee9afd0a3c7c7e432e3f97be0.ctex"
+uid="uid://c4n68asr7vubx"
+path="res://.godot/imported/POPULAR.png-ce3c9d3d845a694cb1f6491b5425835d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/categories/Rythme.png"
-dest_files=["res://.godot/imported/Rythme.png-a5cc7b2ee9afd0a3c7c7e432e3f97be0.ctex"]
+source_file="res://assets/img/categories/POPULAR.png"
+dest_files=["res://.godot/imported/POPULAR.png-ce3c9d3d845a694cb1f6491b5425835d.ctex"]
 
 [params]
 

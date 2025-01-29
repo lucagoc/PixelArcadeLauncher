@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mhup28adns34"
-path="res://.godot/imported/Combat.png-8e362cbdf1b3ca367549c628ec5bc111.ctex"
+uid="uid://c1e6nun3i5mdu"
+path="res://.godot/imported/BULLETHELL.png-a0d7495b6f0a92a1a7a612c929fd51f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/categories/Combat.png"
-dest_files=["res://.godot/imported/Combat.png-8e362cbdf1b3ca367549c628ec5bc111.ctex"]
+source_file="res://assets/img/categories/BULLETHELL.png"
+dest_files=["res://.godot/imported/BULLETHELL.png-a0d7495b6f0a92a1a7a612c929fd51f9.ctex"]
 
 [params]
 

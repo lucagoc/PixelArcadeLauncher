@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brtpgdd5132vk"
-path="res://.godot/imported/Pc.png-b5ed230ce4839c871d18349422a6ce03.ctex"
+uid="uid://ctp244wneao0j"
+path="res://.godot/imported/RACING.png-1d0e921300913ff7b5f38bf8f7ab9236.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/categories/Pc.png"
-dest_files=["res://.godot/imported/Pc.png-b5ed230ce4839c871d18349422a6ce03.ctex"]
+source_file="res://assets/img/categories/RACING.png"
+dest_files=["res://.godot/imported/RACING.png-1d0e921300913ff7b5f38bf8f7ab9236.ctex"]
 
 [params]
 

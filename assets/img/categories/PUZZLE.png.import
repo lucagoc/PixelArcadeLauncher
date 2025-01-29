@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxwcth56acewk"
-path="res://.godot/imported/Japonais.png-4c9c219881452d5c482e290e54bdf1ea.ctex"
+uid="uid://d2p5a4cx7w1hn"
+path="res://.godot/imported/PUZZLE.png-15d58a67ad64a94e6625c6fedff46ea6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/categories/Japonais.png"
-dest_files=["res://.godot/imported/Japonais.png-4c9c219881452d5c482e290e54bdf1ea.ctex"]
+source_file="res://assets/img/categories/PUZZLE.png"
+dest_files=["res://.godot/imported/PUZZLE.png-15d58a67ad64a94e6625c6fedff46ea6.ctex"]
 
 [params]
 

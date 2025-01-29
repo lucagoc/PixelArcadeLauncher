@@ -1,0 +1,83 @@
+key,en,fr,es,jp
+DISPLAY,Display,Affichage,Pantalla,ディスプレイ
+LAUNCH,Launch,Lancer,Lanzar,起動
+ENABLED,Enabled,Activé,Habilitado,有効
+DISABLED,Disabled,Désactivé,Deshabilitado,無効
+HOME,Home,Accueil,Inicio,ホーム
+SETTINGS,Settings,Paramètres,Configuración,設定
+BACK,Back,Retour,Atrás,戻る
+EXIT,Exit,Quitter,Salir,終了
+GAMES,Games,Jeux,Juegos,ゲーム
+TIME,Time,Temps,Tiempo,時間
+LOADING,Loading,Chargement,Cargando,ロード中
+SUCCESS,Success,Succès,Éxito,成功
+ERROR,Error,Erreur,Error,エラー
+RETRY,Retry,Réessayer,Reintentar,再試行
+START,Start,Démarrer,Iniciar,開始
+PAUSE,Pause,Pause,Pausa,一時停止
+RESUME,Resume,Reprendre,Reanudar,再開
+CANCEL,Cancel,Annuler,Cancelar,キャンセル
+LANGUAGE,Language,Langue,Idioma,言語
+VOLUME,Volume,Volume,Volumen,ボリューム
+SCREENSAVER,Screensaver,Économiseur d’écran,Pantalla de protección,スクリーンセーバー
+BRIGHTNESS,Brightness,Luminosité,Brillo,明るさ
+RESET,Reset,Réinitialiser,Reiniciar,リセット
+CREDITS,Credits,Crédits,Créditos,クレジット
+ABOUT,About,À propos,Acerca de,約
+VERSION,Version,Version,Versión,バージョン
+COPYRIGHT,Copyright,Droits d’auteur,Derechos de autor,著作権
+LICENSE,License,Licence,Licencia,ライセンス
+SOURCE,Source,Source,Fuente,ソース
+CONTRIBUTORS,Contributors,Contributeurs,Contribuidores,貢献者
+THANKS,Thanks,Remerciements,Gracias,感謝
+WELCOME,Welcome,Bienvenue,Bienvenido,ようこそ
+TRANSLATION,Translation,Traduction,Traducción,翻訳
+,,,,
+ALL,All,Tout,Todo,すべて
+PC,PC,PC,PC,P.C.
+FIGHTING,Fighting,Combat,Lucha,ファイティング
+ADVENTURE,Adventure,Aventure,Aventura,アドベンチャー
+PLAYERS,Players,Joueurs,Jugadores,プレイヤー
+BULLETHELL,Bullet Hell,Bullet Hell,Bullet Hell,弾幕
+FRENCH,French,Français,Francés,フランス語
+ENGLISH,English,Anglais,Inglés,英語
+JAPANESE,Japanese,Japonais,Japonés,日本語
+PLATFORM,Platform,Plateforme,Plataforma,プラットフォーム
+PICO-8,PICO-8,PICO-8,PICO-8,PICO-8
+POPULAR,Popular,Populaire,Popular,人気
+PUZZLE,Puzzle,Puzzle,Puzzle,パズル
+SHOOTER,Shooter,Tireur,Disparos,シューティング
+RPG,RPG,RPG,RPG,RPG
+HORROR,Horror,Horreur,Terror,ホラー
+SPORTS,Sports,Sports,Deportes,スポーツ
+METROIDVANIA,Metroidvania,Metroidvania,Metroidvania,メトロイドヴァニア
+ROGUELIKE,Roguelike,Roguelike,Roguelike,ローグライク
+SURVIVAL,Survival,Survie,Sobrevivencia,サバイバル
+SANDBOX,Sandbox,Sandbox,Sandbox,サンドボックス
+FANTASY,Fantasy,Fantaisie,Fantasía,ファンタジー
+SOFTWARE,Software,Logiciel,Software,ソフトウェア
+STM,STM,STM,STM,STM
+RACING,Racing,Course,Carrera,レース
+RHYTHM,Rhythm,Rythme,Ritmo,リズム
+ARCADE,Arcade,Arcade,Arcade,アーケード
+ZZ,ZZ,ZZ,ZZ,ZZ
+2PLAYERS,2 Players,2 Joueurs,2 Jugadores,2プレイヤー
+,,,,
+SCREENSAVER_GREATER,Press a key to begin,Appuyez sur une touche pour commencer,Pulse una tecla para comenzar,キーを押して開始
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+CREDITS_THANKS,This software wouldn’t exist without those persons :,Ce logiciel n’existerait pas sans ces mainteneurs :,,
+CREDITS_LICENSE,PAL is proudly made under the licensed MIT :,PAL est un logiciel libre sous licence MIT et fière de l’être !,,
+CREDITS_SOFTWARE,This wonderful ressources made PAL what it is :,Ces formidables ressources font de PAL ce qui l’est aujourd’hui :,,

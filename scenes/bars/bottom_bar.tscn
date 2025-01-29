@@ -48,7 +48,7 @@ layout_mode = 2
 [node name="HelpLabel" type="Label" parent="BottomHbox/HelperLeft"]
 layout_mode = 2
 size_flags_horizontal = 10
-text = "Affichage"
+text = "DISPLAY"
 
 [node name="GameTitle" type="Label" parent="BottomHbox"]
 layout_mode = 2
@@ -64,7 +64,7 @@ theme_override_constants/separation = 10
 [node name="HelpLabel" type="Label" parent="BottomHbox/HelperRight"]
 layout_mode = 2
 size_flags_horizontal = 10
-text = "Lancer"
+text = "LAUNCH"
 
 [node name="Button" type="VBoxContainer" parent="BottomHbox/HelperRight"]
 layout_mode = 2

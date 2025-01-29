@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1e6nun3i5mdu"
-path="res://.godot/imported/Bullet Hell.png-8a69f5d8d7812a4a65c9e5a7060970a2.ctex"
+uid="uid://d1b3bxyfqj1rr"
+path="res://.godot/imported/ARCADE.png-a88d71241d9a30e5685482e8c7cdc62e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/categories/Bullet Hell.png"
-dest_files=["res://.godot/imported/Bullet Hell.png-8a69f5d8d7812a4a65c9e5a7060970a2.ctex"]
+source_file="res://assets/img/categories/ARCADE.png"
+dest_files=["res://.godot/imported/ARCADE.png-a88d71241d9a30e5685482e8c7cdc62e.ctex"]
 
 [params]
 

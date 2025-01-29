@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1b3bxyfqj1rr"
-path="res://.godot/imported/Arcade.png-76729c0b4ad68c775b741797bfcffc2a.ctex"
+uid="uid://cfr10fgqrxlg2"
+path="res://.godot/imported/2PLAYERS.png-32a20bea6773fa414ded4e59583cfed3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/categories/Arcade.png"
-dest_files=["res://.godot/imported/Arcade.png-76729c0b4ad68c775b741797bfcffc2a.ctex"]
+source_file="res://assets/img/categories/2PLAYERS.png"
+dest_files=["res://.godot/imported/2PLAYERS.png-32a20bea6773fa414ded4e59583cfed3.ctex"]
 
 [params]
 

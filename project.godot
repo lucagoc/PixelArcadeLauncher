@@ -148,6 +148,11 @@ ui_b={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://assets/localization/localization.en.translation", "res://assets/localization/localization.es.translation", "res://assets/localization/localization.fr.translation", "res://assets/localization/localization.jp.translation")
+locale/test="jp"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

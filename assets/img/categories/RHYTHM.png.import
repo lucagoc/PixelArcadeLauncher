@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkthj8thlpnv1"
-path="res://.godot/imported/Stm.png-ae1adb963d5824bea0e66049085f505a.ctex"
+uid="uid://c13ducd6l55uc"
+path="res://.godot/imported/RHYTHM.png-0267c13ffad807de3c80dd327b1fdc6d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/categories/Stm.png"
-dest_files=["res://.godot/imported/Stm.png-ae1adb963d5824bea0e66049085f505a.ctex"]
+source_file="res://assets/img/categories/RHYTHM.png"
+dest_files=["res://.godot/imported/RHYTHM.png-0267c13ffad807de3c80dd327b1fdc6d.ctex"]
 
 [params]
 
