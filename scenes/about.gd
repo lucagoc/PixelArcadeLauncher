@@ -20,7 +20,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if _is_focused:
-		if Input.is_action_just_pressed("ui_right"):
+		if Input.is_action_just_pressed("ui_accept"):
+			BusEvent.emit_signal("GAME_LAUNCHED", _selected_game)
+		elif Input.is_action_just_pressed("ui_right"):
 			$ColorRect/Padding/Main/GameInfo/CoverBox/SubViewportContainer.rotate_right()
 			BusEvent.emit_signal("GAME_SELECTED", get_game_id_circular(_selected_game, 1))
 		elif Input.is_action_just_pressed("ui_left"):
