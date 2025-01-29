@@ -103,6 +103,7 @@ func grab_banner_focus():
 
 func _ready() -> void:
 	BusEvent.connect("DRAWER_FOCUSED", hide_tags)
+	BusEvent.connect("ABOUT_OPENED", hide_tags)
 	BusEvent.connect("BANNER_MENU_FOCUSED", show_tags)
 	BusEvent.connect("SELECT_GAME", _on_select_game)
 	BusEvent.connect("GAME_LAUNCHED", _on_game_launched)

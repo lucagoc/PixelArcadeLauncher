@@ -32,10 +32,10 @@
 	- Volume manager agent
 
 1.0 StableShrine
-	- [ ] Category sorting
+	- [X] Category sorting
 	- [ ] About Menu (+ QR Code link to the project)
 	- [ ] "How to play" menu.
-	- [ ] Refactoring BannerList and proper commenting.
+	- [X] Refactoring BannerList and proper commenting.
 	- [ ] Screensaver time settings.
 	- [ ] Debug Mode with perf metrics.
 	- [ ] Press Button to Start : Animation and Sound.
@@ -48,8 +48,8 @@
 	- [ ] Automatic volume adjustment on sound
 
 1.1 ???
-	- [ ] Translation EN/FR/ES.
+	- [X] Translation EN/FR/ES.
 	- [ ] UI USB Mount and PAP Backup/Restore.
-	- [ ] New ProcessManager with parrallel exec and PID state tracking support.
-	- [ ] 25/01, 01/04, December are specials :)
-	- [ ] Konami code
+	- [X] New ProcessManager with parrallel exec and PID state tracking support.
+	- [X] 25/01, 01/04, December are specials :)
+	- [X] Konami code

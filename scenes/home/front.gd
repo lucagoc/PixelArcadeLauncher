@@ -1,9 +1,14 @@
 extends VBoxContainer
 
 var _is_drawer_focused := false
+var _is_about_opened := false
 const DRAWER_SIZE := 0.70
+const ABOUT_SIZE := 0.75
 
 func _on_banner_menu_focused() -> void:
+	if _is_about_opened:
+		$AboutAnimationPlayer.play_backwards("about_open")
+		_is_about_opened = false
 	if _is_drawer_focused:
 		$DrawerSound.play()
 		var drawer_size = $Drawer.custom_minimum_size.y
@@ -13,6 +18,7 @@ func _on_banner_menu_focused() -> void:
 		_is_drawer_focused = false
 
 func _on_drawer_focused() -> void:
+	$AboutAnimationPlayer.play("RESET")
 	if not _is_drawer_focused:
 		$DrawerSound.play()
 		# Set the drawer size to 70% of the screen height
@@ -40,6 +46,13 @@ func _on_screensaver_start():
 func _on_screensaver_stop():
 	$AnimationPlayer.play("fade_in")
 
+func _on_about_opened():
+	var about_size = get_viewport_rect().size.y * ABOUT_SIZE
+	var animation = $AboutAnimationPlayer.get_animation("about_open")
+	animation.bezier_track_set_key_value(0, 1, about_size)
+	$AboutAnimationPlayer.play("about_open")
+	_is_about_opened = true
+
 func _ready() -> void:
 	BusEvent.connect("BANNER_MENU_FOCUSED", _on_banner_menu_focused)
 	BusEvent.connect("DRAWER_FOCUSED", _on_drawer_focused)
@@ -47,6 +60,7 @@ func _ready() -> void:
 	BusEvent.connect("GAME_EXITED", _on_game_exited)
 	BusEvent.connect("START_SCREENSAVER", _on_screensaver_start)
 	BusEvent.connect("STOP_SCREENSAVER", _on_screensaver_stop)
+	BusEvent.connect("ABOUT_OPENED", _on_about_opened)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "close_drawer":

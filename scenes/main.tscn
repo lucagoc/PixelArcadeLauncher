@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bemlflx640ecp"]
+[gd_scene load_steps=35 format=3 uid="uid://bemlflx640ecp"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_srogu"]
 [ext_resource type="PackedScene" uid="uid://c4frsd4if6b7x" path="res://scenes/special/loading_screen.tscn" id="2_io48b"]
@@ -6,8 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://ds2js8kmbdnu5" path="res://scenes/home/background.tscn" id="4_uvh1k"]
 [ext_resource type="Script" path="res://scenes/home/front.gd" id="5_v2f7h"]
 [ext_resource type="PackedScene" uid="uid://nlbgb1sdxsw5" path="res://scenes/bars/top_bar.tscn" id="6_5rdxe"]
+[ext_resource type="Script" path="res://scenes/about.gd" id="6_w0o7d"]
+[ext_resource type="PackedScene" uid="uid://dpmpa00q1a1fq" path="res://scenes/exp/3d_banner.tscn" id="7_83j7o"]
 [ext_resource type="PackedScene" uid="uid://dnmfvwbgonwdj" path="res://scenes/home/banner_list/banner_scroll_list.tscn" id="7_yqq1d"]
 [ext_resource type="PackedScene" uid="uid://b8xcoqpmgts1i" path="res://scenes/home/drawer/drawer.tscn" id="8_14dml"]
+[ext_resource type="Texture2D" uid="uid://cgc7asuvr1um5" path="res://assets/img/default/placeholder.svg" id="8_rpyss"]
 [ext_resource type="AudioStream" uid="uid://hsdpagkfjr40" path="res://assets/sounds/ui/game_launch.mp3" id="9_g7vwn"]
 [ext_resource type="PackedScene" uid="uid://bxqy35wah5fxc" path="res://scenes/special/screensaver.tscn" id="10_62net"]
 [ext_resource type="PackedScene" uid="uid://f2rysqj78eqv" path="res://scenes/special/transition_layer.tscn" id="10_mhu4u"]
@@ -61,6 +64,17 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("About:custom_minimum_size:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_ys0tp"]
@@ -142,6 +156,52 @@ _data = {
 "fade_in": SubResource("Animation_akoqn"),
 "hide_bars": SubResource("Animation_ociks"),
 "open_drawer": SubResource("Animation_b5voc")
+}
+
+[sub_resource type="Animation" id="Animation_ipery"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("About:custom_minimum_size:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("About:custom_minimum_size:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_ht62l"]
+resource_name = "about_open"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("About:custom_minimum_size:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 300, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a85w3"]
+_data = {
+"RESET": SubResource("Animation_ipery"),
+"about_open": SubResource("Animation_ht62l")
 }
 
 [sub_resource type="Gradient" id="Gradient_ao3k5"]
@@ -459,6 +519,97 @@ script = ExtResource("5_v2f7h")
 [node name="TopBar" parent="Home/Front" instance=ExtResource("6_5rdxe")]
 layout_mode = 2
 
+[node name="About" type="HBoxContainer" parent="Home/Front"]
+layout_mode = 2
+focus_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("6_w0o7d")
+
+[node name="ColorRect" type="ColorRect" parent="Home/Front/About"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 0.556863)
+
+[node name="Padding" type="HBoxContainer" parent="Home/Front/About/ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left" type="Control" parent="Home/Front/About/ColorRect/Padding"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="Main" type="VBoxContainer" parent="Home/Front/About/ColorRect/Padding"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="Home/Front/About/ColorRect/Padding/Main"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "PACMAN"
+horizontal_alignment = 1
+
+[node name="GameInfo" type="HBoxContainer" parent="Home/Front/About/ColorRect/Padding/Main"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CoverBox" type="VBoxContainer" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="Top" type="Control" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/CoverBox"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="SubViewportContainer" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/CoverBox" instance=ExtResource("7_83j7o")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Bottom" type="Control" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/CoverBox"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Desc" type="VBoxContainer" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Images" type="TextureRect" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("8_rpyss")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="DescBox" type="HBoxContainer" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Desc" type="Label" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/DescBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Pac-Man (パックマン, Pakkuman) (initialement intitulé Puckman) est un jeu vidéo créé par TOru Iwatani pour l’entreprise japonaise Namco, sorti au Japon le 22 mai 1980. Le jeu consiste à déplacer Pac-Man, un personnage qui, vu de profil, ressemble à un diagramme circulaire à l’intérieur d’un labyrinthe, afin de lui faire manger toutes les pac-gommes qui s’y trouvent en évitant d’être touché par des fantômes.
+
+"
+autowrap_mode = 2
+
+[node name="MoreInfo" type="Label" parent="Home/Front/About/ColorRect/Padding/Main"]
+layout_mode = 2
+text = "Éditeur: NAMCO | Année: 1979"
+horizontal_alignment = 1
+
+[node name="PaddingBottom" type="Control" parent="Home/Front/About/ColorRect/Padding/Main"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Right" type="Control" parent="Home/Front/About/ColorRect/Padding"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
 [node name="BannerScrollList" parent="Home/Front" instance=ExtResource("7_yqq1d")]
 layout_mode = 2
 scroll_horizontal = 0
@@ -480,6 +631,11 @@ stream = ExtResource("9_g7vwn")
 
 [node name="DrawerSound" type="AudioStreamPlayer" parent="Home/Front"]
 stream = ExtResource("10_uyrmg")
+
+[node name="AboutAnimationPlayer" type="AnimationPlayer" parent="Home/Front"]
+libraries = {
+"": SubResource("AnimationLibrary_a85w3")
+}
 
 [node name="Screensaver" parent="Home" instance=ExtResource("10_62net")]
 layout_mode = 1
@@ -512,5 +668,7 @@ libraries = {
 }
 speed_scale = 2.0
 
+[connection signal="focus_entered" from="Home/Front/About" to="Home/Front/About" method="_on_focus_entered"]
+[connection signal="focus_exited" from="Home/Front/About" to="Home/Front/About" method="_on_focus_exited"]
 [connection signal="animation_finished" from="Home/Front/AnimationPlayer" to="Home/Front" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -42,6 +42,8 @@ signal KONAMI_ACTIVATED					# Konami code activated
 signal SETTINGS_LOADED
 @warning_ignore("unused_signal")
 signal ECOMODE_ACTIVATED
+@warning_ignore("unused_signal")
+signal ABOUT_OPENED
 
 # Action signals=
 @warning_ignore("unused_signal")
