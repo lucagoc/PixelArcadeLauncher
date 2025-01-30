@@ -4,9 +4,9 @@ var idling = false
 var screensaver = false
 
 var IDLE_TIME = 30				# 30 seconds 	Time to wait before idle mode
-var AUTO_SCROLL_TIME = 5		# 5 seconds		Delay between auto scrolling
+var AUTO_SCROLL_TIME = 5			# 5 seconds		Delay between auto scrolling
 var SCREENSAVER_TIME = 120		# 2 minutes		Time to wait before screensaver (Logo)
-var ECOMODE_TIME = 130			# 20 minutes	Time to activate ECO mode.
+var ECOMODE_TIME = 600			# 10 minutes		Time to activate ECO mode.
 var ecomode_enabled = true
 
 func _on_idle_timeout() -> void:
