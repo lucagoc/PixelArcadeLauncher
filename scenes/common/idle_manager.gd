@@ -29,7 +29,7 @@ func _on_ecomode_timeout() -> void:
 	if idling and ecomode_enabled:
 		BusEvent.emit_signal("ECOMODE_ACTIVATED")
 		await get_tree().create_timer(1.0).timeout
-		OS.execute("wlr-randr", ["--output HDMI-A-1", "--off"])
+		OS.execute("wlr-randr", ["--output", "HDMI-A-1", "--off"])
 
 func _ready() -> void:
 
@@ -86,4 +86,4 @@ func _process(_delta: float) -> void:
 		if screensaver:
 			BusEvent.emit_signal("STOP_SCREENSAVER")
 			if ecomode_enabled:
-				OS.execute("wlr-randr", ["--output HDMI-A-1", "--on"])
+				OS.execute("wlr-randr", ["--output", "HDMI-A-1", "--on"])
