@@ -41,6 +41,7 @@ func _launch_game_windows(game) -> void:
 # Called when the game is exited
 func _on_game_exited(_id: int) -> void:
 	print("[DEBUG] Game exited: " + str(_id))
+	await get_tree().create_timer(1.0).timeout
 	_running_game = -1
 	_running_process = null
 
