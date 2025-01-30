@@ -53,7 +53,9 @@ func _on_loading_screen_ended():
 	end_loading()
 
 func _on_konami_activated():
-	$SettingsMenu.show()
+	#$SettingsMenu.show()
+	OS.execute("kitty", [])
+	get_tree().quit()
 
 func _on_april_fools():
 	var theme_data = load("res://themes/pixel_lmao.tres")
