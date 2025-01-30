@@ -20,20 +20,18 @@ func _on_timer_timeout():
 	if game_selection_count > 0:
 		game_selection_count -= 1
 
-func _on_gamelist_loaded():
-	# Check date for easter eggs
+func _on_main_inited():
+	# :)
 	var date = Time.get_date_dict_from_system()
 	if date.month == 12:
 		BusEvent.emit_signal("CHRISTMAS_MODE")
 	elif date.month == 4 and date.day == 1:
 		BusEvent.emit_signal("APRIL_FOOLS_MODE")
-		TranslationServer.set_locale("ru")
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	BusEvent.connect("GAME_SELECTED", _on_game_selected)
-	BusEvent.connect("GAME_LIST_LOADED", _on_gamelist_loaded)
+	BusEvent.connect("MAIN_INITED", _on_main_inited)
 
 	# Create a timer to decrease the game selection count
 	var timer = Timer.new()
@@ -41,7 +39,14 @@ func _ready() -> void:
 	timer.connect("timeout", _on_timer_timeout)
 	add_child(timer)
 	timer.start()
-	
+
+	# :)
+	var date = Time.get_date_dict_from_system()
+	if date.month == 4 and date.day == 1:
+		TranslationServer.set_locale("ru")
+	if (Input.is_action_pressed("P1_1") and Input.is_action_pressed("P1_2") and Input.is_action_pressed("P1_3")):
+		TranslationServer.set_locale("jp")
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -49,8 +54,7 @@ func _process(_delta: float) -> void:
 	# Shake the screen when the secret is activated
 	if game_selection_count > 10:
 		BusEvent.emit_signal("START_SECRET_SHAKE")
-	
-	
+
 	# Check if the Konami code is activated
 	if Input.is_action_just_pressed(konami_code[progress_code]):
 		progress_code += 1

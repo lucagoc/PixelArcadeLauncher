@@ -30,7 +30,7 @@ class Game:
 	var id: int # Unique ID (int) of the game, attributed on load
 
 var GAME_LIST: Array = []
-var games_by_category: Dictionary = {tr("ALL"): []}
+var games_by_category: Dictionary = {}
 
 # Load an img asset and return an ImageTexture
 # Load a placeholder if the asset doesn't exist
@@ -151,6 +151,7 @@ func load_game(folder_name: String) -> Game:
 
 # Load all the games folders by ID from the game folder
 func load_list():
+	games_by_category = {tr("ALL"): []}
 	var dir = DirAccess.open(Path.data + Path.games_folder)
 	if dir == null:
 		printerr("Cannot open the directory " + Path.data + Path.games_folder)

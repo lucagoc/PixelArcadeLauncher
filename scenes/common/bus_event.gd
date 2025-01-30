@@ -44,8 +44,11 @@ signal SETTINGS_LOADED
 signal ECOMODE_ACTIVATED
 @warning_ignore("unused_signal")
 signal ABOUT_OPENED
+@warning_ignore("unused_signal")
+signal MAIN_INITED
 
-# Action signals=
+
+# Action signals
 @warning_ignore("unused_signal")
 signal CENTER_SELECTED_BANNER  		# Center the screen on a banner
 @warning_ignore("unused_signal")
@@ -142,6 +145,9 @@ func _on_christmas() -> void:
 func _on_april_fools() -> void:
 	print("[SIGNAL] April fools activated ! xD")
 
+func _on_main_inited() -> void:
+	print("[SIGNAL] Main inited")
+
 func _ready() -> void:
 	if print_debug_info:
 		# State signals
@@ -162,6 +168,7 @@ func _ready() -> void:
 		connect("KONAMI_ACTIVATED", _on_konami_activated)
 		connect("SETTINGS_LOADED", _on_settings_loaded)
 		connect("ECOMODE_ACTIVATED", _on_ecomode_activated)
+		connect("MAIN_INITED", _on_main_inited)
 
 		# Action signals
 		connect("CENTER_SELECTED_BANNER", _on_center_selected_banner)

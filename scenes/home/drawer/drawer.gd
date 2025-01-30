@@ -1,6 +1,6 @@
 extends HBoxContainer
 
-var selected_category := tr("ALL")
+var selected_category := ""
 var category_icons := {}  # Dictionnaire pour stocker les icônes
 
 func _on_category_list_focus_entered() -> void:
@@ -39,6 +39,7 @@ func _on_game_list_loaded() -> void:
 		$CategoryBar/CategoryList.add_item(" " + category, icon)
 
 	$CategoryBar/CategoryList.select(0) # Sélectionne la première catégorie
+	selected_category = tr("ALL")
 
 func _on_start_screensaver():
 	$CategoryBar/CategoryList.focus_mode = FOCUS_NONE

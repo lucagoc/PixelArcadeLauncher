@@ -38,10 +38,6 @@ func end_loading():
 	BusEvent.emit_signal("SELECT_GAME", 0)
 	print("[SUCCESS] PixelArcadeLauncher has been loaded successfully !")
 
-# Console commands for debugging
-func add_console_commands():
-	pass
-
 func _on_scaling_changed(scaling: float) -> void:
 	get_tree().root.content_scale_factor = scaling
 
@@ -67,8 +63,7 @@ func _on_christmas():
 
 func _ready():
 	start_loading()
-	
-	add_console_commands()
+
 	BusEvent.connect("SCALING_CHANGED", _on_scaling_changed)
 	BusEvent.connect("START_SECRET_SHAKE", _on_secret_shake)
 	BusEvent.connect("LOADING_SCREEN_ENDED", _on_loading_screen_ended)
@@ -76,6 +71,8 @@ func _ready():
 	
 	BusEvent.connect("CHRISTMAS_MODE", _on_christmas)
 	BusEvent.connect("APRIL_FOOLS_MODE", _on_april_fools)
+	
+	BusEvent.emit_signal("MAIN_INITED")
 	
 	preload_data()
 	GameList.reload()
