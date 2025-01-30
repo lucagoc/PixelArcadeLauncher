@@ -8,6 +8,12 @@ extends VBoxContainer
 @export var pressed_color = "ffe042"
 @export var base_color = "ffffff"
 
+func get_string(id: int, controller_number: int):
+	if GameList.GAME_LIST[id].controls.size() > controller_number:
+		return GameList.GAME_LIST[id].controls[controller_number]
+	else:
+		return ""
+
 func check_p1_buttons():
 	if Input.is_action_just_pressed("P1_1"):
 		$ControlsText/ControlP1/Controls/Left/B1.set("theme_override_colors/font_color", pressed_color)
@@ -125,3 +131,23 @@ func _process(delta: float) -> void:
 	check_p2_buttons()
 	check_p1_stick()
 	check_p2_stick()
+
+func _on_game_selected(id: int) -> void:
+	$"ControlsText/ControlP1/Controls/Stick".text = get_string(id, 0)
+	$ControlsText/ControlP1/Controls/Left/B1.text = get_string(id, 1)
+	$ControlsText/ControlP1/Controls/Center/B2.text = get_string(id, 2)
+	$ControlsText/ControlP1/Controls/Right/B3.text = get_string(id, 3)
+	$ControlsText/ControlP1/Controls/Left/B4.text = get_string(id, 4)
+	$ControlsText/ControlP1/Controls/Center/B5.text = get_string(id, 5)
+	$ControlsText/ControlP1/Controls/Right/B6.text = get_string(id, 6)
+
+	$ControlsText/ControlP2/Controls/Stick.text = get_string(id, 7)
+	$ControlsText/ControlP2/Controls/Left/B1.text = get_string(id, 8)
+	$ControlsText/ControlP2/Controls/Center/B2.text = get_string(id, 9)
+	$ControlsText/ControlP2/Controls/Right/B3.text = get_string(id, 10)
+	$ControlsText/ControlP2/Controls/Left/B4.text = get_string(id, 11)
+	$ControlsText/ControlP2/Controls/Center/B5.text = get_string(id, 12)
+	$ControlsText/ControlP2/Controls/Right/B6.text = get_string(id, 13)
+
+func _ready() -> void:
+	BusEvent.connect("GAME_SELECTED", _on_game_selected)

@@ -13,6 +13,7 @@ class Game:
 	var editor: String = "?" 	# Editor of the game
 	var year: String = "?" 		# Year of the game
 	var categories: Array 		# categories (action, arcade, adventure, etc.)
+	var controls : Array = ["?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?"]
 
 	# Executable
 	var exec: String # Command to launch the game
@@ -65,6 +66,13 @@ func process_categories(value: String) -> Array:
 	print(categories)
 	return categories
 
+func process_controls(value: String) -> Array:
+	var controls = []
+	var parts = Path.strip_brackets(value).split(",")
+	for part in parts:
+		controls.append(tr(Path.strip_quotes(part.strip_edges())))
+	return controls
+
 # Fonction pour ajouter un jeu dans toutes ses catégories
 func add_game_to_categories(game):
 	games_by_category[tr("ALL")].append(game)
@@ -110,6 +118,10 @@ func load_config_file(game, path) -> void:
 						"categories":
 							game.categories = process_categories(value)
 							add_game_to_categories(game)
+						"controls":
+							game.controls = process_controls(value)
+							print(game.controls)
+
 				line = file.get_line()
 		else:
 			printerr(game.folder + "/game.conf isn't in the proper format")
