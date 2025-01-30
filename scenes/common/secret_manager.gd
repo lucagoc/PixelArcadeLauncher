@@ -7,7 +7,7 @@ extends Node
 
 # File dedicated to Secret Settings and Easter Eggs. Activated using key combinaison.
 
-var konami_code = ["ui_up_joystick", "ui_up_joystick", "ui_down_joystick", "ui_down_joystick", "ui_left_joystick", "ui_right_joystick", "ui_left_joystick", "ui_right_joystick", "ui_a", "ui_b"]
+var konami_code = ["P1_3", "P1_4", "P1_6", "P1_1", "P1_2", "P1_5", "P1_6", "P1_6", "P1_6"]
 var progress_code = 0
 
 var game_selection_count = 0
