@@ -21,9 +21,9 @@
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_rdfji")
-textures_P1_stick = [ExtResource("1_n0j7i"), ExtResource("3_wsgqm"), ExtResource("4_vfyoq"), ExtResource("5_yipho"), ExtResource("6_43inm")]
-textures_P1_buttons = [ExtResource("1_bjb6f"), ExtResource("8_my7o0")]
-textures_P2_stick = [ExtResource("4_5sb8p"), ExtResource("10_a21te"), ExtResource("11_a6y5v"), ExtResource("12_m310h"), ExtResource("13_ksm27")]
+textures_P1_stick = Array[Texture]([ExtResource("1_n0j7i"), ExtResource("3_wsgqm"), ExtResource("4_vfyoq"), ExtResource("5_yipho"), ExtResource("6_43inm")])
+textures_P1_buttons = Array[Texture]([ExtResource("1_bjb6f"), ExtResource("8_my7o0")])
+textures_P2_stick = Array[Texture]([ExtResource("4_5sb8p"), ExtResource("10_a21te"), ExtResource("11_a6y5v"), ExtResource("12_m310h"), ExtResource("13_ksm27")])
 textures_P2_buttons = Array[Texture]([ExtResource("3_os63s"), ExtResource("15_24j85")])
 
 [node name="StickP1" type="TextureRect" parent="."]

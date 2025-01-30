@@ -10,6 +10,7 @@ func _on_game_selection(id: int):
 	_selected_game = id
 	$"ColorRect/Padding/Main/Title".text  = GameList.GAME_LIST[id].name
 	$"ColorRect/Padding/Main/GameInfo/Desc/DescBox/Desc".text = GameList.GAME_LIST[id].description
+	$"ColorRect/Padding/Main/MoreInfo".text = tr("EDITOR") + " : " +  GameList.GAME_LIST[id].editor + " | " + tr("YEAR") + " : " + GameList.GAME_LIST[id].year
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -34,12 +34,16 @@ func _on_christmas():
 func _on_april_fools():
 	color = "ef5700"
 
+func _on_about_opened():
+	$BottomHbox/GameTitle.hide()
+
 func _ready() -> void:
 	BusEvent.connect("GAME_SELECTED", _on_game_selected)
 	BusEvent.connect("DRAWER_FOCUSED", _on_drawer_focused)
 	BusEvent.connect("BANNER_MENU_FOCUSED", _on_banner_focused)
 	BusEvent.connect("GAME_LAUNCHED", _on_game_launched)
 	BusEvent.connect("GAME_EXITED", _on_game_exited)
+	BusEvent.connect("ABOUT_OPENED", _on_about_opened)
 	
 	BusEvent.connect("CHRISTMAS_MODE", _on_christmas)
 	BusEvent.connect('APRIL_FOOLS_MODE', _on_april_fools)

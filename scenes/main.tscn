@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bemlflx640ecp"]
+[gd_scene load_steps=50 format=3 uid="uid://bemlflx640ecp"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_srogu"]
 [ext_resource type="PackedScene" uid="uid://c4frsd4if6b7x" path="res://scenes/special/loading_screen.tscn" id="2_io48b"]
@@ -10,13 +10,28 @@
 [ext_resource type="PackedScene" uid="uid://dpmpa00q1a1fq" path="res://scenes/exp/3d_banner.tscn" id="7_83j7o"]
 [ext_resource type="PackedScene" uid="uid://dnmfvwbgonwdj" path="res://scenes/home/banner_list/banner_scroll_list.tscn" id="7_yqq1d"]
 [ext_resource type="PackedScene" uid="uid://b8xcoqpmgts1i" path="res://scenes/home/drawer/drawer.tscn" id="8_14dml"]
+[ext_resource type="Script" path="res://scenes/home/about/gamepad_indicator.gd" id="8_ssdf4"]
+[ext_resource type="Texture2D" uid="uid://wl3k5etlp5jg" path="res://assets/img/joysticks/p1_idle.png" id="9_6sgxq"]
 [ext_resource type="AudioStream" uid="uid://hsdpagkfjr40" path="res://assets/sounds/ui/game_launch.mp3" id="9_g7vwn"]
-[ext_resource type="PackedScene" uid="uid://ckkex67088ywo" path="res://scenes/home/about/gamepad_indicator.tscn" id="9_po7fb"]
 [ext_resource type="PackedScene" uid="uid://bxqy35wah5fxc" path="res://scenes/special/screensaver.tscn" id="10_62net"]
+[ext_resource type="Texture2D" uid="uid://bho2vd8ok8ldk" path="res://assets/img/joysticks/p1_up.png" id="10_hkyw1"]
 [ext_resource type="PackedScene" uid="uid://f2rysqj78eqv" path="res://scenes/special/transition_layer.tscn" id="10_mhu4u"]
 [ext_resource type="AudioStream" uid="uid://1lxym6ernowe" path="res://assets/sounds/ui/swipe.mp3" id="10_uyrmg"]
+[ext_resource type="Texture2D" uid="uid://im882i4dlpoc" path="res://assets/img/joysticks/p1_down.png" id="11_28net"]
+[ext_resource type="Texture2D" uid="uid://bq3mmhy2m4o3x" path="res://assets/img/joysticks/p1_left.png" id="12_rt1m5"]
 [ext_resource type="PackedScene" uid="uid://r7uast7vl6td" path="res://scenes/settings/settings_menu.tscn" id="13_07sqf"]
+[ext_resource type="Texture2D" uid="uid://ddbcsy2ldaw0s" path="res://assets/img/joysticks/p1_right.png" id="13_bmr2o"]
+[ext_resource type="Texture2D" uid="uid://2rev1h3jo7k7" path="res://assets/img/buttons/white_up.png" id="14_yk51s"]
+[ext_resource type="Texture2D" uid="uid://dsy6yraphruqk" path="res://assets/img/buttons/white_down.png" id="15_h3p66"]
+[ext_resource type="Texture2D" uid="uid://5y5q7recbhs2" path="res://assets/img/joysticks/p2_idle.png" id="16_cvyak"]
 [ext_resource type="PackedScene" uid="uid://bveavdlpsb5lv" path="res://scenes/bars/bottom_bar.tscn" id="16_x1ks8"]
+[ext_resource type="Texture2D" uid="uid://depwha7cue1ep" path="res://assets/img/joysticks/p2_up.png" id="17_htj01"]
+[ext_resource type="Texture2D" uid="uid://5qlvgond0s0a" path="res://assets/img/joysticks/p2_down.png" id="18_q73lq"]
+[ext_resource type="Texture2D" uid="uid://bith56cive3vp" path="res://assets/img/joysticks/p2_left.png" id="19_yolng"]
+[ext_resource type="Texture2D" uid="uid://rwrqjg3jpmgu" path="res://assets/img/joysticks/p2_right.png" id="20_5gjfi"]
+[ext_resource type="Texture2D" uid="uid://bdg6w83wmevh1" path="res://assets/img/buttons/yellow_up.png" id="21_ae7kd"]
+[ext_resource type="Texture2D" uid="uid://dmdb6237dx4wr" path="res://assets/img/buttons/black_down.png" id="22_d183h"]
+[ext_resource type="Texture2D" uid="uid://b6rt65v7j2j4a" path="res://assets/img/buttons/black_up.png" id="23_dkgvm"]
 
 [sub_resource type="Animation" id="Animation_anar2"]
 length = 0.001
@@ -546,6 +561,9 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="Padding" type="Control" parent="Home/Front/About/ColorRect/Padding/Main"]
+layout_mode = 2
+
 [node name="Title" type="Label" parent="Home/Front/About/ColorRect/Padding/Main"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
@@ -576,21 +594,19 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="GamepadBox" type="VBoxContainer" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc"]
+[node name="Control" type="Control" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="DescBox" type="VBoxContainer" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/DescBox"]
+layout_mode = 2
 size_flags_vertical = 10
-
-[node name="Control" type="Control" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/GamepadBox"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="GamepadIndicator" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/GamepadBox" instance=ExtResource("9_po7fb")]
-layout_mode = 2
-
-[node name="DescBox" type="HBoxContainer" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc"]
-layout_mode = 2
-size_flags_vertical = 3
+text = "DESCRIPTION"
 
 [node name="Desc" type="Label" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/DescBox"]
 layout_mode = 2
@@ -600,6 +616,309 @@ text = "Pac-Man (パックマン, Pakkuman) (initialement intitulé Puckman) est
 
 "
 autowrap_mode = 2
+
+[node name="Controls" type="VBoxContainer" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc"]
+layout_mode = 2
+script = ExtResource("8_ssdf4")
+textures_P1_stick = Array[Texture]([ExtResource("9_6sgxq"), ExtResource("10_hkyw1"), ExtResource("11_28net"), ExtResource("12_rt1m5"), ExtResource("13_bmr2o")])
+textures_P1_buttons = Array[Texture]([ExtResource("14_yk51s"), ExtResource("15_h3p66")])
+textures_P2_stick = Array[Texture]([ExtResource("16_cvyak"), ExtResource("17_htj01"), ExtResource("18_q73lq"), ExtResource("19_yolng"), ExtResource("20_5gjfi")])
+textures_P2_buttons = Array[Texture]([ExtResource("23_dkgvm"), ExtResource("22_d183h")])
+
+[node name="ControlsText" type="HBoxContainer" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ControlP1" type="VBoxContainer" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP1"]
+layout_mode = 2
+text = "PLAYER_1"
+
+[node name="Controls" type="HBoxContainer" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP1"]
+layout_mode = 2
+
+[node name="Stick" type="Label" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP1/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "STICK : SE DEPLACER"
+autowrap_mode = 2
+
+[node name="Left" type="VBoxContainer" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP1/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="B1" type="Label" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP1/Controls/Left"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "B1 : Sauter"
+
+[node name="B4" type="Label" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP1/Controls/Left"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "B4 : TEST"
+
+[node name="Center" type="VBoxContainer" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP1/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="B2" type="Label" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP1/Controls/Center"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "B2 : TEST"
+
+[node name="B5" type="Label" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP1/Controls/Center"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "B5 : TEST"
+
+[node name="Right" type="VBoxContainer" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP1/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="B3" type="Label" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP1/Controls/Right"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "B3 : TEST"
+
+[node name="B6" type="Label" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP1/Controls/Right"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "B6 : TEST"
+
+[node name="ControlP2" type="VBoxContainer" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP2"]
+layout_mode = 2
+text = "PLAYER_2"
+
+[node name="Controls" type="HBoxContainer" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP2"]
+layout_mode = 2
+
+[node name="Stick" type="Label" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP2/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "STICK : SE DEPLACER"
+autowrap_mode = 2
+
+[node name="Left" type="VBoxContainer" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP2/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="B1" type="Label" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP2/Controls/Left"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "B1 : Sauter"
+
+[node name="B4" type="Label" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP2/Controls/Left"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "B4 : TEST"
+
+[node name="Center" type="VBoxContainer" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP2/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="B2" type="Label" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP2/Controls/Center"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "B2 : TEST"
+
+[node name="B5" type="Label" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP2/Controls/Center"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "B5 : TEST"
+
+[node name="Right" type="VBoxContainer" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP2/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="B3" type="Label" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP2/Controls/Right"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "B3 : TEST"
+
+[node name="B6" type="Label" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP2/Controls/Right"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "B6 : TEST"
+
+[node name="GamepadBox" type="VBoxContainer" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="GamepadIndicator" type="HBoxContainer" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/GamepadBox"]
+layout_mode = 2
+
+[node name="StickP1" type="TextureRect" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/GamepadBox/GamepadIndicator"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+texture = ExtResource("9_6sgxq")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="White" type="Control" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/GamepadBox/GamepadIndicator"]
+custom_minimum_size = Vector2(135, 0)
+layout_mode = 2
+
+[node name="1" type="TextureRect" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/GamepadBox/GamepadIndicator/White"]
+layout_mode = 0
+offset_top = 24.0
+offset_right = 40.0
+offset_bottom = 64.0
+texture = ExtResource("14_yk51s")
+
+[node name="2" type="TextureRect" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/GamepadBox/GamepadIndicator/White"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 2.0
+offset_right = 84.0
+offset_bottom = 42.0
+texture = ExtResource("14_yk51s")
+
+[node name="3" type="TextureRect" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/GamepadBox/GamepadIndicator/White"]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 14.0
+offset_right = 131.0
+offset_bottom = 54.0
+texture = ExtResource("14_yk51s")
+
+[node name="4" type="TextureRect" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/GamepadBox/GamepadIndicator/White"]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 40.0
+offset_bottom = 107.0
+texture = ExtResource("14_yk51s")
+
+[node name="5" type="TextureRect" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/GamepadBox/GamepadIndicator/White"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 45.0
+offset_right = 84.0
+offset_bottom = 85.0
+texture = ExtResource("14_yk51s")
+
+[node name="6" type="TextureRect" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/GamepadBox/GamepadIndicator/White"]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 57.0
+offset_right = 131.0
+offset_bottom = 97.0
+texture = ExtResource("14_yk51s")
+
+[node name="Separator" type="Control" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/GamepadBox/GamepadIndicator"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Center" type="Control" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/GamepadBox/GamepadIndicator"]
+custom_minimum_size = Vector2(131, 0)
+layout_mode = 2
+
+[node name="1" type="TextureRect" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/GamepadBox/GamepadIndicator/Center"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 48.0
+offset_bottom = 46.0
+texture = ExtResource("14_yk51s")
+
+[node name="2" type="TextureRect" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/GamepadBox/GamepadIndicator/Center"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 35.0
+offset_right = 85.0
+offset_bottom = 75.0
+texture = ExtResource("21_ae7kd")
+
+[node name="3" type="TextureRect" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/GamepadBox/GamepadIndicator/Center"]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 6.0
+offset_right = 123.0
+offset_bottom = 46.0
+texture = ExtResource("14_yk51s")
+
+[node name="Separator2" type="Control" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/GamepadBox/GamepadIndicator"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StickP2" type="TextureRect" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/GamepadBox/GamepadIndicator"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+texture = ExtResource("16_cvyak")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Black" type="Control" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/GamepadBox/GamepadIndicator"]
+custom_minimum_size = Vector2(135, 0)
+layout_mode = 2
+
+[node name="1" type="TextureRect" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/GamepadBox/GamepadIndicator/Black"]
+layout_mode = 0
+offset_top = 23.0
+offset_right = 40.0
+offset_bottom = 63.0
+texture = ExtResource("23_dkgvm")
+
+[node name="2" type="TextureRect" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/GamepadBox/GamepadIndicator/Black"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 1.0
+offset_right = 84.0
+offset_bottom = 41.0
+texture = ExtResource("23_dkgvm")
+
+[node name="3" type="TextureRect" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/GamepadBox/GamepadIndicator/Black"]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 13.0
+offset_right = 131.0
+offset_bottom = 53.0
+texture = ExtResource("23_dkgvm")
+
+[node name="4" type="TextureRect" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/GamepadBox/GamepadIndicator/Black"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 64.0
+offset_right = 41.0
+offset_bottom = 104.0
+texture = ExtResource("23_dkgvm")
+
+[node name="5" type="TextureRect" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/GamepadBox/GamepadIndicator/Black"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 42.0
+offset_right = 85.0
+offset_bottom = 82.0
+texture = ExtResource("23_dkgvm")
+
+[node name="6" type="TextureRect" parent="Home/Front/About/ColorRect/Padding/Main/GameInfo/Desc/Controls/GamepadBox/GamepadIndicator/Black"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 54.0
+offset_right = 132.0
+offset_bottom = 94.0
+texture = ExtResource("23_dkgvm")
 
 [node name="MoreInfo" type="Label" parent="Home/Front/About/ColorRect/Padding/Main"]
 layout_mode = 2

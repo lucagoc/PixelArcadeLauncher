@@ -1,87 +1,124 @@
-extends HBoxContainer
+extends VBoxContainer
 
 @export var textures_P1_stick : Array[Texture] = []
 @export var textures_P1_buttons : Array[Texture] = []
 @export var textures_P2_stick : Array[Texture] = []
 @export var textures_P2_buttons : Array[Texture] = []
 
+@export var pressed_color = "ffe042"
+@export var base_color = "ffffff"
+
 func check_p1_buttons():
 	if Input.is_action_just_pressed("P1_1"):
-		$"White/1".texture = textures_P1_buttons[1]
+		$ControlsText/ControlP1/Controls/Left/B1.set("theme_override_colors/font_color", pressed_color)
+		$"GamepadBox/GamepadIndicator/White/1".texture = textures_P1_buttons[1]
 	if Input.is_action_just_pressed("P1_2"):
-		$"White/2".texture = textures_P1_buttons[1]
+		$ControlsText/ControlP1/Controls/Center/B2.set("theme_override_colors/font_color", pressed_color)
+		$"GamepadBox/GamepadIndicator/White/2".texture = textures_P1_buttons[1]
 	if Input.is_action_just_pressed("P1_3"):
-		$"White/3".texture = textures_P1_buttons[1]
+		$ControlsText/ControlP1/Controls/Right/B3.set("theme_override_colors/font_color", pressed_color)
+		$"GamepadBox/GamepadIndicator/White/3".texture = textures_P1_buttons[1]
 	if Input.is_action_just_pressed("P1_4"):
-		$"White/4".texture = textures_P1_buttons[1]
+		$ControlsText/ControlP1/Controls/Left/B4.set("theme_override_colors/font_color", pressed_color)
+		$"GamepadBox/GamepadIndicator/White/4".texture = textures_P1_buttons[1]
 	if Input.is_action_just_pressed("P1_5"):
-		$"White/5".texture = textures_P1_buttons[1]
+		$"GamepadBox/GamepadIndicator/White/5".texture = textures_P1_buttons[1]
+		$ControlsText/ControlP1/Controls/Center/B5.set("theme_override_colors/font_color", pressed_color)
 	if Input.is_action_just_pressed("P1_6"):
-		$"White/6".texture = textures_P1_buttons[1]
+		$ControlsText/ControlP1/Controls/Right/B6.set("theme_override_colors/font_color", pressed_color)
+		$"GamepadBox/GamepadIndicator/White/6".texture = textures_P1_buttons[1]
 	
 	if Input.is_action_just_released("P1_1"):
-		$"White/1".texture = textures_P1_buttons[0]
+		$ControlsText/ControlP1/Controls/Left/B1.set("theme_override_colors/font_color", base_color)
+		$"GamepadBox/GamepadIndicator/White/1".texture = textures_P1_buttons[0]
 	if Input.is_action_just_released("P1_2"):
-		$"White/2".texture = textures_P1_buttons[0]
+		$ControlsText/ControlP1/Controls/Center/B2.set("theme_override_colors/font_color", base_color)
+		$"GamepadBox/GamepadIndicator/White/2".texture = textures_P1_buttons[0]
 	if Input.is_action_just_released("P1_3"):
-		$"White/3".texture = textures_P1_buttons[0]
+		$ControlsText/ControlP1/Controls/Right/B3.set("theme_override_colors/font_color", base_color)
+		$"GamepadBox/GamepadIndicator/White/3".texture = textures_P1_buttons[0]
 	if Input.is_action_just_released("P1_4"):	
-		$"White/4".texture = textures_P1_buttons[0]
+		$ControlsText/ControlP1/Controls/Left/B4.set("theme_override_colors/font_color", base_color)
+		$"GamepadBox/GamepadIndicator/White/4".texture = textures_P1_buttons[0]
 	if Input.is_action_just_released("P1_5"):
-		$"White/5".texture = textures_P1_buttons[0]
+		$ControlsText/ControlP1/Controls/Center/B5.set("theme_override_colors/font_color", base_color)
+		$"GamepadBox/GamepadIndicator/White/5".texture = textures_P1_buttons[0]
 	if Input.is_action_just_released("P1_6"):
-		$"White/6".texture = textures_P1_buttons[0]
+		$ControlsText/ControlP1/Controls/Right/B6.set("theme_override_colors/font_color", base_color)
+		$"GamepadBox/GamepadIndicator/White/6".texture = textures_P1_buttons[0]
 
 func check_p2_buttons():
 	if Input.is_action_just_pressed("P2_1"):
-		$"Black/1".texture = textures_P2_buttons[1]
+		$ControlsText/ControlP2/Controls/Left/B1.set("theme_override_colors/font_color", pressed_color)
+		$"GamepadBox/GamepadIndicator/Black/1".texture = textures_P2_buttons[1]
 	if Input.is_action_just_pressed("P2_2"):
-		$"Black/2".texture = textures_P2_buttons[1]
+		$ControlsText/ControlP2/Controls/Center/B2.set("theme_override_colors/font_color", pressed_color)
+		$"GamepadBox/GamepadIndicator/Black/2".texture = textures_P2_buttons[1]
 	if Input.is_action_just_pressed("P2_3"):
-		$"Black/3".texture = textures_P2_buttons[1]
+		$ControlsText/ControlP2/Controls/Right/B3.set("theme_override_colors/font_color", pressed_color)
+		$"GamepadBox/GamepadIndicator/Black/3".texture = textures_P2_buttons[1]
 	if Input.is_action_just_pressed("P2_4"):
-		$"Black/4".texture = textures_P2_buttons[1]
+		$ControlsText/ControlP2/Controls/Left/B4.set("theme_override_colors/font_color", pressed_color)
+		$"GamepadBox/GamepadIndicator/Black/4".texture = textures_P2_buttons[1]
 	if Input.is_action_just_pressed("P2_5"):
-		$"Black/5".texture = textures_P2_buttons[1]
+		$ControlsText/ControlP2/Controls/Center/B5.set("theme_override_colors/font_color", pressed_color)
+		$"GamepadBox/GamepadIndicator/Black/5".texture = textures_P2_buttons[1]
 	if Input.is_action_just_pressed("P2_6"):
-		$"Black/6".texture = textures_P2_buttons[1]
+		$ControlsText/ControlP2/Controls/Right/B6.set("theme_override_colors/font_color", pressed_color)
+		$"GamepadBox/GamepadIndicator/Black/6".texture = textures_P2_buttons[1]
 	
 	if Input.is_action_just_released("P2_1"):
-		$"Black/1".texture = textures_P2_buttons[0]
+		$ControlsText/ControlP2/Controls/Left/B1.set("theme_override_colors/font_color", base_color)
+		$"GamepadBox/GamepadIndicator/Black/1".texture = textures_P2_buttons[0]
 	if Input.is_action_just_released("P2_2"):
-		$"Black/2".texture = textures_P2_buttons[0]
+		$ControlsText/ControlP2/Controls/Center/B2.set("theme_override_colors/font_color", base_color)
+		$"GamepadBox/GamepadIndicator/Black/2".texture = textures_P2_buttons[0]
 	if Input.is_action_just_released("P2_3"):
-		$"Black/3".texture = textures_P2_buttons[0]
+		$ControlsText/ControlP2/Controls/Right/B3.set("theme_override_colors/font_color", base_color)
+		$"GamepadBox/GamepadIndicator/Black/3".texture = textures_P2_buttons[0]
 	if Input.is_action_just_released("P2_4"):
-		$"Black/4".texture = textures_P2_buttons[0]
+		$ControlsText/ControlP2/Controls/Left/B4.set("theme_override_colors/font_color", base_color)
+		$"GamepadBox/GamepadIndicator/Black/4".texture = textures_P2_buttons[0]
 	if Input.is_action_just_released("P2_5"):
-		$"Black/5".texture = textures_P2_buttons[0]
+		$ControlsText/ControlP2/Controls/Center/B5.set("theme_override_colors/font_color", base_color)
+		$"GamepadBox/GamepadIndicator/Black/5".texture = textures_P2_buttons[0]
 	if Input.is_action_just_released("P2_6"):
-		$"Black/6".texture = textures_P2_buttons[0]
+		$ControlsText/ControlP2/Controls/Right/B6.set("theme_override_colors/font_color", base_color)
+		$"GamepadBox/GamepadIndicator/Black/6".texture = textures_P2_buttons[0]
 
 func check_p1_stick():
 	if Input.is_action_pressed("P1_up"):
-		$StickP1.texture = textures_P1_stick[1]
+		$"GamepadBox/GamepadIndicator/StickP1".texture = textures_P1_stick[1]
+		$ControlsText/ControlP1/Controls/Stick.set("theme_override_colors/font_color", pressed_color)
 	elif Input.is_action_pressed("P1_down"):
-		$StickP1.texture = textures_P1_stick[2]
+		$"GamepadBox/GamepadIndicator/StickP1".texture = textures_P1_stick[2]
+		$ControlsText/ControlP1/Controls/Stick.set("theme_override_colors/font_color", pressed_color)
 	elif Input.is_action_pressed("P1_left"):
-		$StickP1.texture = textures_P1_stick[3]
+		$"GamepadBox/GamepadIndicator/StickP1".texture = textures_P1_stick[3]
+		$ControlsText/ControlP1/Controls/Stick.set("theme_override_colors/font_color", pressed_color)
 	elif Input.is_action_pressed("P1_right"):
-		$StickP1.texture = textures_P1_stick[4]
+		$"GamepadBox/GamepadIndicator/StickP1".texture = textures_P1_stick[4]
+		$ControlsText/ControlP1/Controls/Stick.set("theme_override_colors/font_color", pressed_color)
 	else:
-		$StickP1.texture = textures_P1_stick[0]
+		$"GamepadBox/GamepadIndicator/StickP1".texture = textures_P1_stick[0]
+		$ControlsText/ControlP1/Controls/Stick.set("theme_override_colors/font_color", base_color)
 
 func check_p2_stick():
 	if Input.is_action_pressed("P2_up"):
-		$StickP2.texture = textures_P2_stick[1]
+		$"GamepadBox/GamepadIndicator/StickP2".texture = textures_P2_stick[1]
+		$ControlsText/ControlP2/Controls/Stick.set("theme_override_colors/font_color", pressed_color)
 	elif Input.is_action_pressed("P2_down"):
-		$StickP2.texture = textures_P2_stick[2]
+		$"GamepadBox/GamepadIndicator/StickP2".texture = textures_P2_stick[2]
+		$ControlsText/ControlP2/Controls/Stick.set("theme_override_colors/font_color", pressed_color)
 	elif Input.is_action_pressed("P2_left"):
-		$StickP2.texture = textures_P2_stick[3]
+		$"GamepadBox/GamepadIndicator/StickP2".texture = textures_P2_stick[3]
+		$ControlsText/ControlP2/Controls/Stick.set("theme_override_colors/font_color", pressed_color)
 	elif Input.is_action_pressed("P2_right"):
-		$StickP2.texture = textures_P2_stick[4]
+		$"GamepadBox/GamepadIndicator/StickP2".texture = textures_P2_stick[4]
+		$ControlsText/ControlP2/Controls/Stick.set("theme_override_colors/font_color", pressed_color)
 	else:
-		$StickP2.texture = textures_P2_stick[0]
+		$"GamepadBox/GamepadIndicator/StickP2".texture = textures_P2_stick[0]
+		$ControlsText/ControlP2/Controls/Stick.set("theme_override_colors/font_color", base_color)
 
 func _process(delta: float) -> void:
 	check_p1_buttons()

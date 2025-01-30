@@ -7,10 +7,12 @@ extends Node
 
 class Game:
 	# Game data
-	var name: String # Name of the game
-	var platform: String # Platform of the game (windows, mame, linux)
-	var description: String # Description of the game
-	var categories: Array # categories (action, arcade, adventure, etc.)
+	var name: String 			# Name of the game
+	var platform: String 		# Platform of the game (windows, mame, linux)
+	var description: String = tr("NO_DESCRIPTION") 	# Description of the game
+	var editor: String = "?" 	# Editor of the game
+	var year: String = "?" 		# Year of the game
+	var categories: Array 		# categories (action, arcade, adventure, etc.)
 
 	# Executable
 	var exec: String # Command to launch the game
@@ -101,6 +103,10 @@ func load_config_file(game, path) -> void:
 							game.exec = Path.strip_quotes(value)
 						"description":
 							game.description = Path.strip_quotes(value)
+						"editor":
+							game.editor = Path.strip_quotes(value)
+						"year":
+							game.year = Path.strip_quotes(value)
 						"categories":
 							game.categories = process_categories(value)
 							add_game_to_categories(game)

@@ -23,6 +23,11 @@ SCREENSAVER,Screensaver,Économiseur d’écran,Pantalla de protección,スク�
 BRIGHTNESS,Brightness,Luminosité,Brillo,明るさ
 RESET,Reset,Réinitialiser,Reiniciar,リセット
 CREDITS,Credits,Crédits,Créditos,クレジット
+EDITOR,Editor,Éditeur,Editor,エディタ
+YEAR,Year,Année,Año,年
+DESCRIPTION,Description,Description,Descripción,説明
+PLAYER_1,Player 1,Joueur 1,Jugador 1,プレイヤー1
+PLAYER_2,Player 2,Joueur 2,Jugador 2,プレイヤー2
 ABOUT,About,À propos,Acerca de,約
 VERSION,Version,Version,Versión,バージョン
 COPYRIGHT,Copyright,Droits d’auteur,Derechos de autor,著作権
@@ -66,7 +71,7 @@ ZZ,ZZ,ZZ,ZZ,ZZ
 2PLAYERS,2 Players,2 Joueurs,2 Jugadores,2プレイヤー
 ,,,,
 SCREENSAVER_GREATER,Press a key to begin,Appuyez sur une touche pour commencer,Pulse una tecla para comenzar,キーを押して開始
-,,,,
+NO_DESCRIPTION,This game has no description,Ce jeu n’a pas de description,Este juego no tiene descripción,このゲームには説明がありません
 ,,,,
 ,,,,
 ,,,,
