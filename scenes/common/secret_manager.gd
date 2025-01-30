@@ -27,7 +27,7 @@ func _on_gamelist_loaded():
 		BusEvent.emit_signal("CHRISTMAS_MODE")
 	elif date.month == 4 and date.day == 1:
 		BusEvent.emit_signal("APRIL_FOOLS_MODE")
-
+		TranslationServer.set_locale("ru")
 
 
 # Called when the node enters the scene tree for the first time.
