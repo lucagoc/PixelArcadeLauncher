@@ -920,6 +920,10 @@ offset_right = 132.0
 offset_bottom = 94.0
 texture = ExtResource("23_dkgvm")
 
+[node name="Padding2" type="Control" parent="Home/Front/About/ColorRect/Padding/Main"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
 [node name="MoreInfo" type="Label" parent="Home/Front/About/ColorRect/Padding/Main"]
 layout_mode = 2
 text = "Éditeur: NAMCO | Année: 1979"

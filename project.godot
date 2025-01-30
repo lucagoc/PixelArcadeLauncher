@@ -251,7 +251,6 @@ P2_6={
 [internationalization]
 
 locale/translations=PackedStringArray("res://assets/localization/localization.en.translation", "res://assets/localization/localization.es.translation", "res://assets/localization/localization.fr.translation", "res://assets/localization/localization.jp.translation")
-locale/test="jp"
 
 [rendering]
 
