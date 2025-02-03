@@ -32,6 +32,7 @@ func _on_game_list_loaded() -> void:
 		tr("FIGHTING") : load("res://assets/img/categories/FIGHTING.png"),
 		tr("PLATFORM") : load("res://assets/img/categories/PLATFORM.png"),
 		tr("PUZZLE") : load("res://assets/img/categories/PUZZLE.png"),
+		tr("RACING") : load("res://assets/img/categories/RACING.png"),
 		"PLACEHOLDER" : load("res://assets/img/categories/PLACEHOLDER.png")
 	}
 	

@@ -44,7 +44,7 @@ func _ready() -> void:
 	var date = Time.get_date_dict_from_system()
 	if date.month == 4 and date.day == 1:
 		TranslationServer.set_locale("ru")
-	if (Input.is_action_just_pressed("P1_3") and Input.is_action_just_pressed("P2_3")):
+	if (Input.is_action_just_pressed("P1_3") or Input.is_action_just_pressed("P2_3")):
 		TranslationServer.set_locale("jp")
 
 
