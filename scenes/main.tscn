@@ -19,7 +19,6 @@
 [ext_resource type="AudioStream" uid="uid://1lxym6ernowe" path="res://assets/sounds/ui/swipe.mp3" id="10_uyrmg"]
 [ext_resource type="Texture2D" uid="uid://im882i4dlpoc" path="res://assets/img/joysticks/p1_down.png" id="11_28net"]
 [ext_resource type="Texture2D" uid="uid://bq3mmhy2m4o3x" path="res://assets/img/joysticks/p1_left.png" id="12_rt1m5"]
-[ext_resource type="PackedScene" uid="uid://r7uast7vl6td" path="res://scenes/settings/settings_menu.tscn" id="13_07sqf"]
 [ext_resource type="Texture2D" uid="uid://ddbcsy2ldaw0s" path="res://assets/img/joysticks/p1_right.png" id="13_bmr2o"]
 [ext_resource type="Texture2D" uid="uid://2rev1h3jo7k7" path="res://assets/img/buttons/white_up.png" id="14_yk51s"]
 [ext_resource type="Texture2D" uid="uid://dsy6yraphruqk" path="res://assets/img/buttons/white_down.png" id="15_h3p66"]
@@ -227,6 +226,7 @@ colors = PackedColorArray(0, 0, 0, 1)
 gradient = SubResource("Gradient_ao3k5")
 
 [sub_resource type="Animation" id="Animation_t2tse"]
+resource_name = "RESET"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -308,55 +308,6 @@ tracks/6/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("BlackOut:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/8/type = "bezier"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("BlackOut:modulate:a")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_4mo40"]
-resource_name = "black_out"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BlackOut:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BlackOut:modulate:a")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.2, 0, 1, -0.5, 0, 0.25, 0),
-"times": PackedFloat32Array(0.0333333, 1)
 }
 
 [sub_resource type="Animation" id="Animation_ryx21"]
@@ -463,39 +414,70 @@ tracks/3/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_oygq0"]
-resource_name = "test"
-length = 0.5
-tracks/0/type = "bezier"
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2h2xi"]
+_data = {
+"RESET": SubResource("Animation_t2tse"),
+"loading_end": SubResource("Animation_ryx21"),
+"loading_start": SubResource("Animation_bvvna")
+}
+
+[sub_resource type="Animation" id="Animation_mgosr"]
+resource_name = "black_out"
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Home:position:x")
+tracks/0/path = NodePath("BlackOut:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0, 1, 46.5, -0.1, -20, 0.1, -53, -30.5, -0.1, 18, 0, -5, 37.5, -0.1, 14, 0.1, -14, -32.5, -0.1, 6, 0.1, 6, 0, -0.1, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5)
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Home:position:y")
+tracks/1/path = NodePath("BlackOut:modulate:a")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
-"points": PackedFloat32Array(0, -0.1, -21, 0.1, -7, -34.5, -0.1, 23, 0.1, 45, 35.5, -0.1, 6, 0.1, 25, -27.5, -0.1, 8, 0.1, 9, 36.5, -0.1, -40, 0.1, -22, 0, -0.1, 3, 0, -1),
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5)
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.2, 0, 1, -0.5, 0, 0.25, 0),
+"times": PackedFloat32Array(0.0333333, 1)
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_2h2xi"]
+[sub_resource type="Animation" id="Animation_bq3bx"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackOut:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlackOut:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_568xi"]
 _data = {
-"RESET": SubResource("Animation_t2tse"),
-"black_out": SubResource("Animation_4mo40"),
-"loading_end": SubResource("Animation_ryx21"),
-"loading_start": SubResource("Animation_bvvna"),
-"shake": SubResource("Animation_oygq0")
+"RESET": SubResource("Animation_bq3bx"),
+"black_out": SubResource("Animation_mgosr")
 }
 
 [node name="Main" type="Control"]
@@ -986,17 +968,19 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_rfn04")
 
-[node name="SettingsMenu" parent="." instance=ExtResource("13_07sqf")]
-visible = false
-layout_mode = 1
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_2h2xi")
 }
 speed_scale = 2.0
 
+[node name="BlackOut2" type="AnimationPlayer" parent="."]
+libraries = {
+"BlackOut": SubResource("AnimationLibrary_568xi")
+}
+
 [connection signal="focus_entered" from="Home/Front/About" to="Home/Front/About" method="_on_focus_entered"]
 [connection signal="focus_exited" from="Home/Front/About" to="Home/Front/About" method="_on_focus_exited"]
 [connection signal="animation_finished" from="Home/Front/AnimationPlayer" to="Home/Front" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="BlackOut2" to="." method="_on_black_out_animation_finished"]

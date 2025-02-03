@@ -32,7 +32,7 @@ func _on_main_inited():
 func _ready() -> void:
 	BusEvent.connect("GAME_SELECTED", _on_game_selected)
 	BusEvent.connect("MAIN_INITED", _on_main_inited)
-
+	
 	# Create a timer to decrease the game selection count
 	var timer = Timer.new()
 	timer.set_wait_time(0.05)

@@ -84,22 +84,21 @@ var quitting = false
 
 func _process(delta):
 	if Input.is_action_pressed("ui_cancel"):
-		if $SettingsMenu.visible:
-			$SettingsMenu.hide()
-		elif not quitting:
-			var state = $AnimationPlayer.get_current_animation_position()
-			$AnimationPlayer.play("black_out")
-			$AnimationPlayer.speed_scale = 1
-			$AnimationPlayer.seek(state)
+		if not quitting:
+			var state = $BlackOut2.get_current_animation_position()
+			$BlackOut2.play("BlackOut/black_out")
+			$BlackOut2.speed_scale = 1
+			$BlackOut2.seek(state)
 			quitting = true
 	else:
 		if quitting:
-			var state = $AnimationPlayer.get_current_animation_position()
-			$AnimationPlayer.play_backwards("black_out")
-			$AnimationPlayer.speed_scale = 2
-			$AnimationPlayer.seek(state)
+			var state = $BlackOut2.get_current_animation_position()
+			$BlackOut2.play_backwards("BlackOut/black_out")
+			$BlackOut2.queue("BlackOut/RESET")
+			$BlackOut2.speed_scale = 2
+			$BlackOut2.seek(state)
 			quitting = false
 
-func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
+func _on_black_out_animation_finished(_anim_name: StringName) -> void:
 	if quitting:
 		get_tree().quit()
