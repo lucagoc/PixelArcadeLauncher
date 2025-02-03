@@ -1,13 +1,7 @@
 extends HBoxContainer
 
 var selected_category := ""
-var category_icons := {
-	tr("ALL"): load("res://assets/img/categories/ALL.png"),
-	tr("2PLAYERS"): load("res://assets/img/categories/2PLAYERS.png"),
-	tr("ARCADE") : load("res://assets/img/categories/ARCADE.png"),
-	tr("PUZZLE") : load("res://assets/img/categories/PUZZLE.png"),
-	"PLACEHOLDER" : load("res://assets/img/categories/PLACEHOLDER.png")
-}
+var category_icons := {}
 
 func _on_category_list_focus_entered() -> void:
 	$Click2.play()
@@ -21,6 +15,26 @@ func _on_category_list_focus_exited() -> void:
 	BusEvent.emit_signal("DRAWER_CATEGORY_CLOSED")
 
 func _on_game_list_loaded() -> void:
+	
+	category_icons = {
+		tr("ALL"): load("res://assets/img/categories/ALL.png"),
+		tr("2PLAYERS"): load("res://assets/img/categories/2PLAYERS.png"),
+		tr("ARCADE") : load("res://assets/img/categories/ARCADE.png"),
+		tr("BULLETHELL") : load("res://assets/img/categories/BULLETHELL.png"),
+		tr("POPULAR") : load("res://assets/img/categories/POPULAR.png"),
+		tr("RHYTHM") : load("res:////assets/img/categories/RHYTHM.png"),
+		tr("SOFTWARE") : load("res://assets/img/categories/SOFTWARE.png"),
+		tr("STM") : load("res://assets/img/categories/STM.png"),
+		tr("PICO-8") : load("res://assets/img/categories/PICO-8.png"),
+		tr("FRENCH") : load("res://assets/img/categories/FRENCH.png"),
+		tr("JAPANESE") : load("res://assets/img/categories/JAPANESE.png"),
+		tr("PC") : load("res://assets/img/categories/PC.png"),
+		tr("FIGHTING") : load("res://assets/img/categories/FIGHTING.png"),
+		tr("PLATFORM") : load("res://assets/img/categories/PLATFORM.png"),
+		tr("PUZZLE") : load("res://assets/img/categories/PUZZLE.png"),
+		"PLACEHOLDER" : load("res://assets/img/categories/PLACEHOLDER.png")
+	}
+	
 	$ItemList.clear()
 	for game in GameList.GAME_LIST:
 		$ItemList.add_item(game.name, game.icon)
