@@ -1,7 +1,13 @@
 extends HBoxContainer
 
 var selected_category := ""
-var category_icons := {}
+var category_icons := {
+	tr("ALL"): load("res://assets/img/categories/ALL.png"),
+	tr("2PLAYERS"): load("res://assets/img/categories/2PLAYERS.png"),
+	tr("ARCADE") : load("res://assets/img/categories/ARCADE.png"),
+	tr("PUZZLE") : load("res://assets/img/categories/PUZZLE.png"),
+	"PLACEHOLDER" : load("res://assets/img/categories/PLACEHOLDER.png")
+}
 
 func _on_category_list_focus_entered() -> void:
 	$Click2.play()
@@ -13,17 +19,6 @@ func _on_category_list_focus_exited() -> void:
 	$Click.play()
 	$AnimationPlayer.play("close_category")
 	BusEvent.emit_signal("DRAWER_CATEGORY_CLOSED")
-
-func _load_all_category_icons() -> void:
-	var dir = DirAccess.open("res://assets/img/categories/")
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			if file_name.ends_with(".png"):
-				var category_name = file_name.trim_suffix(".png")
-				category_icons[tr(category_name)] = ResourceLoader.load("res://assets/img/categories/" + file_name)
-			file_name = dir.get_next()
 
 func _on_game_list_loaded() -> void:
 	$ItemList.clear()
@@ -54,8 +49,6 @@ func _ready() -> void:
 	BusEvent.connect("GAME_LIST_LOADED", _on_game_list_loaded)
 	BusEvent.connect("START_SCREENSAVER", _on_start_screensaver)
 	BusEvent.connect("STOP_SCREENSAVER", _on_stop_screensaver)
-	
-	_load_all_category_icons()
 
 func _on_item_list_focus_entered() -> void:
 	BusEvent.emit_signal("DRAWER_FOCUSED")
