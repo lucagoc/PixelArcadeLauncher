@@ -1,7 +1,7 @@
 extends HBoxContainer
 
 var selected_category := ""
-var category_icons := {}  # Dictionnaire pour stocker les icônes
+var category_icons := {}
 
 func _on_category_list_focus_entered() -> void:
 	$Click2.play()
@@ -22,7 +22,7 @@ func _load_all_category_icons() -> void:
 		while file_name != "":
 			if file_name.ends_with(".png"):
 				var category_name = file_name.trim_suffix(".png")
-				category_icons[tr(category_name)] = load("res://assets/img/categories/" + file_name)
+				category_icons[tr(category_name)] = ResourceLoader.load("res://assets/img/categories/" + file_name)
 			file_name = dir.get_next()
 
 func _on_game_list_loaded() -> void:
