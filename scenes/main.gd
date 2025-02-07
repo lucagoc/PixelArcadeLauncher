@@ -83,7 +83,7 @@ func _ready():
 var quitting = false
 
 func _process(delta):
-	if Input.is_action_pressed("ui_cancel"):
+	if Input.is_action_pressed("ui_cancel") and not ProcessManager.is_game_running():
 		if not quitting:
 			var state = $BlackOut2.get_current_animation_position()
 			$BlackOut2.play("BlackOut/black_out")
