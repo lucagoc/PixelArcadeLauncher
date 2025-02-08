@@ -47,7 +47,6 @@ signal ABOUT_OPENED
 @warning_ignore("unused_signal")
 signal MAIN_INITED
 
-
 # Action signals
 @warning_ignore("unused_signal")
 signal CENTER_SELECTED_BANNER  		# Center the screen on a banner
