@@ -1,5 +1,7 @@
 extends Control
 
+var quitting = false
+
 # Load the settings from the settings.conf file
 func preload_data():
 	# Check if the launcher folder exists
@@ -32,12 +34,6 @@ func start_loading():
 	$Home.hide()
 	$AnimationPlayer.play("loading_start")
 
-# End the loading screen
-func end_loading():
-	$AnimationPlayer.play("loading_end")
-	BusEvent.emit_signal("SELECT_GAME", 0)
-	print("[SUCCESS] PixelArcadeLauncher has been loaded successfully !")
-
 func _on_scaling_changed(scaling: float) -> void:
 	get_tree().root.content_scale_factor = scaling
 
@@ -46,9 +42,11 @@ func _on_secret_shake() -> void:
 		$AnimationPlayer.play("shake")
 
 func _on_loading_screen_ended():
-	end_loading()
+	$AnimationPlayer.play("loading_end")
+	BusEvent.emit_signal("SELECT_GAME", 0)
+	print("[SUCCESS] PixelArcadeLauncher has been loaded successfully !")
 
-func _on_konami_activated():
+func _on_terminal_activated():
 	#$SettingsMenu.show()
 	OS.execute("kitty", [])
 	get_tree().quit()
@@ -67,7 +65,7 @@ func _ready():
 	BusEvent.connect("SCALING_CHANGED", _on_scaling_changed)
 	BusEvent.connect("START_SECRET_SHAKE", _on_secret_shake)
 	BusEvent.connect("LOADING_SCREEN_ENDED", _on_loading_screen_ended)
-	BusEvent.connect("KONAMI_ACTIVATED", _on_konami_activated)
+	BusEvent.connect("TERMINAL_ACTIVATED", _on_terminal_activated)
 	
 	BusEvent.connect("CHRISTMAS_MODE", _on_christmas)
 	BusEvent.connect("APRIL_FOOLS_MODE", _on_april_fools)
@@ -75,12 +73,10 @@ func _ready():
 	BusEvent.emit_signal("MAIN_INITED")
 	
 	preload_data()
-	GameList.reload()
-
 	if Settings.get_setting("Maintenance", "enabled"):
 		get_tree().change_scene_to_file("res://scenes/special/maintenance_screen.tscn")
 
-var quitting = false
+	GameList.reload()
 
 func _process(delta):
 	if Input.is_action_pressed("ui_cancel") and not ProcessManager.is_game_running():

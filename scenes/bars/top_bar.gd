@@ -19,6 +19,7 @@ func _on_christmas():
 
 func _on_april_fools():
 	color = "ff00d9"
+	$TopHbox/VersionLabel.text = "V4.444-FOOLISHWORLD"
 
 func _ready() -> void:
 	BusEvent.connect("GAME_LAUNCHED", _on_game_launched)

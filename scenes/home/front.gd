@@ -16,6 +16,8 @@ func _on_banner_menu_focused() -> void:
 		animation.bezier_track_set_key_value(0, 0, drawer_size)
 		$AnimationPlayer.queue("close_drawer")
 		_is_drawer_focused = false
+	
+	$Credits.hide()
 
 func _on_drawer_focused() -> void:
 	$AboutAnimationPlayer.play("RESET")
@@ -49,9 +51,18 @@ func _on_screensaver_stop():
 func _on_about_opened():
 	var about_size = get_viewport_rect().size.y * ABOUT_SIZE
 	var animation = $AboutAnimationPlayer.get_animation("about_open")
+	$CreditsAnimationPlayer.play("RESET")
 	animation.bezier_track_set_key_value(0, 1, about_size)
 	$AboutAnimationPlayer.play("about_open")
 	_is_about_opened = true
+	$Credits.show()
+
+func _on_credits_opened():
+	var credits_size = get_viewport_rect().size.y * ABOUT_SIZE
+	var animation = $CreditsAnimationPlayer.get_animation("credits_open")
+	animation.bezier_track_set_key_value(0, 1, credits_size)
+	$AboutAnimationPlayer.play_backwards("about_open")
+	$CreditsAnimationPlayer.play("credits_open")
 
 func _ready() -> void:
 	BusEvent.connect("BANNER_MENU_FOCUSED", _on_banner_menu_focused)
@@ -61,6 +72,7 @@ func _ready() -> void:
 	BusEvent.connect("START_SCREENSAVER", _on_screensaver_start)
 	BusEvent.connect("STOP_SCREENSAVER", _on_screensaver_stop)
 	BusEvent.connect("ABOUT_OPENED", _on_about_opened)
+	BusEvent.connect("CREDITS_OPENED", _on_credits_opened)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "close_drawer":

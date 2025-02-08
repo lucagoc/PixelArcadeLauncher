@@ -37,13 +37,15 @@ signal SCALING_CHANGED(scale: float)	# Scaling changed
 @warning_ignore("unused_signal")
 signal LOADING_SCREEN_ENDED				# Loading screen ended
 @warning_ignore("unused_signal")
-signal KONAMI_ACTIVATED					# Konami code activated
+signal TERMINAL_ACTIVATED					# Konami code activated
 @warning_ignore("unused_signal")
 signal SETTINGS_LOADED
 @warning_ignore("unused_signal")
 signal ECOMODE_ACTIVATED
 @warning_ignore("unused_signal")
 signal ABOUT_OPENED
+@warning_ignore("unused_signal")
+signal CREDITS_OPENED
 @warning_ignore("unused_signal")
 signal MAIN_INITED
 
@@ -129,7 +131,7 @@ func _on_start_secret_shake() -> void:
 func _on_loading_screen_ended() -> void:
 	print("[SIGNAL] Loading screen ended")
 
-func _on_konami_activated() -> void:
+func _on_terminal_activated() -> void:
 	print("[SIGNAL] Konami code activated")
 
 func _on_settings_loaded() -> void:
@@ -164,7 +166,7 @@ func _ready() -> void:
 		connect("BANNER_SELECTED", _on_banner_selection)
 		connect("SCALING_CHANGED", _on_scaling_changed)
 		connect("LOADING_SCREEN_ENDED", _on_loading_screen_ended)
-		connect("KONAMI_ACTIVATED", _on_konami_activated)
+		connect("TERMINAL_ACTIVATED", _on_terminal_activated)
 		connect("SETTINGS_LOADED", _on_settings_loaded)
 		connect("ECOMODE_ACTIVATED", _on_ecomode_activated)
 		connect("MAIN_INITED", _on_main_inited)
