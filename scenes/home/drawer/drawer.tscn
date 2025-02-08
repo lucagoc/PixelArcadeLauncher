@@ -1,11 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://b8xcoqpmgts1i"]
+[gd_scene load_steps=9 format=3 uid="uid://b8xcoqpmgts1i"]
 
 [ext_resource type="Script" path="res://scenes/home/drawer/drawer.gd" id="2_kt8np"]
-[ext_resource type="Texture2D" uid="uid://x84wn3e8yi34" path="res://assets/img/categories/ALL.png" id="3_0irsh"]
-[ext_resource type="Texture2D" uid="uid://d1b3bxyfqj1rr" path="res://assets/img/categories/ARCADE.png" id="3_02wdd"]
-[ext_resource type="Texture2D" uid="uid://c1e6nun3i5mdu" path="res://assets/img/categories/BULLETHELL.png" id="4_hqosv"]
-[ext_resource type="Texture2D" uid="uid://mhup28adns34" path="res://assets/img/categories/FIGHTING.png" id="5_54h4m"]
-[ext_resource type="Texture2D" uid="uid://bdtil51ym3ee0" path="res://assets/img/categories/PLACEHOLDER.png" id="6_ohtb8"]
 [ext_resource type="Texture2D" uid="uid://cgc7asuvr1um5" path="res://assets/img/default/placeholder.svg" id="8_mp2f3"]
 [ext_resource type="AudioStream" uid="uid://crmvyqs82udn4" path="res://assets/sounds/ui/click.mp3" id="9_v8hon"]
 [ext_resource type="AudioStream" uid="uid://clkeoy0alu47j" path="res://assets/sounds/ui/click2.mp3" id="10_p4fs3"]
@@ -82,15 +77,8 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_neighbor_right = NodePath("../../ItemList")
 text_overrun_behavior = 0
-item_count = 6
 same_column_width = true
 fixed_icon_size = Vector2i(60, 60)
-item_0/text = " ALL"
-item_0/icon = ExtResource("3_0irsh")
-item_1/icon = ExtResource("3_02wdd")
-item_2/icon = ExtResource("4_hqosv")
-item_3/icon = ExtResource("5_54h4m")
-item_4/icon = ExtResource("6_ohtb8")
 
 [node name="ItemList" type="ItemList" parent="."]
 layout_mode = 2
