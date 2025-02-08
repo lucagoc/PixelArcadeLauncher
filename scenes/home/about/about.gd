@@ -12,13 +12,11 @@ func _on_game_selection(id: int):
 	$"ColorRect/Padding/Main/GameInfo/Desc/DescBox/Desc".text = GameList.GAME_LIST[id].description
 	$"ColorRect/Padding/Main/MoreInfo".text = tr("EDITOR") + " : " +  GameList.GAME_LIST[id].editor + " | " + tr("YEAR") + " : " + GameList.GAME_LIST[id].year
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	BusEvent.connect("GAME_SELECTED", _on_game_selection)
 
 	$"ColorRect/Padding".hide()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if _is_focused:
 		if Input.is_action_just_pressed("ui_accept"):
@@ -34,7 +32,6 @@ func _on_focus_entered() -> void:
 	$"ColorRect/Padding".show()
 	BusEvent.emit_signal("ABOUT_OPENED")
 	_is_focused = true
-
 
 func _on_focus_exited() -> void:
 	$"ColorRect/Padding".hide()

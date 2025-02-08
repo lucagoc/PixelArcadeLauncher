@@ -63,7 +63,6 @@ func process_categories(value: String) -> Array:
 	var parts = Path.strip_brackets(value).split(",")
 	for part in parts:
 		categories.append(tr(Path.strip_quotes(part.strip_edges())))
-	print(categories)
 	return categories
 
 func process_controls(value: String) -> Array:
@@ -120,7 +119,6 @@ func load_config_file(game, path) -> void:
 							add_game_to_categories(game)
 						"controls":
 							game.controls = process_controls(value)
-							print(game.controls)
 
 				line = file.get_line()
 		else:
