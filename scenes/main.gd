@@ -38,8 +38,8 @@ func _on_scaling_changed(scaling: float) -> void:
 	get_tree().root.content_scale_factor = scaling
 
 func _on_secret_shake() -> void:
-	if not $AnimationPlayer.is_playing():
-		$AnimationPlayer.play("shake")
+	if not $Shaker.is_playing():
+		$Shaker.play("shake")
 
 func _on_loading_screen_ended():
 	$AnimationPlayer.play("loading_end")
