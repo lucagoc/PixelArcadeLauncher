@@ -43,7 +43,6 @@ func _on_secret_shake() -> void:
 
 func _on_loading_screen_ended():
 	$AnimationPlayer.play("loading_end")
-	BusEvent.emit_signal("SELECT_GAME", 0)
 	print("[SUCCESS] PixelArcadeLauncher has been loaded successfully !")
 
 func _on_terminal_activated():
@@ -98,3 +97,7 @@ func _process(delta):
 func _on_black_out_animation_finished(_anim_name: StringName) -> void:
 	if quitting:
 		get_tree().quit()
+
+func _on_animation_player_animation_finished(anim_name: StringName):
+	if anim_name == "loading_end":
+		BusEvent.emit_signal("SELECT_GAME", 0)
