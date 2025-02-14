@@ -1,0 +1,160 @@
+[gd_scene load_steps=6 format=3 uid="uid://csxsg7xpftri"]
+
+[ext_resource type="Texture2D" uid="uid://wl3k5etlp5jg" path="res://assets/img/joysticks/p1_idle.png" id="1_fold7"]
+[ext_resource type="Texture2D" uid="uid://2rev1h3jo7k7" path="res://assets/img/buttons/white_up.png" id="2_m5nra"]
+[ext_resource type="Texture2D" uid="uid://bdg6w83wmevh1" path="res://assets/img/buttons/yellow_up.png" id="3_vjlp5"]
+[ext_resource type="Texture2D" uid="uid://5y5q7recbhs2" path="res://assets/img/joysticks/p2_idle.png" id="4_1m768"]
+[ext_resource type="Texture2D" uid="uid://b6rt65v7j2j4a" path="res://assets/img/buttons/black_up.png" id="5_yk530"]
+
+[node name="GamepadIndicator" type="HBoxContainer"]
+
+[node name="StickP1" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+texture = ExtResource("1_fold7")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="White" type="Control" parent="."]
+custom_minimum_size = Vector2(135, 0)
+layout_mode = 2
+
+[node name="1" type="TextureRect" parent="White"]
+layout_mode = 0
+offset_top = 24.0
+offset_right = 40.0
+offset_bottom = 64.0
+texture = ExtResource("2_m5nra")
+
+[node name="2" type="TextureRect" parent="White"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 2.0
+offset_right = 84.0
+offset_bottom = 42.0
+texture = ExtResource("2_m5nra")
+
+[node name="3" type="TextureRect" parent="White"]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 14.0
+offset_right = 131.0
+offset_bottom = 54.0
+texture = ExtResource("2_m5nra")
+
+[node name="4" type="TextureRect" parent="White"]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 40.0
+offset_bottom = 107.0
+texture = ExtResource("2_m5nra")
+
+[node name="5" type="TextureRect" parent="White"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 45.0
+offset_right = 84.0
+offset_bottom = 85.0
+texture = ExtResource("2_m5nra")
+
+[node name="6" type="TextureRect" parent="White"]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 57.0
+offset_right = 131.0
+offset_bottom = 97.0
+texture = ExtResource("2_m5nra")
+
+[node name="Separator" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Center" type="Control" parent="."]
+custom_minimum_size = Vector2(131, 0)
+layout_mode = 2
+
+[node name="1" type="TextureRect" parent="Center"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 48.0
+offset_bottom = 46.0
+texture = ExtResource("2_m5nra")
+
+[node name="2" type="TextureRect" parent="Center"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 35.0
+offset_right = 85.0
+offset_bottom = 75.0
+texture = ExtResource("3_vjlp5")
+
+[node name="3" type="TextureRect" parent="Center"]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 6.0
+offset_right = 123.0
+offset_bottom = 46.0
+texture = ExtResource("2_m5nra")
+
+[node name="Separator2" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StickP2" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+texture = ExtResource("4_1m768")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Black" type="Control" parent="."]
+custom_minimum_size = Vector2(135, 0)
+layout_mode = 2
+
+[node name="1" type="TextureRect" parent="Black"]
+layout_mode = 0
+offset_top = 23.0
+offset_right = 40.0
+offset_bottom = 63.0
+texture = ExtResource("5_yk530")
+
+[node name="2" type="TextureRect" parent="Black"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 1.0
+offset_right = 84.0
+offset_bottom = 41.0
+texture = ExtResource("5_yk530")
+
+[node name="3" type="TextureRect" parent="Black"]
+layout_mode = 0
+offset_left = 91.0
+offset_top = 13.0
+offset_right = 131.0
+offset_bottom = 53.0
+texture = ExtResource("5_yk530")
+
+[node name="4" type="TextureRect" parent="Black"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 64.0
+offset_right = 41.0
+offset_bottom = 104.0
+texture = ExtResource("5_yk530")
+
+[node name="5" type="TextureRect" parent="Black"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 42.0
+offset_right = 85.0
+offset_bottom = 82.0
+texture = ExtResource("5_yk530")
+
+[node name="6" type="TextureRect" parent="Black"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 54.0
+offset_right = 132.0
+offset_bottom = 94.0
+texture = ExtResource("5_yk530")

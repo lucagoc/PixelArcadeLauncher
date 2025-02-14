@@ -1,0 +1,93 @@
+key,en,fr,es,jp,ru
+DISPLAY,Display,Affichage,Pantalla,ディスプレイ,показ
+LAUNCH,Launch,Lancer,Lanzar,起動,запуск
+ENABLED,Enabled,Activé,Habilitado,有効,включено
+DISABLED,Disabled,Désactivé,Deshabilitado,無効,отключено
+HOME,Home,Accueil,Inicio,ホーム,дом
+SETTINGS,Settings,Paramètres,Configuración,設定,настройки
+BACK,Back,Retour,Atrás,戻る,назад
+EXIT,Exit,Quitter,Salir,終了,выход
+GAMES,Games,Jeux,Juegos,ゲーム,игры
+TIME,Time,Temps,Tiempo,時間,время
+LOADING,Loading,Chargement,Cargando,ロード中,загрузка
+SUCCESS,Success,Succès,Éxito,成功,успех
+ERROR,Error,Erreur,Error,エラー,ошибка
+RETRY,Retry,Réessayer,Reintentar,再試行,повторить
+START,Start,Démarrer,Iniciar,開始,начать
+PAUSE,Pause,Pause,Pausa,一時停止,пауза
+RESUME,Resume,Reprendre,Reanudar,再開,возобновить
+CANCEL,Cancel,Annuler,Cancelar,キャンセル,отмена
+LANGUAGE,Language,Langue,Idioma,言語,язык
+VOLUME,Volume,Volume,Volumen,ボリューム,объем
+SCREENSAVER,Screensaver,Économiseur d’écran,Pantalla de protección,スクリーンセーバー,заставка
+BRIGHTNESS,Brightness,Luminosité,Brillo,明るさ,яркость
+RESET,Reset,Réinitialiser,Reiniciar,リセット,сброс
+CREDITS,Credits,Crédits,Créditos,クレジット,кредиты
+EDITOR,Editor,Éditeur,Editor,エディタ,редактор
+YEAR,Year,Année,Año,年,год
+DESCRIPTION,Description,Description,Descripción,説明,описание
+PLAYER_1,Player 1,Joueur 1,Jugador 1,プレイヤー1,игрок 1
+PLAYER_2,Player 2,Joueur 2,Jugador 2,プレイヤー2,игрок 2
+ABOUT,About,À propos,Acerca de,約,о
+VERSION,Version,Version,Versión,バージョン,версия
+COPYRIGHT,Copyright,Droits d’auteur,Derechos de autor,著作権,авторское право
+LICENSE,License,Licence,Licencia,ライセンス,лицензия
+SOURCE,Source,Source,Fuente,ソース,источник
+CONTRIBUTORS,Contributors,Contributeurs,Contribuidores,貢献者,участники
+THANKS,Thanks,Remerciements,Gracias,感謝,спасибо
+WELCOME,Welcome,Bienvenue,Bienvenido,ようこそ,добро пожаловать
+TRANSLATION,Translation,Traduction,Traducción,翻訳,перевод
+SPECIAL_THANKS,Special Thanks,Remerciements spéciaux,Agradecimientos especiales,特別な感謝,особая благодарность
+,,,,
+ALL,All,Tout,Todo,すべて,все
+PC,PC,PC,PC,P.C.,ПК
+FIGHTING,Fighting,Combat,Lucha,ファイティング,борьба
+ADVENTURE,Adventure,Aventure,Aventura,アドベンチャー,приключение
+PLAYERS,Players,Joueurs,Jugadores,プレイヤー,игроки
+BULLETHELL,Bullet Hell,Bullet Hell,Bullet Hell,弾幕,пуленепробиваемый
+FRENCH,French,Français,Francés,フランス語,французский
+ENGLISH,English,Anglais,Inglés,英語,английский
+JAPANESE,Japanese,Japonais,Japonés,日本語,японский
+PLATFORM,Platform,Plateforme,Plataforma,プラットフォーム,платформа
+PICO-8,PICO-8,PICO-8,PICO-8,PICO-8,PICO-8
+POPULAR,Popular,Populaire,Popular,人気,популярный
+PUZZLE,Puzzle,Puzzle,Puzzle,パズル,головоломка
+ANIME,Anime,Anime,Anime,アニメ,аниме
+SHOOTER,Shooter,Tireur,Disparos,シューティング,стрелок
+RPG,RPG,RPG,RPG,RPG,RPG
+HORROR,Horror,Horreur,Terror,ホラー,ужас
+SPORTS,Sports,Sports,Deportes,スポーツ,спорт
+METROIDVANIA,Metroidvania,Metroidvania,Metroidvania,メトロイドヴァニア,метроидвания
+ROGUELIKE,Roguelike,Roguelike,Roguelike,ローグライク,рогалик
+SURVIVAL,Survival,Survie,Sobrevivencia,サバイバル,выживание
+SANDBOX,Sandbox,Sandbox,Sandbox,サンドボックス,песочница
+FANTASY,Fantasy,Fantaisie,Fantasía,ファンタジー,фэнтези
+SOFTWARE,Software,Logiciel,Software,ソフトウェア,программное обеспечение
+STM,STM,STM,STM,STM,STM
+RACING,Racing,Course,Carrera,レース,гонки
+RHYTHM,Rhythm,Rythme,Ritmo,リズム,ритм
+ARCADE,Arcade,Arcade,Arcade,アーケード,аркада
+ZZ,ZZ,ZZ,ZZ,ZZ,ZZ
+2PLAYERS,2 Players,2 Joueurs,2 Jugadores,2プレイヤー,2 игрока
+,,,,
+SCREENSAVER_GREATER,Press a key to begin,Appuyez sur une touche pour commencer,Pulse una tecla para comenzar,キーを押して開始,нажмите клавишу для начала
+NO_DESCRIPTION,This game has no description,Ce jeu n’a pas de description,Este juego no tiene descripción,このゲームには説明がありません,Эта игра не имеет описания
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+,,,,
+CREDITS_MAIN,Made with ❤️‍ by lucagoc (promo 26),Fait avec ❤️‍  par lucagoc (promo 26), Hecho con ❤️‍ por lucagoc (promo 26),❤️‍でlucagoc（プロモ26）によって作成されました,Сделано с ❤️‍ lucagoc (promo 26)
+CREDITS_LICENCE,This project is under MIT license,Ce projet est sous licence MIT, Este proyecto está bajo la licencia MIT,このプロジェクトはMITライセンスの下にあります,Этот проект находится под лицензией MIT
+CREDITS_CONTRIBUTE,Un bug / une suggestion ? Contribue au projet sur le GitHub !,Un bug / une suggestion ? Contribue au projet sur le GitHub !,¿Un error / una sugerencia? ¡Contribuye al proyecto en GitHub!,バグ/提案？GitHubでプロジェクトに貢献してください！,Ошибка / предложение? Внесите свой вклад в проект на GitHub!
+CREDITS_THANKS,Special thanks to Mat_the_real and Citorva for their help !,Remerciements spéciaux à Mat_the_real et Citorva pour leur aide !,¡Gracias especiales a Mat_the_real y Citorva por su ayuda!,Mat_the_realとCitorvaに特別な感謝を！,Отдельное спасибо Mat_the_real и Citorva за помощь!
+,,,,
+CREDITS_GAMEDEV,Make your game for the terminal ! All informations are on https://pixel.isima.fr/doc-borne/Développement/Tutoriel/,Fait ton jeu pour la borne ! Toutes les informations sont sur https://pixel.isima.fr/doc-borne/Développement/Tutoriel/,¡Haz tu juego para la terminal! Toda la información está en https://pixel.isima.fr/doc-borne/Développement/Tutoriel/,あなたのゲームを端末に作成してください！すべての情報はhttps://pixel.isima.fr/doc-borne/Développement/Tutoriel/にあります！,Создайте свою игру для терминала! Вся информация находится на https://pixel.isima.fr/doc-borne/Développement/Tutoriel/

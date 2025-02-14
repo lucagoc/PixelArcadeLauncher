@@ -15,7 +15,7 @@ const TICK = 0.18
 var threshold_timer : Timer
 var tick_timer : Timer
 
-func _process(delta):
+func _process(_delta):
 	#Check any joystick directions that were held, and if they are no longer
 	#held, reset them (including the input events)
 	if joystickLeftThisTick && !Input.is_action_pressed("ui_left_joystick"):
@@ -53,7 +53,7 @@ func _process(delta):
 		threshold_timer.stop()
 
 #Use the Input's action_just_pressed to avoid duplicate calls
-func _input(event):
+func _input(_event):
 	if !joystickLeftThisTick && Input.is_action_just_pressed("ui_left_joystick"):
 		joystickLeftThisTick = true
 		var uiEvent = InputEventAction.new()

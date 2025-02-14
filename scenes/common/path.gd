@@ -16,6 +16,9 @@ var game_icon   = "icon.png"               # Path to the game icon
 var game_logo   = "logo.png"               # Path to the game logo
 var game_theme  = "theme.ogg"              # Path to the game theme
 
+# PAL Data
+var data_pal = "data.pal"                  # Path to the game PAL data
+
 # Default images
 var placeholder = "res://assets/img/default/placeholder.svg"
 
@@ -30,6 +33,33 @@ func get_game(folder_name: String) -> String:
 		return data + games_folder + folder_name + "\\"
 	else:
 		return data + games_folder + folder_name + "/"
+
+func strip_quotes(string: String) -> String:
+	if string.begins_with("\"") and string.ends_with("\""):
+		return string.substr(1, string.length() - 2)
+	return string
+
+func strip_brackets(string: String) -> String:
+	if string.begins_with("[") and string.ends_with("]"):
+		return string.substr(1, string.length() - 2)
+	return string
+
+func string_to_path(string: String) -> String:
+
+	string = strip_quotes(string)
+
+	# Replace $HOME, ~, $USERPROFILE by the user home directory
+	if string.begins_with("$HOME"):
+		string = string.replace("$HOME", OS.get_environment("HOME"))
+	elif string.begins_with("~"):
+		string = string.replace("~", OS.get_environment("HOME"))
+	elif string.begins_with("$USERPROFILE"):
+		string = string.replace("$USERPROFILE", OS.get_environment("USERPROFILE"))
+
+	if OS.has_feature("windows"):
+		return posix_to_win_path(string)
+	else:
+		return string
 
 func _ready():
 	# Windows things UwU

@@ -1,0 +1,93 @@
+[gd_scene load_steps=8 format=3 uid="uid://ddeg0tk1y4cdd"]
+
+[ext_resource type="Theme" uid="uid://5im7y78yca4y" path="res://themes/pixel.tres" id="1_qh1ha"]
+[ext_resource type="Script" path="res://scenes/settings/item_bar.gd" id="2_nqtcn"]
+[ext_resource type="Texture2D" uid="uid://djjap48cd7l7n" path="res://assets/img/settings/Default.png" id="3_om1ho"]
+
+[sub_resource type="Animation" id="Animation_m3we3"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:custom_minimum_size:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(85, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_66ngf"]
+resource_name = "close_category"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:custom_minimum_size:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(500, -0.25, 0, 0.25, 0, 85, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="Animation" id="Animation_4m38c"]
+resource_name = "open_category"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:custom_minimum_size:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(85, -0.25, 0, 0, 82.5, 500, -0.233333, -2.5, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qcudj"]
+_data = {
+"RESET": SubResource("Animation_m3we3"),
+"close": SubResource("Animation_66ngf"),
+"open": SubResource("Animation_4m38c")
+}
+
+[node name="ItemBar" type="ColorRect"]
+custom_minimum_size = Vector2(85, 0)
+size_flags_horizontal = 0
+focus_mode = 2
+theme = ExtResource("1_qh1ha")
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_nqtcn")
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qcudj")
+}
+
+[node name="List" type="ItemList" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_right = NodePath("../../OptionBar")
+theme = ExtResource("1_qh1ha")
+theme_override_constants/icon_margin = 16
+item_count = 2
+same_column_width = true
+fixed_icon_size = Vector2i(64, 64)
+item_0/text = "Option1"
+item_0/icon = ExtResource("3_om1ho")
+item_1/text = "Option2propos"
+item_1/icon = ExtResource("3_om1ho")
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_entered" from="List" to="." method="_on_list_focus_entered"]
+[connection signal="focus_exited" from="List" to="." method="_on_list_focus_exited"]
+[connection signal="item_activated" from="List" to="." method="_on_list_item_activated"]
+[connection signal="item_selected" from="List" to="." method="_on_list_item_selected"]

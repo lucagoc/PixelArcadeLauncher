@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bemlflx640ecp"]
+[gd_scene load_steps=40 format=3 uid="uid://bemlflx640ecp"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_srogu"]
 [ext_resource type="PackedScene" uid="uid://c4frsd4if6b7x" path="res://scenes/special/loading_screen.tscn" id="2_io48b"]
@@ -6,11 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://ds2js8kmbdnu5" path="res://scenes/home/background.tscn" id="4_uvh1k"]
 [ext_resource type="Script" path="res://scenes/home/front.gd" id="5_v2f7h"]
 [ext_resource type="PackedScene" uid="uid://nlbgb1sdxsw5" path="res://scenes/bars/top_bar.tscn" id="6_5rdxe"]
+[ext_resource type="PackedScene" uid="uid://4nhyvbsbu4d6" path="res://scenes/home/about/about.tscn" id="6_qc7de"]
+[ext_resource type="PackedScene" uid="uid://b4m7u86p02fo4" path="res://scenes/home/credits/credits.tscn" id="6_xcmv4"]
 [ext_resource type="PackedScene" uid="uid://dnmfvwbgonwdj" path="res://scenes/home/banner_list/banner_scroll_list.tscn" id="7_yqq1d"]
 [ext_resource type="PackedScene" uid="uid://b8xcoqpmgts1i" path="res://scenes/home/drawer/drawer.tscn" id="8_14dml"]
 [ext_resource type="AudioStream" uid="uid://hsdpagkfjr40" path="res://assets/sounds/ui/game_launch.mp3" id="9_g7vwn"]
 [ext_resource type="PackedScene" uid="uid://bxqy35wah5fxc" path="res://scenes/special/screensaver.tscn" id="10_62net"]
 [ext_resource type="PackedScene" uid="uid://f2rysqj78eqv" path="res://scenes/special/transition_layer.tscn" id="10_mhu4u"]
+[ext_resource type="AudioStream" uid="uid://1lxym6ernowe" path="res://assets/sounds/ui/swipe.mp3" id="10_uyrmg"]
 [ext_resource type="PackedScene" uid="uid://bveavdlpsb5lv" path="res://scenes/bars/bottom_bar.tscn" id="16_x1ks8"]
 
 [sub_resource type="Animation" id="Animation_anar2"]
@@ -59,6 +62,17 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("About:custom_minimum_size:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_ys0tp"]
@@ -142,7 +156,120 @@ _data = {
 "open_drawer": SubResource("Animation_b5voc")
 }
 
+[sub_resource type="Animation" id="Animation_ipery"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("About:custom_minimum_size:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("About:custom_minimum_size:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_ht62l"]
+resource_name = "about_open"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("About:custom_minimum_size:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 800, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a85w3"]
+_data = {
+"RESET": SubResource("Animation_ipery"),
+"about_open": SubResource("Animation_ht62l")
+}
+
+[sub_resource type="Animation" id="Animation_osbw1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Credits/Panel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Credits:custom_minimum_size:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_e1uya"]
+resource_name = "credits_open"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Credits/Panel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Credits:custom_minimum_size:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 300, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dxffl"]
+_data = {
+"RESET": SubResource("Animation_osbw1"),
+"credits_open": SubResource("Animation_e1uya")
+}
+
+[sub_resource type="Gradient" id="Gradient_ao3k5"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rfn04"]
+gradient = SubResource("Gradient_ao3k5")
+
 [sub_resource type="Animation" id="Animation_t2tse"]
+resource_name = "RESET"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -330,38 +457,107 @@ tracks/3/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_oygq0"]
-resource_name = "test"
-length = 0.5
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Home:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0, 1, 46.5, -0.1, -20, 0.1, -53, -30.5, -0.1, 18, 0, -5, 37.5, -0.1, 14, 0.1, -14, -32.5, -0.1, 6, 0.1, 6, 0, -0.1, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Home:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
-"points": PackedFloat32Array(0, -0.1, -21, 0.1, -7, -34.5, -0.1, 23, 0.1, 45, 35.5, -0.1, 6, 0.1, 25, -27.5, -0.1, 8, 0.1, 9, 36.5, -0.1, -40, 0.1, -22, 0, -0.1, 3, 0, -1),
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5)
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2h2xi"]
 _data = {
 "RESET": SubResource("Animation_t2tse"),
 "loading_end": SubResource("Animation_ryx21"),
-"loading_start": SubResource("Animation_bvvna"),
-"shake": SubResource("Animation_oygq0")
+"loading_start": SubResource("Animation_bvvna")
+}
+
+[sub_resource type="Animation" id="Animation_bq3bx"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackOut:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlackOut:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_mgosr"]
+resource_name = "black_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlackOut:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlackOut:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.2, 0, 1, -0.5, 0, 0.25, 0),
+"times": PackedFloat32Array(0.0333333, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_568xi"]
+_data = {
+"RESET": SubResource("Animation_bq3bx"),
+"black_out": SubResource("Animation_mgosr")
+}
+
+[sub_resource type="Animation" id="Animation_afmt2"]
+resource_name = "shake"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.466667, 0.566667, 0.666667, 0.766667, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(100, -100), Vector2(-100, 100), Vector2(100, 100), Vector2(-100, -100), Vector2(100, -100), Vector2(-100, 100), Vector2(100, 100), Vector2(-100, -100), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_d3tbv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_00u88"]
+_data = {
+"RESET": SubResource("Animation_d3tbv"),
+"shake": SubResource("Animation_afmt2")
 }
 
 [node name="Main" type="Control"]
@@ -373,6 +569,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("3_qj2xj")
 script = ExtResource("1_srogu")
 
 [node name="Home" type="Control" parent="."]
@@ -382,7 +579,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("3_qj2xj")
 
 [node name="Background" parent="Home" instance=ExtResource("4_uvh1k")]
 layout_mode = 1
@@ -400,6 +596,13 @@ script = ExtResource("5_v2f7h")
 [node name="TopBar" parent="Home/Front" instance=ExtResource("6_5rdxe")]
 layout_mode = 2
 
+[node name="Credits" parent="Home/Front" instance=ExtResource("6_xcmv4")]
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+
+[node name="About" parent="Home/Front" instance=ExtResource("6_qc7de")]
+layout_mode = 2
+
 [node name="BannerScrollList" parent="Home/Front" instance=ExtResource("7_yqq1d")]
 layout_mode = 2
 scroll_horizontal = 0
@@ -411,13 +614,26 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 8
 
+[node name="GameLaunchSound" type="AudioStreamPlayer" parent="Home/Front"]
+stream = ExtResource("9_g7vwn")
+
+[node name="DrawerSound" type="AudioStreamPlayer" parent="Home/Front"]
+stream = ExtResource("10_uyrmg")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Home/Front"]
 libraries = {
 "": SubResource("AnimationLibrary_anmaq")
 }
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Home/Front"]
-stream = ExtResource("9_g7vwn")
+[node name="AboutAnimationPlayer" type="AnimationPlayer" parent="Home/Front"]
+libraries = {
+"": SubResource("AnimationLibrary_a85w3")
+}
+
+[node name="CreditsAnimationPlayer" type="AnimationPlayer" parent="Home/Front"]
+libraries = {
+"": SubResource("AnimationLibrary_dxffl")
+}
 
 [node name="Screensaver" parent="Home" instance=ExtResource("10_62net")]
 layout_mode = 1
@@ -429,10 +645,34 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
+[node name="BlackOut" type="TextureRect" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_rfn04")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_2h2xi")
 }
 speed_scale = 2.0
 
+[node name="BlackOut2" type="AnimationPlayer" parent="."]
+libraries = {
+"BlackOut": SubResource("AnimationLibrary_568xi")
+}
+
+[node name="Shaker" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_00u88")
+}
+speed_scale = 6.0
+
 [connection signal="animation_finished" from="Home/Front/AnimationPlayer" to="Home/Front" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="BlackOut2" to="." method="_on_black_out_animation_finished"]

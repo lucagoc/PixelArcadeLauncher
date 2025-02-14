@@ -24,13 +24,24 @@ func _on_banner_menu_game_selected(id: int) -> void:
 	$BackgroundHero2.texture = game.hero
 	$BackgroundAnimation.play("fade_out")
 
-func _on_game_launched(id: int):
+func _on_game_launched(_id: int):
 	$ColorAnimationPlayer.play("to_black")
 
-func _on_game_exited(id: int):
+func _on_game_exited(_id: int):
 	$ColorAnimationPlayer.play_backwards("to_black")
+
+func _on_christmas():
+	$"Particles/Normal".hide()
+	$"Particles/Christmas".show()
+
+func _on_april_fools():
+	$"Particles/Normal".hide()
+	$"Particles/AprilFools".show()
 
 func _ready() -> void:
 	BusEvent.connect("GAME_SELECTED", _on_game_selection)
 	BusEvent.connect("GAME_LAUNCHED", _on_game_launched)
 	BusEvent.connect("GAME_EXITED", _on_game_exited)
+	
+	BusEvent.connect("CHRISTMAS_MODE", _on_christmas)
+	BusEvent.connect("APRIL_FOOLS_MODE", _on_april_fools)

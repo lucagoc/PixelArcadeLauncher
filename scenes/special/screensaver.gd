@@ -15,7 +15,7 @@ func _ready() -> void:
 	$LabelAnimation.play("blink")
 
 
-func _on_background_animation_animation_finished(anim_name: StringName) -> void:
+func _on_background_animation_animation_finished(_anim_name: StringName) -> void:
 	BusEvent.emit_signal("AUTO_SCROLL")
 	$BackgroundAnimation.play("breath")
 

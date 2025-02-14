@@ -1,27 +1,36 @@
+##############################################################
+#                     Game_list file                         #
+#          		Manage the list of games loaded 	         #
+##############################################################
+
 extends Node
 
 class Game:
 	# Game data
-	var name: String			# Name of the game
-	var platform: String		# Platform of the game (windows, mame, linux)
-	var description: String		# Description of the game
-	var genre: String			# Genre (action, arcade, adventure, etc.)
+	var name: String 			# Name of the game
+	var platform: String 		# Platform of the game (windows, mame, linux)
+	var description: String = tr("NO_DESCRIPTION") 	# Description of the game
+	var editor: String = "?" 	# Editor of the game
+	var year: String = "?" 		# Year of the game
+	var categories: Array 		# categories (action, arcade, adventure, etc.)
+	var controls : Array = ["?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?", "?"]
 
 	# Executable
-	var exec: String			# Command to launch the game
+	var exec: String # Command to launch the game
 
 	# Assets
-	var icon: ImageTexture		# Icon (drawer menu)
-	var logo: ImageTexture		# Logo (more info, loading screen)
-	var banner: ImageTexture	# Banner (main menu)
-	var hero: ImageTexture		# Hero (background)
-	var theme: AudioStreamOggVorbis		# Theme music
+	var icon: ImageTexture # Icon (drawer menu)
+	var logo: ImageTexture # Logo (more info, loading screen)
+	var banner: ImageTexture # Banner (main menu)
+	var hero: ImageTexture # Hero (background)
+	var theme: AudioStreamOggVorbis # Theme music
 	
 	# Internal data
-	var path: String			# Absolute path to the game folder
-	var id: int					# Unique ID (int) of the game, attributed on load
+	var path: String # Absolute path to the game folder
+	var id: int # Unique ID (int) of the game, attributed on load
 
 var GAME_LIST: Array = []
+var games_by_category: Dictionary = {}
 
 # Load an img asset and return an ImageTexture
 # Load a placeholder if the asset doesn't exist
@@ -49,6 +58,35 @@ func load_theme(asset_path) -> AudioStreamOggVorbis:
 	else:
 		return null
 
+func process_categories(value: String) -> Array:
+	var categories = []
+	var parts = Path.strip_brackets(value).split(",")
+	for part in parts:
+		categories.append(tr(Path.strip_quotes(part.strip_edges())))
+	return categories
+
+func process_controls(value: String) -> Array:
+	var controls = []
+	var parts = Path.strip_brackets(value).split(",")
+	for part in parts:
+		controls.append(tr(Path.strip_quotes(part.strip_edges())))
+	return controls
+
+# Fonction pour ajouter un jeu dans toutes ses catégories
+func add_game_to_categories(game):
+	games_by_category[tr("ALL")].append(game)
+	for category in game.categories:
+		if not games_by_category.has(category):
+			games_by_category[category] = [] # Initialiser la liste si elle n'existe pas
+		games_by_category[category].append(game)
+
+# Fonction pour récupérer la liste des jeux dans une catégorie
+func get_games_by_category(category: String) -> Array:
+	if games_by_category.has(category):
+		return games_by_category[category]
+	else:
+		return [] # Retourner une liste vide si la catégorie n'existe pas
+
 # Load the game configuration file
 func load_config_file(game, path) -> void:
 	var file = FileAccess.open(path, FileAccess.READ)
@@ -63,15 +101,25 @@ func load_config_file(game, path) -> void:
 					var value = parts[1].strip_edges()
 					match key:
 						"name":
-							game.name = value
+							game.name = Path.strip_quotes(value)
 						"platform":
-							game.platform = value
+							game.platform = Path.strip_quotes(value)
 						"exec":
-							game.exec = value
+							game.exec = Path.strip_quotes(value)
+						"rom":
+							game.exec = Path.strip_quotes(value)
 						"description":
-							game.description = value
-						"genre":
-							game.genre = value
+							game.description = Path.strip_quotes(value)
+						"editor":
+							game.editor = Path.strip_quotes(value)
+						"year":
+							game.year = Path.strip_quotes(value)
+						"categories":
+							game.categories = process_categories(value)
+							add_game_to_categories(game)
+						"controls":
+							game.controls = process_controls(value)
+
 				line = file.get_line()
 		else:
 			printerr(game.folder + "/game.conf isn't in the proper format")
@@ -79,7 +127,6 @@ func load_config_file(game, path) -> void:
 		printerr("Cannot open the file " + game.folder + "/game.conf")
 	if file != null:
 		file.close()
-
 
 # Load a game from the game folder
 func load_game(folder_name: String) -> Game:
@@ -89,7 +136,9 @@ func load_game(folder_name: String) -> Game:
 	game.id = GAME_LIST.size()
 	
 	var game_path = Path.data + Path.games_folder + folder_name + "/"
-	load_config_file(game, game_path + Path.game_conf)
+
+	load_config_file(game, game_path + Path.game_conf) # Load the game configuration file
+
 	game.icon = load_asset(game_path + Path.game_icon)
 	game.logo = load_asset(game_path + Path.game_logo)
 	game.banner = load_banner(game_path + Path.game_banner)
@@ -100,6 +149,7 @@ func load_game(folder_name: String) -> Game:
 
 # Load all the games folders by ID from the game folder
 func load_list():
+	games_by_category = {tr("ALL"): []}
 	var dir = DirAccess.open(Path.data + Path.games_folder)
 	if dir == null:
 		printerr("Cannot open the directory " + Path.data + Path.games_folder)

@@ -7,7 +7,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$ProgressBar.value = ($MinDelay.wait_time - ($MinDelay.time_left/$MinDelay.wait_time))*100
 
 

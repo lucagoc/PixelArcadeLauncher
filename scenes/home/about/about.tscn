@@ -1,0 +1,275 @@
+[gd_scene load_steps=19 format=3 uid="uid://4nhyvbsbu4d6"]
+
+[ext_resource type="Script" path="res://scenes/home/about/about.gd" id="1_6jntd"]
+[ext_resource type="PackedScene" uid="uid://dpmpa00q1a1fq" path="res://scenes/exp/3d_banner.tscn" id="2_rpetx"]
+[ext_resource type="Script" path="res://scenes/home/about/gamepad_indicator.gd" id="3_sg4gj"]
+[ext_resource type="Texture2D" uid="uid://wl3k5etlp5jg" path="res://assets/img/joysticks/p1_idle.png" id="4_v2t26"]
+[ext_resource type="Texture2D" uid="uid://bho2vd8ok8ldk" path="res://assets/img/joysticks/p1_up.png" id="5_28lrc"]
+[ext_resource type="Texture2D" uid="uid://im882i4dlpoc" path="res://assets/img/joysticks/p1_down.png" id="6_i3mv1"]
+[ext_resource type="Texture2D" uid="uid://bq3mmhy2m4o3x" path="res://assets/img/joysticks/p1_left.png" id="7_w7dgm"]
+[ext_resource type="Texture2D" uid="uid://ddbcsy2ldaw0s" path="res://assets/img/joysticks/p1_right.png" id="8_4cqkr"]
+[ext_resource type="Texture2D" uid="uid://2rev1h3jo7k7" path="res://assets/img/buttons/white_up.png" id="9_knhra"]
+[ext_resource type="Texture2D" uid="uid://dsy6yraphruqk" path="res://assets/img/buttons/white_down.png" id="10_3m2n6"]
+[ext_resource type="Texture2D" uid="uid://5y5q7recbhs2" path="res://assets/img/joysticks/p2_idle.png" id="11_5s3db"]
+[ext_resource type="Texture2D" uid="uid://depwha7cue1ep" path="res://assets/img/joysticks/p2_up.png" id="12_v2312"]
+[ext_resource type="Texture2D" uid="uid://5qlvgond0s0a" path="res://assets/img/joysticks/p2_down.png" id="13_rtk5e"]
+[ext_resource type="Texture2D" uid="uid://bith56cive3vp" path="res://assets/img/joysticks/p2_left.png" id="14_l2hoo"]
+[ext_resource type="Texture2D" uid="uid://rwrqjg3jpmgu" path="res://assets/img/joysticks/p2_right.png" id="15_v30wj"]
+[ext_resource type="Texture2D" uid="uid://b6rt65v7j2j4a" path="res://assets/img/buttons/black_up.png" id="16_6sia5"]
+[ext_resource type="Texture2D" uid="uid://dmdb6237dx4wr" path="res://assets/img/buttons/black_down.png" id="17_0gt68"]
+[ext_resource type="PackedScene" uid="uid://csxsg7xpftri" path="res://scenes/home/about/gamepad_indicator.tscn" id="18_kso1v"]
+
+[node name="About" type="HBoxContainer"]
+focus_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("1_6jntd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 0.556863)
+
+[node name="Padding" type="HBoxContainer" parent="ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left" type="Control" parent="ColorRect/Padding"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[node name="Main" type="VBoxContainer" parent="ColorRect/Padding"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Padding" type="Control" parent="ColorRect/Padding/Main"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="ColorRect/Padding/Main"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "PACMAN"
+horizontal_alignment = 1
+
+[node name="GameInfo" type="HBoxContainer" parent="ColorRect/Padding/Main"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CoverBox" type="VBoxContainer" parent="ColorRect/Padding/Main/GameInfo"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="Top" type="Control" parent="ColorRect/Padding/Main/GameInfo/CoverBox"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="SubViewportContainer" parent="ColorRect/Padding/Main/GameInfo/CoverBox" instance=ExtResource("2_rpetx")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Bottom" type="Control" parent="ColorRect/Padding/Main/GameInfo/CoverBox"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Desc" type="VBoxContainer" parent="ColorRect/Padding/Main/GameInfo"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="ColorRect/Padding/Main/GameInfo/Desc"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DescBox" type="VBoxContainer" parent="ColorRect/Padding/Main/GameInfo/Desc"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="ColorRect/Padding/Main/GameInfo/Desc/DescBox"]
+layout_mode = 2
+size_flags_vertical = 10
+text = "DESCRIPTION"
+
+[node name="Desc" type="Label" parent="ColorRect/Padding/Main/GameInfo/Desc/DescBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Pac-Man (パックマン, Pakkuman) (initialement intitulé Puckman) est un jeu vidéo créé par TOru Iwatani pour l’entreprise japonaise Namco, sorti au Japon le 22 mai 1980. Le jeu consiste à déplacer Pac-Man, un personnage qui, vu de profil, ressemble à un diagramme circulaire à l’intérieur d’un labyrinthe, afin de lui faire manger toutes les pac-gommes qui s’y trouvent en évitant d’être touché par des fantômes.
+
+"
+autowrap_mode = 2
+
+[node name="Controls" type="VBoxContainer" parent="ColorRect/Padding/Main/GameInfo/Desc"]
+layout_mode = 2
+script = ExtResource("3_sg4gj")
+textures_P1_stick = Array[Texture]([ExtResource("4_v2t26"), ExtResource("5_28lrc"), ExtResource("6_i3mv1"), ExtResource("7_w7dgm"), ExtResource("8_4cqkr")])
+textures_P1_buttons = Array[Texture]([ExtResource("9_knhra"), ExtResource("10_3m2n6")])
+textures_P2_stick = Array[Texture]([ExtResource("11_5s3db"), ExtResource("12_v2312"), ExtResource("13_rtk5e"), ExtResource("14_l2hoo"), ExtResource("15_v30wj")])
+textures_P2_buttons = Array[Texture]([ExtResource("16_6sia5"), ExtResource("17_0gt68")])
+
+[node name="ControlsText" type="HBoxContainer" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ControlP1" type="VBoxContainer" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP1"]
+layout_mode = 2
+text = "PLAYER_1"
+
+[node name="Controls" type="HBoxContainer" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP1"]
+layout_mode = 2
+
+[node name="Stick" type="Label" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP1/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "STICK : SE DEPLACER"
+autowrap_mode = 2
+
+[node name="Left" type="VBoxContainer" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP1/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="B1" type="Label" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP1/Controls/Left"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "B1 : Sauter"
+
+[node name="B4" type="Label" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP1/Controls/Left"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "B4 : TEST"
+
+[node name="Center" type="VBoxContainer" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP1/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="B2" type="Label" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP1/Controls/Center"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "B2 : TEST"
+
+[node name="B5" type="Label" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP1/Controls/Center"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "B5 : TEST"
+
+[node name="Right" type="VBoxContainer" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP1/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="B3" type="Label" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP1/Controls/Right"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "B3 : TEST"
+
+[node name="B6" type="Label" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP1/Controls/Right"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "B6 : TEST"
+
+[node name="ControlP2" type="VBoxContainer" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP2"]
+layout_mode = 2
+text = "PLAYER_2"
+
+[node name="Controls" type="HBoxContainer" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP2"]
+layout_mode = 2
+
+[node name="Stick" type="Label" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP2/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "STICK : SE DEPLACER"
+autowrap_mode = 2
+
+[node name="Left" type="VBoxContainer" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP2/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="B1" type="Label" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP2/Controls/Left"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "B1 : Sauter"
+
+[node name="B4" type="Label" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP2/Controls/Left"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "B4 : TEST"
+
+[node name="Center" type="VBoxContainer" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP2/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="B2" type="Label" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP2/Controls/Center"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "B2 : TEST"
+
+[node name="B5" type="Label" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP2/Controls/Center"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "B5 : TEST"
+
+[node name="Right" type="VBoxContainer" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP2/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="B3" type="Label" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP2/Controls/Right"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "B3 : TEST"
+
+[node name="B6" type="Label" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls/ControlsText/ControlP2/Controls/Right"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "B6 : TEST"
+
+[node name="GamepadBox" type="VBoxContainer" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="GamepadIndicator" parent="ColorRect/Padding/Main/GameInfo/Desc/Controls/GamepadBox" instance=ExtResource("18_kso1v")]
+layout_mode = 2
+
+[node name="Padding2" type="Control" parent="ColorRect/Padding/Main"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="MoreInfo" type="Label" parent="ColorRect/Padding/Main"]
+layout_mode = 2
+text = "Éditeur: NAMCO | Année: 1979"
+horizontal_alignment = 1
+
+[node name="PaddingBottom" type="Control" parent="ColorRect/Padding/Main"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Right" type="Control" parent="ColorRect/Padding"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

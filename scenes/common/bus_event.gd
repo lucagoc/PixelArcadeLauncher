@@ -11,31 +11,43 @@ var print_debug_info: bool = false
 @warning_ignore("unused_signal")
 signal GAME_LIST_LOADED
 @warning_ignore("unused_signal")
-signal GAME_LAUNCHED(id: int)       # When a game is launched
+signal GAME_LAUNCHED(id: int)       	# When a game is launched
 @warning_ignore("unused_signal")
-signal GAME_EXITED(id: int)         # When a game is exited
+signal GAME_EXITED(id: int)         	# When a game is exited
 @warning_ignore("unused_signal")
-signal GAME_SELECTED(id: int)       # When a game is selected (indepedent of the context menu)
+signal GAME_SELECTED(id: int)       	# When a game is selected (indepedent of the context menu)
 @warning_ignore("unused_signal")
-signal GAME_DESELECTED(id: int)     # When a game is deselected (indepedent of the context menu)
+signal GAME_DESELECTED(id: int)     	# When a game is deselected (indepedent of the context menu)
 @warning_ignore("unused_signal")
-signal DRAWER_RELOADED              # Drawer reloaded
+signal DRAWER_RELOADED              	# Drawer reloaded
 @warning_ignore("unused_signal")
-signal DRAWER_FOCUSED               # Drawer focused
+signal DRAWER_FOCUSED               	# Drawer focused
 @warning_ignore("unused_signal")
-signal DRAWER_CATEGORY_OPENED       # Drawer category opened
+signal DRAWER_CATEGORY_OPENED       	# Drawer category opened
 @warning_ignore("unused_signal")
-signal DRAWER_CATEGORY_CLOSED       # Drawer category closed
+signal DRAWER_CATEGORY_CLOSED       	# Drawer category closed
 @warning_ignore("unused_signal")
-signal BANNER_MENU_RELOADED         # Banner menu loaded/reloaded
+signal BANNER_MENU_RELOADED         	# Banner menu loaded/reloaded
 @warning_ignore("unused_signal")
-signal BANNER_MENU_FOCUSED          # Banner menu focused
+signal BANNER_MENU_FOCUSED          	# Banner menu focused
 @warning_ignore("unused_signal")
-signal BANNER_SELECTED(id: int)     # Banner selected
+signal BANNER_SELECTED(id: int)     	# Banner selected
 @warning_ignore("unused_signal")
-signal SCALING_CHANGED(scale: float)# Scaling changed
+signal SCALING_CHANGED(scale: float)	# Scaling changed
 @warning_ignore("unused_signal")
-signal LOADING_SCREEN_ENDED
+signal LOADING_SCREEN_ENDED				# Loading screen ended
+@warning_ignore("unused_signal")
+signal TERMINAL_ACTIVATED					# Konami code activated
+@warning_ignore("unused_signal")
+signal SETTINGS_LOADED
+@warning_ignore("unused_signal")
+signal ECOMODE_ACTIVATED
+@warning_ignore("unused_signal")
+signal ABOUT_OPENED
+@warning_ignore("unused_signal")
+signal CREDITS_OPENED
+@warning_ignore("unused_signal")
+signal MAIN_INITED
 
 # Action signals
 @warning_ignore("unused_signal")
@@ -51,9 +63,13 @@ signal STOP_SCREENSAVER				# Stop screensaver
 @warning_ignore("unused_signal")
 signal START_SECRET_SHAKE           # Start secret shake
 @warning_ignore("unused_signal")
-signal ENABLE_BANNER_FOCUS				# Stop screensaver
+signal ENABLE_BANNER_FOCUS			# Stop screensaver
 @warning_ignore("unused_signal")
-signal DISABLE_BANNER_FOCUS           # Start secret shake
+signal DISABLE_BANNER_FOCUS         # Start secret shake
+@warning_ignore("unused_signal")
+signal CHRISTMAS_MODE
+@warning_ignore("unused_signal")
+signal APRIL_FOOLS_MODE
 
 func _on_game_list_loaded() -> void:
 	print("[SIGNAL] Game list loaded")
@@ -91,7 +107,7 @@ func _on_banner_menu_focused() -> void:
 func _on_banner_selection(id: int) -> void:
 	print("[SIGNAL] Banner selected: ", id)
 
-func _on_scaling_changed(scale: float) -> void:
+func _on_scaling_changed(_scale: float) -> void:
 	print("[SIGNAL] Scaling changed")
 
 func _on_center_selected_banner() -> void:
@@ -115,6 +131,24 @@ func _on_start_secret_shake() -> void:
 func _on_loading_screen_ended() -> void:
 	print("[SIGNAL] Loading screen ended")
 
+func _on_terminal_activated() -> void:
+	print("[SIGNAL] Konami code activated")
+
+func _on_settings_loaded() -> void:
+	print("[SIGNAL] Settings loaded")
+
+func _on_ecomode_activated() -> void:
+	print("[SIGNAL] Ecomode activated")
+
+func _on_christmas() -> void:
+	print("[SIGNAL] Christmas activated ! xD")
+
+func _on_april_fools() -> void:
+	print("[SIGNAL] April fools activated ! xD")
+
+func _on_main_inited() -> void:
+	print("[SIGNAL] Main inited")
+
 func _ready() -> void:
 	if print_debug_info:
 		# State signals
@@ -132,6 +166,10 @@ func _ready() -> void:
 		connect("BANNER_SELECTED", _on_banner_selection)
 		connect("SCALING_CHANGED", _on_scaling_changed)
 		connect("LOADING_SCREEN_ENDED", _on_loading_screen_ended)
+		connect("TERMINAL_ACTIVATED", _on_terminal_activated)
+		connect("SETTINGS_LOADED", _on_settings_loaded)
+		connect("ECOMODE_ACTIVATED", _on_ecomode_activated)
+		connect("MAIN_INITED", _on_main_inited)
 
 		# Action signals
 		connect("CENTER_SELECTED_BANNER", _on_center_selected_banner)
@@ -140,3 +178,5 @@ func _ready() -> void:
 		connect("START_SCREENSAVER", _on_start_screensaver)
 		connect("STOP_SCREENSAVER", _on_stop_screensaver)
 		connect("START_SECRET_SHAKE", _on_start_secret_shake)
+		connect("CHRISTMAS_MODE", _on_christmas)
+		connect("APRIL_FOOLS_MODE", _on_april_fools)

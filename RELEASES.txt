@@ -30,3 +30,26 @@
 	- Added shaking menu
 	- New config file
 	- Volume manager agent
+
+1.0 StableShrine
+	- [X] Category sorting
+	- [ ] About Menu (+ QR Code link to the project)
+	- [ ] "How to play" menu.
+	- [X] Refactoring BannerList and proper commenting.
+	- [ ] Screensaver time settings.
+	- [ ] Debug Mode with perf metrics.
+	- [ ] Press Button to Start : Animation and Sound.
+	- [ ] New Game Folder Structure, ROMs, Artworks etc + linking to .mame for ROMs.
+	- [ ] New Game conf format.
+	- [ ] Admin Configuration Menu (Open a console menu + setting choose what to launch).
+	- [ ] No game installed warning.
+	- [ ] Installing game (CLI) and PAP format support.
+	- [ ] Backup support (CLI).
+	- [ ] Automatic volume adjustment on sound
+
+1.1 ???
+	- [X] Translation EN/FR/ES.
+	- [ ] UI USB Mount and PAP Backup/Restore.
+	- [X] New ProcessManager with parrallel exec and PID state tracking support.
+	- [X] 25/01, 01/04, December are specials :)
+	- [X] Konami code

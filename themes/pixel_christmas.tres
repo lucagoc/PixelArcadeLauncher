@@ -1,0 +1,73 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://dn1fm6gei6qkn"]
+
+[ext_resource type="FontFile" uid="uid://ixbfi1tltcyx" path="res://assets/fonts/Pixel_Digivolve/Pixel Digivolve.otf" id="1_5cnse"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d1ggn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lo24w"]
+bg_color = Color(0, 0, 0, 0.188235)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_unau6"]
+bg_color = Color(1, 1, 1, 0.705882)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glmlu"]
+bg_color = Color(0.96, 0.2592, 0.27088, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bum83"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_027m2"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xu77"]
+bg_color = Color(0.96, 0.77312, 0.2592, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8o4tx"]
+bg_color = Color(1, 1, 1, 0.705882)
+
+[resource]
+Button/font_sizes/font_size = 25
+Button/fonts/font = ExtResource("1_5cnse")
+CheckButton/font_sizes/font_size = 35
+HBoxContainer/constants/separation = 20
+ItemList/colors/font_color = Color(1, 1, 1, 1)
+ItemList/colors/font_selected_color = Color(0, 0, 0, 1)
+ItemList/constants/h_separation = 20
+ItemList/constants/v_separation = 20
+ItemList/font_sizes/font_size = 32
+ItemList/fonts/font = ExtResource("1_5cnse")
+ItemList/styles/focus = SubResource("StyleBoxEmpty_d1ggn")
+ItemList/styles/panel = SubResource("StyleBoxFlat_lo24w")
+ItemList/styles/selected = SubResource("StyleBoxFlat_unau6")
+ItemList/styles/selected_focus = SubResource("StyleBoxFlat_glmlu")
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("1_5cnse")
+ProgressBar/colors/font_color = Color(1, 1, 1, 1)
+ProgressBar/font_sizes/font_size = 32
+ProgressBar/fonts/font = ExtResource("1_5cnse")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_bum83")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_027m2")
+RichTextLabel/font_sizes/normal_font_size = 20
+RichTextLabel/fonts/normal_font = ExtResource("1_5cnse")
+TabBar/font_sizes/font_size = 25
+TabBar/fonts/font = ExtResource("1_5cnse")
+TabBar/styles/tab_focus = SubResource("StyleBoxFlat_8xu77")
+TabBar/styles/tab_selected = SubResource("StyleBoxFlat_8o4tx")
+VBoxContainer/constants/separation = 20

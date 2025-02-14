@@ -1,0 +1,168 @@
+[gd_scene load_steps=14 format=3 uid="uid://dpmpa00q1a1fq"]
+
+[ext_resource type="Script" path="res://scenes/exp/3d_banner.gd" id="1_p4ket"]
+[ext_resource type="Texture2D" uid="uid://cgc7asuvr1um5" path="res://assets/img/default/placeholder.svg" id="2_8qhjr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70qqf"]
+albedo_color = Color(0, 0, 0, 1)
+roughness = 0.23
+
+[sub_resource type="BoxMesh" id="BoxMesh_wljhg"]
+material = SubResource("StandardMaterial3D_70qqf")
+size = Vector3(1.5, 2.5, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5tdiy"]
+albedo_texture = ExtResource("2_8qhjr")
+roughness = 0.23
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4dmhv"]
+material = SubResource("StandardMaterial3D_5tdiy")
+size = Vector2(1.5, 2.5)
+
+[sub_resource type="Animation" id="Animation_jxf82"]
+resource_name = "selected"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Box:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-0.1, -0.25, 0, 1, 0.002, 0.1022, -1, -0.001, 1, -0.002, -0.1, -1, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2, 4)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Box:rotation:z")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.333333, 0.056599, 0.1, -0.5, 0, 0.5, 0, -0.1, -0.5, 0, 0.5, 0, 0, -0.0999999, -0.0173062, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 3, 4)
+}
+
+[sub_resource type="Animation" id="Animation_6pj5f"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Box:rotation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Box:rotation:z")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ev0ym"]
+_data = {
+"RESET": SubResource("Animation_6pj5f"),
+"selected": SubResource("Animation_jxf82")
+}
+
+[sub_resource type="Animation" id="Animation_ll48d"]
+resource_name = "rotate_right"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewport/Box:rotation:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0, 4.9735, 6.27, -0.1, -0.0132289, 0.1, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="Animation" id="Animation_7lcck"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewport/Box:rotation:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_isf5y"]
+resource_name = "rotate_left"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewport/Box:rotation:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0, -4.974, -6.27, -0.1, -0.0132289, 0.1, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4n5qc"]
+_data = {
+"RESET": SubResource("Animation_7lcck"),
+"rotate_left": SubResource("Animation_isf5y"),
+"rotate_right": SubResource("Animation_ll48d")
+}
+
+[node name="3DBanner" type="SubViewportContainer"]
+offset_right = 740.0
+offset_bottom = 845.0
+stretch = true
+script = ExtResource("1_p4ket")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(740, 845)
+render_target_update_mode = 4
+
+[node name="Box" type="MeshInstance3D" parent="SubViewport"]
+mesh = SubResource("BoxMesh_wljhg")
+
+[node name="Cover" type="MeshInstance3D" parent="SubViewport/Box"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.102311)
+mesh = SubResource("PlaneMesh_4dmhv")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.607)
+fov = 65.5201
+size = 3.10807
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.655097, 0.755545, 0, -0.755545, 0.655097, 0, 3.25826, 0)
+
+[node name="XZTurn" type="AnimationPlayer" parent="SubViewport"]
+libraries = {
+"": SubResource("AnimationLibrary_ev0ym")
+}
+speed_scale = 0.5
+
+[node name="YTurn" type="AnimationPlayer" parent="SubViewport"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_4n5qc")
+}

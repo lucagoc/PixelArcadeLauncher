@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cio064mmwifkc"]
+
+[ext_resource type="Script" path="res://scenes/exp/exp_2.gd" id="1_x33wv"]
+[ext_resource type="PackedScene" uid="uid://dpmpa00q1a1fq" path="res://scenes/exp/3d_banner.tscn" id="2_lx6yk"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x33wv")
+
+[node name="SubViewportContainer" parent="." instance=ExtResource("2_lx6yk")]
+layout_mode = 0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Expérimentation des banner 3D"
