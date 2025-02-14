@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bemlflx640ecp"]
+[gd_scene load_steps=37 format=3 uid="uid://bemlflx640ecp"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_srogu"]
 [ext_resource type="PackedScene" uid="uid://c4frsd4if6b7x" path="res://scenes/special/loading_screen.tscn" id="2_io48b"]
@@ -6,20 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://ds2js8kmbdnu5" path="res://scenes/home/background.tscn" id="4_uvh1k"]
 [ext_resource type="Script" path="res://scenes/home/front.gd" id="5_v2f7h"]
 [ext_resource type="PackedScene" uid="uid://nlbgb1sdxsw5" path="res://scenes/bars/top_bar.tscn" id="6_5rdxe"]
-[ext_resource type="Script" path="res://scenes/credits.gd" id="6_11uv5"]
 [ext_resource type="PackedScene" uid="uid://4nhyvbsbu4d6" path="res://scenes/home/about/about.tscn" id="6_qc7de"]
+[ext_resource type="PackedScene" uid="uid://b4m7u86p02fo4" path="res://scenes/home/credits/credits.tscn" id="6_xcmv4"]
 [ext_resource type="PackedScene" uid="uid://dnmfvwbgonwdj" path="res://scenes/home/banner_list/banner_scroll_list.tscn" id="7_yqq1d"]
 [ext_resource type="PackedScene" uid="uid://b8xcoqpmgts1i" path="res://scenes/home/drawer/drawer.tscn" id="8_14dml"]
-[ext_resource type="AudioStream" uid="uid://dbmfprxjmm7h3" path="res://assets/sounds/secrets/credits.ogg" id="8_c8x1o"]
-[ext_resource type="Texture2D" uid="uid://07ehh7whmxfm" path="res://assets/img/pixel_logo/logo.png" id="8_h7hsu"]
 [ext_resource type="AudioStream" uid="uid://hsdpagkfjr40" path="res://assets/sounds/ui/game_launch.mp3" id="9_g7vwn"]
 [ext_resource type="PackedScene" uid="uid://bxqy35wah5fxc" path="res://scenes/special/screensaver.tscn" id="10_62net"]
 [ext_resource type="PackedScene" uid="uid://f2rysqj78eqv" path="res://scenes/special/transition_layer.tscn" id="10_mhu4u"]
 [ext_resource type="AudioStream" uid="uid://1lxym6ernowe" path="res://assets/sounds/ui/swipe.mp3" id="10_uyrmg"]
 [ext_resource type="PackedScene" uid="uid://bveavdlpsb5lv" path="res://scenes/bars/bottom_bar.tscn" id="16_x1ks8"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dyhuk"]
-bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_anar2"]
 length = 0.001
@@ -564,66 +559,9 @@ script = ExtResource("5_v2f7h")
 [node name="TopBar" parent="Home/Front" instance=ExtResource("6_5rdxe")]
 layout_mode = 2
 
-[node name="Credits" type="HBoxContainer" parent="Home/Front"]
+[node name="Credits" parent="Home/Front" instance=ExtResource("6_xcmv4")]
+custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
-focus_mode = 2
-script = ExtResource("6_11uv5")
-
-[node name="Music" type="AudioStreamPlayer" parent="Home/Front/Credits"]
-stream = ExtResource("8_c8x1o")
-
-[node name="Panel" type="Panel" parent="Home/Front/Credits"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_dyhuk")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Home/Front/Credits/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Logo" type="TextureRect" parent="Home/Front/Credits/Panel/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("8_h7hsu")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Home/Front/Credits/Panel/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="Home/Front/Credits/Panel/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "Pixel Arcade Launcher (PAL)"
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Home/Front/Credits/Panel/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Fait avec ❤️‍  par lucagoc (promo 26).
-Ce projet est sous licence MIT.
-Un bug, une suggestion ? Contribue au projet sur le GitHub !
-"
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="Home/Front/Credits/Panel/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="Home/Front/Credits/Panel/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Home/Front/Credits/Panel/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Fait ton jeu pour la borne !
-Rendez-vous sur https://pixel.isima.fr/docs/faire-son-jeu
-"
 
 [node name="About" parent="Home/Front" instance=ExtResource("6_qc7de")]
 layout_mode = 2
@@ -692,8 +630,6 @@ libraries = {
 "BlackOut": SubResource("AnimationLibrary_568xi")
 }
 
-[connection signal="focus_entered" from="Home/Front/Credits" to="Home/Front/Credits" method="_on_focus_entered"]
-[connection signal="focus_exited" from="Home/Front/Credits" to="Home/Front/Credits" method="_on_focus_exited"]
 [connection signal="animation_finished" from="Home/Front/AnimationPlayer" to="Home/Front" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="BlackOut2" to="." method="_on_black_out_animation_finished"]

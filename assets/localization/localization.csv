@@ -85,6 +85,9 @@ NO_DESCRIPTION,This game has no description,Ce jeu n’a pas de description,Este
 ,,,,
 ,,,,
 ,,,,
-CREDITS_THANKS,This software wouldn’t exist without those persons :,Ce logiciel n’existerait pas sans ces mainteneurs :,Este software no existiría sin estas personas :,このソフトウェアは、これらの人々なしでは存在しません :,Этот софт не существ
-CREDITS_LICENSE,PAL is proudly made under the licensed MIT :,PAL est un logiciel libre sous licence MIT et fière de l’être !,PAL es un software libre bajo la licencia MIT y orgulloso de serlo :,PALはライセンスされたMITの下で誇らしげに作られています :,PAL с гордостью создан под лицензией MIT :
-CREDITS_SOFTWARE,This wonderful ressources made PAL what it is :,Ces formidables ressources font de PAL ce qui l’est aujourd’hui :,Estos recursos maravillosos hicieron de PAL lo que es :,この素晴らしいリソースがPALを作り上げました :,Эти замечательные ресурсы сделали PAL таким каким он есть :
+CREDITS_MAIN,Made with ❤️‍ by lucagoc (promo 26),Fait avec ❤️‍  par lucagoc (promo 26), Hecho con ❤️‍ por lucagoc (promo 26),❤️‍でlucagoc（プロモ26）によって作成されました,Сделано с ❤️‍ lucagoc (promo 26)
+CREDITS_LICENCE,This project is under MIT license,Ce projet est sous licence MIT, Este proyecto está bajo la licencia MIT,このプロジェクトはMITライセンスの下にあります,Этот проект находится под лицензией MIT
+CREDITS_CONTRIBUTE,Un bug / une suggestion ? Contribue au projet sur le GitHub !,Un bug / une suggestion ? Contribue au projet sur le GitHub !,¿Un error / una sugerencia? ¡Contribuye al proyecto en GitHub!,バグ/提案？GitHubでプロジェクトに貢献してください！,Ошибка / предложение? Внесите свой вклад в проект на GitHub!
+CREDITS_THANKS,Special thanks to Mat_the_real and Citorva for their help !,Remerciements spéciaux à Mat_the_real et Citorva pour leur aide !,¡Gracias especiales a Mat_the_real y Citorva por su ayuda!,Mat_the_realとCitorvaに特別な感謝を！,Отдельное спасибо Mat_the_real и Citorva за помощь!
+,,,,
+CREDITS_GAMEDEV,Make your game for the terminal ! All informations are on https://pixel.isima.fr/doc-borne/Développement/Tutoriel/,Fait ton jeu pour la borne ! Toutes les informations sont sur https://pixel.isima.fr/doc-borne/Développement/Tutoriel/,¡Haz tu juego para la terminal! Toda la información está en https://pixel.isima.fr/doc-borne/Développement/Tutoriel/,あなたのゲームを端末に作成してください！すべての情報はhttps://pixel.isima.fr/doc-borne/Développement/Tutoriel/にあります！,Создайте свою игру для терминала! Вся информация находится на https://pixel.isima.fr/doc-borne/Développement/Tutoriel/
